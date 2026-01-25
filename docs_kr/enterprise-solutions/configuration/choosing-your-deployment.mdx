@@ -1,105 +1,105 @@
 ---
-title: "Choosing Your Configuration Path"
-sidebarTitle: "Deployment Guide"
-description: "Decide between SaaS and Self-Hosted configuration for your Cline Enterprise deployment"
+title: "구성 경로 선택"
+sidebarTitle: "배포 가이드"
+description: "Cline Enterprise 배포를 위한 SaaS 구성과 자체 호스팅 구성을 비교하고 선택하세요"
 ---
 
-Choose the right configuration approach for your organization. Most teams start with SaaS for quick deployment, while enterprises with complex requirements opt for self-hosted infrastructure.
+조직에 맞는 구성 접근 방식을 선택하세요. 대부분의 팀은 빠른 배포를 위해 SaaS로 시작하며, 복잡한 요구사항이 있는 엔터프라이즈는 자체 호스팅 인프라를 선택합니다.
 
-## Configuration Paths
+## 구성 경로
 
 <CardGroup cols={2}>
-  <Card title="SaaS Provider Configuration" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
-    ### Quick Setup via Web Console
+  <Card title="SaaS 제공자 구성" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
+    ### 웹 콘솔을 통한 빠른 설정
     
-    ✅ No infrastructure required  
-    ✅ 5-10 minute configuration  
-    ✅ Web-based admin console  
-    ✅ Automatic updates  
-    ✅ Simplified credential management
+    ✅ 인프라 필요 없음  
+    ✅ 5-10분 내 구성  
+    ✅ 웹 기반 관리자 콘솔  
+    ✅ 자동 업데이트  
+    ✅ 간소화된 자격 증명 관리
     
-    **Best for:**
-    - Small to medium teams (5-50 developers)
-    - Quick deployment needs
-    - Limited DevOps resources
-    - Standard security requirements
-    - Single region deployments
+    **적합 대상:**
+    - 소~중규모 팀(개발자 5-50명)
+    - 빠른 배포가 필요한 경우
+    - DevOps 리소스가 제한적인 경우
+    - 표준 보안 요구 사항
+    - 단일 리전 배포
   </Card>
   
-  <Card title="Self-Hosted Configuration" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
-    ### Full Infrastructure Control
+  <Card title="자체 호스팅 구성" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
+    ### 인프라 완전 제어
     
-    ✅ Your own AWS/GCP/K8s  
-    ✅ VPC endpoints & private connectivity  
-    ✅ Multi-account setups  
-    ✅ Advanced compliance & audit  
-    ✅ GitOps workflows
+    ✅ 자체 AWS/GCP/K8s  
+    ✅ VPC 엔드포인트 및 프라이빗 연결  
+    ✅ 다중 계정 구성  
+    ✅ 고급 컴플라이언스 및 감사  
+    ✅ GitOps 워크플로
     
-    **Best for:**
-    - Large enterprises (50+ developers)
-    - Complex security requirements
-    - Existing cloud infrastructure
-    - Multi-region deployments
-    - Custom compliance needs
+    **적합 대상:**
+    - 대규모 엔터프라이즈(개발자 50명 이상)
+    - 복잡한 보안 요구 사항
+    - 기존 클라우드 인프라 보유
+    - 멀티 리전 배포
+    - 맞춤형 컴플라이언스 요구
   </Card>
 </CardGroup>
 
-## Detailed Comparison
+## 상세 비교
 
-### Feature Comparison
+### 기능 비교
 
-| Feature | SaaS | Self-Hosted |
+| 기능 | SaaS | 자체 호스팅 |
 |---------|------|-------------|
-| **Configuration** | Web UI | YAML + Helm/Kubernetes |
-| **Infrastructure** | None required | Full AWS/GCP/K8s |
-| **VPC Endpoints** | Basic | Full private connectivity |
-| **Multi-Account** | ❌ | ✅ |
-| **IAM** | Standard RBAC roles | Standard RBAC roles |
-| **Compliance** | Standard | Custom frameworks |
+| **구성 방식** | 웹 UI | YAML + Helm/Kubernetes |
+| **인프라** | 필요 없음 | 전체 AWS/GCP/K8s |
+| **VPC 엔드포인트** | 기본 | 완전한 프라이빗 연결 |
+| **다중 계정** | ❌ | ✅ |
+| **IAM** | 표준 RBAC 역할 | 표준 RBAC 역할 |
+| **컴플라이언스** | 표준 | 맞춤 프레임워크 |
 | **GitOps** | ❌ | ✅ |
-| **Maintenance** | Managed by Cline | Self-managed |
-| **Updates** | Automatic (extension) | Automatic (extension) + Infrastructure control |
+| **유지보수** | Cline에서 관리 | 자체 관리 |
+| **업데이트** | 자동(확장) | 자동(확장) + 인프라 제어 |
 
-### Security & Compliance
+### 보안 및 컴플라이언스
 
-| Capability | SaaS | Self-Hosted |
+| 역량 | SaaS | 자체 호스팅 |
 |------------|------|-------------|
-| **Network Encryption** | HTTPS/TLS | HTTPS/TLS |
-| **Network** | Public internet | Private VPC endpoints |
-| **Access Control** | Standard RBAC | Standard RBAC |
-| **Audit Logs** | OpenTelemetry traces | OpenTelemetry traces + Infrastructure logs |
-| **Data Residency** | Cline-managed deployment | Customer-controlled deployment |
+| **네트워크 암호화** | HTTPS/TLS | HTTPS/TLS |
+| **네트워크** | 공용 인터넷 | 프라이빗 VPC 엔드포인트 |
+| **접근 제어** | 표준 RBAC | 표준 RBAC |
+| **감사 로그** | OpenTelemetry 트레이스 | OpenTelemetry 트레이스 + 인프라 로그 |
+| **데이터 레지던시** | Cline 관리 배포 | 고객 제어 배포 |
 
-### Cost Structure
+### 비용 구조
 
-| Cost Category | SaaS | Self-Hosted |
+| 비용 항목 | SaaS | 자체 호스팅 |
 |---------------|------|-------------|
-| **Cline Subscription** | Fixed enterprise fee | Fixed enterprise fee |
-| **Inference Provider Costs** | Usage-based | Usage-based |
-| **Infrastructure** | ✅ None required | Kubernetes, networking, storage |
-| **Personnel** | ✅ None required | DevOps team needed |
-| **Total Cost Profile** | Predictable and simple | Variable based on scale |
+| **Cline 구독** | 고정 엔터프라이즈 요금 | 고정 엔터프라이즈 요금 |
+| **추론 제공자 비용** | 사용량 기반 | 사용량 기반 |
+| **인프라** | ✅ 필요 없음 | Kubernetes, 네트워킹, 스토리지 |
+| **인력** | ✅ 필요 없음 | DevOps 팀 필요 |
+| **총비용 프로필** | 예측 가능하고 단순함 | 규모에 따라 변동 |
 
-## Migration Path
+## 마이그레이션 경로
 
 <Note>
-Most organizations start with SaaS configuration for quick deployment, then migrate to self-hosted later as requirements grow. This minimizes risk and ensures your infrastructure meets actual usage patterns.
+대부분의 조직은 빠른 배포를 위해 SaaS 구성으로 시작한 뒤, 요구사항이 커지면 자체 호스팅으로 전환합니다. 이는 위험을 최소화하고 실제 사용 패턴에 맞는 인프라를 구축하는 데 도움이 됩니다.
 </Note>
 
-## Getting Started
+## 시작하기
 
 <CardGroup cols={2}>
-  <Card title="Start with SaaS" icon="rocket" href="/enterprise-solutions/configuration/remote-configuration/overview">
-    Begin with quick SaaS setup
+  <Card title="SaaS로 시작" icon="rocket" href="/enterprise-solutions/configuration/remote-configuration/overview">
+    빠르게 SaaS 구성을 시작하세요
   </Card>
   
-  <Card title="Deploy Self-Hosted" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
-    Plan your infrastructure deployment
+  <Card title="자체 호스팅 배포" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
+    인프라 배포 계획을 세우세요
   </Card>
 </CardGroup>
 
-## Need Help Deciding?
+## 선택에 도움이 필요하신가요?
 
-- [**Contact Cline Enterprise Sales**](https://cline.bot/contact-sales) for a consultation on your specific requirements
-- [**Start with SaaS**](/enterprise-solutions/configuration/remote-configuration/overview) if unsure - it's lower risk and you can always migrate later
-- [**Review Self-Hosted Requirements**](/enterprise-solutions/configuration/infrastructure-configuration/overview) if you have existing infrastructure that could benefit from self-hosted deployment
+- 특정 요구사항에 대한 상담은 [**Cline Enterprise 영업팀에 문의**](https://cline.bot/contact-sales)하세요.
+- 확신이 없다면 [**SaaS로 시작**](/enterprise-solutions/configuration/remote-configuration/overview)하세요. 위험이 낮고 나중에 언제든 전환할 수 있습니다.
+- 기존 인프라를 활용하려면 [**자체 호스팅 요구사항 검토**](/enterprise-solutions/configuration/infrastructure-configuration/overview)를 참고하세요.

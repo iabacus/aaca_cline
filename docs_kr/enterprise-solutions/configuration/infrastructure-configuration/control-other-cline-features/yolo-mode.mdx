@@ -1,30 +1,30 @@
 ---
-title: "YOLO Mode"
-sidebarTitle: "YOLO Mode"
-description: "Enterprise controls for YOLO Mode autonomous operation"
+title: "YOLO 모드"
+sidebarTitle: "YOLO 모드"
+description: "엔터프라이즈 환경에서 YOLO 모드 자율 실행을 제어하는 방법"
 ---
 
-YOLO Mode enables Cline to operate with complete autonomy, auto-approving all actions without user confirmation. For Enterprise administrators, this page covers how to control access to YOLO Mode across your organization.
+YOLO 모드는 모든 작업을 사용자 확인 없이 자동 승인하며 Cline이 완전 자율로 동작하게 합니다. 이 페이지는 엔터프라이즈 관리자가 조직 전체에서 YOLO 모드 접근을 제어하는 방법을 다룹니다.
 
 <Note>
-For complete details about YOLO Mode functionality, risks, and best practices, see [YOLO Mode in Features](/features/yolo-mode).
+YOLO 모드의 기능, 위험, 모범 사례에 대한 자세한 내용은 [기능 문서의 YOLO 모드](/features/yolo-mode)를 참고하세요.
 </Note>
 
-## Overview
+## 개요
 
-When YOLO Mode is enabled, Cline automatically approves all operations including file changes, terminal commands, browser actions, and mode transitions. This provides maximum automation speed but removes all safety guardrails.
+YOLO 모드가 활성화되면 Cline은 파일 변경, 터미널 명령, 브라우저 작업, 모드 전환을 포함한 모든 작업을 자동 승인합니다. 최대 자동화를 제공하지만 모든 안전 장치가 제거됩니다.
 
 <Warning>
-YOLO Mode is powerful but potentially dangerous. Administrators should carefully consider which teams or users should have access to this feature.
+YOLO 모드는 강력하지만 위험할 수 있습니다. 관리자는 어떤 팀이나 사용자가 이 기능에 접근할 수 있어야 하는지 신중히 결정해야 합니다.
 </Warning>
 
-## Enterprise Administrator Configuration
+## 엔터프라이즈 관리자 구성
 
-As an Enterprise administrator, you can control whether users in your organization can enable YOLO Mode through remote configuration.
+관리자는 원격 구성을 통해 조직의 사용자가 YOLO 모드를 활성화할 수 있는지 제어할 수 있습니다.
 
-### Disabling YOLO Mode for All Users
+### 모든 사용자에 대해 YOLO 모드 비활성화
 
-Add the following to your remote configuration JSON:
+원격 구성 JSON에 다음을 추가합니다:
 
 ```json
 {
@@ -32,13 +32,13 @@ Add the following to your remote configuration JSON:
 }
 ```
 
-When `yoloModeAllowed` is set to `false`:
-- The YOLO Mode toggle is disabled in all user interfaces
-- Users cannot enable YOLO Mode even in their local settings
-- This policy applies immediately to all team members
-- Enterprise policy takes precedence over individual preferences
+`yoloModeAllowed`가 `false`일 때:
+- 모든 사용자 인터페이스에서 YOLO 모드 토글이 비활성화됨
+- 사용자는 로컬 설정에서도 YOLO 모드를 켤 수 없음
+- 정책은 모든 팀원에게 즉시 적용됨
+- 엔터프라이즈 정책이 개인 설정보다 우선함
 
-### Enabling YOLO Mode for All Users
+### 모든 사용자에 대해 YOLO 모드 활성화
 
 ```json
 {
@@ -46,188 +46,188 @@ When `yoloModeAllowed` is set to `false`:
 }
 ```
 
-When `yoloModeAllowed` is set to `true` or omitted:
-- Users can enable or disable YOLO Mode in their local Cline settings
-- Individual users make their own decisions about using YOLO Mode
-- No organizational restrictions apply
+`yoloModeAllowed`가 `true`이거나 생략되면:
+- 사용자는 로컬 Cline 설정에서 YOLO 모드를 켜거나 끌 수 있음
+- 각 사용자가 YOLO 모드 사용 여부를 스스로 결정
+- 조직 차원의 제한이 적용되지 않음
 
-## Enterprise Policy Recommendations
+## 엔터프라이즈 정책 권장사항
 
-### Recommended Approach
+### 권장 접근
 
-Most organizations should **disable YOLO Mode by default** for the following reasons:
+대부분의 조직은 다음 이유로 **YOLO 모드를 기본적으로 비활성화**하는 것이 좋습니다:
 
 <AccordionGroup>
-  <Accordion title="Security & Compliance" icon="shield">
-    YOLO Mode removes all approval gates, potentially allowing:
-    - Unreviewed code changes to critical systems
-    - Execution of commands without oversight
-    - Automated actions that may violate compliance policies
-    - Risk of data exposure through unmonitored operations
+  <Accordion title="보안 및 컴플라이언스" icon="shield">
+    YOLO 모드는 모든 승인 단계를 제거하므로 다음과 같은 위험이 있습니다:
+    - 중요한 시스템에 대한 검토되지 않은 코드 변경
+    - 감독 없이 명령 실행
+    - 컴플라이언스 정책을 위반할 수 있는 자동화 작업
+    - 모니터링되지 않는 작업으로 인한 데이터 노출 위험
   </Accordion>
   
-  <Accordion title="Code Quality Control" icon="code">
-    Without approval prompts:
-    - Changes happen too quickly to review in real-time
-    - Mistakes can compound before detection
-    - Quality gates are bypassed
-    - Rollback becomes more complex
+  <Accordion title="코드 품질 관리" icon="code">
+    승인 프롬프트가 없으면:
+    - 변경이 너무 빠르게 진행되어 실시간 검토가 어려움
+    - 실수가 발견되기 전에 누적될 수 있음
+    - 품질 게이트가 우회됨
+    - 롤백이 더 복잡해질 수 있음
   </Accordion>
   
-  <Accordion title="Audit Requirements" icon="clipboard-check">
-    Many industries require:
-    - Documented approval trails for code changes
-    - Clear accountability for automated actions
-    - Traceable decision-making processes
-    - YOLO Mode may conflict with these requirements
+  <Accordion title="감사 요구사항" icon="clipboard-check">
+    많은 산업에서 다음이 요구됩니다:
+    - 코드 변경에 대한 문서화된 승인 기록
+    - 자동화된 작업에 대한 명확한 책임
+    - 추적 가능한 의사결정 과정
+    - YOLO 모드는 이러한 요구사항과 충돌할 수 있음
   </Accordion>
 </AccordionGroup>
 
-### Exceptions: When to Allow YOLO Mode
+### 예외: YOLO 모드를 허용할 때
 
-Consider enabling YOLO Mode for:
+다음 경우에 YOLO 모드 허용을 고려할 수 있습니다:
 
-**Sandbox/Development Environments**
-- Isolated testing environments
-- Personal development machines
-- Proof-of-concept projects
-- Temporary exploratory work
+**샌드박스/개발 환경**
+- 격리된 테스트 환경
+- 개인 개발 머신
+- PoC(개념 증명) 프로젝트
+- 임시 탐색 작업
 
-**Specialized Roles**
-- DevOps automation engineers (with proper monitoring)
-- Research & development teams in sandboxed environments
-- Teams with robust rollback and recovery procedures
+**특수 역할**
+- 적절한 모니터링이 가능한 DevOps 자동화 엔지니어
+- 샌드박스 환경의 R&D 팀
+- 강력한 롤백/복구 절차가 있는 팀
 
-**Controlled Use Cases**
-- Scripted CI/CD pipelines with comprehensive logging
-- Automated testing scenarios
-- Demonstration or training environments
+**통제된 사용 사례**
+- 포괄적 로깅이 포함된 스크립트형 CI/CD 파이프라인
+- 자동화된 테스트 시나리오
+- 데모 또는 교육 환경
 
-## Enterprise Considerations
+## 엔터프라이즈 고려사항
 
-### Security Implications
+### 보안 영향
 
-When YOLO Mode is enabled in your organization:
+조직에서 YOLO 모드를 허용하면:
 
-**Risk Factors:**
-- All tool executions happen automatically without human review
-- Potential for rapid propagation of mistakes across multiple files
-- Reduced opportunity to catch security vulnerabilities before implementation
-- Automated operations may bypass existing security controls
+**위험 요인:**
+- 모든 도구 실행이 인간 검토 없이 자동으로 수행됨
+- 여러 파일에 걸친 실수가 빠르게 확산될 가능성
+- 구현 전에 보안 취약점을 잡을 기회 감소
+- 자동화 작업이 기존 보안 통제를 우회할 가능성
 
-**Mitigations:**
-- Implement comprehensive logging and monitoring
-- Restrict YOLO Mode to non-production environments
-- Require periodic security reviews for teams using YOLO Mode
-- Ensure version control and rollback procedures are in place
+**완화 방안:**
+- 포괄적인 로깅 및 모니터링 구현
+- 비운영 환경으로 제한
+- YOLO 모드 사용 팀에 대한 정기 보안 리뷰
+- 버전 관리 및 롤백 절차 확보
 
-### Monitoring Requirements
+### 모니터링 요구사항
 
-When allowing YOLO Mode in your organization, implement:
+조직에서 YOLO 모드를 허용한다면 다음을 구현하세요:
 
-**Mandatory Monitoring:**
-1. **Real-time Activity Tracking**
-   - Monitor which users enable YOLO Mode
-   - Track when YOLO Mode is active
-   - Log all automated actions taken
+**필수 모니터링:**
+1. **실시간 활동 추적**
+   - YOLO 모드를 활성화한 사용자 모니터링
+   - YOLO 모드 활성 시점 추적
+   - 모든 자동 실행 작업 로그 기록
 
-2. **Audit Trail Maintenance**
-   - Preserve complete history of YOLO Mode sessions
-   - Document what was automated and when
-   - Maintain records for compliance purposes
+2. **감사 추적 유지**
+   - YOLO 모드 세션의 전체 이력 보존
+   - 자동화된 작업과 시점 문서화
+   - 컴플라이언스 목적의 기록 유지
 
-3. **Anomaly Detection**
-   - Alert on unusual patterns of automated actions
-   - Flag high-risk operations performed automatically
-   - Monitor for potential security incidents
+3. **이상 징후 탐지**
+   - 비정상 자동화 패턴 경고
+   - 자동 수행된 고위험 작업 플래그
+   - 잠재적 보안 사고 모니터링
 
-### Monitoring YOLO Mode Usage
+### YOLO 모드 사용 모니터링
 
-When YOLO Mode is enabled (by policy), track usage through:
+YOLO 모드가 활성화되면(정책으로 허용 시) 다음을 통해 사용을 추적할 수 있습니다:
 
-**Telemetry Events:**
-- Captures when users toggle YOLO Mode on/off
-- Records which tasks were executed with YOLO Mode enabled
-- Provides aggregate usage statistics across your organization
+**텔레메트리 이벤트:**
+- 사용자가 YOLO 모드를 켜고 끄는 시점을 캡처
+- YOLO 모드가 활성화된 상태로 실행된 작업 기록
+- 조직 전체의 집계 사용 통계 제공
 
-**Task History:**
-- Task metadata indicates whether YOLO Mode was active
-- Complete action logs show automated approvals
-- Enables post-action review and analysis
+**작업 히스토리:**
+- 작업 메타데이터에 YOLO 모드 활성 여부 표시
+- 자동 승인된 작업의 전체 로그 제공
+- 사후 검토 및 분석 가능
 
-**Audit Logs:**
-- Standard logging captures all automated decisions
-- Tool executions are recorded with timestamps
-- Provides compliance trail for regulated environments
+**감사 로그:**
+- 표준 로깅이 모든 자동 결정 기록
+- 도구 실행이 타임스탬프와 함께 저장
+- 규제 환경을 위한 컴플라이언스 추적 제공
 
-## Recommended Policies by Organization Size
+## 조직 규모별 권장 정책
 
-### Small Teams (5-20 developers)
-- **Default:** Disabled
-- **Exceptions:** Allow for individual sandbox environments
-- **Monitoring:** Basic telemetry sufficient
+### 소규모 팀(개발자 5-20명)
+- **기본:** 비활성화
+- **예외:** 개인 샌드박스 환경에 한해 허용
+- **모니터링:** 기본 텔레메트리로 충분
 
-### Medium Organizations (20-100 developers)
-- **Default:** Disabled
-- **Exceptions:** Permit for designated dev/test environments only
-- **Monitoring:** Required telemetry + regular audit reviews
+### 중규모 조직(개발자 20-100명)
+- **기본:** 비활성화
+- **예외:** 지정된 개발/테스트 환경에서만 허용
+- **모니터링:** 필수 텔레메트리 + 정기 감사 리뷰
 
-### Large Enterprises (100+ developers)
-- **Default:** Strictly disabled
-- **Exceptions:** Require security approval for each use case
-- **Monitoring:** Comprehensive telemetry + real-time alerting + compliance reporting
+### 대규모 엔터프라이즈(개발자 100명 이상)
+- **기본:** 엄격히 비활성화
+- **예외:** 각 사용 사례마다 보안 승인 필요
+- **모니터링:** 포괄적 텔레메트리 + 실시간 경고 + 컴플라이언스 보고
 
-## Technical Implementation
+## 기술 구현
 
-### Configuration Management
+### 구성 관리
 
-**Centralized Control through Remote Configuration:**
+**원격 구성을 통한 중앙 제어:**
 
 ```json
 {
   "yoloModeAllowed": false,
-  // Other policies...
+  // 기타 정책...
 }
 ```
 
-This setting:
-- Applies instantly to all connected clients
-- Cannot be overridden by individual users
-- Persists across Cline restarts
-- Is synchronized across all team members
+이 설정은:
+- 연결된 모든 클라이언트에 즉시 적용
+- 개별 사용자 설정으로 덮어쓸 수 없음
+- Cline 재시작 후에도 유지
+- 모든 팀원에게 동기화
 
-### Policy Enforcement
+### 정책 적용
 
-The enforcement mechanism:
-1. Users authenticate with your enterprise configuration server
-2. Remote configuration is downloaded and applied
-3. Local UI respects enterprise policy settings
-4. YOLO Mode toggle is disabled if policy forbids it
-5. Users see a message explaining the enterprise restriction
+적용 메커니즘:
+1. 사용자가 엔터프라이즈 구성 서버에 인증
+2. 원격 구성을 다운로드하여 적용
+3. 로컬 UI가 엔터프라이즈 정책을 준수
+4. 정책에서 금지하면 YOLO 모드 토글 비활성화
+5. 사용자에게 엔터프라이즈 제한 메시지 표시
 
-## Compliance Considerations
+## 컴플라이언스 고려사항
 
-For organizations in regulated industries:
+규제 산업의 조직이라면:
 
-**SOC 2 Compliance:**
-- YOLO Mode may conflict with change management controls
-- Document decision to allow/disallow in security policies
-- Implement compensating controls if YOLO Mode is permitted
+**SOC 2 컴플라이언스:**
+- YOLO 모드는 변경 관리 통제와 충돌할 수 있음
+- 보안 정책에 허용/비허용 결정 문서화
+- YOLO 모드를 허용하는 경우 보완 통제 구현
 
-**GDPR/Data Protection:**
-- Automated operations must still respect data handling policies
-- Ensure YOLO Mode doesn't bypass data protection safeguards
-- Maintain audit trails of automated data processing
+**GDPR/데이터 보호:**
+- 자동화 작업도 데이터 처리 정책을 준수해야 함
+- YOLO 모드가 데이터 보호 장치를 우회하지 않도록 보장
+- 자동화된 데이터 처리에 대한 감사 추적 유지
 
-**Industry-Specific:**
-- Financial services: Generally incompatible with Reg requirements
-- Healthcare: May violate HIPAA audit trail requirements
-- Government: Often conflicts with approval workflow mandates
+**산업별 고려사항:**
+- 금융: 규제 요구사항과 일반적으로 충돌
+- 헬스케어: HIPAA 감사 추적 요구사항 위반 가능
+- 정부: 승인 워크플로 의무와 충돌 가능
 
-## Support & Questions
+## 지원 및 문의
 
-For help configuring YOLO Mode policies:
-- Review [Remote Configuration Overview](/enterprise-solutions/configuration/remote-configuration/overview)
-- See [Features: YOLO Mode](/features/yolo-mode) for detailed functionality
-- Contact your Enterprise support representative
-- Join our [Discord](https://discord.gg/cline) for community discussion
+YOLO 모드 정책 설정에 대한 도움:
+- [원격 구성 개요](/enterprise-solutions/configuration/remote-configuration/overview) 확인
+- 기능 상세는 [YOLO 모드](/features/yolo-mode) 참고
+- 엔터프라이즈 지원 담당자에게 문의
+- 커뮤니티 토론을 위해 [Discord](https://discord.gg/cline) 참여

@@ -1,30 +1,29 @@
 ---
-title: "Overview"
-sidebarTitle: "Overview"
-description: "Configure Cline settings for your enterprise deployment"
+title: "개요"
+sidebarTitle: "개요"
+description: "엔터프라이즈 배포를 위한 Cline 설정 구성"
 ---
 
-This section covers configuration options for controlling Cline's behavior in enterprise deployments.
+이 섹션에서는 엔터프라이즈 배포에서 Cline의 동작을 제어하기 위한 구성 옵션을 다룹니다.
 
-## Available Settings
+## 사용 가능한 설정
 
-<Card title="YOLO Mode" icon="rocket" href="/enterprise-solutions/configuration/infrastructure-configuration/control-other-cline-features/yolo-mode">
-  Control enterprise access to autonomous operation mode with complete auto-approval
+<Card title="YOLO 모드" icon="rocket" href="/enterprise-solutions/configuration/infrastructure-configuration/control-other-cline-features/yolo-mode">
+  완전 자동 승인(자율 실행) 모드에 대한 엔터프라이즈 접근을 제어합니다.
 </Card>
 
-## Configuration Methods
+## 구성 방법
 
-These settings can be configured through:
+다음 방법으로 설정을 구성할 수 있습니다:
 
+### 개인 사용자
+- 사용자는 로컬 Cline 인터페이스에서 설정을 토글할 수 있습니다.
+- 엔터프라이즈 정책으로 특정 설정을 제한할 수 있습니다.
+- 변경 사항은 새 작업에 즉시 적용됩니다.
 
-### Individual Users
-- Users can toggle settings in their local Cline interface
-- Enterprise policies can restrict certain settings
-- Changes apply immediately to new tasks
+## 엔터프라이즈 제어
 
-## Enterprise Controls
-
-Administrators can enforce policies through remote configuration:
+관리자는 원격 구성을 통해 정책을 강제할 수 있습니다:
 
 ```json
 {
@@ -32,4 +31,4 @@ Administrators can enforce policies through remote configuration:
 }
 ```
 
-When `yoloModeAllowed` is set to `false`, users cannot enable YOLO Mode in their local Cline interface.
+`yoloModeAllowed`를 `false`로 설정하면 사용자는 로컬 Cline 인터페이스에서 YOLO 모드를 활성화할 수 없습니다.
