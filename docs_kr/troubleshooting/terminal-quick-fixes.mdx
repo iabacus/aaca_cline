@@ -1,48 +1,48 @@
 ---
-title: "Terminal Quick Fixes"
-sidebarTitle: "Terminal Quick Fixes"
-description: "Quick solutions for common terminal issues"
+title: "터미널 빠른 해결"
+sidebarTitle: "터미널 빠른 해결"
+description: "터미널 관련 일반 문제에 대한 빠른 해결책"
 ---
 
-## Try This First: Background Execution Mode
+## 먼저 시도할 것: 백그라운드 실행 모드
 
-The simplest fix for most terminal issues is switching to **Background Execution Mode**:
+터미널 문제의 가장 간단한 해결책은 **Background Execution Mode**로 전환하는 것입니다:
 
-1. Click **Settings** (top right of Cline chat)
-2. Go to **Terminal Settings**
-3. Set **Terminal Execution Mode** → **Background Exec**
+1. **Settings** 클릭(Cline 채팅 오른쪽 상단)
+2. **Terminal Settings**로 이동
+3. **Terminal Execution Mode** → **Background Exec**로 설정
 
-This runs commands in a background process instead of VSCode's terminal, bypassing most integration issues.
+이 모드는 VSCode 통합 터미널 대신 백그라운드 프로세스에서 명령을 실행해 대부분의 통합 문제를 우회합니다.
 
 ---
 
-## Other Fixes
+## 다른 해결책
 
-If you need VSCode's integrated terminal, try these:
+VSCode 통합 터미널이 필요하다면 다음을 시도하세요:
 
--   **Switch to bash** (solves most instances)
+-   **bash로 전환** (대부분의 경우 해결됨)
 
-    1. Within Cline, left-click the **Settings** button in the top right-hand corner of the chat window
-    2. Once in the **Settings** window, left-click the **"Terminal Settings"** tab from the left-hand column
-    3. Navigate to **"Default Terminal Profile"** and select **"bash"** from the drop-down
+    1. Cline 채팅 오른쪽 상단의 **Settings** 버튼 클릭
+    2. **Settings** 창 왼쪽의 **"Terminal Settings"** 탭 클릭
+    3. **"Default Terminal Profile"**에서 **"bash"** 선택
 
--   **Increase timeout**
+-   **타임아웃 증가**
 
-    1. Within Cline, left-click the **Settings** button in the top right-hand corner of the chat window
-    2. Once in the **Settings** window, left-click the **"Terminal Settings"** tab from the left-hand column
-    3. Navigate to "Shell integration timeout (seconds)" and enter **"10"** into the text field
+    1. Cline 채팅 오른쪽 상단의 **Settings** 버튼 클릭
+    2. **Settings** 창 왼쪽의 **"Terminal Settings"** 탭 클릭
+    3. "Shell integration timeout (seconds)"에 **"10"** 입력
 
--   **Disable terminal reuse**
-    1. Within Cline, left-click the **Settings** button in the top right-hand corner of the chat window
-    2. Once in the **Settings** window, left-click the **"Terminal Settings"** tab from the left-hand column
-    3. Look for **"Enable aggressive terminal reuse"**, and **uncheck** this option
+-   **터미널 재사용 비활성화**
+    1. Cline 채팅 오른쪽 상단의 **Settings** 버튼 클릭
+    2. **Settings** 창 왼쪽의 **"Terminal Settings"** 탭 클릭
+    3. **"Enable aggressive terminal reuse"** 옵션을 **해제**
 
-## Platform-Specific Fixes
+## 플랫폼별 해결책
 
 ### macOS + Oh-My-Zsh
 
 ```bash
-# Create minimal config for VSCode
+# VSCode용 최소 설정 생성
 echo 'export TERM=xterm-256color' > ~/.zshrc-vscode
 echo 'export PAGER=cat' >> ~/.zshrc-vscode
 ```
@@ -50,16 +50,16 @@ echo 'export PAGER=cat' >> ~/.zshrc-vscode
 ### Windows PowerShell
 
 ```powershell
-# Run as Administrator
+# 관리자 권한으로 실행
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
 ### WSL
 
--   Open folder from WSL: `code .`
--   Select **"WSL Bash"** in Cline settings, under **"Terminal Settings"**
--   Increase **"Shell integration timeout (seconds)"** to **15**
+-   WSL에서 폴더 열기: `code .`
+-   Cline 설정의 **"Terminal Settings"**에서 **"WSL Bash"** 선택
+-   **"Shell integration timeout (seconds)"**를 **15**로 증가
 
-## Full Guide
+## 전체 가이드
 
-For detailed troubleshooting, see the [Complete Terminal Troubleshooting Guide](/troubleshooting/terminal-integration-guide).
+자세한 문제 해결은 [터미널 통합 문제 해결 가이드](/troubleshooting/terminal-integration-guide)를 참고하세요.

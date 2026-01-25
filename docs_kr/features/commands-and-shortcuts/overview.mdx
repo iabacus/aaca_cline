@@ -1,65 +1,63 @@
 ---
-title: "Commands & Shortcuts Overview"
-sidebarTitle: "Overview"
+title: "명령 및 단축키 개요"
+sidebarTitle: "개요"
 ---
 
-Cline integrates directly into VSCode's interface, letting you access AI assistance without disrupting your workflow. These integrations appear as commands in context menus, keyboard shortcuts, and quick fixes throughout the editor.
+Cline은 VS Code 인터페이스에 직접 통합되어, 워크플로를 방해하지 않고 AI 도움을 받을 수 있습니다. 이러한 통합은 에디터 전반의 컨텍스트 메뉴, 키보드 단축키, 빠른 수정(Quick Fix)으로 나타납니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/editor-integration.png"
-		alt="Editor Integration Overview"
+		alt="에디터 통합 개요"
 	/>
 </Frame>
 
-### What are Editor Integrations?
+### 에디터 통합이란?
 
-Editor integrations are commands and shortcuts that let you use Cline right where you're working. Instead of switching to the Cline panel first, you can select code, right-click, and immediately send it to Cline for help.
-These integrations appear in different places throughout VSCode:
+에디터 통합은 작업 중인 위치에서 바로 Cline을 사용할 수 있게 해주는 명령과 단축키입니다. 먼저 Cline 패널로 이동할 필요 없이 코드를 선택하고 우클릭해 즉시 도움을 받을 수 있습니다.
+이 통합 기능은 VS Code 곳곳에 다음과 같이 나타납니다:
 
--   In the editor context menu (right-click menu) - "Add to Cline"
--   In the terminal context menu - "Add to Cline"
--   In the Source Control view - "Generate Commit Message"
--   As keyboard shortcuts - Various Cline commands
--   As Quick Fix options (lightbulb menu) - "Fix with Cline", "Explain with Cline", "Improve with Cline"
+-   에디터 컨텍스트 메뉴(우클릭 메뉴) - "Add to Cline"
+-   터미널 컨텍스트 메뉴 - "Add to Cline"
+-   소스 컨트롤 뷰 - "Generate Commit Message"
+-   키보드 단축키 - 다양한 Cline 명령
+-   빠른 수정 옵션(전구 메뉴) - "Fix with Cline", "Explain with Cline", "Improve with Cline"
 
-### Available Editor Integrations
+### 사용 가능한 에디터 통합
 
-Cline offers several editor integrations, each designed to enhance different aspects of your development workflow:
+Cline은 개발 워크플로의 다양한 측면을 강화하도록 설계된 여러 통합 기능을 제공합니다:
 
 <Columns cols={2}>
-  <Card title="Code Commands" icon="code" href="/features/commands-and-shortcuts/code-commands">
-    Right-click on code to add it to Cline, or use the lightbulb menu to fix errors, explain code, or improve it. Cline sees the complete code context, including imports and surrounding functions.
+  <Card title="코드 명령" icon="code" href="/features/commands-and-shortcuts/code-commands">
+    코드를 우클릭해 Cline에 추가하거나, 전구 메뉴에서 오류 수정/코드 설명/개선을 수행할 수 있습니다. Cline은 import와 주변 함수까지 포함한 전체 컨텍스트를 이해합니다.
   </Card>
 
 {" "}
 
-<Card title="Terminal Integration" icon="terminal" href="/features/commands-and-shortcuts/terminal-integration">
-	Add terminal output to Cline with a right-click or use `@terminal` mentions. Perfect for debugging build errors, test
-	failures, or runtime issues.
+<Card title="터미널 통합" icon="terminal" href="/features/commands-and-shortcuts/terminal-integration">
+	우클릭으로 터미널 출력을 Cline에 추가하거나 `@terminal` 멘션을 사용할 수 있습니다. 빌드 오류, 테스트 실패, 런타임 이슈 디버깅에 적합합니다.
 </Card>
 
 {" "}
 
-<Card title="Git Integration" icon="code-branch" href="/features/commands-and-shortcuts/git-integration">
-	Generate commit messages, explain diffs, or analyze changes with Cline's Git integration. Cline understands your version
-	control context.
+<Card title="Git 통합" icon="code-branch" href="/features/commands-and-shortcuts/git-integration">
+	커밋 메시지를 생성하고 diff를 설명하거나 변경 사항을 분석할 수 있습니다. Cline이 버전 관리 컨텍스트를 이해합니다.
 </Card>
 
 {" "}
 
-<Card title="Keyboard Shortcuts" icon="keyboard" href="/features/commands-and-shortcuts/keyboard-shortcuts">
-	Speed up your workflow with keyboard shortcuts for common Cline actions. Quickly add code to chat, fix errors, or improve your code.
+<Card title="키보드 단축키" icon="keyboard" href="/features/commands-and-shortcuts/keyboard-shortcuts">
+	자주 쓰는 Cline 동작에 단축키를 할당해 워크플로를 가속할 수 있습니다. 채팅에 코드 추가, 오류 수정, 코드 개선을 빠르게 수행하세요.
 </Card>
 </Columns>
 
-### How They Work
+### 동작 방식
 
-When you use these commands, Cline:
+이 명령들을 사용하면 Cline은:
 
--   Captures the relevant context (selected code, file path, terminal output, etc.)
--   Focuses the Cline interface
--   Creates a conversation with the captured context
--   In some cases, automatically generates a suggested prompt
+-   관련 컨텍스트(선택한 코드, 파일 경로, 터미널 출력 등)를 캡처
+-   Cline 인터페이스에 포커스
+-   캡처된 컨텍스트로 대화를 생성
+-   경우에 따라 자동으로 제안 프롬프트를 생성
 
-Behind the scenes, these commands use VSCode's extension API to register commands, access editor state, and control VSCode's interface.
+내부적으로는 VS Code 확장 API를 사용해 명령을 등록하고, 에디터 상태를 읽고, VS Code 인터페이스를 제어합니다.

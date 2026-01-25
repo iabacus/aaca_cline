@@ -1,32 +1,32 @@
 ---
-title: "MCP Integration"
-sidebarTitle: "Overview"
-description: "Configure Model Context Protocol (MCP) servers and marketplace integrations for enterprise Cline deployments"
+title: "MCP 통합"
+sidebarTitle: "개요"
+description: "엔터프라이즈 Cline 배포를 위한 Model Context Protocol(MCP) 서버 및 마켓플레이스 통합 구성"
 ---
 
-Model Context Protocol (MCP) provides standardized communication between AI models and external data sources, tools, and services. Enterprise MCP integration allows you to securely connect Cline to your organization's systems while maintaining governance and compliance.
+Model Context Protocol(MCP)은 AI 모델과 외부 데이터 소스, 도구, 서비스 간의 표준화된 통신을 제공합니다. 엔터프라이즈 MCP 통합을 통해 거버넌스와 컴플라이언스를 유지하면서 Cline을 조직의 시스템에 안전하게 연결할 수 있습니다.
 
-## Enterprise MCP Benefits
+## 엔터프라이즈 MCP 장점
 
 <CardGroup cols={2}>
-  <Card title="Extensible Architecture" icon="puzzle-piece">
-    Connect to unlimited external tools, databases, APIs, and services through standardized MCP servers.
+  <Card title="확장 가능한 아키텍처" icon="puzzle-piece">
+    표준 MCP 서버를 통해 무제한 외부 도구, 데이터베이스, API, 서비스에 연결합니다.
   </Card>
   
-  <Card title="Enterprise Security" icon="shield-alt">
-    Secure authentication, authorization, and audit trails for all MCP server communications.
+  <Card title="엔터프라이즈 보안" icon="shield-alt">
+    모든 MCP 서버 통신에 대한 안전한 인증, 인가, 감사 추적을 제공합니다.
   </Card>
   
-  <Card title="Centralized Management" icon="network-wired">
-    Manage and deploy MCP servers enterprise-wide with version control and configuration management.
+  <Card title="중앙 집중 관리" icon="network-wired">
+    버전 제어와 구성 관리로 MCP 서버를 엔터프라이즈 전반에 배포하고 관리합니다.
   </Card>
   
-  <Card title="Compliance Ready" icon="clipboard-check">
-    Built-in logging, monitoring, and data governance for regulatory compliance requirements.
+  <Card title="컴플라이언스 준비" icon="clipboard-check">
+    규제 준수를 위한 로깅, 모니터링, 데이터 거버넌스를 내장합니다.
   </Card>
 </CardGroup>
 
-## MCP Architecture Overview
+## MCP 아키텍처 개요
 
 ```mermaid
 graph TB
@@ -52,23 +52,23 @@ graph TB
     Q[Authentication] --> B
 ```
 
-## Core Components
+## 핵심 구성 요소
 
 <CardGroup cols={2}>
-  <Card title="MCP Marketplace" icon="store" href="/enterprise-solutions/configuration/infrastructure-configuration/mcp/mcp-marketplace">
-    Pre-built, enterprise-ready MCP servers for popular tools and services with one-click deployment.
+  <Card title="MCP 마켓플레이스" icon="store" href="/enterprise-solutions/configuration/infrastructure-configuration/mcp/mcp-marketplace">
+    원클릭 배포가 가능한 인기 도구용 사전 구축 엔터프라이즈 MCP 서버.
   </Card>
   
-  <Card title="Remote MCP Servers" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/mcp/remote-mcp-servers">
-    Deploy and manage custom MCP servers across your infrastructure with centralized configuration.
+  <Card title="원격 MCP 서버" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/mcp/remote-mcp-servers">
+    중앙 구성으로 인프라 전반의 커스텀 MCP 서버를 배포 및 관리.
   </Card>
 </CardGroup>
 
-## Enterprise Configuration
+## 엔터프라이즈 구성
 
-### Basic MCP Hub Setup
+### 기본 MCP 허브 설정
 
-Configure the central MCP hub for your enterprise deployment:
+엔터프라이즈 배포를 위한 중앙 MCP 허브를 구성합니다:
 
 ```yaml
 # mcp-hub-config.yaml
@@ -80,12 +80,12 @@ mcp:
       method: "enterprise-sso"
       jwt_secret: "${MCP_JWT_SECRET}"
       
-    # Server discovery
+    # 서버 디스커버리
     discovery:
       methods: ["marketplace", "remote", "local"]
       marketplace_url: "https://mcp.cline.bot/marketplace"
       
-    # Security settings
+    # 보안 설정
     security:
       enforce_tls: true
       allowed_origins: ["https://*.company.com"]
@@ -93,7 +93,7 @@ mcp:
         requests_per_minute: 1000
         burst_size: 100
         
-    # Audit and compliance
+    # 감사 및 컴플라이언스
     audit:
       enabled: true
       log_level: "INFO"
@@ -101,12 +101,12 @@ mcp:
       retention_days: 90
 ```
 
-### Multi-Environment Configuration
+### 다중 환경 구성
 
-Deploy MCP configurations across environments:
+환경별로 MCP 구성을 배포합니다:
 
 <Tabs>
-<Tab title="Development">
+<Tab title="개발">
 ```yaml
 # mcp-dev-config.yaml
 mcp:
@@ -136,7 +136,7 @@ mcp:
 ```
 </Tab>
 
-<Tab title="Production">
+<Tab title="프로덕션">
 ```yaml
 # mcp-prod-config.yaml
 mcp:
@@ -146,7 +146,7 @@ mcp:
     - name: "github-prod"
       type: "marketplace"
       package: "@cline/mcp-github"
-      version: "1.2.3"  # Pinned version
+      version: "1.2.3"  # 버전 고정
       config:
         github_token: "${GITHUB_PROD_TOKEN}"
         org: "company"
@@ -180,11 +180,11 @@ mcp:
 </Tab>
 </Tabs>
 
-## Server Management
+## 서버 관리
 
-### Lifecycle Management
+### 라이프사이클 관리
 
-Manage MCP server deployments with GitOps:
+GitOps로 MCP 서버 배포를 관리합니다:
 
 ```yaml
 # mcp-server-manifest.yaml
@@ -224,9 +224,9 @@ spec:
     pod_security_standard: restricted
 ```
 
-### Configuration Management
+### 구성 관리
 
-Use Helm charts for enterprise MCP deployments:
+엔터프라이즈 MCP 배포에 Helm 차트를 사용합니다:
 
 ```yaml
 # values-prod.yaml
@@ -271,11 +271,11 @@ mcp:
           - mcp.company.com
 ```
 
-## Security & Governance
+## 보안 및 거버넌스
 
-### Authentication & Authorization
+### 인증 및 인가
 
-Configure enterprise authentication for MCP servers:
+MCP 서버를 위한 엔터프라이즈 인증을 구성합니다:
 
 ```yaml
 # mcp-auth-config.yaml
@@ -310,9 +310,9 @@ authorization:
     default_role: "viewer"
 ```
 
-### Network Security
+### 네트워크 보안
 
-Implement network policies for MCP communications:
+MCP 통신을 위한 네트워크 정책을 구현합니다:
 
 ```yaml
 # mcp-network-policy.yaml
@@ -342,23 +342,23 @@ spec:
           port: 8080
           
   egress:
-    # Allow DNS
+    # DNS 허용
     - to: []
       ports:
         - protocol: UDP
           port: 53
-    # Allow HTTPS to external APIs
+    # 외부 API로의 HTTPS 허용
     - to: []
       ports:
         - protocol: TCP
           port: 443
 ```
 
-## Monitoring & Observability
+## 모니터링 및 관측성
 
-### Metrics Collection
+### 메트릭 수집
 
-Configure comprehensive MCP monitoring:
+포괄적인 MCP 모니터링을 구성합니다:
 
 ```yaml
 # mcp-monitoring.yaml
@@ -403,9 +403,9 @@ monitoring:
       notification_channels: ["email"]
 ```
 
-### Audit Logging
+### 감사 로깅
 
-Implement comprehensive audit trails:
+포괄적인 감사 추적을 구현합니다:
 
 ```json
 {
@@ -433,11 +433,11 @@ Implement comprehensive audit trails:
 }
 ```
 
-## Custom MCP Server Development
+## 커스텀 MCP 서버 개발
 
-### Development Framework
+### 개발 프레임워크
 
-Create custom MCP servers using the enterprise SDK:
+엔터프라이즈 SDK로 커스텀 MCP 서버를 만듭니다:
 
 ```typescript
 // custom-mcp-server.ts
@@ -482,9 +482,9 @@ class DatabaseQueryTool implements Tool {
 }
 ```
 
-### Deployment Pipeline
+### 배포 파이프라인
 
-Automate MCP server deployments:
+MCP 서버 배포를 자동화합니다:
 
 ```yaml
 # .github/workflows/deploy-mcp-server.yml
@@ -524,48 +524,48 @@ jobs:
             --namespace mcp-prod
 ```
 
-## Best Practices
+## 모범 사례
 
-### Security
-1. **Authentication**: Always require authentication for MCP servers
-2. **Encryption**: Use TLS for all MCP communications
-3. **Validation**: Validate all inputs and sanitize outputs
-4. **Least Privilege**: Grant minimal required permissions
-5. **Audit**: Log all MCP server interactions
+### 보안
+1. **인증**: MCP 서버에 항상 인증을 요구하세요.
+2. **암호화**: 모든 MCP 통신에 TLS 사용.
+3. **검증**: 모든 입력을 검증하고 출력을 정제하세요.
+4. **최소 권한**: 필요한 최소 권한만 부여하세요.
+5. **감사**: 모든 MCP 서버 상호작용을 로깅하세요.
 
-### Performance
-1. **Caching**: Implement response caching where appropriate
-2. **Connection Pooling**: Reuse connections to external services
-3. **Async Operations**: Use non-blocking operations for I/O
-4. **Resource Limits**: Set appropriate CPU and memory limits
-5. **Load Balancing**: Scale MCP servers based on demand
+### 성능
+1. **캐싱**: 필요 시 응답 캐싱 구현
+2. **연결 풀링**: 외부 서비스 연결 재사용
+3. **비동기 처리**: I/O는 논블로킹으로 처리
+4. **리소스 제한**: CPU/메모리 제한 적절히 설정
+5. **로드 밸런싱**: 수요에 따라 MCP 서버 확장
 
-### Reliability
-1. **Health Checks**: Implement comprehensive health endpoints
-2. **Circuit Breakers**: Fail fast when external services are down
-3. **Retry Logic**: Implement exponential backoff for failures
-4. **Graceful Degradation**: Provide fallback behavior
-5. **Monitoring**: Set up proactive alerting and monitoring
+### 안정성
+1. **헬스 체크**: 포괄적인 헬스 엔드포인트 구현
+2. **서킷 브레이커**: 외부 서비스 장애 시 빠른 실패
+3. **재시도 로직**: 실패 시 지수 백오프 적용
+4. **우아한 저하**: 대체 동작 제공
+5. **모니터링**: 사전 경고 및 모니터링 구축
 
-## Production Checklist
+## 프로덕션 체크리스트
 
-Before deploying MCP servers to production:
+프로덕션에 MCP 서버를 배포하기 전에:
 
-- [ ] Security review completed
-- [ ] Authentication and authorization configured
-- [ ] Network policies implemented
-- [ ] Monitoring and alerting set up
-- [ ] Audit logging enabled
-- [ ] Resource limits configured
-- [ ] Health checks implemented
-- [ ] Integration tests passing
-- [ ] Disaster recovery plan documented
-- [ ] Compliance requirements validated
+- [ ] 보안 리뷰 완료
+- [ ] 인증 및 인가 구성 완료
+- [ ] 네트워크 정책 구현
+- [ ] 모니터링 및 경고 설정
+- [ ] 감사 로깅 활성화
+- [ ] 리소스 제한 구성
+- [ ] 헬스 체크 구현
+- [ ] 통합 테스트 통과
+- [ ] 재해 복구 계획 문서화
+- [ ] 컴플라이언스 요구사항 검증
 
-## Getting Started
+## 시작하기
 
-Ready to implement enterprise MCP integration? Start with:
+엔터프라이즈 MCP 통합을 시작할 준비가 되었나요? 다음부터 시작하세요:
 
-1. [MCP Marketplace](/enterprise-solutions/configuration/infrastructure-configuration/mcp/mcp-marketplace) - Deploy pre-built integrations
-2. [Remote MCP Servers](/enterprise-solutions/configuration/infrastructure-configuration/mcp/remote-mcp-servers) - Configure custom servers
-3. Review our [MCP Development Guide](/mcp/mcp-overview) for building custom integrations
+1. [MCP 마켓플레이스](/enterprise-solutions/configuration/infrastructure-configuration/mcp/mcp-marketplace) - 사전 구축 통합 배포
+2. [원격 MCP 서버](/enterprise-solutions/configuration/infrastructure-configuration/mcp/remote-mcp-servers) - 커스텀 서버 구성
+3. 커스텀 통합을 위한 [MCP 개발 가이드](/mcp/mcp-overview) 참고

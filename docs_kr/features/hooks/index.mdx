@@ -1,166 +1,166 @@
 ---
-title: "Hooks Overview"
-sidebarTitle: "Overview"
-description: "Inject custom logic into Cline's workflow to validate operations, monitor tool usage, and shape AI decisions"
+title: "훅 개요"
+sidebarTitle: "개요"
+description: "Cline 워크플로에 사용자 로직을 주입해 작업을 검증하고, 도구 사용을 모니터링하며, AI의 결정을 형성합니다"
 ---
 
-Hooks let you inject custom logic into Cline's workflow at key moments. Think of them as automated checkpoints where you can validate operations before they execute, monitor tool usage as it happens, and shape how Cline makes decisions.
+훅은 Cline의 워크플로에서 중요한 순간에 사용자 로직을 주입할 수 있게 해줍니다. 실행 전에 작업을 검증하고, 도구 사용을 모니터링하며, Cline의 결정 방식에 영향을 주는 자동 체크포인트라고 생각하면 됩니다.
 
-Hooks run automatically when specific events happen during development. They receive detailed information about each operation, can block problematic actions before they cause issues, and can inject context that guides future AI decisions.
+훅은 개발 중 특정 이벤트가 발생할 때 자동으로 실행됩니다. 각 작업에 대한 상세 정보를 받아 문제를 일으키기 전에 동작을 차단할 수 있고, 이후 AI 결정을 안내할 컨텍스트를 주입할 수도 있습니다.
 
-The real power comes from combining these capabilities. You can:
+진짜 힘은 이 기능들을 조합할 때 나옵니다. 예를 들어:
 
-- Stop operations before they cause problems (like creating `.js` files in a TypeScript project)
-- Learn from what's happening and build up project knowledge over time
-- Monitor performance and catch issues as they emerge
-- Track everything for analytics or compliance
-- Trigger external tools or services at the right moments
+- 문제가 생기기 전에 동작을 중단(예: TypeScript 프로젝트에서 `.js` 파일 생성 차단)
+- 발생한 일을 학습해 프로젝트 지식을 축적
+- 성능을 모니터링하고 이슈를 조기에 감지
+- 분석이나 컴플라이언스를 위해 모든 작업을 추적
+- 적절한 시점에 외부 도구나 서비스를 트리거
 
-## Getting Started
+## 시작하기
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/hooks.gif" alt="Hooks in action" />
+	<img src="https://storage.googleapis.com/cline_public_images/hooks.gif" alt="훅 동작 예시" />
 </Frame>
 
 <Note>
-Hooks work across all platforms: Windows, macOS, and Linux. The bash examples in this documentation work with standard shells on all platforms (including Git Bash or WSL on Windows).
+훅은 Windows, macOS, Linux 전 플랫폼에서 동작합니다. 이 문서의 bash 예시는 모든 플랫폼의 표준 셸(Windows의 Git Bash 또는 WSL 포함)에서 동작합니다.
 </Note>
 
-Setting up hooks in Cline is user-friendly with the built-in hooks management interface. Here's how to get started:
+Cline에는 내장 훅 관리 인터페이스가 있어 훅 설정이 쉽습니다. 시작 방법은 다음과 같습니다:
 
 <Steps>
-<Step title="Access the Hooks Interface">
-Navigate to the Hooks management interface:
+<Step title="훅 인터페이스 접근">
+훅 관리 인터페이스로 이동하세요:
 
 <Frame>
-  <img src="/assets/hooks/hooks-interface-with-dropdown.png" alt="Hooks management interface showing Global Hooks and project-specific hooks with dropdown menu" />
+  <img src="/assets/hooks/hooks-interface-with-dropdown.png" alt="드롭다운 메뉴가 있는 훅 관리 인터페이스(전역 훅과 프로젝트 훅 표시)" />
 </Frame>
 
-1. Open Cline (ensure hooks are enabled in settings)
-2. Look for the **Hooks** tab at the top (alongside Rules and Workflows)
-3. Click on **Hooks** to open the hooks management panel
+1. Cline을 열고(설정에서 훅이 활성화되어 있는지 확인)
+2. 상단의 **Hooks** 탭을 찾습니다(옆에 Rules, Workflows)
+3. **Hooks**를 클릭해 훅 관리 패널을 엽니다
 
-The interface shows you all available hook types and existing hooks organized by workspace.
+인터페이스에는 워크스페이스별로 정리된 모든 훅 유형과 기존 훅이 표시됩니다.
 </Step>
 
-<Step title="Understand Hook Locations">
-Hooks are automatically organized by location in the interface:
+<Step title="훅 위치 이해">
+훅은 인터페이스에서 위치에 따라 자동으로 정리됩니다:
 
-**Global Hooks** - Apply to all workspaces:
-- Stored in `~/Documents/Cline/Hooks/`
-- Perfect for personal coding standards and universal rules
+**Global Hooks** - 모든 워크스페이스에 적용:
+- `~/Documents/Cline/Hooks/`에 저장
+- 개인 코딩 표준과 공통 규칙에 적합
 
-**Project-Specific Hooks** - Apply only to current project:
-- Stored in `.clinerules/hooks/` within your repo
-- Great for project-specific validation and team workflows
-- Can be committed to version control for team sharing
+**Project-Specific Hooks** - 현재 프로젝트에만 적용:
+- 저장소 내부 `.clinerules/hooks/`에 저장
+- 프로젝트별 검증과 팀 워크플로에 적합
+- 팀 공유를 위해 버전 관리에 커밋 가능
 
-Multi-root workspaces run hooks from all of the repos in your open workspace, making it easy to manage and run hooks across different repos within the same workspace.
+멀티 루트 워크스페이스는 열린 모든 저장소의 훅을 실행하므로, 하나의 워크스페이스에서 여러 저장소 훅을 쉽게 관리하고 실행할 수 있습니다.
 </Step>
 
-<Step title="Create Your First Hook">
-Use the intuitive interface to create hooks:
+<Step title="첫 번째 훅 만들기">
+직관적인 인터페이스로 훅을 만들 수 있습니다:
 
 <Frame>
-  <img src="/assets/hooks/hooks-empty-state.png" alt="Empty hooks interface showing New hook... dropdowns for both Global Hooks and project-specific hooks before any hooks are created" />
+  <img src="/assets/hooks/hooks-empty-state.png" alt="훅이 없을 때의 인터페이스: 전역 훅과 프로젝트 훅의 New hook... 드롭다운 표시" />
 </Frame>
 
-1. **Choose your location**: Decide between Global Hooks or project-specific hooks
-2. **Select hook type**: Click the **"New hook..."** dropdown in your chosen location
-3. **Pick a hook type**: The dropdown shows all available hook types that haven't been created yet in this location. Only one of each hook type is allowed per hooks directory, so the dropdown automatically filters to show only the remaining available types.
+1. **위치 선택**: Global Hooks 또는 프로젝트 훅 중 선택
+2. **훅 유형 선택**: 선택한 위치에서 **"New hook..."** 드롭다운 클릭
+3. **훅 유형 고르기**: 해당 위치에서 아직 생성되지 않은 훅 유형만 표시됩니다. 훅 디렉터리당 훅 유형은 하나만 허용되므로, 드롭다운이 남은 유형만 보여줍니다.
 
 <Frame>
-  <img src="/assets/hooks/new-hook-dropdown.png" alt="Creating a new hook with the dropdown menu showing UserPromptSubmit selected with description" />
+  <img src="/assets/hooks/new-hook-dropdown.png" alt="UserPromptSubmit이 선택된 드롭다운으로 새 훅 생성" />
 </Frame>
 
-4. **Review and edit the hook**: Click the pencil icon to review the hook's code and add your custom logic
-5. **Enable the hook**: Once you understand and approve of the hook's behavior, toggle the switch to activate it
+4. **훅 검토 및 편집**: 연필 아이콘을 클릭해 훅 코드를 검토하고 사용자 로직 추가
+5. **훅 활성화**: 동작을 이해하고 승인했다면 토글 스위치를 켭니다
 
 <Frame>
-  <img src="/assets/hooks/hook-controls.png" alt="Hook management controls showing toggle, edit, and delete buttons for each hook" />
+  <img src="/assets/hooks/hook-controls.png" alt="각 훅의 토글, 편집, 삭제 버튼이 보이는 훅 관리 컨트롤" />
 </Frame>
 
 <Warning>
-Always review a hook's code before enabling it. Hooks execute automatically during your workflow, so it's important to understand what they do before activation.
+훅을 활성화하기 전에 항상 코드를 검토하세요. 훅은 워크플로 중 자동 실행되므로, 활성화 전에 동작을 이해하는 것이 중요합니다.
 </Warning>
 </Step>
 
-<Step title="Test Your Hook">
-To develop and refine your hook, you'll need to trigger it multiple times during testing. Each hook type is triggered by different events in Cline's workflow. For example:
+<Step title="훅 테스트">
+훅을 개발하고 다듬으려면 테스트 중 여러 번 트리거해야 합니다. 훅 유형마다 다른 이벤트에 의해 트리거됩니다. 예:
 
-- **TaskStart** hooks trigger when you start a new task
-- **PreToolUse** hooks trigger before Cline executes tools like file editing
-- **PostToolUse** hooks trigger after tool execution completes
-- **UserPromptSubmit** hooks trigger when you submit a message to Cline
+- **TaskStart** 훅: 새 작업 시작 시
+- **PreToolUse** 훅: Cline이 파일 편집 같은 도구를 실행하기 전
+- **PostToolUse** 훅: 도구 실행 완료 후
+- **UserPromptSubmit** 훅: 메시지를 제출할 때
 
-For complete details on when each hook type is triggered and how to test them effectively, see the [Hook Reference](/features/hooks/hook-reference) documentation. This includes the specific conditions that trigger each hook and examples of how to invoke them during development.
+각 훅 유형이 언제 트리거되는지와 효과적으로 테스트하는 방법은 [훅 레퍼런스](/features/hooks/hook-reference) 문서를 참고하세요. 훅별 트리거 조건과 개발 중 호출 방법의 예시가 포함되어 있습니다.
 </Step>
 </Steps>
 
 <Tip>
-Start with a simple hook that just logs information before building complex validation logic. This helps you understand the data structure and timing.
+처음에는 정보만 로깅하는 간단한 훅으로 시작한 뒤, 복잡한 검증 로직을 구축하세요. 데이터 구조와 타이밍을 이해하는 데 도움이 됩니다.
 </Tip>
 
-## What You Can Build
+## 무엇을 만들 수 있나요
 
-Once you understand the basics, hooks open up creative possibilities:
+기본을 이해하고 나면 훅으로 다양한 가능성을 열 수 있습니다:
 
 <CardGroup cols={2}>
-  <Card title="Intelligent Code Review" icon="code-branch">
-    Run linters or custom validators before files get saved. Block commits that don't pass checks. Track code quality metrics over time.
+  <Card title="지능형 코드 리뷰" icon="code-branch">
+    파일 저장 전 린터나 커스텀 검증기를 실행하세요. 검사에 통과하지 못한 커밋을 차단하고, 시간에 따른 코드 품질 지표를 추적할 수 있습니다.
   </Card>
   
-  <Card title="Security Enforcement" icon="shield-halved">
-    Prevent operations that violate security policies. Detect when sensitive data might be exposed. Audit all file access for compliance.
+  <Card title="보안 강제" icon="shield-halved">
+    보안 정책을 위반하는 동작을 차단하세요. 민감 데이터 노출 가능성을 감지하고, 모든 파일 접근을 감사 기록으로 남길 수 있습니다.
   </Card>
   
-  <Card title="Development Analytics" icon="chart-line">
-    Measure how long different operations take. Identify patterns in how the AI works. Generate productivity reports from hook data.
+  <Card title="개발 분석" icon="chart-line">
+    다양한 작업이 얼마나 걸리는지 측정하고, AI가 작동하는 패턴을 파악하며, 훅 데이터로 생산성 리포트를 생성할 수 있습니다.
   </Card>
   
-  <Card title="Integration Hub" icon="plug">
-    Connect to issue trackers when certain keywords appear. Update project management tools. Sync with external APIs at the right moments.
+  <Card title="통합 허브" icon="plug">
+    특정 키워드가 등장하면 이슈 트래커와 연결하고, 프로젝트 관리 도구를 업데이트하며, 적절한 순간에 외부 API와 동기화합니다.
   </Card>
 </CardGroup>
 
-The key is combining hooks with external tools. A hook can be the glue between Cline's workflow and the rest of your development ecosystem.
+핵심은 훅을 외부 도구와 결합하는 것입니다. 훅은 Cline의 워크플로와 개발 생태계의 나머지를 연결하는 접착제 역할을 합니다.
 
-## Explore the Documentation
+## 문서 살펴보기
 
 <CardGroup cols={2}>
-  <Card title="Hook Reference" icon="book" href="/features/hooks/hook-reference">
-    Complete API reference for all hook types, JSON schemas, and field documentation.
+  <Card title="훅 레퍼런스" icon="book" href="/features/hooks/hook-reference">
+    모든 훅 유형, JSON 스키마, 필드 문서에 대한 완전한 API 레퍼런스.
   </Card>
   
-  <Card title="Samples" icon="code" href="/features/hooks/samples">
-    Practical examples and complete working scripts for common use cases.
+  <Card title="샘플" icon="code" href="/features/hooks/samples">
+    일반적인 사용 사례에 대한 실용적인 예제와 완성된 스크립트.
   </Card>
 </CardGroup>
 
-## CLI support
+## CLI 지원
 
-Hooks are also available in the [Cline CLI](/cline-cli/overview). You can enable or disable hooks when running tasks from the command line:
+훅은 [Cline CLI](/cline-cli/overview)에서도 사용할 수 있습니다. 명령줄에서 작업을 실행할 때 훅을 활성/비활성화할 수 있습니다:
 
 ```bash
-# Enable hooks for a task
+# 작업에 훅 활성화
 cline "What does this repo do?" -s hooks_enabled=true
 
-# Configure hooks globally via CLI
+# CLI로 전역 훅 설정
 cline config set hooks-enabled=true
 cline config get hooks-enabled
 ```
 
-This allows you to integrate hooks into automated workflows, CI/CD pipelines, and headless task execution.
+이를 통해 훅을 자동화 워크플로, CI/CD 파이프라인, 헤드리스 작업 실행에 통합할 수 있습니다.
 
 <Note>
-Hooks in the CLI are only supported on macOS and Linux. Windows support is not yet available.
+CLI의 훅은 macOS와 Linux에서만 지원됩니다. Windows는 아직 지원되지 않습니다.
 </Note>
 
-## Related features
+## 관련 기능
 
-Hooks complement other Cline features:
+훅은 다른 Cline 기능을 보완합니다:
 
-- [Cline Rules](/features/cline-rules) define high-level guidance that hooks can enforce
-- [Checkpoints](/features/checkpoints) let you roll back changes if a hook didn't catch an issue
-- [Auto-Approve](/features/auto-approve) works well with hooks as safety nets for automated operations
-- [Cline CLI](/cline-cli/overview) enables hooks in terminal-based and automated workflows
+- [Cline Rules](/features/cline-rules): 훅이 강제할 수 있는 상위 지침 정의
+- [체크포인트](/features/checkpoints): 훅이 이슈를 놓쳤을 때 변경을 롤백
+- [자동 승인](/features/auto-approve): 자동 작업에 대한 안전망으로 훅과 잘 어울림
+- [Cline CLI](/cline-cli/overview): 터미널 기반/자동화 워크플로에서 훅 사용

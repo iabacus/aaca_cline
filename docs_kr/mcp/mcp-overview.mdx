@@ -1,107 +1,105 @@
 ---
-title: "MCP Overview"
-description: "Learn about Model Context Protocol (MCP) servers, their capabilities, and how Cline can help build and use them. MCP standardizes how applications provide context to LLMs, acting like a USB-C port for AI applications."
+title: "MCP 개요"
+description: "Model Context Protocol(MCP) 서버, 그 기능, 그리고 Cline이 이를 빌드하고 사용하는 방법을 알아보세요. MCP는 애플리케이션이 LLM에 컨텍스트를 제공하는 방식을 표준화하며, AI 애플리케이션의 USB-C 포트처럼 동작합니다."
 ---
 
-## Quick Links
+## 빠른 링크
 
--   [Building MCP Servers from GitHub](/mcp/adding-mcp-servers-from-github)
--   [Building Custom MCP Servers from Scratch](/mcp/mcp-server-development-protocol)
+-   [GitHub에서 MCP 서버 빌드](/mcp/adding-mcp-servers-from-github)
+-   [처음부터 커스텀 MCP 서버 만들기](/mcp/mcp-server-development-protocol)
 
-## Overview
+## 개요
 
-Model Context Protocol is an open protocol that standardizes how applications provide context to LLMs. Think of MCP like a USB-C port for AI applications; it provides a standardized way to connect AI models to different data sources and tools. MCP servers act as intermediaries between large language models (LLMs), such as Claude, and external tools or data sources. They are small programs that expose functionalities to LLMs, enabling them to interact with the outside world through the MCP. An MCP server is essentially like an API that an LLM can use.
+Model Context Protocol(MCP)은 애플리케이션이 LLM에 컨텍스트를 제공하는 방식을 표준화하는 오픈 프로토콜입니다. MCP를 AI 애플리케이션의 USB-C 포트로 생각해 보세요. AI 모델을 다양한 데이터 소스와 도구에 연결하는 표준화된 방식을 제공합니다. MCP 서버는 Claude 같은 대형 언어 모델(LLM)과 외부 도구/데이터 소스 사이의 중개자 역할을 합니다. LLM이 MCP를 통해 외부 세계와 상호작용할 수 있도록 기능을 노출하는 작은 프로그램이며, 본질적으로 LLM이 사용할 수 있는 API와 같습니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/mcp-diagram.png"
-		alt="MCP diagram showing how MCP servers connect LLMs to external tools and data sources"
+		alt="MCP 서버가 LLM과 외부 도구/데이터 소스를 연결하는 다이어그램"
 	/>
 </Frame>
 
-## Key Concepts
+## 핵심 개념
 
-MCP servers define a set of "**tools,**" which are functions the LLM can execute. These tools offer a wide range of capabilities.
+MCP 서버는 LLM이 실행할 수 있는 "**도구**"를 정의합니다. 이 도구들은 다양한 기능을 제공합니다.
 
-**Here's how MCP works:**
+**MCP 동작 방식:**
 
--   **MCP hosts** discover the capabilities of connected servers and load their tools, prompts, and resources.
--   **Resources** provide consistent access to read-only data, akin to file paths or database queries.
--   **Security** is ensured as servers isolate credentials and sensitive data. Interactions require explicit user approval.
+-   **MCP 호스트**는 연결된 서버의 기능을 발견하고 도구, 프롬프트, 리소스를 로드합니다.
+-   **리소스**는 읽기 전용 데이터에 대한 일관된 접근을 제공합니다(파일 경로나 DB 쿼리처럼).
+-   **보안**은 서버가 자격 증명과 민감 데이터를 격리하여 보장됩니다. 상호작용에는 명시적 사용자 승인이 필요합니다.
 
-## Use Cases
+## 사용 사례
 
-The potential of MCP servers is vast. They can be used for a variety of purposes.
+MCP 서버의 활용 가능성은 매우 넓습니다.
 
-**Here are some concrete examples of how MCP servers can be used:**
+**MCP 서버 활용 예시:**
 
--   **Web Services and API Integration:**
-    -   Monitor GitHub repositories for new issues
-    -   Post updates to Twitter based on specific triggers
-    -   Retrieve real-time weather data for location-based services
--   **Browser Automation:**
-    -   Automate web application testing
-    -   Scrape e-commerce sites for price comparisons
-    -   Generate screenshots for website monitoring
--   **Database Queries:**
-    -   Generate weekly sales reports
-    -   Analyze customer behavior patterns
-    -   Create real-time dashboards for business metrics
--   **Project and Task Management:**
-    -   Automate Jira ticket creation based on code commits
-    -   Generate weekly progress reports
-    -   Create task dependencies based on project requirements
--   **Codebase Documentation:**
-    -   Generate API documentation from code comments
-    -   Create architecture diagrams from code structure
-    -   Maintain up-to-date README files
+-   **웹 서비스 및 API 통합:**
+    -   GitHub 저장소의 신규 이슈 모니터링
+    -   특정 트리거에 따라 Twitter 업데이트 게시
+    -   위치 기반 서비스용 실시간 날씨 데이터 조회
+-   **브라우저 자동화:**
+    -   웹 애플리케이션 테스트 자동화
+    -   전자상거래 사이트 가격 비교 스크래핑
+    -   웹사이트 모니터링을 위한 스크린샷 생성
+-   **데이터베이스 쿼리:**
+    -   주간 매출 리포트 생성
+    -   고객 행동 패턴 분석
+    -   비즈니스 지표를 위한 실시간 대시보드 생성
+-   **프로젝트 및 작업 관리:**
+    -   코드 커밋 기반 Jira 티켓 자동 생성
+    -   주간 진행 상황 보고서 생성
+    -   프로젝트 요구사항에 따른 작업 의존성 생성
+-   **코드베이스 문서화:**
+    -   코드 주석 기반 API 문서 생성
+    -   코드 구조 기반 아키텍처 다이어그램 생성
+    -   README 파일 최신 상태 유지
 
-## Getting Started
+## 시작하기
 
-Cline does not come with any pre-installed MCP servers. You'll need to find and install them separately.
+Cline에는 기본 설치된 MCP 서버가 없습니다. 직접 찾아 설치해야 합니다.
 
-**Choose the right approach for your needs:**
+**필요에 맞는 접근을 선택하세요:**
 
--   **Community Repositories:** Check for community-maintained lists of MCP servers on GitHub. See [Adding MCP Servers from Github](/mcp/adding-mcp-servers-from-github)
--   **Cline Marketplace:** Install one from Cline's [MCP Marketplace](/mcp/mcp-marketplace)
--   **Ask Cline:** You can ask Cline to help you find or create MCP servers
--   **Build Your Own:** Create custom MCP servers using the [MCP SDK](https://github.com/modelcontextprotocol/)
--   **Customize Existing Servers:** Modify existing servers to fit your specific requirements
+-   **커뮤니티 저장소:** GitHub의 커뮤니티 MCP 서버 목록을 확인하세요. [GitHub에서 MCP 서버 추가](/mcp/adding-mcp-servers-from-github)
+-   **Cline 마켓플레이스:** Cline의 [MCP Marketplace](/mcp/mcp-marketplace)에서 설치
+-   **Cline에 요청:** MCP 서버 찾기/생성 도움을 Cline에게 요청
+-   **직접 구축:** [MCP SDK](https://github.com/modelcontextprotocol/)로 커스텀 서버 구축
+-   **기존 서버 커스터마이즈:** 요구사항에 맞게 수정
 
-## Integration with Cline
+## Cline과의 통합
 
-Cline simplifies the building and use of MCP servers through its AI capabilities.
+Cline은 AI 기능을 통해 MCP 서버의 구축과 사용을 단순화합니다.
 
-### Building MCP Servers
+### MCP 서버 빌드
 
--   **Natural language understanding:** Instruct Cline in natural language to build an MCP server by describing its functionalities. Cline will interpret your instructions and generate the necessary code.
--   **Cloning and building servers:** Cline can clone existing MCP server repositories from GitHub and build them automatically.
--   **Configuration and dependency management:** Cline handles configuration files, environment variables, and dependencies.
--   **Troubleshooting and debugging:** Cline helps identify and resolve errors during development.
+-   **자연어 이해:** 기능을 설명해 MCP 서버 빌드를 지시할 수 있습니다. Cline이 지시를 해석해 필요한 코드를 생성합니다.
+-   **저장소 클론 및 빌드:** GitHub에서 MCP 서버를 클론하고 자동으로 빌드합니다.
+-   **구성 및 의존성 관리:** 설정 파일, 환경 변수, 의존성을 처리합니다.
+-   **문제 해결 및 디버깅:** 개발 중 오류를 찾고 해결하도록 돕습니다.
 
-### Using MCP Servers
+### MCP 서버 사용
 
--   **Tool execution:** Cline seamlessly integrates with MCP servers, allowing you to execute their defined tools.
--   **Context-aware interactions:** Cline can intelligently suggest using relevant tools based on conversation context.
--   **Dynamic integrations:** Combine multiple MCP server capabilities for complex tasks. For example, Cline could use a GitHub server to get data and a Notion server to create a formatted report.
+-   **도구 실행:** Cline이 MCP 서버 도구를 매끄럽게 실행
+-   **컨텍스트 기반 상호작용:** 대화 컨텍스트에 따라 적절한 도구 사용을 제안
+-   **동적 통합:** 여러 MCP 서버 기능을 결합해 복잡한 작업 수행. 예: GitHub 서버로 데이터를 가져오고 Notion 서버로 포맷된 보고서를 생성
 
-## Security Considerations
+## 보안 고려사항
 
-When working with MCP servers, it's important to follow security best practices:
+MCP 서버를 사용할 때는 보안 모범 사례를 따르세요:
 
--   **Authentication:** Always use secure authentication methods for API access
--   **Environment Variables:** Store sensitive information in environment variables
--   **Access Control:** Limit server access to authorized users only
--   **Data Validation:** Validate all inputs to prevent injection attacks
--   **Logging:** Implement secure logging practices without exposing sensitive data
+-   **인증:** API 접근에 안전한 인증 방식 사용
+-   **환경 변수:** 민감 정보는 환경 변수에 저장
+-   **접근 제어:** 서버 접근을 승인된 사용자로 제한
+-   **데이터 검증:** 입력 검증으로 인젝션 공격 방지
+-   **로깅:** 민감 데이터를 노출하지 않는 안전한 로깅 관행 적용
 
-## Resources
+## 리소스
 
-There are various resources available for finding and learning about MCP servers.
+MCP 서버를 찾고 학습할 수 있는 리소스:
 
-**Here are some links to resources for finding and learning about MCP servers:**
-
--   **GitHub Repositories:** [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) and [https://github.com/punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)
--   **Online Directories:** [https://mcpservers.org/](https://mcpservers.org/), [https://mcp.so/](https://mcp.so/), and [https://glama.ai/mcp/servers](https://glama.ai/mcp/servers)
+-   **GitHub 저장소:** [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) 및 [https://github.com/punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers)
+-   **온라인 디렉터리:** [https://mcpservers.org/](https://mcpservers.org/), [https://mcp.so/](https://mcp.so/), [https://glama.ai/mcp/servers](https://glama.ai/mcp/servers)
 -   **PulseMCP:** [https://www.pulsemcp.com/](https://www.pulsemcp.com/)
--   **YouTube Tutorial (AI-Driven Coder):** A video guide for building and using MCP servers: [https://www.youtube.com/watch?v=b5pqTNiuuJg](https://www.youtube.com/watch?v=b5pqTNiuuJg)
+-   **YouTube 튜토리얼(AI-Driven Coder):** MCP 서버 구축 및 사용 가이드 영상: [https://www.youtube.com/watch?v=b5pqTNiuuJg](https://www.youtube.com/watch?v=b5pqTNiuuJg)

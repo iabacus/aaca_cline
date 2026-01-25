@@ -1,42 +1,42 @@
 ---
-title: "Skills"
-sidebarTitle: "Skills"
-description: "Extend Cline with reusable, on-demand instruction sets for specialized tasks"
+title: "스킬"
+sidebarTitle: "스킬"
+description: "특정 작업을 위한 재사용 가능한 온디맨드 지침 세트로 Cline을 확장"
 ---
 
-Skills are modular instruction sets that extend Cline's capabilities for specific tasks. Each skill packages detailed guidance, workflows, and optional resources that Cline loads only when relevant to your request.
+스킬은 특정 작업을 위한 Cline의 기능을 확장하는 모듈형 지침 세트입니다. 각 스킬은 상세 가이드, 워크플로, 선택적 리소스를 패키징하며, 요청과 관련 있을 때만 로드됩니다.
 
-Unlike rules (which are always active), skills load on-demand. You can install dozens of skills without affecting context or performance because Cline only sees the skill name and description until it's actually needed.
+규칙(항상 활성)과 달리 스킬은 필요할 때만 로드됩니다. Cline은 실제로 필요해지기 전까지 스킬의 이름과 설명만 보므로, 컨텍스트나 성능에 영향을 주지 않고 수십 개의 스킬을 설치할 수 있습니다.
 
 <Note>
-Skills is an experimental feature. Enable it in Settings → Features → Enable Skills.
+스킬은 실험적 기능입니다. 설정 → Features → Enable Skills에서 활성화하세요.
 </Note>
 
-## Why Skills?
+## 왜 스킬인가?
 
-Consider how you'd onboard a new team member: you wouldn't dump every document on them at once. You'd give them a brief overview, then point them to detailed guides when they're working on specific tasks.
+새로운 팀원을 온보딩한다고 생각해 보세요. 모든 문서를 한 번에 던지지 않고, 먼저 요약을 제공한 뒤 특정 작업을 할 때 세부 가이드를 안내합니다.
 
-Skills work the same way:
-- **At startup**: Cline sees only a brief description of each skill
-- **When triggered**: Cline loads the full instructions for that specific skill
-- **As needed**: Skills can bundle additional files that Cline reads only when referenced
+스킬도 같은 방식으로 동작합니다:
+- **시작 시점**: Cline은 각 스킬의 간단한 설명만 봅니다
+- **트리거 시점**: 해당 스킬의 전체 지침을 로드합니다
+- **필요할 때만**: 추가 파일이 포함된 스킬은 참조될 때만 읽습니다
 
-This progressive loading means you can package extensive domain knowledge without burning context tokens on information that isn't relevant to the current task.
+이 점진적 로딩 덕분에, 현재 작업과 무관한 정보를 컨텍스트 토큰으로 낭비하지 않으면서도 방대한 도메인 지식을 패키징할 수 있습니다.
 
-## Creating a Skill
+## 스킬 만들기
 
-Every skill is a directory containing a `SKILL.md` file with YAML frontmatter:
+각 스킬은 `SKILL.md` 파일이 포함된 디렉터리입니다:
 
 ```
 my-skill/
-├── SKILL.md          # Required: main instructions
-├── docs/             # Optional: additional documentation
+├── SKILL.md          # 필수: 메인 지침
+├── docs/             # 선택: 추가 문서
 │   └── advanced.md
-└── scripts/          # Optional: utility scripts
+└── scripts/          # 선택: 유틸리티 스크립트
     └── helper.sh
 ```
 
-The `SKILL.md` file has two parts: metadata and instructions.
+`SKILL.md` 파일은 메타데이터와 지침 두 부분으로 구성됩니다.
 
 ```yaml
 ---
@@ -55,43 +55,43 @@ Detailed instructions for Cline to follow when this skill is activated.
 3. For advanced usage, see [advanced.md](docs/advanced.md)
 ```
 
-**Required fields:**
-- `name`: Must exactly match the directory name
-- `description`: Tells Cline when to use this skill (max 1024 characters)
+**필수 필드:**
+- `name`: 디렉터리 이름과 정확히 일치해야 합니다
+- `description`: Cline이 이 스킬을 언제 사용할지 판단하는 설명(최대 1024자)
 
-The description is critical because it's how Cline decides whether to activate a skill. Be specific about what the skill does and when it should be used.
+설명은 Cline이 스킬을 활성화할지 결정하는 기준이므로 매우 중요합니다. 스킬이 무엇을 하고, 어떤 상황에서 사용해야 하는지 구체적으로 작성하세요.
 
-## Where Skills Live
+## 스킬 위치
 
-Skills can be stored in two locations:
+스킬은 두 위치 중 하나에 저장할 수 있습니다:
 
-**Global Skills** apply to all your projects:
+**전역 스킬**은 모든 프로젝트에 적용됩니다:
 - **macOS/Linux:** `~/.cline/skills/`
 - **Windows:** `C:\Users\USERNAME\.cline\skills\`
 
-**Project Skills** apply only to the current workspace:
-- `.cline/skills/` (recommended)
+**프로젝트 스킬**은 현재 워크스페이스에만 적용됩니다:
+- `.cline/skills/` (권장)
 - `.clinerules/skills/`
-- `.claude/skills/` (for Claude Code compatibility)
+- `.claude/skills/` (Claude Code 호환)
 
-When a global skill and project skill have the same name, the global skill takes precedence. This lets you customize skills for your personal workflow while still using project defaults.
+전역 스킬과 프로젝트 스킬의 이름이 동일하면 전역 스킬이 우선합니다. 이를 통해 개인 워크플로에 맞게 커스터마이즈하면서도 프로젝트 기본값을 사용할 수 있습니다.
 
-## Managing Skills
+## 스킬 관리
 
-Click the scale icon below the chat input to open the rules and workflows panel. When skills are enabled, you'll see a Skills tab where you can:
+채팅 입력 아래의 저울 아이콘을 클릭해 rules 및 workflows 패널을 엽니다. 스킬이 활성화되어 있으면 Skills 탭이 나타나며, 여기서 다음을 할 수 있습니다:
 
-- View all available skills (global and workspace)
-- Toggle individual skills on or off
-- Create new skills from a template
-- Delete skills you no longer need
+- 사용 가능한 모든 스킬 보기(전역 및 워크스페이스)
+- 개별 스킬 활성/비활성 토글
+- 템플릿으로 새 스킬 생성
+- 필요 없는 스킬 삭제
 
-Skills are enabled by default when discovered. Toggle them off if you want them available but not active for the current project.
+스킬은 발견되면 기본적으로 활성화됩니다. 현재 프로젝트에서 사용하지 않더라도, 필요할 때 활성화하려면 토글로 끌 수 있습니다.
 
-## How Cline Uses Skills
+## Cline이 스킬을 사용하는 방식
 
-When you send a message, Cline sees a list of available skills with their descriptions. If your request matches a skill's description, Cline activates it using the `use_skill` tool, which loads the full instructions.
+메시지를 보내면 Cline은 사용 가능한 스킬 목록과 설명을 확인합니다. 요청이 어떤 스킬의 설명과 맞으면 `use_skill` 도구로 해당 스킬을 활성화해 전체 지침을 로드합니다.
 
-For example, if you have a skill for deploying to AWS:
+예를 들어 AWS 배포 스킬이 있다면:
 
 ```yaml
 ---
@@ -100,11 +100,11 @@ description: Deploy applications to AWS using CDK. Use when deploying, updating 
 ---
 ```
 
-Asking "deploy this to AWS" would trigger Cline to activate the skill, load its detailed instructions, and follow them to complete your request.
+"이걸 AWS에 배포해줘"라고 요청하면 Cline이 스킬을 활성화하고, 상세 지침을 로드해 작업을 수행합니다.
 
-## Example: Data Analysis Skill
+## 예시: 데이터 분석 스킬
 
-Here's a practical skill for data analysis tasks. Create a directory called `data-analysis/` with this `SKILL.md`:
+데이터 분석 작업을 위한 실용적인 스킬 예시입니다. `data-analysis/` 디렉터리를 만들고 다음 `SKILL.md`를 추가하세요:
 
 ```yaml
 ---
@@ -113,7 +113,7 @@ description: Analyze data files and generate insights. Use when working with CSV
 ---
 ```
 
-Then add the instructions in the body of the file:
+그리고 본문에 지침을 추가합니다:
 
 ````markdown
 # Data Analysis
@@ -157,9 +157,9 @@ For visualization, prefer matplotlib or seaborn depending on complexity.
 - End with recommendations or next steps
 ````
 
-## Bundling Supporting Files
+## 보조 파일 묶기
 
-Skills can include additional files that Cline accesses only when needed:
+스킬에는 필요할 때만 접근하는 추가 파일을 포함할 수 있습니다:
 
 ```
 complex-skill/
@@ -173,7 +173,7 @@ complex-skill/
     └── validate.py
 ```
 
-Reference these in your instructions:
+지침에서 이를 참조하세요:
 
 ````markdown
 For initial setup, follow [setup.md](docs/setup.md).
@@ -186,46 +186,46 @@ python scripts/validate.py
 ```
 ````
 
-Cline reads these files using `read_file` when the instructions reference them. Scripts can be executed directly, with only the output entering the context (not the script code itself).
+Cline은 지침에서 파일을 참조하면 `read_file`로 파일을 읽습니다. 스크립트는 직접 실행할 수 있으며, 스크립트 코드는 컨텍스트에 들어가지 않고 출력만 들어갑니다.
 
-## Ideas for Skills
+## 스킬 아이디어
 
-Skills shine when you have tasks that:
-- Require detailed, multi-step workflows
-- Need domain-specific knowledge or best practices
-- Would otherwise require repeating the same instructions across conversations
+스킬은 다음과 같은 작업에서 특히 빛납니다:
+- 상세하고 다단계 워크플로가 필요한 작업
+- 도메인 지식이나 모범 사례가 필요한 작업
+- 매 대화마다 동일한 지침을 반복해야 하는 작업
 
-Some possibilities:
+예시:
 
-- **Release management**: Version bumping, changelog generation, git tagging, and publishing
-- **Code review**: Your team's specific review checklist and quality standards
-- **Database migrations**: Safely evolving schemas with rollback procedures
-- **API integration**: Connecting to specific third-party services with proper error handling
-- **Documentation**: Your preferred structure, style guide, and tooling
-- **Debugging workflows**: Systematic approaches to diagnosing specific types of issues
-- **Infrastructure**: Terraform/CDK patterns for your cloud setup
+- **릴리스 관리**: 버전 올리기, 변경 로그 생성, git 태깅, 배포
+- **코드 리뷰**: 팀의 체크리스트와 품질 기준
+- **DB 마이그레이션**: 롤백 절차를 포함한 안전한 스키마 진화
+- **API 통합**: 특정 서드파티 서비스 연결과 에러 처리
+- **문서화**: 선호하는 구조, 스타일 가이드, 도구
+- **디버깅 워크플로**: 특정 유형의 이슈를 진단하는 체계적 접근
+- **인프라**: 클라우드 환경을 위한 Terraform/CDK 패턴
 
-The best skills encode institutional knowledge that would otherwise live only in experienced developers' heads.
+최고의 스킬은 경험 많은 개발자의 머릿속에만 있던 조직 지식을 코드로 담아냅니다.
 
-## Skills vs Rules vs Workflows
+## 스킬 vs 규칙 vs 워크플로
 
-| Feature | Purpose | When Active |
+| 기능 | 목적 | 활성 시점 |
 |---------|---------|-------------|
-| **Rules** | Define how Cline should behave | Always (or contextually) |
-| **Workflows** | Step-by-step task automation | Invoked with `/workflow.md` |
-| **Skills** | Domain expertise loaded on-demand | Triggered by matching requests |
+| **Rules** | Cline의 동작 방식을 정의 | 항상(또는 컨텍스트에 따라) |
+| **Workflows** | 단계별 작업 자동화 | `/workflow.md`로 호출 |
+| **Skills** | 온디맨드 도메인 전문지식 | 요청과 매칭될 때 활성화 |
 
-**Rules** set constraints and preferences (like "always use TypeScript" or "follow this style guide").
+**Rules**는 제약과 선호를 설정합니다(예: "항상 TypeScript 사용", "이 스타일 가이드를 따르기").
 
-**Workflows** are explicit sequences you invoke for specific tasks (like `/release.md` for a release process).
+**Workflows**는 특정 작업을 위해 명시적으로 호출하는 순서형 작업입니다(예: 릴리스 절차용 `/release.md`).
 
-**Skills** are expertise that Cline activates automatically when relevant (like data analysis knowledge when you're working with CSV files).
+**Skills**는 관련 상황에서 자동으로 활성화되는 전문지식입니다(예: CSV 파일을 다룰 때 데이터 분석 스킬 활성화).
 
-Use rules for ongoing constraints, workflows for explicit automation, and skills for domain knowledge that should be available but not always active.
+지속적인 제약에는 rules, 명시적 자동화에는 workflows, 필요할 때만 활성화되지만 항상 사용할 수 있어야 하는 도메인 지식에는 skills를 사용하세요.
 
-## Related Features
+## 관련 기능
 
-- [Cline Rules](/features/cline-rules) for always-active project guidance
-- [Workflows](/features/slash-commands/workflows/index) for explicit task automation
-- [Hooks](/features/hooks/index) for injecting custom logic at key moments
+- [Cline Rules](/features/cline-rules) — 항상 활성인 프로젝트 지침
+- [Workflows](/features/slash-commands/workflows/index) — 명시적 작업 자동화
+- [Hooks](/features/hooks/index) — 중요한 순간에 사용자 로직 주입
 

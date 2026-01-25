@@ -1,68 +1,68 @@
 ---
-title: "New Task Tool"
+title: "새 작업 도구"
 ---
 
-### The `new_task` Tool & Context Management Strategies
+### `new_task` 도구와 컨텍스트 관리 전략
 
-#### Overview
+#### 개요
 
-Cline includes a powerful internal tool, `new_task`, designed to help manage workflow continuity and context preservation, especially during complex or long-running tasks. This tool, combined with Cline's awareness of its own context window usage and the flexibility of `.clinerules`, enables sophisticated strategies for breaking down work and ensuring seamless transitions between task sessions.
+Cline에는 복잡하거나 장시간 작업에서 워크플로 연속성과 컨텍스트 보존을 돕는 강력한 내부 도구 `new_task`가 있습니다. 이 도구는 Cline의 컨텍스트 윈도우 사용량 인식 및 `.clinerules`의 유연성과 결합되어, 작업을 분해하고 세션 간 전환을 매끄럽게 만드는 고급 전략을 가능하게 합니다.
 
-Understanding the core capabilities and how they interact with custom rules is key to leveraging this feature effectively.
+핵심 기능과 사용자 정의 규칙의 상호작용을 이해하는 것이 이 기능을 효과적으로 활용하는 핵심입니다.
 
-#### Core Capabilities
+#### 핵심 기능
 
-Two fundamental capabilities enable advanced context management:
+고급 컨텍스트 관리를 가능하게 하는 두 가지 핵심 기능:
 
-1. **The `new_task` Tool:**
-    - **Function:** Allows Cline, upon user approval, to end the current task session and immediately start a new one.
-    - **Context Preloading:** Crucially, Cline can **preload** this new task session with specific context provided within the tool's `<context>` block. This context can be anything Cline or a `.clinerules` file defines – summaries, code snippets, next steps, project state, etc.
-2. **Context Window Awareness:**
-    - **Tracking:** Cline internally tracks the percentage of its available context window currently being used during a task.
-    - **Visibility:** This information is visible in the `environment_details` provided to Cline in its prompt.
+1. **`new_task` 도구:**
+    - **기능:** 사용자 승인 시 현재 작업 세션을 종료하고 즉시 새 작업을 시작합니다.
+    - **컨텍스트 사전 로드:** 무엇보다, Cline은 도구의 `<context>` 블록에 제공된 특정 컨텍스트를 새 작업에 **사전 로드**할 수 있습니다. 이 컨텍스트에는 요약, 코드 스니펫, 다음 단계, 프로젝트 상태 등 Cline 또는 `.clinerules`에서 정의한 어떤 내용도 포함될 수 있습니다.
+2. **컨텍스트 윈도우 인식:**
+    - **추적:** Cline은 작업 중 사용 중인 컨텍스트 윈도우 비율을 내부적으로 추적합니다.
+    - **가시성:** 이 정보는 프롬프트의 `environment_details`에 표시됩니다.
 
-#### Using the `/newtask` Slash Command
+#### `/newtask` 슬래시 명령 사용
 
-As a quick alternative to Cline suggesting the `newtask` tool or defining complex rules, you can directly initiate the process using a Slash Command.
+Cline이 `new_task` 도구를 제안하거나 복잡한 규칙을 정의하는 대신, 슬래시 명령으로 직접 프로세스를 시작할 수 있습니다.
 
--   **How:** Simply type `/newtask` in the chat input field.
--   **Action:** Cline will propose creating a new task, typically suggesting context based on the current session (similar to its default behavior when using the tool). You will still get the `ask_followup_question` prompt to confirm and potentially modify the context before the new task is created.
--   **Benefit:** Provides a fast, user-initiated way to leverage the `new_task` functionality for branching explorations or managing long sessions without waiting for Cline to suggest it.
+-   **방법:** 채팅 입력창에 `/newtask`를 입력하세요.
+-   **동작:** Cline이 새 작업 생성을 제안하며, 현재 세션을 기반으로 컨텍스트를 제시합니다(도구 사용 시 기본 동작과 유사). 새 작업 생성 전에 `ask_followup_question`으로 컨텍스트 확인/수정을 할 수 있습니다.
+-   **장점:** Cline의 제안을 기다리지 않고, 분기 탐색이나 긴 세션 관리를 위해 빠르게 `new_task`를 활용할 수 있습니다.
 
 <Note>
-	For more details on using the `/newtask` slash command, see the [New Task Command](/features/slash-commands/new-task)
-	documentation.
+	`/newtask` 슬래시 명령에 대한 자세한 내용은 [새 작업 명령](/features/slash-commands/new-task)
+	문서를 참고하세요.
 </Note>
 
-#### Default Behavior (Without `.clinerules`)
+#### 기본 동작(`.clinerules` 없음)
 
-By default, without specific `.clinerules` dictating its behavior:
+특정 `.clinerules`가 없을 때 기본 동작은 다음과 같습니다:
 
--   **Tool Availability:** The `new_task` tool exists, and Cline _can_ choose to use it.
--   **Context Awareness:** Cline _is_ aware of its context usage percentage.
--   **No Automatic Trigger:** Cline **will not** automatically initiate a task handoff _solely_ based on context usage reaching a specific percentage (like 50%). The decision to suggest using `new_task` comes from the AI model's reasoning based on the overall task progress and prompt instructions.
--   **Basic Context Preloading:** If `new_task` is used without specific rules defining the `<context>` block structure, Cline will attempt to preload relevant information based on its current understanding (e.g., a basic summary of progress and next steps), but this may be less comprehensive than a rule-driven approach.
+-   **도구 사용 가능:** `new_task` 도구는 존재하며 Cline이 선택적으로 사용할 수 있습니다.
+-   **컨텍스트 인식:** Cline은 컨텍스트 사용률을 인식합니다.
+-   **자동 트리거 없음:** 컨텍스트 사용률이 특정 비율(예: 50%)을 넘었다고 해서 자동으로 핸드오프를 시작하지는 않습니다. `new_task` 제안은 전체 작업 진행 상황과 프롬프트 지시를 기반으로 모델이 판단합니다.
+-   **기본 컨텍스트 사전 로드:** 규칙이 `<context>` 구조를 정의하지 않으면 Cline이 현재 이해를 바탕으로 기본적인 요약/다음 단계 정보를 로드하려 시도하지만, 규칙 기반 접근보다 덜 상세할 수 있습니다.
 
-#### The Power of `.clinerules`: Enabling Custom Workflows
+#### `.clinerules`의 힘: 커스텀 워크플로 활성화
 
-While the core capabilities exist by default, the true power, automation, and customization emerge when you combine `new_task` and context awareness with custom workflows defined in `.clinerules`. This allows you to precisely control _when_ and _how_ Cline manages context and task continuity.
+기본 기능은 존재하지만, **`new_task` + 컨텍스트 인식 + `.clinerules`**를 결합할 때 진정한 자동화와 맞춤화가 가능합니다. 이를 통해 컨텍스트 관리와 작업 연속성을 **언제**, **어떻게** 처리할지 정밀하게 제어할 수 있습니다.
 
-Key benefits of using `.clinerules` with `new_task`:
+`new_task`에 `.clinerules`를 사용하는 주요 이점:
 
--   **Automated Context Management:** Define rules to automatically trigger handoffs at specific context percentages (e.g., >50%, >70%) or token counts, ensuring optimal performance and preventing context loss.
--   **Model-Specific Optimization:** Tailor handoff triggers based on known thresholds for different LLMs (e.g., trigger earlier for models known to degrade past a certain token count).
--   **Intelligent Breakpoints:** Instruct Cline via rules to find logical stopping points (e.g., after completing a function or test) _after_ a context threshold is passed, ensuring cleaner handoffs.
--   **Structured Task Decomposition:** Use Plan Mode to define subtasks, then use `.clinerules` to have Cline automatically create a new task via `new_task` upon completing each subtask, preloading the context for the _next_ subtask.
--   **Custom Context Packaging:** Mandate the exact structure and content of the `<context>` block in `.clinerules` for highly detailed and consistent handoffs (see example below).
--   **Improved Memory Persistence:** Use `new_task` context blocks as a primary, integrated way to persist information across sessions, potentially replacing or supplementing file-based memory systems.
--   **Workflow Automation:** Define rules for specific scenarios, like always preloading certain setup instructions or project boilerplate when starting tasks of a particular type.
+-   **자동 컨텍스트 관리:** 특정 컨텍스트 비율(예: 50%, 70%) 또는 토큰 수에서 자동 핸드오프 트리거
+-   **모델별 최적화:** LLM별 임계값에 맞춰 핸드오프 시점을 조정
+-   **지능적 브레이크포인트:** 컨텍스트 임계값을 넘은 뒤에도 논리적 중단 지점을 찾도록 지시
+-   **구조적 작업 분해:** Plan 모드에서 하위 작업을 정의하고, 각 하위 작업 완료 시 `new_task`로 다음 작업 컨텍스트 자동 로드
+-   **커스텀 컨텍스트 패키징:** `<context>` 블록의 구조/내용을 강제하여 일관된 핸드오프
+-   **메모리 지속성 강화:** 세션 간 정보를 `new_task` 컨텍스트로 유지(파일 기반 메모리 대체/보완)
+-   **워크플로 자동화:** 특정 작업 유형에 필요한 세팅/보일러플레이트를 자동 사전 로드
 
-#### Example Rule-Driven Workflow: Task Handoff Process
+#### 예시 규칙 기반 워크플로: 작업 핸드오프 프로세스
 
-A common workflow, **driven by specific `.clinerules` like the example below**, involves these steps:
+아래 예시는 **특정 `.clinerules`에 의해 구동되는** 일반적인 워크플로입니다:
 
-1. **Trigger Identification (Rule-Based):** Cline monitors for handoff points defined in the rules (e.g., context usage > 50%, task completion).
-2. **User Confirmation:** Cline uses `ask_followup_question` to propose creating a new task, often showing the intended context defined by the rules.
+1. **트리거 식별(규칙 기반):** 컨텍스트 사용률 > 50%, 작업 완료 등 규칙 정의 조건 감시
+2. **사용자 확인:** `ask_followup_question`으로 새 작업 생성 제안 및 컨텍스트 표시
 
     ```xml
     <ask_followup_question>
@@ -71,36 +71,36 @@ A common workflow, **driven by specific `.clinerules` like the example below**, 
     </ask_followup_question>
     ```
 
-3. **User Control:** You can approve, deny, or ask Cline to modify the context before the new task is created.
-4. **Context Packaging (`new_task` Tool):** If approved, Cline uses `new_task`, packaging the context according to the structure mandated by the `.clinerules`.
-5. **New Task Creation:** The current task ends, and a new session begins immediately, preloaded with the specified context.
+3. **사용자 제어:** 승인/거절/컨텍스트 수정 요청
+4. **컨텍스트 패키징(`new_task`):** 규칙에 정의된 구조로 컨텍스트 구성
+5. **새 작업 생성:** 현재 작업 종료 후 새 세션 시작
 
-#### The Handoff Context Block (Rule-Defined Structure)
+#### 핸드오프 컨텍스트 블록(규칙 정의 구조)
 
-The effectiveness of rule-driven handoffs depends heavily on how `.clinerules` define the `<context>` block. A comprehensive structure often includes:
+규칙 기반 핸드오프의 효과는 `<context>` 블록 구조에 크게 좌우됩니다. 일반적으로 다음을 포함합니다:
 
--   **`## Completed Work`**: Detailed list of accomplishments, files modified/created, key decisions.
--   **`## Current State`**: Project status, running processes, key file states.
--   **`## Next Steps`**: Clear, prioritized list of remaining tasks, implementation details, known challenges.
--   **`## Reference Information`**: Links, code snippets, patterns, user preferences.
--   **Actionable Start:** A clear instruction for the immediate next action.
+-   **`## Completed Work`**: 완료된 작업 목록, 변경/생성 파일, 주요 결정 사항
+-   **`## Current State`**: 프로젝트 상태, 실행 중 프로세스, 주요 파일 상태
+-   **`## Next Steps`**: 남은 작업의 우선순위 목록, 구현 디테일, 예상 난관
+-   **`## Reference Information`**: 링크, 코드 스니펫, 패턴, 사용자 선호
+-   **Actionable Start:** 즉시 시작할 구체적 다음 행동
 
-#### Potential Use Cases & Workflows
+#### 잠재적 사용 사례 및 워크플로
 
-The flexibility of `new_task` combined with `.clinerules` opens up many possibilities:
+`new_task`와 `.clinerules`의 조합은 다양한 가능성을 엽니다:
 
--   **Proactive Context Window Management:** Automatically trigger handoffs at specific percentages (e.g., 50%, 70%) or token counts to maintain optimal performance.
--   **Intelligent Breakpoints:** Instruct Cline to find logical stopping points (e.g., after completing a function or test) _after_ a context threshold is passed, ensuring cleaner handoffs.
--   **Structured Task Decomposition:** Use Plan Mode to define subtasks, then use `.clinerules` to have Cline automatically create a new task via `new_task` upon completing each subtask.
--   **Automated Session Summaries:** Configure the `<context>` block to always include a summary of the previous session's key discussion points.
--   **Preloading Boilerplate/Setup:** Start new tasks related to specific projects preloaded with standard setup instructions or file templates.
--   **"Memory Bank" Alternative:** Use `new_task` context blocks as the primary way to persist information across sessions, potentially replacing file-based memory systems.
+-   **선제적 컨텍스트 관리:** 50%, 70% 등 임계값에 자동 핸드오프
+-   **지능적 브레이크포인트:** 논리적 중단 지점 확보 후 핸드오프
+-   **구조적 작업 분해:** Plan 모드 하위 작업 완료 시 자동 새 작업 생성
+-   **자동 세션 요약:** `<context>`에 이전 세션 요약 자동 포함
+-   **보일러플레이트/세팅 사전 로드:** 특정 프로젝트의 표준 세팅 자동 적용
+-   **"메모리 뱅크" 대체:** 세션 간 정보 지속을 위한 핵심 방식으로 활용
 
-Experimenting with `.clinerules` is encouraged to discover workflows that best suit your needs!
+필요에 맞는 워크플로를 찾기 위해 `.clinerules` 실험을 권장합니다.
 
-#### Example `.clinerules`: Task Handoff Strategy Guide
+#### 예시 `.clinerules`: 작업 핸드오프 전략 가이드
 
-Below is an example `.clinerules` file focused specifically on using `new_task` for context window management. **Remember, this is just one specific strategy; the core `new_task` tool can be used differently with other custom rules.**
+아래는 `new_task`를 컨텍스트 윈도우 관리에 사용하는 예시 규칙입니다. **이는 하나의 전략일 뿐이며, `new_task`는 다른 규칙과 함께 다양하게 사용할 수 있습니다.**
 
 ````markdown
 # You MUST use the `new_task` tool: Task Handoff Strategy Guide
@@ -376,11 +376,11 @@ You **MUST** monitor the context window usage in the environment details section
 
 By strictly following these guidelines, you'll ensure smooth transitions between tasks, maintain project momentum, and provide the best possible experience for users working on complex, multi-session projects.
 
-```markdown
+\`\`\`markdown
 ## User Interaction & Workflow Considerations
 
 -   **Linear Flow:** Currently, using `new_task` creates a linear sequence. The old task ends, and the new one begins. The old task history remains accessible for backtracking.
 -   **User Approval:** You always have control, approving the handoff and having the chance to modify the context Cline proposes to carry forward.
 -   **Flexibility:** The core `new_task` tool is a flexible building block. Experiment with `.clinerules` to create workflows that best suit your needs, whether for strict context management, task decomposition, or other creative uses.
-```
+\`\`\`
 ````

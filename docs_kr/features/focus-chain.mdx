@@ -1,83 +1,83 @@
 ---
-title: "Focus Chain"
-sidebarTitle: "Focus Chain"
+title: "포커스 체인"
+sidebarTitle: "포커스 체인"
 ---
 
-Focus Chain is a task management enhancement feature in Cline that provides automatic todo list management with real-time progress tracking throughout your tasks. 
+포커스 체인은 Cline의 작업 관리 기능을 강화하는 기능으로, 자동 할 일 목록 생성과 실시간 진행 추적을 제공합니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/2dos.gif"
-		alt="Focus Chain todo list management with real-time progress tracking"
+		alt="실시간 진행 추적이 포함된 포커스 체인 할 일 목록 관리"
 	/>
 </Frame>
 
-This enables Cline to work on long-horizon tasks, seamlessly managing the context sent to LLMs, and keeping Cline on track across many context window resets.
+이를 통해 Cline은 장기 작업을 수행하면서 LLM에 전달되는 컨텍스트를 매끄럽게 관리하고, 여러 번의 컨텍스트 윈도우 리셋에도 작업 흐름을 유지할 수 있습니다.
 
 <Tip>
-  Focus Chain works particularly well with Cline's [Deep Planning slash command](/features/slash-commands/deep-planning), providing seamless progress tracking for implementation tasks created through the [planning process](/features/plan-and-act).
+  포커스 체인은 Cline의 [Deep Planning 슬래시 명령](/features/slash-commands/deep-planning)과 특히 잘 어울리며, [계획 수립 과정](/features/plan-and-act)에서 만든 구현 작업의 진행 상황을 매끄럽게 추적합니다.
 </Tip>
 
-## Key Features
+## 핵심 기능
 
-### Automatic Todo List Generation
+### 자동 할 일 목록 생성
 
-Cline analyzes your task and automatically creates a comprehensive todo list with:
-- Clear, actionable items in markdown checklist format
-- Logical breakdown of complex tasks into manageable steps
-- Real-time updates as work progresses
+Cline이 작업을 분석해 다음을 포함한 포괄적인 할 일 목록을 자동으로 생성합니다:
+- 마크다운 체크리스트 형식의 명확하고 실행 가능한 항목
+- 복잡한 작업을 관리 가능한 단계로 논리적으로 분해
+- 작업 진행에 따른 실시간 업데이트
 
-### User-Editable Todo Lists
+### 사용자 편집 가능 할 일 목록
 
-Todo lists are stored as editable markdown files:
-- Direct editing through your preferred markdown editor
-- Automatic detection of changes you make
-- Seamless integration back into Cline's workflow
-- Quick access through the edit button in the task header
+할 일 목록은 편집 가능한 마크다운 파일로 저장됩니다:
+- 선호하는 마크다운 에디터에서 직접 편집
+- 사용자가 수정한 내용을 자동 감지
+- Cline 워크플로로의 원활한 통합
+- 작업 헤더의 편집 버튼으로 빠른 접근
 
-### Visual Progress Tracking
+### 시각적 진행 추적
 
-The task header displays clear progress indicators:
-- **Step counters** showing current progress (e.g., "3/8")
-- **Completed items** clearly marked with checkmarks
-- **Current work** highlighted with indicators
-- **Expandable view** to see the full todo list
+작업 헤더에서 진행 상황을 명확하게 표시합니다:
+- **단계 카운터**로 현재 진행률 표시(예: "3/8")
+- **완료 항목**은 체크 표시로 명확하게 표시
+- **현재 작업**은 강조 표시
+- **확장 가능한 뷰**로 전체 할 일 목록 확인
 
-### Smart Reminder System
+### 스마트 리마인더 시스템
 
-Configurable reminders ensure todo lists stay current:
-- Default reminder every 6 messages (customizable 1-100)
-- Automatic prompts when switching from Plan Mode to Act Mode
-- User-triggered updates when todo lists are manually edited
+구성 가능한 리마인더로 할 일 목록을 최신 상태로 유지합니다:
+- 기본 6개 메시지마다 리마인더(1~100 범위에서 사용자 지정 가능)
+- Plan 모드에서 Act 모드로 전환 시 자동 알림
+- 할 일 목록을 수동으로 편집했을 때 사용자가 직접 업데이트 요청 가능
 
 
-## Getting Started
+## 시작하기
 
 <Steps>
-  <Step title="Open Cline Settings">
-      - Click the gear icon in the Cline sidebar
-      - Navigate to the "Features" section
+  <Step title="Cline 설정 열기">
+      - Cline 사이드바의 톱니바퀴 아이콘 클릭
+      - "Features" 섹션으로 이동
   </Step>
-  <Step title="Enable Focus Chain">
-      - Check "Enable Focus Chain"
-      - Optionally adjust "Remind Cline Interval" (default: 6 messages)
+  <Step title="포커스 체인 활성화">
+      - "Enable Focus Chain" 체크
+      - 필요 시 "Remind Cline Interval"(기본: 6 메시지) 조정
   </Step>
-  <Step title="Start a New Task">
-      - Begin a new task
-      - Cline will automatically start creating and managing todo lists
+  <Step title="새 작업 시작">
+      - 새 작업을 시작
+      - Cline이 자동으로 할 일 목록을 생성하고 관리
   </Step>
 </Steps>
 
-| Setting | Default | Range | Description |
+| 설정 | 기본값 | 범위 | 설명 |
 |---------|---------|-------|-------------|
-| Enable Focus Chain | Disabled | On/Off | Enables enhanced task progress tracking |
-| Remind Cline Interval | 6 | 1-100 messages | How often Cline updates the todo list |
+| Enable Focus Chain | 비활성화 | On/Off | 향상된 작업 진행 추적 활성화 |
+| Remind Cline Interval | 6 | 1-100 메시지 | Cline이 할 일 목록을 업데이트하는 빈도 |
 
-## Usage Examples
+## 사용 예시
 
-#### 1. Task Initiation
+#### 1. 작업 시작
 
-When you start a new task with Focus Chain enabled:
+포커스 체인을 켠 상태에서 새 작업을 시작하면:
 
 ``` markdown User Request
 User: "Create a user authentication system for my React app"
@@ -85,9 +85,9 @@ User: "Create a user authentication system for my React app"
 Cline: [Analyzes request and creates todo list]
 ```
 
-#### 2. Todo List Created
+#### 2. 할 일 목록 생성
 
-Cline creates a comprehensive plan for the task, stored in a markdown file:
+Cline은 작업을 위한 포괄적인 계획을 마크다운 파일로 생성합니다:
 
 ```markdown Todo List Created
 - [ ] Set up project structure
@@ -100,15 +100,15 @@ Cline creates a comprehensive plan for the task, stored in a markdown file:
 - [ ] Deploy to staging environment
 ```
 
-#### 3. Progress Tracking
+#### 3. 진행 추적
 
-As Cline works, the task header shows real-time progress:
+Cline이 작업을 진행하는 동안, 작업 헤더에는 실시간 진행 상황이 표시됩니다:
 
 ```markdown Todo List Header
 [3/8] Implement login functionality     ⌄
 ```
 
-Click to expand and see the full list:
+클릭하여 전체 목록을 확인할 수 있습니다:
 
 ```markdown Full Todo List
 ✓ Set up project structure
@@ -121,16 +121,16 @@ Click to expand and see the full list:
 ○ Deploy to staging environment
 ```
 
-#### 4. User Editing
+#### 4. 사용자 편집
 
-Need to tweak the todo list? No problem.
+할 일 목록을 조정해야 하나요? 문제 없습니다.
 
 <Steps>
-  <Step title="Open the todo list">
-    Click the edit button in the expanded todo view
+  <Step title="할 일 목록 열기">
+    확장된 todo 뷰에서 편집 버튼을 클릭
   </Step>
-  <Step title="Edit the markdown file">
-    A markdown file opens in your editor:
+  <Step title="마크다운 파일 편집">
+    에디터에서 마크다운 파일이 열립니다:
 
     ```markdown Editing Todo List
     # Focus Chain Todo List for Task abc123
@@ -152,19 +152,19 @@ Need to tweak the todo list? No problem.
     <!-- Save this file to update the task's todo list -->
     ```
   </Step>
-  <Step title="Make your changes">
-    Add, remove, or reorder items as needed
+  <Step title="변경 적용">
+    항목을 추가/삭제하거나 순서를 조정
   </Step>
-  <Step title="Save the file">
-    Cline automatically detects and uses your updates
+  <Step title="파일 저장">
+    Cline이 변경을 자동으로 감지해 반영
   </Step>
 </Steps>
 
-## File Structure
+## 파일 구조
 
-### Todo List Storage
+### 할 일 목록 저장 위치
 
-Todo lists are stored as markdown files in your task directory:
+할 일 목록은 작업 디렉터리의 마크다운 파일로 저장됩니다:
 
 ``` markdown
 <VSCode Global Storage>/
@@ -174,9 +174,9 @@ Todo lists are stored as markdown files in your task directory:
       ... other task files
 ```
 
-### Markdown Format
+### 마크다운 포맷
 
-Todo files use standard markdown checklist syntax:
+할 일 파일은 표준 마크다운 체크리스트 문법을 사용합니다:
 
 ```markdown Example Todo Syntax
 # Focus Chain Todo List for Task abc123
@@ -197,107 +197,107 @@ Todo files use standard markdown checklist syntax:
 ```
 
 
-## Integration with Plan/Act Mode
+## Plan/Act 모드와의 통합
 
-Focus Chain works seamlessly with Cline's [Plan/Act mode](/features/plan-and-act):
+포커스 체인은 Cline의 [Plan/Act 모드](/features/plan-and-act)와 자연스럽게 연동됩니다:
 
-- **Plan Mode**: Optional todo lists for presenting concrete steps
-- **Act Mode**: Automatic todo creation when switching from Plan Mode
+- **Plan 모드**: 구체적인 단계 제시에 사용할 수 있는 선택적 할 일 목록
+- **Act 모드**: Plan 모드에서 전환 시 자동으로 할 일 목록 생성
 
 <Tip>
-  For complex projects, start in Plan Mode to discuss and refine your approach before switching to Act Mode for implementation.
+  복잡한 프로젝트의 경우, Plan 모드에서 접근 방법을 논의하고 다듬은 뒤 Act 모드로 전환해 구현을 시작하세요.
 </Tip>
 
-## Best Practices
+## 모범 사례
 
 <AccordionGroup>
-  <Accordion title="For Effective Todo Lists">
-    1. **Start with Clear Requests**
-      - Provide detailed initial task descriptions
-      - Include specific requirements and constraints
-      - Mention any preferred technologies or approaches
+  <Accordion title="효과적인 할 일 목록을 위해">
+    1. **명확한 요청으로 시작**
+      - 초기 작업 설명을 구체적으로 제공
+      - 구체적 요구사항과 제약을 포함
+      - 선호하는 기술이나 접근 방식을 언급
 
-    2. **Review Generated Lists**
-      - Check that Cline's breakdown aligns with your expectations
-      - Verify that all important steps are included
-      - Ensure the order makes sense for your project
+    2. **생성된 목록 검토**
+      - Cline의 분해가 기대와 맞는지 확인
+      - 중요한 단계가 모두 포함됐는지 점검
+      - 순서가 프로젝트에 적절한지 확인
 
-    3. **Edit When Needed**
-      - Add missing steps you identify
-      - Remove unnecessary items
-      - Reorder steps for better workflow
-      - Add more specific details to general items
+    3. **필요 시 편집**
+      - 누락된 단계를 추가
+      - 불필요한 항목 삭제
+      - 더 나은 워크플로를 위해 순서 조정
+      - 일반적인 항목에 더 구체적인 세부사항 추가
   </Accordion>
-  <Accordion title="For Complex Projects">
-    1. **Use Plan Mode First**
-      - Discuss the approach before implementation
-      - Refine requirements through conversation
-      - Switch to Act Mode when ready to begin work
+  <Accordion title="복잡한 프로젝트를 위해">
+    1. **먼저 Plan 모드 사용**
+      - 구현 전에 접근 방식을 논의
+      - 대화를 통해 요구사항을 다듬기
+      - 작업을 시작할 준비가 되면 Act 모드로 전환
 
-    2. **Break Down Large Tasks**
-      - Split complex projects into smaller, manageable tasks
-      - Create separate todo lists for different components
-      - Focus on one major area at a time
+    2. **큰 작업 분해**
+      - 복잡한 프로젝트를 더 작고 관리 가능한 작업으로 분해
+      - 구성 요소별로 별도의 할 일 목록 생성
+      - 한 번에 하나의 핵심 영역에 집중
 
-    3. **Regular Reviews**
-      - Check progress periodically during long tasks
-      - Update todo lists as requirements evolve
-      - Communicate changes to Cline through edits
+    3. **정기적 검토**
+      - 긴 작업 동안 주기적으로 진행 상황 확인
+      - 요구사항 변화에 따라 할 일 목록 업데이트
+      - 편집을 통해 변경 사항을 Cline에 전달
   </Accordion>
-  <Accordion title="For Collaboration">
-    1. **Share Todo Files**
-      - Todo markdown files can be shared with team members
-      - Include in version control for project documentation
-      - Use as basis for project planning discussions
+  <Accordion title="협업을 위해">
+    1. **할 일 파일 공유**
+      - 할 일 마크다운 파일을 팀원과 공유
+      - 프로젝트 문서화를 위해 버전 관리에 포함
+      - 프로젝트 계획 논의의 기반으로 활용
 
-    2. **Consistent Format**
-      - Follow the standard markdown checklist format
-      - Keep item descriptions clear and actionable
-      - Use consistent terminology across todo lists
+    2. **일관된 형식 유지**
+      - 표준 마크다운 체크리스트 형식을 따르기
+      - 항목 설명을 명확하고 실행 가능하게 유지
+      - 할 일 목록 전반에 일관된 용어 사용
   </Accordion>
 </AccordionGroup>
 
 
-## Troubleshooting
+## 문제 해결
 
-Having issues? Try these quick fixes:
+문제가 있나요? 다음 빠른 해결책을 시도해 보세요:
 
 <AccordionGroup>
-  <Accordion title="Todo list not updating?">
-    - Check that Focus Chain is enabled in settings
-    - Focus Chain may not work as well with smaller, less capable models
-    - Ensure file permissions are correct in the task directory
+  <Accordion title="할 일 목록이 업데이트되지 않나요?">
+    - 설정에서 포커스 체인이 활성화되어 있는지 확인
+    - 작은 모델이나 낮은 성능의 모델에서는 효과가 떨어질 수 있음
+    - 작업 디렉터리의 파일 권한이 올바른지 확인
   </Accordion>
-  <Accordion title="Can't edit todo file?">
-    - Verify your editor supports markdown
-    - Check VSCode has write permissions for the directory
+  <Accordion title="할 일 파일을 편집할 수 없나요?">
+    - 에디터가 마크다운을 지원하는지 확인
+    - VS Code가 디렉터리에 쓰기 권한을 갖는지 확인
   </Accordion>
-  <Accordion title="Progress not displaying?">
-    - Ensure todo items use correct syntax (`- [ ]` and `- [x]`)
-    - Verify the markdown file is properly formatted
+  <Accordion title="진행 상황이 표시되지 않나요?">
+    - 할 일 항목이 올바른 문법(`- [ ]`, `- [x]`)을 사용하는지 확인
+    - 마크다운 파일 형식이 올바른지 확인
   </Accordion>
 </AccordionGroup>
 
-Still stuck? Use the [/reportbug](/features/slash-commands/report-bug) command in Cline to get help.
+여전히 해결되지 않나요? Cline에서 [/reportbug](/features/slash-commands/report-bug) 명령으로 도움을 요청하세요.
 
-## Technical Details (for the curious)
+## 기술 세부사항 (궁금한 분을 위해)
 
 <AccordionGroup>
-  <Accordion title="File Monitoring">
-    - Real-time file watching detects changes to todo markdown files
-    - Automatic synchronization between file edits and UI updates
-    - Graceful handling of file creation, modification, and deletion
+  <Accordion title="파일 모니터링">
+    - 실시간 파일 감시로 할 일 마크다운 파일의 변경을 감지
+    - 파일 편집과 UI 업데이트 간 자동 동기화
+    - 파일 생성/수정/삭제에 대한 안정적인 처리
   </Accordion>
-  <Accordion title="Progress Calculation">
-    - Dynamic counting of completed vs. total todo items
-    - Support for both `- [x]` and `- [X]` completion syntax
-    - Unicode symbols (✓, ○) for enhanced visual display
+  <Accordion title="진행 계산">
+    - 완료 항목 대비 전체 항목을 동적으로 계산
+    - `- [x]`와 `- [X]` 완료 문법 모두 지원
+    - 향상된 시각 표시를 위한 유니코드 기호(✓, ○) 사용
   </Accordion>
-  <Accordion title="Privacy Considerations">
-    - Todo lists stored locally in VSCode workspace
-    - No todo content transmitted to external services
-    - Usage telemetry (can be disabled in settings)
+  <Accordion title="프라이버시 고려사항">
+    - 할 일 목록은 VS Code 워크스페이스에 로컬 저장
+    - 할 일 내용이 외부 서비스로 전송되지 않음
+    - 사용 텔레메트리(설정에서 비활성화 가능)
   </Accordion>
 </AccordionGroup>
 
-Focus Chain turns Cline into your personal project manager, keeping you on track and your tasks organized. Give it a try on your next project!
+포커스 체인은 Cline을 개인 프로젝트 매니저로 만들어, 작업을 체계적으로 유지하고 흐름을 잃지 않게 도와줍니다. 다음 프로젝트에서 한번 사용해 보세요!

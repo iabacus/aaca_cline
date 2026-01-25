@@ -1,129 +1,129 @@
 ---
-title: "Code Commands"
-sidebarTitle: "Code Commands"
+title: "코드 명령"
+sidebarTitle: "코드 명령"
 ---
 
-Cline's code commands bring AI assistance directly into your editor, letting you interact with your code without leaving your workflow. With a simple right-click, you can add code to Cline, and through the lightbulb menu, you can fix errors, get explanations, or improve your code.
+Cline의 코드 명령은 AI 도움을 에디터 안으로 가져와, 흐름을 끊지 않고 코드를 다룰 수 있게 해줍니다. 간단히 우클릭하면 코드를 Cline에 추가할 수 있고, 전구 메뉴를 통해 오류 수정, 설명, 개선을 받을 수 있습니다.
 
-## Available Code Commands
+## 사용 가능한 코드 명령
 
-When you interact with code in your editor, you can access Cline commands in two ways:
+에디터에서 코드를 다룰 때, Cline 명령은 두 가지 방식으로 사용할 수 있습니다:
 
-### Right-Click Context Menu
+### 우클릭 컨텍스트 메뉴
 
-When you right-click on selected code, you'll see:
+선택한 코드에서 우클릭하면 다음이 표시됩니다:
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/code-commands.png" alt="Right Click Menu" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/code-commands.png" alt="우클릭 메뉴" />
 </Frame>
 
 #### Add to Cline
 
-The "Add to Cline" command sends your selected code to the Cline chat panel. This is perfect for:
+"Add to Cline" 명령은 선택한 코드를 Cline 채팅 패널로 전송합니다. 다음에 적합합니다:
 
--   Asking questions about specific code snippets
--   Requesting improvements or optimizations
--   Getting explanations of complex logic
+-   특정 코드 스니펫에 대해 질문하기
+-   개선 또는 최적화를 요청하기
+-   복잡한 로직에 대한 설명 받기
 
-When you use this command, Cline automatically includes:
+이 명령을 사용하면 Cline이 자동으로 다음을 포함합니다:
 
--   The file path (as a file mention)
--   The selected code with proper formatting
--   The programming language for accurate syntax highlighting
+-   파일 경로(파일 멘션 형태)
+-   적절한 포맷의 선택된 코드
+-   정확한 구문 하이라이팅을 위한 프로그래밍 언어
 
-### Lightbulb Menu (Code Actions)
+### 전구 메뉴(코드 액션)
 
-When you see a lightbulb icon in your editor, click it to access these Cline commands:
+에디터에서 전구 아이콘이 나타나면 클릭해 다음 Cline 명령을 사용할 수 있습니다:
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/lightbulb-actions.png" alt="Lightbulb Menu" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/lightbulb-actions.png" alt="전구 메뉴" />
 </Frame>
 
 #### Fix with Cline
 
-The "Fix with Cline" command appears in the lightbulb menu when your code has errors or warnings. This command:
+"Fix with Cline" 명령은 코드에 오류나 경고가 있을 때 전구 메뉴에 나타납니다. 이 명령은:
 
-1. Captures the selected code
-2. Identifies the errors or warnings from VSCode's diagnostics
-3. Sends both to Cline with a request to fix the issues
-4. Provides a solution that addresses the specific problems
+1. 선택한 코드를 캡처
+2. VS Code 진단 정보에서 오류/경고를 식별
+3. 둘을 함께 Cline으로 보내 수정 요청
+4. 특정 문제를 해결하는 솔루션 제공
 
-This is incredibly useful for quickly resolving syntax errors, linter warnings, or type issues without having to manually describe the problem.
+직접 문제를 설명하지 않고도 문법 오류, 린터 경고, 타입 이슈를 빠르게 해결할 때 매우 유용합니다.
 
 #### Explain with Cline
 
-The "Explain with Cline" command helps you understand complex code. When you select code and use this command from the lightbulb menu, Cline:
+"Explain with Cline" 명령은 복잡한 코드를 이해하는 데 도움이 됩니다. 전구 메뉴에서 이 명령을 사용하면 Cline이:
 
-1. Analyzes the selected code
-2. Provides a clear explanation of what the code does
-3. Breaks down complex logic into understandable parts
-4. Highlights important patterns or techniques used
+1. 선택한 코드를 분석
+2. 코드가 무엇을 하는지 명확히 설명
+3. 복잡한 로직을 이해하기 쉬운 부분으로 분해
+4. 중요한 패턴이나 기법을 강조
 
 #### Improve with Cline
 
-The "Improve with Cline" command helps you enhance your code. When you select code and use this command from the lightbulb menu, Cline:
+"Improve with Cline" 명령은 코드를 개선하는 데 도움이 됩니다. 전구 메뉴에서 이 명령을 사용하면 Cline이:
 
-1. Analyzes the selected code for potential improvements
-2. Suggests optimizations, refactorings, or better practices
-3. Explains the reasoning behind the suggested changes
-4. Provides improved code that maintains the original functionality
+1. 선택한 코드에서 개선 여지를 분석
+2. 최적화, 리팩터링, 더 나은 관행을 제안
+3. 제안의 이유를 설명
+4. 기존 기능을 유지한 개선된 코드 제공
 
-## How to Use Code Commands
+## 코드 명령 사용 방법
 
-Using Cline's code commands is simple:
+Cline의 코드 명령은 간단합니다:
 
-### For Right-Click Commands:
+### 우클릭 명령:
 
-1. Select the code you want to work with
-2. Right-click to open the context menu
-3. Choose "Add to Cline"
-4. View the result in the Cline chat panel
+1. 작업할 코드를 선택
+2. 우클릭하여 컨텍스트 메뉴 열기
+3. "Add to Cline" 선택
+4. Cline 채팅 패널에서 결과 확인
 
-### For Lightbulb Menu Commands:
+### 전구 메뉴 명령:
 
-1. Select the code you want to work with
-2. Look for the lightbulb icon that appears in the editor gutter
-3. Click the lightbulb to see available actions
-4. Choose the appropriate Cline command (Fix, Explain, or Improve)
-5. View the result in the Cline chat panel
+1. 작업할 코드를 선택
+2. 에디터 구터에 나타난 전구 아이콘 확인
+3. 전구를 클릭해 사용 가능한 액션 보기
+4. 적절한 Cline 명령 선택(Fix, Explain, Improve)
+5. Cline 채팅 패널에서 결과 확인
 
-After using any command, you can:
+명령 사용 후에는 다음을 할 수 있습니다:
 
--   Ask follow-up questions
--   Request modifications to the solution
--   Apply the changes back to your code
+-   후속 질문하기
+-   솔루션 수정 요청하기
+-   변경 사항을 코드에 적용하기
 
-## How It Works Under the Hood
+## 내부 동작 원리
 
-When you use a code command, here's what happens behind the scenes:
+코드 명령을 사용할 때 내부적으로 다음이 수행됩니다:
 
-1. **Code Selection**: The extension captures your selected code and its context
-2. **Metadata Collection**: Cline gathers important metadata:
+1. **코드 선택**: 확장 프로그램이 선택한 코드와 그 컨텍스트를 캡처
+2. **메타데이터 수집**: Cline이 중요한 메타데이터를 수집:
 
-    - File path and name
-    - Programming language
-    - Any associated diagnostics (errors/warnings)
-    - Surrounding code context when relevant
+    - 파일 경로와 이름
+    - 프로그래밍 언어
+    - 관련 진단 정보(오류/경고)
+    - 필요 시 주변 코드 컨텍스트
 
-3. **Command Processing**:
+3. **명령 처리**:
 
-    - For "Add to Cline," the code is formatted and sent to the chat panel
-    - For "Fix with Cline," the code and diagnostics are analyzed and a fix is generated
-    - For "Explain with Cline," the code is analyzed to provide a clear explanation
-    - For "Improve with Cline," the code is analyzed for potential optimizations and improvements
+    - "Add to Cline"은 코드를 포맷팅해 채팅 패널로 전송
+    - "Fix with Cline"은 코드와 진단 정보를 분석해 수정안을 생성
+    - "Explain with Cline"은 코드를 분석해 명확한 설명 제공
+    - "Improve with Cline"은 개선/최적화를 위해 코드를 분석
 
-4. **Integration with Chat**: The results appear in the Cline chat panel, where you can:
-    - See the AI's response
-    - Ask follow-up questions
-    - Apply suggested changes
+4. **채팅 통합**: 결과는 Cline 채팅 패널에 표시되며 다음이 가능합니다:
+    - AI 응답 확인
+    - 후속 질문
+    - 제안된 변경 적용
 
-This seamless integration between your editor and Cline's AI capabilities makes it easy to get assistance without disrupting your coding flow.
+에디터와 Cline의 AI 기능이 매끄럽게 통합되어, 코딩 흐름을 끊지 않고 도움을 받을 수 있습니다.
 
-## Tips for Effective Use
+## 효과적으로 사용하는 팁
 
--   **Select complete logical units**: When possible, select entire functions, classes, or modules to give Cline complete context
--   **Include imports**: For language-specific help, include relevant imports so Cline understands dependencies
--   **Combine with @ mentions**: For complex issues, use code commands along with file or problem mentions for more context
--   **Use keyboard shortcuts**: Speed up your workflow by [assigning keyboard shortcuts](/features/commands-and-shortcuts/keyboard-shortcuts) to common code commands
+-   **완전한 논리 단위 선택**: 가능하면 전체 함수, 클래스, 모듈을 선택해 충분한 컨텍스트 제공
+-   **import 포함**: 언어별 도움을 받기 위해 관련 import를 포함
+-   **@ 멘션과 결합**: 복잡한 이슈는 파일/문제 멘션과 함께 사용해 컨텍스트 강화
+-   **키보드 단축키 사용**: 자주 쓰는 코드 명령에 [키보드 단축키 할당](/features/commands-and-shortcuts/keyboard-shortcuts)으로 워크플로를 가속
 
-Next time you're struggling with a piece of code, try using Cline's code commands instead of switching to a separate chat interface. You'll be amazed at how much more efficient your workflow becomes when AI assistance is integrated directly into your editor.
+다음에 코드로 고민될 때, 별도의 채팅 인터페이스로 전환하는 대신 Cline 코드 명령을 사용해 보세요. AI 도움을 에디터에 직접 통합하면 워크플로가 얼마나 효율적이 되는지 체감할 수 있습니다.

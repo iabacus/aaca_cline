@@ -1,25 +1,21 @@
 ---
-title: "Networking and Proxies"
-sidebarTitle: "Networking & Proxies"
-description: "Configure Cline to work behind firewalls and proxies"
+title: "네트워킹과 프록시"
+sidebarTitle: "네트워킹 & 프록시"
+description: "방화벽 및 프록시 뒤에서 Cline을 구성하는 방법"
 ---
 
-If you're working behind a corporate proxy or firewall, you'll need to configure
-proxy settings for Cline to connect to AI providers. The configuration varies
-depending on which version of Cline you're using.
+회사 프록시나 방화벽 뒤에서 작업한다면, Cline이 AI 프로바이더에 연결할 수 있도록 프록시 설정을 구성해야 합니다. 설정 방법은 사용하는 Cline 버전에 따라 다릅니다.
 
-## VSCode Extension
+## VSCode 확장
 
-The VSCode extension automatically uses VSCode's built-in proxy settings. See
-[Network Connections in Visual Studio Code, Proxy server support](https://code.visualstudio.com/docs/setup/network#_proxy-server-support)
-for instructions on how to set up proxies in VSCode. No additional configuration
-is needed for Cline itself.
+VSCode 확장은 VSCode의 기본 프록시 설정을 자동으로 사용합니다. VSCode에서 프록시를 설정하는 방법은
+[Visual Studio Code의 네트워크 연결, Proxy 서버 지원](https://code.visualstudio.com/docs/setup/network#_proxy-server-support)을 참고하세요. Cline 자체에는 추가 설정이 필요하지 않습니다.
 
 ## CLI
 
-The Cline CLI uses standard HTTP proxy environment variables. Configure these before running `cline` commands.
+Cline CLI는 표준 HTTP 프록시 환경 변수를 사용합니다. `cline` 명령을 실행하기 전에 설정하세요.
 
-### Basic Configuration
+### 기본 설정
 
 **Windows (Command Prompt)**
 ```cmd
@@ -42,9 +38,9 @@ export http_proxy=http://proxy.company.com:8080
 cline start
 ```
 
-### Proxy with Authentication
+### 인증이 필요한 프록시
 
-If your proxy requires authentication, include credentials in the URL:
+프록시가 인증을 요구하는 경우 URL에 자격 증명을 포함합니다:
 
 ```bash
 export https_proxy=http://username:password@proxy.company.com:8080
@@ -52,12 +48,12 @@ export http_proxy=http://username:password@proxy.company.com:8080
 ```
 
 <Warning>
-Storing credentials in environment variables can be a security risk.
+환경 변수에 자격 증명을 저장하는 것은 보안 위험이 될 수 있습니다.
 </Warning>
 
-### Bypass Proxy for Localhost
+### Localhost 프록시 우회
 
-To prevent localhost traffic from going through the proxy, set the `no_proxy` environment variable:
+localhost 트래픽이 프록시를 거치지 않도록 하려면 `no_proxy` 환경 변수를 설정합니다:
 
 **Windows**
 ```cmd
@@ -69,9 +65,9 @@ set no_proxy=localhost,127.0.0.1,.local
 export no_proxy=localhost,127.0.0.1,.local
 ```
 
-### Custom Certificate Authority
+### 사용자 지정 인증 기관(CA)
 
-If your proxy uses a custom CA certificate:
+프록시가 사용자 지정 CA 인증서를 사용하는 경우:
 
 **Windows**
 ```cmd
@@ -85,11 +81,11 @@ export NODE_EXTRA_CA_CERTS=/path/to/ca-certificate.pem
 cline start
 ```
 
-### Permanent Configuration
+### 영구 설정
 
-To avoid setting these variables every time, add them to your shell profile or system environment variables.
+매번 변수를 설정하지 않으려면 쉘 프로필이나 시스템 환경 변수에 추가하세요.
 
-**macOS/Linux** (add to `~/.bashrc`, `~/.zshrc`, or `~/.profile`):
+**macOS/Linux** (`~/.bashrc`, `~/.zshrc`, `~/.profile`에 추가):
 ```bash
 # Proxy configuration
 export https_proxy=http://proxy.company.com:8080
@@ -98,97 +94,91 @@ export no_proxy=localhost,127.0.0.1,.local
 export NODE_EXTRA_CA_CERTS=/path/to/ca-certificate.pem
 ```
 
-**Windows** (System Environment Variables):
-1. Search for "Environment Variables" in Windows Settings
-2. Add the variables under "User variables" or "System variables"
-3. Restart your terminal or IDE
+**Windows** (시스템 환경 변수):
+1. Windows 설정에서 "Environment Variables" 검색
+2. "User variables" 또는 "System variables" 아래에 변수 추가
+3. 터미널 또는 IDE 재시작
 
-### Known Limitations
+### 알려진 제한 사항
 
-Cline CLI only supports HTTP proxies. It does not support SOCKS proxies,
-proxy autoconfiguration (PAC) scripts, or HTTP proxies which require
-authentication beyond a basic username and password.
+Cline CLI는 HTTP 프록시만 지원합니다. SOCKS 프록시, 프록시 자동 구성(PAC) 스크립트, 기본 사용자 이름/비밀번호를 넘어서는 인증이 필요한 HTTP 프록시는 지원하지 않습니다.
 
-## JetBrains IDEs
+## JetBrains IDE
 
-The JetBrains plugin uses the IDE's HTTP proxy settings.
+JetBrains 플러그인은 IDE의 HTTP 프록시 설정을 사용합니다.
 
-### Configure JetBrains Proxy
+### JetBrains 프록시 구성
 
-1. Open Settings/Preferences:
+1. 설정/환경설정 열기:
    - **Windows/Linux**: File > Settings
    - **macOS**: IntelliJ IDEA > Preferences
-   - Or press `Ctrl+Alt+S` (Windows/Linux) or `Cmd+,` (macOS)
+   - 또는 `Ctrl+Alt+S` (Windows/Linux) / `Cmd+,` (macOS)
 
-2. Navigate to:
+2. 다음으로 이동:
    ```
    Appearance & Behavior > System Settings > HTTP Proxy
    ```
 
-3. Select "Manual proxy configuration"
+3. "Manual proxy configuration" 선택
 
-4. Configure your proxy:
+4. 프록시 구성:
    - **Host name**: `proxy.company.com`
    - **Port number**: `8080`
    - **No proxy for**: `localhost,127.0.0.1`
-   - Check "Proxy authentication" if required
-   - Enter your username and password
+   - 필요 시 "Proxy authentication" 체크
+   - 사용자 이름과 비밀번호 입력
 
-5. Click "Check connection" to verify the settings
+5. "Check connection"으로 설정 확인
 
-6. Click "OK" to apply
+6. "OK" 클릭해 적용
 
-7. Restart the IDE
+7. IDE 재시작
 
-### Test Connection
+### 연결 테스트
 
-After configuring the proxy, test that Cline can connect to your AI provider:
+프록시 구성 후 Cline이 AI 프로바이더에 연결할 수 있는지 테스트하세요:
 
-1. Open the Cline panel
-2. Try sending a simple message
-3. If connection fails, check the IDE's Event Log for error messages
+1. Cline 패널 열기
+2. 간단한 메시지 전송 시도
+3. 연결이 실패하면 IDE의 Event Log에서 오류 메시지 확인
 
-### Custom Certificate Authority
+### 사용자 지정 인증 기관(CA)
 
-If your proxy uses a custom CA:
+프록시가 사용자 지정 CA를 사용하는 경우:
 
-1. Add the certificate to your system's trust store, or
-2. Import it into the JetBrains IDE:
+1. 시스템 신뢰 저장소에 인증서를 추가하거나
+2. JetBrains IDE에 인증서를 가져옵니다:
    - Settings > Tools > Server Certificates
-   - Click "+" to add your certificate
+   - "+" 클릭해 인증서 추가
 
-### Known Limitations
+### 알려진 제한 사항
 
-Cline in JetBrains only supports HTTP proxies. It does not support SOCKS
-proxies, proxy autoconfiguration (PAC) scripts, or HTTP proxies which require
-authentication beyond a basic username and password.
+JetBrains의 Cline은 HTTP 프록시만 지원합니다. SOCKS 프록시, 프록시 자동 구성(PAC) 스크립트, 기본 사용자 이름/비밀번호를 넘어서는 인증이 필요한 HTTP 프록시는 지원하지 않습니다.
 
-Cline does not pick up changed proxy settings dynamically. After changing proxy
-settings, restart the IDE for Cline to use the new settings.
+Cline은 프록시 설정 변경을 동적으로 반영하지 않습니다. 설정 변경 후 IDE를 재시작해야 새 설정이 적용됩니다.
 
-## Troubleshooting
+## 문제 해결
 
-### Connection Timeouts
+### 연결 시간 초과
 
-If you're experiencing connection timeouts:
+연결 시간이 초과되는 경우:
 
-1. Verify your proxy address and port are correct
-2. Check if the proxy requires authentication
-3. Ensure the AI provider's API endpoints aren't blocked by your firewall
+1. 프록시 주소와 포트가 올바른지 확인
+2. 프록시가 인증을 요구하는지 확인
+3. AI 프로바이더 API 엔드포인트가 방화벽에서 차단되지 않았는지 확인
 
-### SSL/TLS Certificate Errors
+### SSL/TLS 인증서 오류
 
-If you see certificate-related errors:
+인증서 관련 오류가 발생하면:
 
-1. Check that `NODE_EXTRA_CA_CERTS` points to the correct certificate file
-2. Ensure the certificate file is in PEM format
-3. Use curl to verify the certificate works, for example, `curl -x proxy.corp.example:8080 --cacert /path/to/ca-cert.pem -o - -vv https://api.cline.bot/`
-4. Consider disabling `http.proxyStrictSSL` in VSCode (not recommended for production)
+1. `NODE_EXTRA_CA_CERTS`가 올바른 인증서 파일을 가리키는지 확인
+2. 인증서 파일이 PEM 형식인지 확인
+3. curl로 인증서가 동작하는지 확인(예: `curl -x proxy.corp.example:8080 --cacert /path/to/ca-cert.pem -o - -vv https://api.cline.bot/`)
+4. VSCode에서 `http.proxyStrictSSL`을 비활성화 고려(프로덕션에는 권장하지 않음)
 
-### Testing Proxy Configuration
+### 프록시 설정 테스트
 
-If you encounter problems with Cline networking, first verify your proxy
-configuration works using curl:
+Cline 네트워킹 문제를 겪는다면 먼저 curl로 프록시 구성이 정상인지 확인하세요:
 
 ```bash
 # Linux/macOS
@@ -200,28 +190,27 @@ $env:https_proxy="http://proxy.company.com:8080"
 curl.exe -vv https://api.anthropic.com
 ```
 
-Use `--cacert $NODE_EXTRA_CA_CERTS` to specify a certificate if necessary.
+필요한 경우 `--cacert $NODE_EXTRA_CA_CERTS`로 인증서를 지정하세요.
 
-Next, check ~/.cline/cline-core-service.log (CLI, JetBrains) for log messages
-confirming your proxy configuration and any network-related errors.
+다음으로 ~/.cline/cline-core-service.log (CLI, JetBrains)에서 프록시 설정 및 네트워크 관련 오류 로그를 확인하세요.
 
-## Common Proxy Patterns
+## 일반적인 프록시 패턴
 
-### Authenticated HTTPS Proxy
+### 인증이 필요한 HTTPS 프록시
 
 ```bash
 export https_proxy=http://username:password@proxy.company.com:8080
 export NODE_EXTRA_CA_CERTS=/path/to/ca-cert.pem
 ```
 
-### Proxy with No Authentication
+### 인증 없는 프록시
 
 ```bash
 export https_proxy=http://proxy.company.com:8080
 export http_proxy=http://proxy.company.com:8080
 ```
 
-### Proxy with Bypass Rules
+### 우회 규칙이 있는 프록시
 
 ```bash
 export https_proxy=http://proxy.company.com:8080

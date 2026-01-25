@@ -1,22 +1,22 @@
 ---
 title: "OpenAI"
-description: "Learn how to configure and use official OpenAI models with Cline."
+description: "Cline에서 공식 OpenAI 모델을 설정하고 사용하는 방법을 알아보세요."
 ---
 
-Cline supports accessing models directly through the official OpenAI API.
+Cline은 공식 OpenAI API를 통해 모델에 직접 접근할 수 있습니다.
 
-**Website:** [https://openai.com/](https://openai.com/)
+**웹사이트:** [https://openai.com/](https://openai.com/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Visit the [OpenAI Platform](https://platform.openai.com/). You'll need to create an account or sign in if you already have one.
-2.  **Navigate to API Keys:** Once logged in, go to the [API keys section](https://platform.openai.com/api-keys) of your account.
-3.  **Create a Key:** Click on "Create new secret key". It's good practice to give your key a descriptive name (e.g., "Cline API Key").
-4.  **Copy the Key:** **Crucial:** Copy the generated API key immediately. For security reasons, OpenAI will not show it to you again. Store this key in a safe and secure location.
+1.  **가입/로그인:** [OpenAI Platform](https://platform.openai.com/)에 접속합니다. 계정을 만들거나 기존 계정으로 로그인하세요.
+2.  **API Keys로 이동:** 로그인 후 계정의 [API keys 섹션](https://platform.openai.com/api-keys)으로 이동합니다.
+3.  **키 생성:** "Create new secret key"를 클릭합니다. 키에 설명적인 이름(예: "Cline API Key")을 지정하는 것이 좋습니다.
+4.  **키 복사:** **중요:** 생성된 API 키를 즉시 복사하세요. 보안상 OpenAI는 이 키를 다시 표시하지 않습니다. 안전한 곳에 보관하세요.
 
-### Supported Models
+### 지원 모델
 
-Cline is compatible with a variety of OpenAI models, including common choices from OpenAI's featured/frontier lists:
+Cline은 OpenAI의 주요 모델을 포함한 다양한 모델과 호환됩니다:
 
 -   `gpt-5.2`
 -   `gpt-5.2-codex`
@@ -28,17 +28,17 @@ Cline is compatible with a variety of OpenAI models, including common choices fr
 -   `o3`
 -   `o4-mini`
 
-For the most current list of available models and their capabilities, please refer to the official [OpenAI Models documentation](https://platform.openai.com/docs/models).
+사용 가능한 최신 모델과 기능 목록은 공식 [OpenAI 모델 문서](https://platform.openai.com/docs/models)를 참고하세요.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings gear icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "OpenAI" from the "API Provider" dropdown menu.
-3.  **Enter API Key:** Paste your OpenAI API key into the "OpenAI API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown list.
-5.  **(Optional) Base URL:** If you need to use a proxy or a custom base URL for the OpenAI API, you can enter it here. Most users will not need to change this from the default.
+1.  **Cline 설정 열기:** Cline 패널의 설정 톱니바퀴 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "OpenAI"를 선택합니다.
+3.  **API 키 입력:** OpenAI API 키를 "OpenAI API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
+5.  **(선택) Base URL:** 프록시나 사용자 지정 base URL을 사용해야 한다면 여기에 입력합니다. 대부분의 사용자는 기본값을 변경할 필요가 없습니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Pricing:** Be sure to review the [OpenAI Pricing page](https://openai.com/pricing) for detailed information on the costs associated with different models.
--   **Azure OpenAI Service:** If you are looking to use the Azure OpenAI service, please note that specific documentation for Azure OpenAI with Cline may be found separately, or you might need to configure it as an OpenAI-compatible endpoint if such functionality is supported by Cline for custom configurations.
+-   **가격:** 모델별 비용은 [OpenAI Pricing](https://openai.com/pricing) 페이지에서 확인하세요.
+-   **Azure OpenAI Service:** Azure OpenAI 서비스를 사용하려면 별도의 문서를 참고하거나, Cline에서 OpenAI 호환 엔드포인트로 구성해야 할 수 있습니다(해당 기능이 지원되는 경우).

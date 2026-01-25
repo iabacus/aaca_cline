@@ -1,132 +1,132 @@
 ---
-title: "Understanding Tasks"
-description: "Learn what tasks are in Cline, how they work, and how to create effective prompts for better results."
+title: "작업 이해하기"
+description: "Cline의 작업(Task)이 무엇인지, 어떻게 동작하는지, 더 나은 결과를 위한 프롬프트 작성법을 알아보세요."
 ---
 
-## What are Tasks?
+## 작업(Task)이란?
 
-Most users interact with Cline through **tasks** - the fundamental unit of work that drives every coding session. Whether you're building a new feature, fixing a bug, refactoring code, or exploring a codebase, every interaction with Cline happens within the context of a task. A task represents a complete conversation and work session between you and the AI agent, created through **prompts** - the instructions you provide to tell Cline what you want to accomplish. Tasks serve as self-contained work sessions that capture your entire conversation with Cline, including all the code changes, command executions, and decisions made along the way.
+대부분의 사용자는 Cline과 **작업(task)** 단위로 상호작용합니다. 새 기능 개발, 버그 수정, 리팩터링, 코드베이스 탐색 등 Cline과의 모든 상호작용은 작업 컨텍스트 안에서 이루어집니다. 작업은 **프롬프트**—즉, 사용자가 Cline에게 무엇을 하길 원하는지 알려주는 지침—를 통해 생성되는 사용자와 AI 에이전트의 완전한 대화 및 작업 세션을 의미합니다. 작업은 Cline과의 전체 대화, 코드 변경, 명령 실행, 의사결정을 포함한 자급자족형 워크 세션입니다.
 
-This approach ensures that your work is organized, traceable, and resumable. Each task maintains its own isolated context, allowing you to work on multiple projects simultaneously without confusion. The beauty of Cline's task system lies in its flexibility and persistence, providing a collaborative coding session where you provide the direction through prompts, and Cline executes your vision with precision.
+이 방식은 작업이 정돈되어 추적 가능하고 재개 가능하도록 보장합니다. 각 작업은 고유의 컨텍스트를 유지하므로, 여러 프로젝트를 동시에 진행하더라도 혼란 없이 작업할 수 있습니다. Cline의 작업 시스템의 강점은 유연성과 지속성에 있으며, 사용자가 프롬프트로 방향을 제시하면 Cline이 그 비전을 정확하게 실행하는 협업 코딩 세션을 제공합니다.
 
-### Key Characteristics
+### 핵심 특징
 
-Each task in Cline:
+Cline의 각 작업은 다음을 갖습니다:
 
-- **Has a unique identifier**: Every task gets its own ID and dedicated storage directory
-- **Contains the full conversation**: All messages, tool uses, and results are preserved
-- **Tracks resources used**: Token usage, API costs, and execution time are monitored
-- **Can be interrupted and resumed**: Tasks maintain their state across VSCode sessions
-- **Creates checkpoints**: File changes are tracked through Git-based snapshots
-- **Enables documentation**: Tasks can be exported as markdown for team documentation
-- **Provides cost management**: Resource tracking helps monitor API usage and costs
+- **고유 식별자**: 각 작업에 ID와 전용 저장 디렉터리가 부여됨
+- **전체 대화 포함**: 모든 메시지, 도구 사용, 결과가 보존됨
+- **리소스 사용 추적**: 토큰 사용량, API 비용, 실행 시간이 모니터링됨
+- **중단/재개 가능**: VS Code 세션을 넘어 작업 상태 유지
+- **체크포인트 생성**: 파일 변경을 Git 기반 스냅샷으로 추적
+- **문서화 지원**: 작업을 마크다운으로 내보내 팀 문서화 가능
+- **비용 관리**: 리소스 추적을 통해 API 사용량과 비용 관리
 
-These features make Cline not just a coding tool, but a comprehensive development agent that understands the full lifecycle of your work.
+이러한 기능 덕분에 Cline은 단순 코딩 도구를 넘어, 작업 전체 라이프사이클을 이해하는 종합 개발 에이전트가 됩니다.
 
-## Creating Tasks with Prompts
+## 프롬프트로 작업 만들기
 
-Tasks begin with prompts - your instructions to Cline. The quality of your results depends heavily on how you describe what you want.
+작업은 프롬프트에서 시작됩니다. 결과의 품질은 무엇을 원하는지 어떻게 설명하느냐에 크게 좌우됩니다.
 
-### Prompt Components
+### 프롬프트 구성 요소
 
-A well-structured prompt typically includes:
+잘 구성된 프롬프트는 보통 다음을 포함합니다:
 
-- **Goal**: What you want to accomplish
-- **Context**: Background information and constraints
-- **Requirements**: Specific features or functionality needed
-- **Preferences**: Technology choices, coding style, etc.
-- **Examples**: References to guide the implementation
+- **목표**: 달성하고 싶은 것
+- **컨텍스트**: 배경 정보와 제약
+- **요구사항**: 필요한 기능이나 동작
+- **선호사항**: 기술 선택, 코딩 스타일 등
+- **예시**: 구현을 안내할 참고 사례
 
 <Note>
-**Want to master the art of prompting?** 
+**프롬프트의 기술을 마스터하고 싶나요?**
 
-Deep dive into **Module 1: "Prompting"** in [Cline Learn](https://clinelearn.com) to become an expert at creating effective prompts. The module covers:
-- Structured prompting techniques
-- Context optimization strategies
-- Common prompting patterns
-- Advanced prompt engineering
-- Real-world examples and exercises
+[Cline Learn](https://clinelearn.com)의 **Module 1: "Prompting"**을 깊게 학습해 효과적인 프롬프트 작성 전문가가 되세요. 이 모듈은 다음을 다룹니다:
+- 구조화된 프롬프트 기법
+- 컨텍스트 최적화 전략
+- 일반적인 프롬프트 패턴
+- 고급 프롬프트 엔지니어링
+- 실전 예시 및 연습
 
-Good prompting skills lead to faster task completion, more accurate results, fewer iterations needed, and better code quality.
+좋은 프롬프트는 작업 완료 속도를 높이고, 결과 정확도를 개선하며, 반복을 줄이고, 코드 품질을 향상시킵니다.
 </Note>
 
-## Task Execution Modes
+## 작업 실행 모드
 
-Cline operates in two distinct modes that help structure your workflow:
+Cline은 워크플로를 구조화하는 두 가지 모드로 동작합니다:
 
-- **Plan Mode**: For information gathering, discussing approaches, and creating strategies without making changes
-- **Act Mode**: For actual implementation where Cline executes file modifications, runs commands, and uses tools
+- **Plan 모드**: 정보를 수집하고 접근을 논의하며 전략을 세우는 단계(변경 없음)
+- **Act 모드**: 실제 구현 단계(파일 수정, 명령 실행, 도구 사용)
 
-→ **[Learn more about Plan and Act modes](/features/plan-and-act)** to understand when and how to use each mode effectively.
+→ **[Plan & Act 모드 알아보기](/features/plan-and-act)** 에서 각 모드를 효과적으로 사용하는 방법을 확인하세요.
 
-## Task Resources
+## 작업 리소스
 
-Each task consumes resources that are tracked:
+각 작업은 다음 리소스를 소비하며 추적됩니다:
 
-- **Tokens**: The amount of text processed (input and output)
-- **API Costs**: Monetary cost based on the model and token usage
-- **Time**: Duration from start to completion
-- **Checkpoints**: Number of file state snapshots created
+- **토큰**: 처리된 텍스트 양(입력/출력)
+- **API 비용**: 모델 및 토큰 사용량 기반 비용
+- **시간**: 시작부터 완료까지의 소요 시간
+- **체크포인트**: 생성된 파일 상태 스냅샷 수
 
-## Common Task Patterns
+## 일반적인 작업 패턴
 
-### Code Generation
+### 코드 생성
 ```
-Create a TypeScript function that validates email addresses using regex. 
-Include unit tests using Jest and handle edge cases like international domains.
-```
-
-### Bug Fixing
-```
-@terminal The app crashes when clicking the submit button. 
-Fix the error and ensure proper error handling is in place.
+정규식을 사용해 이메일 주소를 검증하는 TypeScript 함수를 만들어줘.
+Jest로 단위 테스트를 포함하고, 국제 도메인 같은 엣지 케이스도 처리해줘.
 ```
 
-### Refactoring
+### 버그 수정
 ```
-Refactor the authentication logic in @auth.ts to use async/await 
-instead of callbacks. Maintain all existing functionality.
-```
-
-### Feature Implementation
-```
-Add a dark mode toggle to the settings page. Use the existing theme 
-context and persist the preference to localStorage.
+@terminal 제출 버튼을 클릭하면 앱이 크래시됩니다.
+오류를 수정하고 적절한 에러 처리가 적용되었는지 확인해줘.
 ```
 
-## Task Resumption
+### 리팩터링
+```
+@auth.ts의 인증 로직을 콜백 대신 async/await로 리팩터링해줘.
+기존 기능은 모두 유지해줘.
+```
 
-One of Cline's powerful features is the ability to resume interrupted tasks:
+### 기능 구현
+```
+설정 페이지에 다크 모드 토글을 추가해줘.
+기존 테마 컨텍스트를 사용하고, 선호도를 localStorage에 저장해줘.
+```
 
-### When Tasks Get Interrupted
+## 작업 재개
 
-- You stop a long-running task
-- An error occurs that needs intervention
-- You need to switch to another task
+Cline의 강력한 기능 중 하나는 중단된 작업을 재개할 수 있다는 점입니다:
 
-### Resuming a Task
+### 작업이 중단되는 경우
 
-1. Open the task from history
-2. Cline loads the complete conversation
-3. File states are checked against checkpoints
-4. The task continues with awareness of the interruption
-5. You can provide additional context if needed
+- 긴 작업을 멈춘 경우
+- 개입이 필요한 오류가 발생한 경우
+- 다른 작업으로 전환해야 하는 경우
 
-## Understanding Task Context
+### 작업 재개 방법
 
-Tasks maintain context throughout their lifecycle:
+1. 히스토리에서 작업 열기
+2. Cline이 전체 대화를 로드
+3. 체크포인트와 파일 상태를 비교
+4. 중단 상황을 인지한 채 작업을 계속
+5. 필요 시 추가 컨텍스트 제공
 
-- **Conversation History**: All previous messages and responses
-- **File Changes**: Tracked modifications and their order
-- **Tool Results**: Output from commands and operations
-- **Checkpoint States**: Snapshots of file states at key points
+## 작업 컨텍스트 이해하기
 
-This context allows Cline to:
-- Understand what has been done
-- Maintain consistency in approach
-- Resume work intelligently
-- Learn from previous attempts
+작업은 라이프사이클 동안 컨텍스트를 유지합니다:
 
-→ **[Learn more about Context Management](/getting-started/understanding-context-management)** to understand how Cline manages and optimizes context across tasks.
+- **대화 히스토리**: 모든 이전 메시지와 응답
+- **파일 변경**: 변경된 내용과 순서
+- **도구 결과**: 명령 및 작업의 출력
+- **체크포인트 상태**: 주요 시점의 파일 스냅샷
 
-Understanding how tasks work is fundamental to using Cline effectively. With well-crafted prompts and an understanding of the task lifecycle, you can leverage Cline's full potential to accelerate your development workflow.
+이 컨텍스트 덕분에 Cline은:
+- 무엇이 완료되었는지 이해
+- 접근 방식의 일관성 유지
+- 지능적으로 작업 재개
+- 이전 시도에서 학습
+
+→ **[컨텍스트 관리 자세히 보기](/getting-started/understanding-context-management)** 에서 Cline이 작업 간 컨텍스트를 관리하고 최적화하는 방법을 확인하세요.
+
+작업이 어떻게 동작하는지 이해하는 것은 Cline을 효과적으로 사용하는 데 기본입니다. 잘 구성된 프롬프트와 작업 라이프사이클 이해를 통해 Cline의 잠재력을 최대한 활용하여 개발 워크플로를 가속할 수 있습니다.

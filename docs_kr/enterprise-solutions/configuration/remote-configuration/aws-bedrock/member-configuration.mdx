@@ -1,27 +1,27 @@
 ---
-title: "Configure AWS Bedrock in VS Code (Members)"
-sidebarTitle: "Configure AWS Bedrock (Member)"
-description: "Guide for engineers configuring AWS Bedrock credentials in VS Code after admin setup"
+title: "VS Code에서 AWS Bedrock 설정(멤버)"
+sidebarTitle: "AWS Bedrock 설정(멤버)"
+description: "관리자 설정 이후 VS Code에서 AWS Bedrock 자격 증명을 구성하는 엔지니어용 가이드"
 ---
 
-As a team member, you can connect your local development environment to your organization's AWS Bedrock setup. This guide walks you through configuring your AWS credentials in VS Code so you can start using models through your organization's Bedrock infrastructure. Your administrator has already configured the provider settings—you just need to add your credentials to get started.
+팀원으로서 로컬 개발 환경을 조직의 AWS Bedrock 구성에 연결할 수 있습니다. 이 가이드는 VS Code에서 AWS 자격 증명을 설정해 조직의 Bedrock 인프라를 통해 모델을 사용할 수 있도록 안내합니다. 제공자 설정은 이미 관리자가 구성했으므로, 시작을 위해 자격 증명만 추가하면 됩니다.
 
-## Before You Begin
+## 시작하기 전에
 
-To successfully connect to your organization's AWS Bedrock setup, you'll need a few things ready.
+조직의 AWS Bedrock 설정에 성공적으로 연결하려면 다음을 준비해야 합니다.
 
-**Cline extension installed and configured**  
-The Cline extension must be installed in VS Code and you need to be signed into your organization account. If you haven't installed Cline yet, follow our [installation guide](/getting-started/installing-cline).
+**Cline 확장 설치 및 구성**  
+VS Code에 Cline 확장이 설치되어 있어야 하며, 조직 계정으로 로그인해야 합니다. 아직 설치하지 않았다면 [설치 가이드](/getting-started/installing-cline)를 따라주세요.
 
 <Info>
-**Quick Check**: Open the Cline panel in VS Code. If you see your organization name in the bottom left, you're signed in correctly.
+**빠른 확인**: VS Code의 Cline 패널을 열고 좌하단에 조직명이 보이면 정상 로그인 상태입니다.
 </Info>
 
-**AWS credentials with Bedrock access**  
-You need AWS credentials that have permission to access Bedrock in your organization's configured region.
+**Bedrock 접근 권한이 있는 AWS 자격 증명**  
+조직에서 구성한 리전에서 Bedrock 접근 권한을 가진 AWS 자격 증명이 필요합니다.
 
 <Note>
-If you don't have AWS credentials yet, reach out to your IT or cloud team to get access keys or AWS CLI profiles configured with the necessary Bedrock permissions.
+아직 AWS 자격 증명이 없다면 IT 또는 클라우드 팀에 문의하여 Bedrock 권한이 포함된 액세스 키 또는 AWS CLI 프로필을 설정하세요.
 </Note>
 
 
@@ -31,101 +31,101 @@ If you don't have AWS credentials yet, reach out to your IT or cloud team to get
 	/>
 </Frame>
 
-## Configuration Steps
+## 구성 단계
 
 <Steps>
-<Step title="Open Cline Settings">
-Open VS Code and access the Cline settings panel using either of these methods:
+<Step title="Cline 설정 열기">
+VS Code에서 다음 중 하나의 방법으로 Cline 설정 패널을 엽니다:
 
-- Click the settings icon (⚙️) in the Cline panel
-- Click on the API Provider dropdown located directly below the chat area (it will display as `bedrock.anthropic.claude-sonnet-4-20250514-v1:0` or similar)
+- Cline 패널의 설정 아이콘(⚙️) 클릭
+- 채팅 영역 바로 아래의 API Provider 드롭다운 클릭(예: `bedrock.anthropic.claude-sonnet-4-20250514-v1:0` 또는 유사)
 
 </Step>
 
-<Step title="Select Your Authentication Method">
-Choose one of the following credential methods to authenticate with AWS Bedrock:
+<Step title="인증 방식 선택">
+AWS Bedrock 인증을 위한 다음 자격 증명 방식 중 하나를 선택하세요:
 
 <AccordionGroup>
 <Accordion title="AWS Bedrock API Key">
-Use dedicated AWS access keys specifically for Bedrock access.
+Bedrock 접근 전용 AWS 액세스 키를 사용합니다.
 
-[Learn more about AWS Bedrock API Keys](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html)
+[AWS Bedrock API Key 자세히 보기](https://docs.aws.amazon.com/bedrock/latest/userguide/api-keys.html)
 
-1. Select the **API Key** radio button
-2. Enter your AWS Access Key ID and Secret Access Key
-3. These credentials are stored locally and used only by the VS Code extension
+1. **API Key** 라디오 버튼 선택
+2. AWS Access Key ID와 Secret Access Key 입력
+3. 자격 증명은 로컬에 저장되며 VS Code 확장만 사용합니다.
 </Accordion>
 
 <Accordion title="AWS Profile">
-Use an existing AWS CLI profile configured on your machine.
+컴퓨터에 구성된 AWS CLI 프로필을 사용합니다.
 
-[Learn more about AWS CLI Profiles](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
+[AWS CLI Profiles 자세히 보기](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
 
-1. Select the **AWS Profile** radio button
-2. Choose or enter the profile name from your `~/.aws/credentials` file
-3. Cline will use the credentials associated with that profile
+1. **AWS Profile** 라디오 버튼 선택
+2. `~/.aws/credentials` 파일의 프로필 이름 선택 또는 입력
+3. Cline이 해당 프로필의 자격 증명을 사용합니다.
 </Accordion>
 
 <Accordion title="AWS Credentials">
-Use your default AWS credential chain (environment variables, EC2 instance roles, etc.).
+표준 AWS 자격 증명 체인(환경 변수, EC2 인스턴스 역할 등)을 사용합니다.
 
-1. Select the **AWS Credentials** radio button
-2. Cline will automatically detect credentials from your environment using the standard AWS credential provider chain
+1. **AWS Credentials** 라디오 버튼 선택
+2. Cline이 표준 AWS 자격 증명 제공자 체인을 통해 환경에서 자동 감지합니다.
 </Accordion>
 </AccordionGroup>
 
 <Note>
-The AWS Region is preconfigured by your administrator and does not need to be set in the extension.
+AWS Region은 관리자가 미리 구성했으므로 확장에서 설정할 필요가 없습니다.
 </Note>
 </Step>
 
-<Step title="Verify Configuration">
-After selecting your authentication method, the extension will display checkmarks for enabled features:
+<Step title="구성 확인">
+인증 방식을 선택하면 확장에서 활성화된 기능에 대한 체크 표시가 나타납니다:
 
-- ✓ Supports images
-- ✓ Supports browser use
-- ✓ Supports prompt caching
+- ✓ 이미지 지원
+- ✓ 브라우저 사용 지원
+- ✓ 프롬프트 캐싱 지원
 
-Additional settings like cross-region inference and global inference profile will be locked (shown with a lock icon 🔒) as they're controlled by your administrator.
+교차 리전 추론, 글로벌 추론 프로파일 등의 추가 설정은 관리자에 의해 제어되므로 잠금 아이콘(🔒)으로 표시됩니다.
 </Step>
 
-<Step title="Test the Connection">
-Send a test message in Cline to verify your credentials work correctly with the configured Bedrock region.
+<Step title="연결 테스트">
+Cline에서 테스트 메시지를 보내 구성된 Bedrock 리전에서 자격 증명이 정상 동작하는지 확인합니다.
 
 <Tip>
-**Testing Recommendation**
+**테스트 권장**
 
-It is recommended to test the connection in plan mode to verify everything works correctly before using it for actual tasks.
+실제 작업에 사용하기 전에 plan 모드로 연결을 테스트하는 것을 권장합니다.
 </Tip>
 </Step>
 </Steps>
 
 
-## Troubleshooting
+## 문제 해결
 
-**Authentication errors ("Access Denied" or "Invalid Credentials")**  
-Verify your chosen credential method has the necessary IAM permissions to call Bedrock in the configured region. Required permissions include `bedrock:InvokeModel` and `bedrock:InvokeModelWithResponseStream`. For more information, refer to [AWS Bedrock IAM Permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html).
+**인증 오류("Access Denied" 또는 "Invalid Credentials")**  
+선택한 자격 증명에 구성된 리전에서 Bedrock 호출 권한이 있는지 확인하세요. 필요한 권한은 `bedrock:InvokeModel` 및 `bedrock:InvokeModelWithResponseStream`입니다. 자세한 내용은 [AWS Bedrock IAM 권한](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html)을 참고하세요.
 
-**Region-related errors or "model not available"**  
-Ask your administrator to confirm which region is configured for your organization. Ensure your AWS credentials have access to Bedrock in that specific region. [View AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+**리전 관련 오류 또는 "model not available"**  
+관리자에게 조직에 설정된 리전을 확인해 달라고 요청하세요. AWS 자격 증명이 해당 리전의 Bedrock에 접근 가능한지도 확인하세요. [AWS 글로벌 인프라 보기](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
 
-**Don't see AWS Bedrock as an option**  
-Confirm you're signed into the correct Cline organization. Verify your administrator has saved the Bedrock configuration. Try signing out and back into the extension.
+**AWS Bedrock 옵션이 보이지 않음**  
+올바른 Cline 조직에 로그인했는지 확인하세요. 관리자가 Bedrock 구성을 저장했는지 확인하고, 확장에서 로그아웃 후 다시 로그인해 보세요.
 
-**AWS Credentials option not finding credentials**  
-Verify AWS CLI is installed and configured with `aws configure` ([AWS CLI Installation Guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)). Check that credentials are present in `~/.aws/credentials`. For EC2/ECS environments, ensure IAM roles are properly attached. If using environment variables, set `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+**AWS Credentials 옵션에서 자격 증명을 찾지 못함**  
+AWS CLI가 `aws configure`로 설치 및 구성되어 있는지 확인하세요([AWS CLI 설치 가이드](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)). `~/.aws/credentials`에 자격 증명이 있는지도 확인하세요. EC2/ECS 환경에서는 IAM 역할이 올바르게 연결되어 있어야 합니다. 환경 변수를 사용하는 경우 `AWS_ACCESS_KEY_ID`와 `AWS_SECRET_ACCESS_KEY`를 설정하세요.
 
 
-## Security Best Practices
+## 보안 모범 사례
 
-When configuring your AWS credentials, follow these security guidelines:
+AWS 자격 증명을 구성할 때 다음 보안 가이드를 따르세요:
 
-- Use IAM roles with minimum required permissions ([AWS IAM Best Practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html))
-- Rotate access keys regularly if using the API Key method
-- Never store credentials in code or version control
-- Prefer AWS Profile method for better credential management
-- Consider using AWS SSO/federated roles for enhanced security
+- 최소 권한 IAM 역할 사용([AWS IAM 모범 사례](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html))
+- API Key 방식을 사용하는 경우 접근 키를 정기적으로 로테이션
+- 자격 증명을 코드나 버전 관리에 저장하지 않기
+- 더 나은 관리성을 위해 AWS Profile 방식 선호
+- 강화된 보안을 위해 AWS SSO/연합 역할 사용 고려
 
-Your organization administrator controls which models are available. The extension will automatically display available models based on your region's Bedrock configuration. For more information about available models, refer to the [AWS Bedrock Model Access documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html).
+조직 관리자가 사용 가능한 모델을 제어합니다. 확장은 리전별 Bedrock 구성에 따라 사용 가능한 모델을 자동으로 표시합니다. 자세한 모델 정보는 [AWS Bedrock 모델 접근 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html)를 참고하세요.
 
-For further assistance, consult the [AWS Bedrock Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) and coordinate with your organization's cloud administrator.
+추가 도움이 필요하면 [AWS Bedrock 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)를 확인하고 조직의 클라우드 관리자와 협력하세요.

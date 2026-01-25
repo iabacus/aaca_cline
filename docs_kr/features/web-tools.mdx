@@ -1,55 +1,55 @@
 ---
-title: "Web Tools"
-sidebarTitle: "Web Tools"
-description: "Search the web and fetch content from URLs directly within Cline"
+title: "웹 도구"
+sidebarTitle: "웹 도구"
+description: "Cline 안에서 웹 검색과 URL 콘텐츠 가져오기를 수행합니다"
 ---
 
-Web Tools give Cline the ability to search the internet and fetch content from specific URLs during your tasks. This is useful when you need up-to-date information, documentation lookups, or research that goes beyond your local codebase and the LLM's internal knowledge.
+웹 도구는 작업 중에 Cline이 인터넷을 검색하고 특정 URL에서 콘텐츠를 가져올 수 있게 해줍니다. 최신 정보, 문서 조회, 또는 로컬 코드베이스와 LLM 내부 지식을 넘어서는 리서치가 필요할 때 유용합니다.
 
 <Warning>
-	Web Tools require the **Cline provider**. They are not available when using other providers like OpenRouter, Anthropic, AWS Bedrock, etc.
+	웹 도구는 **Cline 프로바이더**에서만 사용할 수 있습니다. OpenRouter, Anthropic, AWS Bedrock 등 다른 프로바이더에서는 사용할 수 없습니다.
 </Warning>
 
-## How Web Tools Work
+## 웹 도구 동작 방식
 
-Cline has two web tools:
+Cline에는 두 가지 웹 도구가 있습니다:
 
-- **web_search**: Searches the web and returns a list of relevant webpages based on your query
-- **web_fetch**: Fetches and analyzes content from a specific URL
+- **web_search**: 웹을 검색해 쿼리에 맞는 관련 웹페이지 목록을 반환
+- **web_fetch**: 특정 URL에서 콘텐츠를 가져오고 분석
 
-When Cline determines that web information would help complete your task, it will use these tools automatically. The tools call Cline's backend API, which handles the search or fetch operation and returns the results.
+Cline이 웹 정보가 작업에 도움이 된다고 판단하면 이 도구들을 자동으로 사용합니다. 이 도구들은 Cline의 백엔드 API를 호출해 검색/가져오기 작업을 수행하고 결과를 반환합니다.
 
-## Enabling Web Tools
+## 웹 도구 활성화
 
-Web Tools are available when using the Cline provider. To use them:
+웹 도구는 Cline 프로바이더를 사용할 때만 사용할 수 있습니다. 사용하려면:
 
-1. Make sure you're signed in to Cline
-2. Ensure you're using the Cline provider
-3. Enable the Web Tools toggle in the Feature Settings menu
+1. Cline에 로그인되어 있는지 확인
+2. Cline 프로바이더를 사용 중인지 확인
+3. Feature Settings 메뉴에서 Web Tools 토글을 활성화
 
 <Note>
-	Web tools can be auto-approved using the "Use the browser" setting in [Auto Approve](/features/auto-approve).
+	웹 도구는 [자동 승인](/features/auto-approve)의 "Use the browser" 설정으로 자동 승인할 수 있습니다.
 </Note>
 
-## Use Cases
+## 사용 사례
 
-### Looking Up Documentation
+### 문서 조회
 
-When working with unfamiliar libraries or APIs:
-- Search for official documentation
-- Fetch specific API reference pages
-- Get examples and usage patterns
+익숙하지 않은 라이브러리나 API를 다룰 때:
+- 공식 문서 검색
+- 특정 API 레퍼런스 페이지 가져오기
+- 예제 및 사용 패턴 확인
 
-### Research Before Implementation
+### 구현 전 리서치
 
-Before implementing a feature:
-- Search for best practices and common patterns
-- Find recent discussions about approaches
-- Look up known issues or limitations
+기능 구현 전에:
+- 모범 사례 및 일반 패턴 검색
+- 최근 논의에서 접근법 확인
+- 알려진 이슈나 제한 사항 조사
 
-### Checking Latest Information
+### 최신 정보 확인
 
-For time-sensitive information:
-- Latest release notes and changelogs
-- Recent bug fixes or security updates
-- Current recommended versions
+시의성이 중요한 정보라면:
+- 최신 릴리스 노트와 변경 로그
+- 최근 버그 수정 또는 보안 업데이트
+- 현재 권장 버전

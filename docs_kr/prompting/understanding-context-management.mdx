@@ -1,66 +1,66 @@
 ---
-title: "Context Management"
-description: "Master context management to unlock Cline's full potential"
+title: "컨텍스트 관리"
+description: "컨텍스트 관리를 익혀 Cline의 잠재력을 최대한 끌어내세요"
 ---
 
 <Info>
-**Quick Reference**
+**빠른 참고**
 
-- **Context** = All information Cline knows about your project
-- **Context Window** = Maximum information Cline can process at once (varies by model)
-- **Token** = Unit of text measurement (~3/4 of an English word)
-- **Auto-management** = Cline automatically handles context through Focus Chain & Auto Compact
+- **컨텍스트** = Cline이 프로젝트에 대해 알고 있는 모든 정보
+- **컨텍스트 창** = Cline이 한 번에 처리할 수 있는 최대 정보량(모델마다 다름)
+- **토큰** = 텍스트 측정 단위(영어 단어 약 3/4)
+- **자동 관리** = Cline이 Focus Chain과 Auto Compact를 통해 컨텍스트를 자동으로 처리
 </Info>
 
-## What is Context Management?
+## 컨텍스트 관리란?
 
-Context management is how Cline maintains understanding of your project throughout a conversation. Think of it as the shared memory between you and Cline - containing code, decisions, requirements, and progress.
+컨텍스트 관리는 대화 전체에서 Cline이 프로젝트에 대한 이해를 유지하는 방식입니다. 이는 당신과 Cline 사이의 공유 메모리로, 코드, 결정사항, 요구사항, 진행 상황을 담고 있습니다.
 
-<Frame caption="Context is like a shared workspace where Cline builds understanding of your project">
+<Frame caption="컨텍스트는 Cline이 프로젝트에 대한 이해를 구축하는 공유 작업 공간과 같습니다">
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(2).png"
-		alt="Context visualization showing the relationship between total context and context window"
+		alt="전체 컨텍스트와 컨텍스트 창의 관계를 보여주는 시각화"
 	/>
 </Frame>
 
-### The Three Layers of Context
+### 컨텍스트의 세 가지 층
 
-1. **Immediate Context** - Current conversation and active files
-2. **Project Context** - Your codebase, structure, and patterns
-3. **Persistent Context** - Memory Bank, .clinerules, and documentation
+1. **즉시 컨텍스트** - 현재 대화와 활성 파일
+2. **프로젝트 컨텍스트** - 코드베이스, 구조, 패턴
+3. **지속 컨텍스트** - Memory Bank, .clinerules, 문서
 
-## Understanding Context Windows
+## 컨텍스트 창 이해하기
 
-Every AI model has a **context window** - the maximum amount of information it can process in a single conversation. This is measured in tokens:
+모든 AI 모델에는 **컨텍스트 창**이 있습니다. 이는 단일 대화에서 처리할 수 있는 최대 정보량이며 토큰 단위로 측정합니다:
 
-### Token Limits by Model
+### 모델별 토큰 한도
 
 | Model | Context Window | Effective Limit* | Best For |
 |-------|---------------|-----------------|----------|
-| **Claude 3.5 Sonnet** | 200,000 tokens | 150,000 tokens | Complex tasks, large codebases |
-| **Claude 3.5 Haiku** | 200,000 tokens | 150,000 tokens | Faster responses, simpler tasks |
-| **GPT-4o** | 128,000 tokens | 100,000 tokens | General purpose development |
-| **Gemini 2.0 Flash** | 1,000,000+ tokens | 400,000 tokens | Very large contexts |
-| **DeepSeek v3** | 64,000 tokens | 50,000 tokens | Cost-effective coding |
-| **Qwen 2.5 Coder** | 128,000 tokens | 100,000 tokens | Specialized coding tasks |
+| **Claude 3.5 Sonnet** | 200,000 tokens | 150,000 tokens | 복잡한 작업, 대규모 코드베이스 |
+| **Claude 3.5 Haiku** | 200,000 tokens | 150,000 tokens | 빠른 응답, 단순 작업 |
+| **GPT-4o** | 128,000 tokens | 100,000 tokens | 범용 개발 |
+| **Gemini 2.0 Flash** | 1,000,000+ tokens | 400,000 tokens | 매우 큰 컨텍스트 |
+| **DeepSeek v3** | 64,000 tokens | 50,000 tokens | 비용 효율적 코딩 |
+| **Qwen 2.5 Coder** | 128,000 tokens | 100,000 tokens | 전문 코딩 작업 |
 
-*Effective limit is ~75-80% of maximum for optimal performance
+*효과적 한도는 최적 성능을 위해 최대치의 약 75~80%
 
 <Tip>
-**Token Math Made Simple**
-- 1 token ≈ 3/4 of an English word
-- 100 tokens ≈ 75 words ≈ 3-5 lines of code
-- 10,000 tokens ≈ 7,500 words ≈ ~15 pages of text
-- A typical source file: 500-2,000 tokens
+**토큰 계산을 쉽게**
+- 1 토큰 ≈ 영어 단어 3/4
+- 100 토큰 ≈ 75단어 ≈ 코드 3~5줄
+- 10,000 토큰 ≈ 7,500단어 ≈ 텍스트 약 15페이지
+- 일반적인 소스 파일: 500~2,000 토큰
 </Tip>
 
-## How Cline Builds Context
+## Cline이 컨텍스트를 구축하는 방식
 
-Building effective context is what makes Cline truly useful. When you start a task, Cline doesn't just passively wait for information - he actively gathers context about your project, asks clarifying questions when needed, and adapts to what's happening in real-time. This combination of automatic discovery, user guidance, and dynamic adaptation ensures Cline always has the right information to solve your problems effectively.
+효과적인 컨텍스트 구축은 Cline을 진정으로 유용하게 만드는 핵심입니다. 작업을 시작하면 Cline은 단순히 정보를 기다리지 않고 프로젝트에 대한 컨텍스트를 적극적으로 수집하며, 필요할 때는 추가 질문을 하고, 실시간으로 진행되는 상황에 맞춰 적응합니다. 이러한 자동 탐색, 사용자 안내, 동적 적응의 조합을 통해 Cline은 문제를 효과적으로 해결하는 데 필요한 정보를 항상 확보합니다.
 
-### 1. Automatic Context Gathering
+### 1. 자동 컨텍스트 수집
 
-When you start a task, Cline proactively:
+작업을 시작하면 Cline은 다음을 선제적으로 수행합니다:
 
 ```mermaid
 graph LR
@@ -71,102 +71,102 @@ graph LR
     E --> F[Build Mental Model]
 ```
 
-**What Cline automatically discovers:**
-- Project structure and file organization
-- Import relationships and dependencies
-- Code patterns and conventions
-- Configuration files and settings
-- Recent changes and git history (when using @git)
+**Cline이 자동으로 파악하는 내용:**
+- 프로젝트 구조와 파일 구성
+- import 관계와 의존성
+- 코드 패턴과 규칙
+- 설정 파일과 구성
+- 최근 변경 사항과 git 기록(@git 사용 시)
 
-### 2. User-Guided Context
+### 2. 사용자 주도 컨텍스트
 
-While automatic discovery handles much of the work, you control what Cline focuses on. The more specific and relevant context you provide, the better Cline can understand your needs and deliver accurate solutions.
+자동 탐색이 상당 부분을 처리하지만, 무엇에 집중할지는 사용자가 조절할 수 있습니다. 더 구체적이고 관련성이 높은 컨텍스트를 제공할수록 Cline은 요구사항을 더 잘 이해하고 정확한 결과를 제공할 수 있습니다.
 
-You enhance context by:
-- **@ Mentioning** files, folders, or URLs
-- **Providing requirements** in natural language
-- **Sharing screenshots** for UI context
-- **Adding documentation** through .clinerules or Memory Bank
-- **Answering questions** when Cline needs clarification
+컨텍스트를 강화하는 방법:
+- **@ 멘션**으로 파일, 폴더, URL 지정
+- 자연어로 **요구사항 제공**
+- UI 맥락을 위한 **스크린샷 공유**
+- .clinerules 또는 Memory Bank로 **문서 추가**
+- Cline이 추가 질문할 때 **답변 제공**
 
-### 3. Dynamic Context Adaptation
+### 3. 동적 컨텍스트 적응
 
-Cline adapts context dynamically throughout your conversation. It considers the complexity of your request, available context window space, current task progress, error messages and feedback, plus previous decisions made during the conversation to determine what information matters most at each step.
+Cline은 대화 중에 컨텍스트를 동적으로 조정합니다. 요청의 복잡도, 남은 컨텍스트 창 여유, 현재 작업 진행도, 오류 메시지와 피드백, 대화 중 결정된 사항을 고려해 각 단계에서 가장 중요한 정보가 무엇인지 판단합니다.
 
-## The Context Window Progress Bar
+## 컨텍스트 창 진행 막대
 
-Monitor your context usage in real-time:
+실시간으로 컨텍스트 사용량을 확인하세요:
 
-<Frame caption="The context window bar shows input/output token usage">
+<Frame caption="컨텍스트 창 막대는 입력/출력 토큰 사용량을 표시합니다">
 	<img
 		src="https://storage.googleapis.com/cline_public_images/context-bar.png"
-		alt="Context window progress bar showing token usage"
+		alt="토큰 사용량을 표시하는 컨텍스트 창 진행 막대"
 	/>
 </Frame>
 
-### Understanding the Indicators
+### 지표 이해하기
 
-- ⬆️ **Input Tokens**: Information sent to the model (your messages + context)
-- ⬇️ **Output Tokens**: Model's responses and generated code
-- ➡️ **Cache Tokens**: Previously processed tokens that's reused (reduces costs and improves speed)
-- **Progress Bar**: Visual representation of usage
-- **Percentage**: Current usage of total capacity
+- ⬆️ **입력 토큰**: 모델에 전달된 정보(사용자 메시지 + 컨텍스트)
+- ⬇️ **출력 토큰**: 모델의 응답 및 생성된 코드
+- ➡️ **캐시 토큰**: 이전에 처리한 토큰을 재사용(비용 절감 및 속도 향상)
+- **진행 막대**: 사용량의 시각적 표현
+- **백분율**: 전체 용량 대비 현재 사용량
 
-## Automatic Context Management Features
+## 자동 컨텍스트 관리 기능
 
-Cline includes intelligent systems that handle context for you:
+Cline에는 컨텍스트를 처리해 주는 지능형 시스템이 포함되어 있습니다:
 
-### Focus Chain (Default: ON)
+### Focus Chain (기본값: ON)
 
-Focus Chain maintains task continuity through automatic todo lists. When you start a task, Cline generates actionable steps and updates them as work progresses. This keeps critical context visible even after Auto Compact runs, letting you track progress without scrolling through the entire conversation.
+Focus Chain은 자동 todo 목록을 통해 작업 연속성을 유지합니다. 작업을 시작하면 Cline이 실행 가능한 단계를 생성하고 진행에 따라 업데이트합니다. Auto Compact가 실행된 후에도 핵심 컨텍스트가 유지되므로 전체 대화를 스크롤하지 않고도 진행 상황을 추적할 수 있습니다.
 
-[Learn more →](/features/focus-chain)
+[자세히 보기 →](/features/focus-chain)
 
-### Auto Compact (Always ON)
+### Auto Compact (항상 ON)
 
-When context usage hits around 80%, Auto Compact automatically creates a comprehensive summary of the conversation. This preserves all decisions and code changes while freeing up space for continued work. You'll see a message when this happens. The task continues seamlessly - you don't need to do anything.
+컨텍스트 사용량이 약 80%에 도달하면 Auto Compact가 대화를 포괄적으로 요약해 줍니다. 이는 모든 결정과 코드 변경을 보존하면서 계속 작업할 수 있도록 공간을 확보합니다. 이때 메시지가 표시됩니다. 작업은 끊김 없이 이어지며, 사용자가 따로 할 일은 없습니다.
 
-[Learn more →](/features/auto-compact)
+[자세히 보기 →](/features/auto-compact)
 
-### Context Truncation System
+### 컨텍스트 절단 시스템
 
-If your conversation approaches the model's context window limit before Auto Compact runs, Cline's Context Manager automatically truncates older parts of the conversation to prevent errors.
+Auto Compact가 실행되기 전에 대화가 모델의 컨텍스트 창 한도에 접근하면, Cline의 Context Manager가 오류를 방지하기 위해 이전 대화의 일부를 자동으로 절단합니다.
 
-The system prioritizes what matters most:
-- Your original task description stays
-- Recent tool executions and their results remain intact
-- Current code state and active errors are preserved
-- The logical flow of user-assistant messages is maintained
+시스템은 다음을 우선합니다:
+- 원래 작업 설명 유지
+- 최근 도구 실행과 결과 유지
+- 현재 코드 상태와 활성 오류 보존
+- 사용자-어시스턴트 메시지의 논리 흐름 유지
 
-What gets removed first:
-- Redundant conversation history from earlier in the task
-- Completed tool outputs that are no longer relevant
-- Intermediate debugging steps
-- Verbose explanations that served their purpose
+먼저 제거되는 항목:
+- 작업 초반의 중복 대화 기록
+- 더 이상 관련 없는 완료된 도구 출력
+- 중간 디버깅 단계
+- 역할을 마친 장황한 설명
 
-This happens automatically. You'll keep working without interruption, and Cline maintains enough context to continue solving your problem effectively.
+이 과정은 자동으로 이루어집니다. 방해 없이 계속 작업할 수 있고, Cline은 문제 해결에 필요한 충분한 컨텍스트를 유지합니다.
 
-## Best Practices
+## 모범 사례
 
-- **Be specific** - Clear objectives help Cline understand your needs
-- **Use @ mentions strategically** - Reference specific files rather than entire folders
-- **Monitor the progress bar** - Yellow/red means consider using `/smol` or `/newtask`
-- **Trust auto-management** - Focus Chain and Auto Compact handle complexity automatically
-- **Use Memory Bank** - Document persistent patterns and conventions
+- **구체적으로** - 명확한 목표가 Cline의 이해를 돕습니다
+- **@ 멘션을 전략적으로 사용** - 전체 폴더보다 특정 파일을 참조하세요
+- **진행 막대 모니터링** - 노란색/빨간색이면 `/smol` 또는 `/newtask`를 고려하세요
+- **자동 관리를 신뢰** - Focus Chain과 Auto Compact가 복잡성을 자동으로 처리합니다
+- **Memory Bank 사용** - 지속적인 패턴과 규칙을 문서화하세요
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
 	<Card title="Focus Chain" icon="link" href="/features/focus-chain">
-		Learn how Focus Chain maintains task continuity
+		Focus Chain이 작업 연속성을 유지하는 방법
 	</Card>
 	<Card title="Auto Compact" icon="compress" href="/features/auto-compact">
-		Understand automatic conversation compression
+		자동 대화 압축 이해하기
 	</Card>
 	<Card title="Memory Bank" icon="brain" href="/prompting/cline-memory-bank">
-		Set up persistent project knowledge
+		지속적인 프로젝트 지식 설정
 	</Card>
 	<Card title="Cline Rules" icon="gavel" href="/features/cline-rules">
-		Define project-specific conventions
+		프로젝트 전용 규칙 정의
 	</Card>
 </CardGroup>

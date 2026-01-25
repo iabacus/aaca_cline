@@ -1,24 +1,24 @@
 ---
-title: "Disable Terminal Pagers During Cline Sessions"
-description: "Make CLI output non-interactive when Cline runs commands by detecting the CLINE_ACTIVE environment variable and disabling pagers like less."
+title: "Cline 세션에서 터미널 페이저 비활성화"
+description: "CLINE_ACTIVE 환경 변수를 감지해 less 같은 페이저를 끄고, Cline이 실행하는 명령의 출력이 비대화형으로 흐르도록 합니다."
 ---
 
-Many CLI tools (like Git) use a pager such as `less` for interactive, scrollable output. When Cline runs commands in your terminal, that interactivity gets in the way — the pager can pause on the first page and block progress. You can configure your shell so that when a terminal is spawned by Cline, pagers are disabled and output streams through normally.
+많은 CLI 도구(예: Git)는 `less` 같은 페이저를 사용해 스크롤 가능한 대화형 출력을 제공합니다. 하지만 Cline이 터미널에서 명령을 실행할 때는 이 대화형 동작이 방해가 됩니다. 첫 페이지에서 멈춰 진행이 막힐 수 있기 때문입니다. Cline이 띄운 터미널일 때는 페이저를 비활성화해 출력이 정상적으로 흐르도록 셸을 구성할 수 있습니다.
 
-## How it works
+## 동작 방식
 
-Cline sets an environment variable for terminals it opens to run commands:
+Cline은 명령 실행을 위해 열리는 터미널에 다음 환경 변수를 설정합니다:
 
-- `CLINE_ACTIVE` — non-empty when the shell is running under Cline
+- `CLINE_ACTIVE` — 셸이 Cline 아래에서 실행 중이면 비어 있지 않습니다
 
-You can detect this variable in your shell startup file and adjust environment variables or aliases only for Cline-run sessions. This keeps your normal interactive terminals unchanged.
+셸 시작 파일에서 이 변수를 감지해 Cline 세션에만 환경 변수나 alias를 적용할 수 있습니다. 이렇게 하면 일반 터미널의 대화형 동작은 유지됩니다.
 
-## Quick setup (Zsh/Bash)
+## 빠른 설정(Zsh/Bash)
 
-Add the following to your `~/.zshrc`, `~/.bashrc`, or `~/.bash_profile`:
+다음을 `~/.zshrc`, `~/.bashrc`, 또는 `~/.bash_profile`에 추가하세요:
 
 ```bash
-# Disable pagers when the terminal is launched by Cline
+# Cline이 띄운 터미널에서는 페이저 비활성화
 if [[ -n "$CLINE_ACTIVE" ]]; then
   export PAGER=cat
   export GIT_PAGER=cat
@@ -28,52 +28,52 @@ fi
 ```
 
 <Note>
-- `PAGER=cat` ensures generic pager-aware tools print directly to stdout
-- `GIT_PAGER=cat` prevents Git from invoking `less`
-- `SYSTEMD_PAGER=cat` disables paging in systemd tools (if present)
-- `LESS="-FRX"` makes `less` behave more like streaming output if a tool still calls it
+- `PAGER=cat`은 페이저를 인식하는 일반 도구가 stdout에 바로 출력하도록 합니다
+- `GIT_PAGER=cat`은 Git이 `less`를 호출하지 않도록 합니다
+- `SYSTEMD_PAGER=cat`은 systemd 도구(있는 경우)의 페이징을 끕니다
+- `LESS="-FRX"`는 도구가 여전히 `less`를 호출할 때 스트리밍 출력처럼 동작하게 합니다
 </Note>
 
-This configuration only applies when `CLINE_ACTIVE` is set, so your normal terminals keep their usual interactive behavior.
+이 구성은 `CLINE_ACTIVE`가 설정된 경우에만 적용되므로, 일반 터미널은 기존의 대화형 동작을 유지합니다.
 
-## Verify
+## 확인
 
-- Open a task in Cline that runs terminal commands and check:
-  - `echo "$CLINE_ACTIVE"` prints a non-empty value
-  - `git log` or other long outputs should stream without pausing
-- If changes don't take effect:
-  - Make sure you updated the correct startup file for your shell
-  - Restart VS Code/Cursor so integrated terminals reload your shell config
-  - Confirm your terminal profile sources your `~/.zshrc` or `~/.bashrc`
+- Cline에서 터미널 명령을 실행하는 작업을 열고 다음을 확인하세요:
+  - `echo "$CLINE_ACTIVE"`가 비어 있지 않은 값을 출력
+  - `git log` 같은 긴 출력이 멈추지 않고 흐름
+- 변경이 적용되지 않으면:
+  - 올바른 셸 시작 파일을 수정했는지 확인
+  - VS Code/Cursor를 재시작해 통합 터미널이 셸 설정을 다시 로드하게 함
+  - 터미널 프로필이 `~/.zshrc` 또는 `~/.bashrc`를 소스하는지 확인
 
-## Optional tweaks
+## 선택적 조정
 
-- Prefer command-line options when you don't want to rely on env vars:
+- 환경 변수에 의존하지 않으려면 명령행 옵션을 선호하세요:
 
 ```bash
-# One-off usage (no aliases)
+# 1회성 사용(별도 alias 없음)
 git --no-pager log -n 50 --decorate --oneline
 systemctl --no-pager status nginx
 journalctl --no-pager -u nginx -n 200
 less -FRX README.md
 ```
 
-- You can also override paging via shell aliases scoped to Cline sessions using options rather than env vars:
+- 환경 변수 대신 옵션을 사용하는 alias를 Cline 세션에만 적용할 수도 있습니다:
 
 ```bash
 if [[ -n "$CLINE_ACTIVE" ]]; then
-  # Make 'less' non-interactive by default
+  # 'less'를 기본적으로 비대화형으로 사용
   alias less='less -FRX'
-  # Disable paging for common tools via CLI flags
+  # CLI 플래그로 자주 쓰는 도구의 페이징 비활성화
   alias git='command git --no-pager'
   alias systemctl='command systemctl --no-pager'
   alias journalctl='command journalctl --no-pager'
 fi
 ```
 
-- If you prefer environment variables, many CLIs also respect a generic or tool-specific pager variable:
+- 환경 변수를 선호한다면, 많은 CLI가 일반 또는 도구별 페이저 변수를 지원합니다:
   - Git: `GIT_PAGER=cat`
   - Systemd: `SYSTEMD_PAGER=cat`
-  - Man pages: `MANPAGER=cat` (not typically needed for Cline-driven commands)
+  - Man 페이지: `MANPAGER=cat` (Cline에서 실행하는 명령에는 보통 필요하지 않음)
 
-- Aliases affect the current interactive shell, while environment variables propagate to child processes. Choose the approach that best fits your workflow.
+- alias는 현재 대화형 셸에만 영향을 주고, 환경 변수는 자식 프로세스로 전파됩니다. 워크플로에 맞는 방식을 선택하세요.

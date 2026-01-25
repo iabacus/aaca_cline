@@ -1,41 +1,41 @@
 ---
-title: "New Task Command"
+title: "새 작업 명령"
 sidebarTitle: "/newtask"
 ---
 
-`/newtask` is a slash command that works like a perfect developer handoff. It intelligently packages what matters - the overall plan, work accomplished, relevant files, and next steps - into a fresh task with a clean context window. All while leaving behind the noise of tool calls, documentation searches, and implementation details.
+`/newtask`는 완벽한 개발자 핸드오프처럼 동작하는 슬래시 명령입니다. 전체 계획, 완료된 작업, 관련 파일, 다음 단계처럼 중요한 것만 지능적으로 묶어, 깨끗한 컨텍스트 윈도우를 가진 새 작업을 만듭니다. 도구 호출, 문서 검색, 구현 세부사항의 잡음은 뒤로 남깁니다.
 
-It's exactly what you'd do when bringing a new developer onto your project: provide the essential context they need to continue the work without overwhelming them with every keystroke that came before.
+프로젝트에 새 개발자를 투입할 때 하듯, 이전 모든 키 입력 대신 작업을 이어갈 수 있도록 필요한 핵심 컨텍스트만 제공하는 방식입니다.
 
-#### Using the `/newtask` Slash Command
+#### `/newtask` 슬래시 명령 사용하기
 
-When your context window is filling up but you're not done with your project:
+컨텍스트 윈도우가 가득 차 가지만 프로젝트가 아직 끝나지 않았을 때:
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/newtask.png"
-		alt="Using the /newtask slash command"
+		alt="/newtask 슬래시 명령 사용"
 	/>
 </Frame>
 
--   Type `/newtask` in the chat input field
--   Cline will analyze your conversation and propose a distilled version of the context to carry forward
--   You can refine this proposed context through conversation before committing
--   Once satisfied, a button appears to create the new task with your refined context
+-   채팅 입력에 `/newtask` 입력
+-   Cline이 대화를 분석해 이어갈 핵심 컨텍스트를 정리한 제안을 생성
+-   커밋하기 전에 대화를 통해 제안 내용을 다듬을 수 있음
+-   만족하면 버튼이 나타나며, 정리된 컨텍스트로 새 작업 생성
 
-#### Example
+#### 예시
 
-I regularly use `/newtask` when working through complex implementations with multiple steps. For instance, if I've completed 3 steps of a 10-step process and my context is already 75% full with documentation snippets, file contents, and detailed discussions.
+여러 단계가 있는 복잡한 구현을 진행할 때 `/newtask`를 자주 사용합니다. 예를 들어 10단계 중 3단계를 끝냈는데, 컨텍스트가 문서 조각, 파일 내용, 상세 논의로 이미 75% 찼다면요.
 
-Rather than losing those insights or starting from scratch, I use `/newtask` to have Cline extract what matters - the key decisions, file changes, and progress so far - without all the noise of individual tool calls and research steps.
+그 인사이트를 잃거나 처음부터 다시 시작하는 대신, `/newtask`로 Cline이 핵심 내용을 추출하게 합니다. 중요한 결정, 파일 변경, 현재 진행 상황만 남기고, 개별 도구 호출과 조사 단계의 잡음은 제거합니다.
 
-I like to think of `/newtask` as a new developer joining the project. I need to give them the full understanding of the work that has been done, awareness of the relevant files, any other context that would be helpful, and where to go next.
+저는 `/newtask`를 새 개발자가 프로젝트에 합류하는 것처럼 생각합니다. 지금까지의 작업을 이해할 수 있도록 핵심 내용을 전달하고, 관련 파일과 도움이 될 컨텍스트, 다음 단계까지 알려줘야 합니다.
 
-#### Inspiration
+#### 영감
 
-Here are some popular ways to use `/newtask`:
+`/newtask`를 활용하는 흔한 방법:
 
--   I research complex APIs using the Context7 MCP server, filling my context with documentation. Once I understand the concepts, I use `/newtask` to start fresh with just the essential knowledge needed for implementation.
--   After identifying the root cause of a tough bug through multiple debugging attempts and file explorations, I use `/newtask` to continue with a clean slate that includes the solution but discards all the failed attempts.
--   When a client discussion explores multiple approaches and finally settles on one direction, I use `/newtask` to focus solely on implementing the chosen solution.
--   For complex projects spanning multiple days, I use `/newtask` at logical stopping points to maintain a clean workspace while carrying forward my progress.
+-   Context7 MCP 서버로 복잡한 API를 조사해 컨텍스트가 문서로 가득 찼다면, 구현에 필요한 핵심 지식만 남기기 위해 `/newtask`를 사용합니다.
+-   여러 디버깅 시도와 파일 탐색 끝에 까다로운 버그의 원인을 찾았을 때, 실패한 시도는 버리고 해결책만 담은 깨끗한 컨텍스트로 이어가기 위해 `/newtask`를 사용합니다.
+-   고객 논의에서 여러 접근을 검토하다 하나의 방향으로 합의했을 때, 선택된 해결책 구현에만 집중하기 위해 `/newtask`를 사용합니다.
+-   며칠에 걸친 복잡한 프로젝트에서는 논리적인 중단점마다 `/newtask`를 사용해 깨끗한 작업 공간을 유지하면서 진행 상황을 이어갑니다.

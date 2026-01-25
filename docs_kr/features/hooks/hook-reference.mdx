@@ -1,30 +1,30 @@
 ---
-title: "Hook Reference"
-sidebarTitle: "Hook Reference"
-description: "Complete API reference for all Cline hook types, JSON schemas, and field documentation"
+title: "훅 레퍼런스"
+sidebarTitle: "훅 레퍼런스"
+description: "모든 Cline 훅 유형, JSON 스키마, 필드 문서에 대한 완전한 API 레퍼런스"
 ---
 
-This reference provides complete technical documentation for all hook types, their JSON schemas, input/output formats, and communication protocols.
+이 문서는 모든 훅 유형에 대한 기술 문서를 제공하며, JSON 스키마, 입력/출력 형식, 통신 프로토콜을 포함합니다.
 
-## Hook Types
+## 훅 유형
 
-Cline provides multiple hook types that let you tap into different stages of the AI workflow. They're organized into categories based on their trigger points and use cases.
+Cline은 AI 워크플로의 다양한 단계에 개입할 수 있는 여러 훅 유형을 제공합니다. 훅은 트리거 지점과 용도에 따라 카테고리로 나뉩니다.
 
 <Note>
-The hook names below are the exact file names you need to create. For example, to use the TaskStart hook, create a file named `TaskStart` (no file extension) in your hooks directory.
+아래 훅 이름은 생성해야 하는 **정확한 파일 이름**입니다. 예를 들어 TaskStart 훅을 사용하려면 훅 디렉터리에 `TaskStart`(확장자 없음)라는 파일을 만들면 됩니다.
 </Note>
 
-Each hook receives base fields in addition to its specific data: `clineVersion`, `hookName`, `timestamp`, `taskId`, `workspaceRoots`, `userId`.
+각 훅은 자체 데이터 외에 다음 기본 필드를 받습니다: `clineVersion`, `hookName`, `timestamp`, `taskId`, `workspaceRoots`, `userId`.
 
-### Tool Execution Hooks
+### 도구 실행 훅
 
-These hooks intercept and validate tool operations before and after they execute. Use them to enforce policies, track changes, and learn from operations.
+이 훅들은 도구 실행 전후의 작업을 가로채고 검증합니다. 정책 강제, 변경 추적, 작업 결과 학습에 사용할 수 있습니다.
 
 #### `PreToolUse`
 
-Triggered immediately before Cline uses any tool (see the [Cline Tools Reference Guide](/cline-tools) for all available tools). Use it to block invalid operations, validate parameters, and enforce project policies before changes happen.
+Cline이 어떤 도구를 사용하기 직전에 트리거됩니다(사용 가능한 모든 도구는 [Cline Tools Reference Guide](/cline-tools) 참고). 변경이 발생하기 전에 잘못된 작업을 차단하고, 파라미터를 검증하고, 프로젝트 정책을 강제할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -40,12 +40,12 @@ Triggered immediately before Cline uses any tool (see the [Cline Tools Reference
 }
 ```
 
-**Example Usage:**
+**사용 예시:**
 ```bash
 #!/usr/bin/env bash
 input=$(cat)
 
-# Block creating .js files in TypeScript projects
+# TypeScript 프로젝트에서 .js 파일 생성 차단
 tool_name=$(echo "$input" | jq -r '.preToolUse.toolName')
 if [[ "$tool_name" == "write_to_file" ]]; then
   file_path=$(echo "$input" | jq -r '.preToolUse.parameters.path')
@@ -60,9 +60,9 @@ echo '{"cancel": false}'
 
 #### `PostToolUse`
 
-Triggered immediately after Cline uses any tool (see the [Cline Tools Reference Guide](/cline-tools) for all available tools). Use it to learn from results, track performance metrics, and build project knowledge based on operations performed.
+Cline이 어떤 도구를 사용한 직후 트리거됩니다(사용 가능한 모든 도구는 [Cline Tools Reference Guide](/cline-tools) 참고). 결과를 학습하고, 성능 메트릭을 추적하며, 수행된 작업을 기반으로 프로젝트 지식을 축적하는 데 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -81,12 +81,12 @@ Triggered immediately after Cline uses any tool (see the [Cline Tools Reference 
 }
 ```
 
-**Example Usage:**
+**사용 예시:**
 ```bash
 #!/usr/bin/env bash
 input=$(cat)
 
-# Log slow operations for performance monitoring
+# 성능 모니터링을 위해 느린 작업 로깅
 execution_time=$(echo "$input" | jq -r '.postToolUse.executionTimeMs')
 tool_name=$(echo "$input" | jq -r '.postToolUse.toolName')
 
@@ -98,15 +98,15 @@ else
 fi
 ```
 
-### User Interaction Hooks
+### 사용자 상호작용 훅
 
-These hooks monitor and enhance user communication with Cline. Use them to validate input, inject context, and track interaction patterns.
+이 훅들은 사용자와 Cline의 상호작용을 모니터링하고 강화합니다. 입력 검증, 컨텍스트 주입, 상호작용 패턴 추적에 사용할 수 있습니다.
 
 #### `UserPromptSubmit`
 
-Triggered when the user enters text into the prompt box and presses enter to start a new task, continue a completed task, or resume a cancelled task. Use it to validate input, inject context based on the prompt, and track interaction patterns.
+사용자가 프롬프트 입력창에 텍스트를 입력하고 Enter를 눌러 새 작업을 시작하거나, 완료된 작업을 계속하거나, 취소된 작업을 재개할 때 트리거됩니다. 입력 검증, 프롬프트 기반 컨텍스트 주입, 상호작용 패턴 추적에 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -122,12 +122,12 @@ Triggered when the user enters text into the prompt box and presses enter to sta
 }
 ```
 
-**Example Usage:**
+**사용 예시:**
 ```bash
 #!/usr/bin/env bash
 input=$(cat)
 
-# Inject coding standards context for certain keywords
+# 특정 키워드에 대해 코딩 표준 컨텍스트 주입
 prompt=$(echo "$input" | jq -r '.userPromptSubmit.prompt')
 context=""
 
@@ -144,15 +144,15 @@ else
 fi
 ```
 
-### Task Lifecycle Hooks
+### 작업 라이프사이클 훅
 
-These hooks monitor and respond to task state changes from start to finish. Use them to track progress, restore state, and trigger workflows.
+이 훅들은 시작부터 종료까지 작업 상태 변화를 모니터링하고 대응합니다. 진행 추적, 상태 복원, 워크플로 트리거에 사용할 수 있습니다.
 
 #### `TaskStart`
 
-Triggered once at the beginning of a new task. Use it to detect project type, initialize tracking, and inject initial context that shapes how Cline approaches the work.
+새 작업이 시작될 때 한 번 트리거됩니다. 프로젝트 유형 감지, 추적 초기화, 작업 접근 방식을 결정하는 초기 컨텍스트 주입에 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -171,12 +171,12 @@ Triggered once at the beginning of a new task. Use it to detect project type, in
 }
 ```
 
-**Example Usage:**
+**사용 예시:**
 ```bash
 #!/usr/bin/env bash
 input=$(cat)
 
-# Detect project type and inject relevant context
+# 프로젝트 유형 감지 후 관련 컨텍스트 주입
 context=""
 
 if [[ -f "package.json" ]]; then
@@ -202,9 +202,9 @@ fi
 
 #### `TaskResume`
 
-Triggered when the user resumes a task that has been cancelled or aborted. Use it to restore state, refresh context, and log resumption for analytics or external system notifications.
+사용자가 취소되었거나 중단된 작업을 재개할 때 트리거됩니다. 상태 복원, 컨텍스트 새로고침, 분석/외부 시스템 알림을 위한 재개 로그에 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -229,9 +229,9 @@ Triggered when the user resumes a task that has been cancelled or aborted. Use i
 
 #### `TaskCancel`
 
-Triggered when the user cancels a task or aborts a hook execution. Use it to cleanup resources, log cancellation details, and notify external systems about interrupted work.
+사용자가 작업을 취소하거나 훅 실행을 중단할 때 트리거됩니다. 리소스 정리, 취소 상세 로그, 외부 시스템 알림에 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -251,9 +251,9 @@ Triggered when the user cancels a task or aborts a hook execution. Use it to cle
 
 #### `TaskComplete`
 
-Triggered when Cline finishes its work and successfully executes the `attempt_completion` tool to finalize the task output. Use it to track completion metrics, generate reports, log task outcomes, and trigger completion workflows.
+Cline이 작업을 마치고 `attempt_completion` 도구를 성공적으로 실행해 결과를 확정할 때 트리거됩니다. 완료 메트릭 추적, 보고서 생성, 결과 로그, 완료 워크플로 트리거에 사용할 수 있습니다.
 
-**Input Fields:**
+**입력 필드:**
 ```json
 {
   "clineVersion": "string",
@@ -271,37 +271,37 @@ Triggered when Cline finishes its work and successfully executes the `attempt_co
 }
 ```
 
-**Example Usage:**
+**사용 예시:**
 ```bash
 #!/usr/bin/env bash
 input=$(cat)
 
-# Extract task metadata
+# 작업 메타데이터 추출
 task_id=$(echo "$input" | jq -r '.taskComplete.taskMetadata.taskId // "unknown"')
 ulid=$(echo "$input" | jq -r '.taskComplete.taskMetadata.ulid // "unknown"')
 
-# Log completion
+# 완료 로그 기록
 completion_log="$HOME/.cline_completions/$(date +%Y-%m-%d).log"
 mkdir -p "$(dirname "$completion_log")"
 
 echo "$(date -Iseconds): Task $task_id completed (ULID: $ulid)" >> "$completion_log"
 
-# Provide context about completion
+# 완료 컨텍스트 제공
 context="TASK_COMPLETED: Task $task_id finished successfully. Completion logged."
 jq -n --arg ctx "$context" '{"cancel": false, "contextModification": $ctx}'
 ```
 
-### System Events Hooks
+### 시스템 이벤트 훅
 
-These hooks monitor internal Cline operations and system-level events. Use them to track context usage, log system behavior, and analyze performance patterns.
+이 훅들은 Cline 내부 동작과 시스템 수준 이벤트를 모니터링합니다. 컨텍스트 사용량 추적, 시스템 동작 로깅, 성능 패턴 분석에 사용할 수 있습니다.
 
-## JSON Communication Protocol
+## JSON 통신 프로토콜
 
-Hooks receive JSON via stdin and return JSON via stdout.
+훅은 stdin으로 JSON을 받고 stdout으로 JSON을 반환합니다.
 
-### Input Format
+### 입력 형식
 
-All hooks receive a JSON object through stdin with this base structure:
+모든 훅은 stdin을 통해 다음 기본 구조의 JSON 객체를 받습니다:
 
 ```json
 {
@@ -317,9 +317,9 @@ All hooks receive a JSON object through stdin with this base structure:
 }
 ```
 
-### Output Format
+### 출력 형식
 
-Your hook script must output a JSON response as the final stdout content:
+훅 스크립트는 stdout의 마지막 출력으로 JSON 응답을 내보내야 합니다:
 
 ```json
 {
@@ -329,109 +329,109 @@ Your hook script must output a JSON response as the final stdout content:
 }
 ```
 
-**Field Descriptions:**
+**필드 설명:**
 
-- **`cancel`** (required): Boolean controlling whether execution continues
-  - `true`: Block the current action
-  - `false`: Allow the action to proceed
+- **`cancel`** (필수): 실행을 계속할지 제어하는 불리언
+  - `true`: 현재 동작 차단
+  - `false`: 동작 허용
 
-- **`contextModification`** (optional): String that gets injected into the conversation
-  - Affects future AI decisions, not the current one
-  - Use clear prefixes like `WORKSPACE_RULES:`, `PERFORMANCE:`, `SECURITY:` for categorization
-  - Maximum length: 50KB
+- **`contextModification`** (선택): 대화에 주입되는 문자열
+  - 현재 결정이 아니라 이후 AI 결정에 영향
+  - `WORKSPACE_RULES:`, `PERFORMANCE:`, `SECURITY:` 같은 명확한 접두사를 사용해 분류
+  - 최대 길이: 50KB
 
-- **`errorMessage`** (optional): String shown to user when `cancel` is `true`
-  - Only displayed when blocking an action
-  - Should explain why the action was blocked
+- **`errorMessage`** (선택): `cancel`이 `true`일 때 사용자에게 표시되는 문자열
+  - 동작을 차단할 때만 표시
+  - 차단 이유를 설명해야 함
 
-### Logging During Execution
+### 실행 중 로깅
 
-Your hook script can output logging or diagnostic information to stdout during execution, as long as the JSON response is the last thing written:
+훅 스크립트는 실행 중 stdout에 로그/진단 정보를 출력할 수 있습니다. 단, JSON 응답은 마지막 출력이어야 합니다:
 
 ```bash
 #!/usr/bin/env bash
-echo "Processing hook..."  # This is fine
-echo "Tool: $tool_name"    # This is also fine
+echo "Processing hook..."  # 문제 없음
+echo "Tool: $tool_name"    # 이것도 문제 없음
 
-# The JSON must be last:
+# JSON은 마지막에 출력:
 echo '{"cancel": false}'
 ```
 
-Cline will parse only the final JSON object from stdout.
+Cline은 stdout의 마지막 JSON 객체만 파싱합니다.
 
-### Error Handling
+### 오류 처리
 
-Hook execution errors don't prevent task execution - only returning `"cancel": true` can halt a task. All other errors are treated as hook failures, not reasons to abort the task.
+훅 실행 오류는 작업 실행을 막지 않습니다. `"cancel": true`를 반환할 때만 작업이 중단됩니다. 그 외 오류는 훅 실패로 취급될 뿐, 작업 중단 사유가 아닙니다.
 
-**Hook Status Display:**
+**훅 상태 표시:**
 
-- **Completed** (grey): Hook executed successfully, regardless of whether it returned `"cancel": false` or no JSON output
-- **Failed** (red): Hook exited with non-zero status, output invalid JSON, or timed out. The UI displays the error details (e.g., exit code number)
-- **Aborted** (red): Hook returned `"cancel": true`, halting the task. User must manually resume the task to continue
+- **Completed** (회색): 훅이 성공적으로 실행됨(`"cancel": false` 또는 JSON 출력 없음)
+- **Failed** (빨간색): 비정상 종료, 유효하지 않은 JSON 출력, 타임아웃. UI에 오류 세부사항(예: 종료 코드)이 표시됨
+- **Aborted** (빨간색): 훅이 `"cancel": true`를 반환해 작업이 중단됨. 사용자가 수동으로 작업을 재개해야 함
 
-**Important:** Even when a hook fails (non-zero exit, invalid JSON, timeout), Cline continues with the task. Only `"cancel": true` stops execution.
+**중요:** 훅이 실패(비정상 종료, 잘못된 JSON, 타임아웃)하더라도 Cline은 작업을 계속합니다. `"cancel": true`만 실행을 중단합니다.
 
-### Context Modification Timing
+### 컨텍스트 주입 타이밍
 
-Context injection affects future decisions, not current ones. When a hook runs:
+컨텍스트 주입은 현재가 아니라 이후 결정에 영향을 줍니다. 훅이 실행되면:
 
-1. The AI has already decided what to do
-2. The hook can block or allow it
-3. Any context gets added to the conversation
-4. The next AI request sees that context
+1. AI는 이미 무엇을 할지 결정함
+2. 훅이 차단하거나 허용할 수 있음
+3. 컨텍스트가 대화에 추가됨
+4. 다음 AI 요청이 해당 컨텍스트를 인식
 
-This means:
-- **PreToolUse hooks**: Use for blocking bad actions + injecting context for next decision
-- **PostToolUse hooks**: Use for learning from completed actions
+즉:
+- **PreToolUse 훅**: 잘못된 동작 차단 + 다음 결정을 위한 컨텍스트 주입
+- **PostToolUse 훅**: 완료된 동작에서 학습
 
-### Helpful Tip: String Escaping in JSON
+### 팁: JSON 문자열 이스케이프
 
-When your hook needs to include strings containing unescaped quote characters (`"`) in JSON output, use jq's `--arg` flag for proper escaping:
+훅이 JSON 출력에 따옴표(`"`)가 포함된 문자열을 넣어야 할 때는 jq의 `--arg` 플래그를 사용해 적절히 이스케이프하세요:
 
 ```bash
 #!/usr/bin/env bash
 
-# When $output contains unescaped quote characters (")...
+# $output에 이스케이프되지 않은 따옴표(")가 있을 때...
 output='{"foo":"bar"}'
 
-# Use the --arg flag for automatic string escaping
+# --arg 플래그로 자동 이스케이프
 jq -n --arg ctx "$output" '{cancel: false, contextModification: $ctx}'
 
-# This will result in:
+# 결과:
 # {
 #     "cancel": false,
 #     "contextModification": "{\"foo\":\"bar\"}"
 # }
 ```
 
-The `--arg` flag automatically escapes special characters, preventing JSON parsing errors when your context modification includes complex strings or nested JSON structures.
+`--arg` 플래그는 특수 문자를 자동 이스케이프해, 복잡한 문자열이나 중첩 JSON 구조를 포함할 때 파싱 오류를 방지합니다.
 
-## Hook Execution Environment
+## 훅 실행 환경
 
-### Execution Context
+### 실행 컨텍스트
 
-Hooks are executable scripts that run with the same permissions as VS Code. They have unrestricted access to:
-- The entire filesystem (any file the user can access)
-- All environment variables
-- System commands and tools
-- Network resources
+훅은 VS Code와 동일한 권한으로 실행되는 실행 가능 스크립트입니다. 다음에 제한 없이 접근할 수 있습니다:
+- 전체 파일 시스템(사용자가 접근 가능한 모든 파일)
+- 모든 환경 변수
+- 시스템 명령 및 도구
+- 네트워크 리소스
 
-Hooks can perform any operation the user could perform in a terminal, including reading and writing files outside the workspace, making network requests, and executing system commands.
+훅은 터미널에서 사용자가 할 수 있는 모든 작업을 수행할 수 있습니다. 워크스페이스 밖 파일 읽기/쓰기, 네트워크 요청, 시스템 명령 실행도 포함됩니다.
 
-### Security Considerations
+### 보안 고려사항
 
 <Warning>
-Hooks run with the same permissions as VS Code. They can access all workspace files and environment variables. Review hooks from untrusted sources before enabling them.
+훅은 VS Code와 동일한 권한으로 실행됩니다. 워크스페이스 파일과 환경 변수에 모두 접근할 수 있으니, 신뢰되지 않은 소스의 훅은 활성화 전에 반드시 검토하세요.
 </Warning>
 
-### Performance Guidelines
+### 성능 가이드라인
 
-Hooks have a 30 second timeout. As long as your hook completes within this time, it can perform any operations needed, including network calls or heavy computations.
+훅의 타임아웃은 30초입니다. 이 시간 안에 완료되는 한, 네트워크 호출이나 무거운 연산도 수행할 수 있습니다.
 
-### Hook Discovery
+### 훅 탐색
 
-Cline searches for hooks in this order:
-1. Project-specific: `.clinerules/hooks/` in workspace root
-2. User-global: `~/Documents/Cline/Hooks/`
+Cline은 다음 순서로 훅을 찾습니다:
+1. 프로젝트 전용: 워크스페이스 루트의 `.clinerules/hooks/`
+2. 사용자 전역: `~/Documents/Cline/Hooks/`
 
-Project-specific hooks override global hooks with the same name.
+프로젝트 전용 훅은 동일한 이름의 전역 훅을 덮어씁니다.

@@ -1,27 +1,27 @@
 ---
-title: "Samples"
-sidebarTitle: "Samples"
-description: "Practical hook examples organized by complexity level - from beginner to advanced patterns"
+title: "샘플"
+sidebarTitle: "샘플"
+description: "난이도별로 정리된 실용적인 훅 예제 - 초급부터 고급 패턴까지"
 ---
 
-This page provides complete, production-ready hook examples organized by skill level. Each example includes full working code, detailed explanations, and guidance on when to use each pattern.
+이 페이지는 숙련도별로 정리된 프로덕션 수준의 훅 예제를 제공합니다. 각 예제는 완전한 동작 코드, 상세 설명, 그리고 언제 해당 패턴을 사용할지에 대한 가이드를 포함합니다.
 
-## How to Use These Samples
+## 이 샘플을 사용하는 방법
 
-Each sample is designed to be:
-- **Copy-and-paste ready**: Use them directly or as starting points
-- **Educational**: Learn hook concepts through progressive complexity
-- **Practical**: Solve real development workflow challenges
+각 샘플은 다음 목표로 설계되었습니다:
+- **복사-붙여넣기 가능**: 그대로 사용하거나 시작점으로 사용
+- **교육적**: 점진적 복잡도로 훅 개념 학습
+- **실용적**: 실제 개발 워크플로 문제 해결
 
-Choose samples based on your experience level and gradually work up to more advanced patterns.
+자신의 경험 수준에 맞는 샘플을 선택하고, 점차 더 고급 패턴으로 넘어가세요.
 
 ---
 
-## Beginner Examples
+## 초급 예제
 
-Perfect for getting started with hooks. These examples demonstrate core concepts with straightforward logic.
+훅을 시작하기에 완벽한 예제입니다. 간단한 로직으로 핵심 개념을 보여줍니다.
 
-### 1. Project Type Detection
+### 1. 프로젝트 유형 감지
 
 **Hook:** `TaskStart`
 
@@ -66,13 +66,13 @@ else
 fi
 ```
 
-**Key Concepts:**
-- Reading hook input with `input=$(cat)`
-- Using file system checks to detect project type
-- Returning context to influence AI behavior
-- Basic JSON output with `jq`
+**핵심 개념:**
+- `input=$(cat)`으로 훅 입력 읽기
+- 파일 시스템 체크로 프로젝트 유형 감지
+- AI 동작에 영향을 주는 컨텍스트 반환
+- `jq`로 기본 JSON 출력
 
-### 2. File Extension Validator
+### 2. 파일 확장자 검증기
 
 **Hook:** `PreToolUse`
 
@@ -128,13 +128,13 @@ fi
 echo '{"cancel": false}'
 ```
 
-**Key Concepts:**
-- Extracting tool name and parameters
-- Conditional logic based on project state
-- Blocking operations with `"cancel": true`
-- Providing helpful error messages
+**핵심 개념:**
+- 도구 이름과 파라미터 추출
+- 프로젝트 상태에 따른 조건 분기
+- `"cancel": true`로 작업 차단
+- 사용자를 안내하는 명확한 에러 메시지
 
-### 3. Basic Performance Monitor
+### 3. 기본 성능 모니터
 
 **Hook:** `PostToolUse`
 
@@ -172,17 +172,17 @@ else
 fi
 ```
 
-**Key Concepts:**
-- Processing results after tool execution
-- Basic arithmetic operations in bash
-- Simple file logging
-- Conditional context injection
+**핵심 개념:**
+- 도구 실행 후 결과 처리
+- bash 산술 연산
+- 간단한 파일 로깅
+- 성능 지표에 따른 조건부 컨텍스트 주입
 
-## Intermediate Examples
+## 중급 예제
 
-These examples demonstrate more advanced concepts including external tool integration, pattern matching, and structured logging.
+이 예제들은 외부 도구 통합, 패턴 매칭, 구조화된 로깅 등 더 고급 개념을 보여줍니다.
 
-### 4. Code Quality with Linting
+### 4. 린팅 기반 코드 품질 검사
 
 **Hook:** `PreToolUse`
 
@@ -257,13 +257,13 @@ else
 fi
 ```
 
-**Key Concepts:**
-- Temporary file creation and cleanup
-- External tool integration (eslint, flake8)
-- Complex pattern matching with regex
-- Structured error reporting
+**핵심 개념:**
+- 임시 파일 생성 및 정리
+- 외부 도구 통합(eslint, flake8)
+- 정규식 기반 복잡한 패턴 매칭
+- 구조화된 오류 보고
 
-### 5. Security Scanner
+### 5. 보안 스캐너
 
 **Hook:** `PreToolUse`
 
@@ -337,13 +337,13 @@ else
 fi
 ```
 
-**Key Concepts:**
-- Pattern arrays and iteration
-- File path exception handling  
-- Security-focused validation
-- Clear user guidance in error messages
+**핵심 개념:**
+- 패턴 배열과 반복 처리
+- 파일 경로 예외 처리
+- 보안 중심 검증
+- 명확한 사용자 안내 메시지
 
-### 6. Git Workflow Assistant
+### 6. Git 워크플로 도우미
 
 **Hook:** `PostToolUse`
 
@@ -399,17 +399,17 @@ fi
 jq -n --arg ctx "$context" '{"cancel": false, "contextModification": $ctx}'
 ```
 
-**Key Concepts:**
-- Git repository detection
-- Branch analysis and suggestions
-- File path analysis for context
-- Actionable user guidance
+**핵심 개념:**
+- Git 저장소 감지
+- 브랜치 분석 및 제안
+- 파일 경로 기반 컨텍스트 분석
+- 실행 가능한 사용자 가이드
 
-## Advanced Examples
+## 고급 예제
 
-These examples showcase sophisticated patterns including external integrations, asynchronous processing, and complex state management.
+이 예제들은 외부 통합, 비동기 처리, 복잡한 상태 관리 등 정교한 패턴을 보여줍니다.
 
-### 7. Comprehensive Task Lifecycle Manager
+### 7. 종합 작업 라이프사이클 관리자
 
 **Hook:** `TaskComplete`
 
@@ -500,13 +500,13 @@ context="TASK_COMPLETED: ✅ Task $task_id finished successfully. Report saved t
 jq -n --arg ctx "$context" '{"cancel": false, "contextModification": $ctx}'
 ```
 
-**Key Concepts:**
-- Complex data extraction and validation
-- Structured report generation
-- Asynchronous webhook notifications
-- Error handling and resource management
+**핵심 개념:**
+- 복잡한 데이터 추출 및 검증
+- 구조화된 보고서 생성
+- 비동기 웹훅 알림
+- 오류 처리와 리소스 관리
 
-### 8. Intelligent User Input Enhancer  
+### 8. 지능형 사용자 입력 보강기
 
 **Hook:** `UserPromptSubmit`
 
@@ -596,13 +596,13 @@ else
 fi
 ```
 
-**Key Concepts:**
-- User interaction analysis and logging
-- Multi-pattern safety validation
-- Intelligent context detection
-- Dynamic suggestion generation
+**핵심 개념:**
+- 사용자 상호작용 분석 및 로깅
+- 다중 패턴 안전 검증
+- 지능형 컨텍스트 감지
+- 동적 제안 생성
 
-### 9. Multi-Service Integration Hub
+### 9. 멀티 서비스 통합 허브
 
 **Hook:** `PostToolUse`
 
@@ -691,17 +691,17 @@ fi
 jq -n --arg ctx "$context" '{"cancel": false, "contextModification": $ctx}'
 ```
 
-**Key Concepts:**
-- Multi-service integration patterns
-- Asynchronous webhook orchestration  
-- Complex workflow detection
-- Enterprise notification systems
+**핵심 개념:**
+- 멀티 서비스 통합 패턴
+- 비동기 웹훅 오케스트레이션  
+- 복잡한 워크플로 감지
+- 엔터프라이즈 알림 시스템
 
-## Usage Tips
+## 사용 팁
 
-### Running Multiple Hooks
+### 여러 훅 실행
 
-You can use multiple hooks together by creating separate files for each hook type:
+각 훅 유형별로 파일을 만들어 여러 훅을 함께 사용할 수 있습니다:
 
 ```bash
 # Create hooks directory
@@ -716,9 +716,9 @@ touch .clinerules/hooks/TaskStart
 chmod +x .clinerules/hooks/*
 ```
 
-### Environment Configuration
+### 환경 변수 설정
 
-Set up environment variables for external integrations:
+외부 통합을 위한 환경 변수를 설정하세요:
 
 ```bash
 # Add to your .bashrc or .zshrc
@@ -729,9 +729,9 @@ export JIRA_TOKEN="your-api-token"
 export CI_WEBHOOK_URL="https://your-ci-system.com/hooks/cline"
 ```
 
-### Testing Your Hooks
+### 훅 테스트
 
-Test hooks manually by simulating their input:
+입력을 시뮬레이션해 훅을 수동으로 테스트할 수 있습니다:
 
 ```bash
 # Test a PreToolUse hook
@@ -752,4 +752,4 @@ echo '{
 }' | .clinerules/hooks/PreToolUse
 ```
 
-These examples provide a solid foundation for implementing hooks in your development workflow. Customize them based on your specific needs, tools, and integrations.
+이 예제들은 개발 워크플로에서 훅을 구현하기 위한 탄탄한 기반을 제공합니다. 자신의 필요, 도구, 통합 환경에 맞게 커스터마이즈하세요.

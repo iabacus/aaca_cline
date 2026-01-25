@@ -1,80 +1,80 @@
 ---
 title: "Groq"
-description: "Learn how to configure and use Groq's lightning-fast inference with Cline. Access models from OpenAI, Meta, DeepSeek, and more on Groq's purpose-built LPU architecture."
+description: "Cline에서 Groq의 초고속 추론을 설정하고 사용하는 방법을 알아보세요. Groq의 LPU 아키텍처에서 OpenAI, Meta, DeepSeek 등 다양한 모델에 접근할 수 있습니다."
 ---
 
-Groq provides ultra-fast AI inference through their custom LPU™ (Language Processing Unit) architecture, purpose-built for inference rather than adapted from training hardware. Groq hosts open-source models from various providers including OpenAI, Meta, DeepSeek, Moonshot AI, and others.
+Groq는 추론에 최적화된 자체 LPU™(Language Processing Unit) 아키텍처를 통해 초고속 AI 추론을 제공합니다. Groq는 OpenAI, Meta, DeepSeek, Moonshot AI 등 다양한 제공자의 오픈소스 모델을 호스팅합니다.
 
-**Website:** [https://groq.com/](https://groq.com/)
+**웹사이트:** [https://groq.com/](https://groq.com/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to [Groq](https://groq.com/) and create an account or sign in.
-2.  **Navigate to Console:** Go to the [Groq Console](https://console.groq.com/) to access your dashboard.
-3.  **Create a Key:** Navigate to the API Keys section and create a new API key. Give your key a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** Copy the API key immediately. You will not be able to see it again. Store it securely.
+1.  **가입/로그인:** [Groq](https://groq.com/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **콘솔로 이동:** [Groq Console](https://console.groq.com/)로 이동해 대시보드에 접근합니다.
+3.  **키 생성:** API Keys 섹션에서 새 API 키를 생성하고 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** API 키를 즉시 복사하세요. 다시 확인할 수 없습니다. 안전하게 보관하세요.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Groq models:
+Cline은 다음 Groq 모델을 지원합니다:
 
--   `llama-3.3-70b-versatile` (Meta) - Balanced performance with 131K context
--   `llama-3.1-8b-instant` (Meta) - Fast inference with 131K context  
--   `openai/gpt-oss-120b` (OpenAI) - Featured flagship model with 131K context
--   `openai/gpt-oss-20b` (OpenAI) - Featured compact model with 131K context
--   `moonshotai/kimi-k2-instruct` (Moonshot AI) - 1 trillion parameter model with prompt caching
--   `deepseek-r1-distill-llama-70b` (DeepSeek/Meta) - Reasoning-optimized model
--   `qwen/qwen3-32b` (Alibaba Cloud) - Enhanced for Q&A tasks
--   `meta-llama/llama-4-maverick-17b-128e-instruct` (Meta) - Latest Llama 4 variant
--   `meta-llama/llama-4-scout-17b-16e-instruct` (Meta) - Latest Llama 4 variant
+-   `llama-3.3-70b-versatile` (Meta) - 131K 컨텍스트로 균형 잡힌 성능
+-   `llama-3.1-8b-instant` (Meta) - 131K 컨텍스트의 빠른 추론  
+-   `openai/gpt-oss-120b` (OpenAI) - 131K 컨텍스트의 대표 플래그십 모델
+-   `openai/gpt-oss-20b` (OpenAI) - 131K 컨텍스트의 소형 대표 모델
+-   `moonshotai/kimi-k2-instruct` (Moonshot AI) - 프롬프트 캐싱을 지원하는 1조 파라미터 모델
+-   `deepseek-r1-distill-llama-70b` (DeepSeek/Meta) - 추론 최적화 모델
+-   `qwen/qwen3-32b` (Alibaba Cloud) - Q&A 작업 강화 모델
+-   `meta-llama/llama-4-maverick-17b-128e-instruct` (Meta) - 최신 Llama 4 변형
+-   `meta-llama/llama-4-scout-17b-16e-instruct` (Meta) - 최신 Llama 4 변형
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Groq" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Groq API key into the "Groq API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Groq"를 선택합니다.
+3.  **API 키 입력:** Groq API 키를 "Groq API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-### Groq's Speed Revolution
+### Groq의 속도 혁신
 
-Groq's LPU architecture delivers several key advantages over traditional GPU-based inference:
+Groq의 LPU 아키텍처는 기존 GPU 기반 추론 대비 다음과 같은 강점을 제공합니다:
 
-#### LPU Architecture
-Unlike GPUs that are adapted from training workloads, Groq's LPU is purpose-built for inference. This eliminates architectural bottlenecks that create latency in traditional systems.
+#### LPU 아키텍처
+GPU는 학습용 설계를 추론에 맞춰 적용했지만, Groq의 LPU는 추론을 위해 처음부터 설계되었습니다. 이로 인해 기존 시스템의 지연 원인이 되는 구조적 병목이 제거됩니다.
 
-#### Unmatched Speed
-- **Sub-millisecond latency** that stays consistent across traffic, regions, and workloads
-- **Static scheduling** with pre-computed execution graphs eliminates runtime coordination delays
-- **Tensor parallelism** optimized for low-latency single responses rather than high-throughput batching
+#### 압도적인 속도
+- **서브 밀리초 지연 시간**으로 트래픽, 리전, 워크로드에 관계없이 일관된 응답
+- **정적 스케줄링**과 사전 계산된 실행 그래프로 런타임 조율 지연 제거
+- **텐서 병렬화**가 고처리량 배치보다 저지연 단일 응답에 최적화
 
-#### Quality Without Tradeoffs
-- **TruePoint numerics** reduce precision only in areas that don't affect accuracy
-- **100-bit intermediate accumulation** ensures lossless computation
-- **Strategic precision control** maintains quality while achieving 2-4× speedup over BF16
+#### 트레이드오프 없는 품질
+- **TruePoint 수치 체계**로 정확도에 영향이 없는 부분에서만 정밀도 감소
+- **100비트 중간 누적**으로 손실 없는 계산
+- **전략적 정밀도 제어**로 BF16 대비 2~4배 속도를 유지하면서 품질 보존
 
-#### Memory Architecture
-- **SRAM as primary storage** (not cache) with hundreds of megabytes on-chip
-- **Eliminates DRAM/HBM latency** that plagues traditional accelerators
-- **Enables true tensor parallelism** by splitting layers across multiple chips
+#### 메모리 아키텍처
+- **SRAM을 기본 저장소로 사용**(캐시가 아님)하며 칩 내 수백 MB 제공
+- **DRAM/HBM 지연을 제거**해 기존 가속기의 병목 해결
+- **다중 칩 레이어 분할**로 진정한 텐서 병렬화 구현
 
-Learn more about Groq's technology in their [LPU architecture blog post](https://groq.com/blog/inside-the-lpu-deconstructing-groq-speed).
+Groq 기술에 대한 자세한 내용은 [LPU 아키텍처 블로그](https://groq.com/blog/inside-the-lpu-deconstructing-groq-speed)를 참고하세요.
 
-### Special Features
+### 특별 기능
 
-#### Prompt Caching
-The Kimi K2 model supports prompt caching, which can significantly reduce costs and latency for repeated prompts.
+#### 프롬프트 캐싱
+Kimi K2 모델은 프롬프트 캐싱을 지원하여 반복 프롬프트의 비용과 지연 시간을 크게 줄일 수 있습니다.
 
-#### Vision Support
-Select models support image inputs and vision capabilities. Check the model details in the Groq Console for specific capabilities.
+#### 비전 지원
+일부 모델은 이미지 입력과 비전 기능을 지원합니다. 구체적인 지원 사항은 Groq 콘솔의 모델 세부 정보를 확인하세요.
 
-#### Reasoning Models
-Some models like DeepSeek variants offer enhanced reasoning capabilities with step-by-step thought processes.
+#### 추론 모델
+DeepSeek 계열 모델처럼 일부 모델은 단계별 사고 과정을 포함한 향상된 추론 기능을 제공합니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Model Selection:** Choose models based on your specific use case and performance requirements.
--   **Speed Advantage:** Groq excels at single-request latency rather than high-throughput batch processing.
--   **OSS Model Provider:** Groq hosts open-source models from multiple providers (OpenAI, Meta, DeepSeek, etc.) on their fast infrastructure.
--   **Context Windows:** Most models offer large context windows (up to 131K tokens) for including substantial code and context.
--   **Pricing:** Groq offers competitive pricing with their speed advantages. Check the [Groq Pricing](https://groq.com/pricing) page for current rates.
--   **Rate Limits:** Groq has generous rate limits, but check their documentation for current limits based on your usage tier.
+-   **모델 선택:** 사용 사례와 성능 요구에 따라 모델을 선택하세요.
+-   **속도 강점:** Groq는 고처리량 배치보다는 단일 요청 지연 시간에 강점이 있습니다.
+-   **OSS 모델 제공:** Groq는 OpenAI, Meta, DeepSeek 등 다양한 제공자의 오픈소스 모델을 빠른 인프라에서 제공합니다.
+-   **컨텍스트 창:** 대부분 모델은 최대 131K 토큰의 큰 컨텍스트 창을 제공합니다.
+-   **가격:** Groq의 속도 이점과 함께 경쟁력 있는 가격을 제공합니다. 최신 요금은 [Groq Pricing](https://groq.com/pricing)을 참고하세요.
+-   **요율 제한:** Groq는 넉넉한 요율 제한을 제공하지만, 사용 등급에 따른 최신 제한은 문서에서 확인하세요.

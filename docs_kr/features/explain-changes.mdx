@@ -1,14 +1,14 @@
 ---
-title: "Explain Changes"
-sidebarTitle: "Explain Changes"
+title: "변경 사항 설명"
+sidebarTitle: "변경 사항 설명"
 ---
 
 <Note>
-This feature is only available in **VS Code**. The diff view with inline comments requires VS Code's native diff capabilities.
+이 기능은 **VS Code**에서만 사용할 수 있습니다. 인라인 댓글이 포함된 diff 뷰는 VS Code의 네이티브 diff 기능이 필요합니다.
 </Note>
 
 
-Explain Changes is an AI-powered code review feature that adds inline explanations to your code changes. When Cline makes modifications to your codebase, you can click a button to get streaming, contextual explanations that appear directly in VS Code's diff view.
+변경 사항 설명은 AI 기반 코드 리뷰 기능으로, 코드 변경에 인라인 설명을 추가합니다. Cline이 코드베이스를 수정하면 버튼을 눌러 VS Code의 diff 뷰에 바로 표시되는 스트리밍 컨텍스트 설명을 받을 수 있습니다.
 
 
 <Frame>
@@ -22,74 +22,74 @@ Explain Changes is an AI-powered code review feature that adds inline explanatio
 </Frame>
 
 
-## How It Works
+## 동작 방식
 <Note>
-Explain Changes requires **[Checkpoints](/features/checkpoints)** to be enabled. Make sure to enable checkpoints in your Cline settings before using this feature.
+변경 사항 설명을 사용하려면 **[체크포인트](/features/checkpoints)**가 활성화되어 있어야 합니다. 이 기능을 사용하기 전에 Cline 설정에서 체크포인트를 활성화하세요.
 </Note>
 
-After Cline completes a task that involves file changes, you'll see an "Explain Changes" button alongside the "View Changes" button in the completion message. Clicking this button:
+Cline이 파일 변경을 포함한 작업을 완료하면, 완료 메시지에 "View Changes" 버튼과 함께 "Explain Changes" 버튼이 표시됩니다. 이 버튼을 클릭하면:
 
-1. Opens a multi-file diff view showing all changed files
-2. Streams AI-generated explanations as inline comments
-3. Places comments at relevant code locations to explain what changed and why
+1. 변경된 모든 파일을 보여주는 다중 파일 diff 뷰를 엽니다
+2. AI 생성 설명을 인라인 댓글로 스트리밍합니다
+3. 변경된 코드의 관련 위치에 댓글을 달아 무엇이, 왜 바뀌었는지 설명합니다
 
-The AI uses the full conversation context to provide meaningful explanations, not just describing what code does, but explaining the reasoning behind the changes.
+AI는 전체 대화 컨텍스트를 사용해 의미 있는 설명을 제공합니다. 단순히 코드가 무엇을 하는지 설명하는 것을 넘어, 변경 이유를 설명합니다.
 
-## Interactive Comment Threads
+## 인터랙티브 댓글 스레드
 
-One of the most powerful aspects of Explain Changes is that the comments are fully interactive. You can have conversations directly within each comment thread.
+변경 사항 설명의 가장 강력한 특징 중 하나는 댓글이 완전히 상호작용 가능하다는 점입니다. 각 댓글 스레드 안에서 대화를 이어갈 수 있습니다.
 
-### Asking Follow-up Questions
+### 후속 질문하기
 
-Each explanation comment has a reply input where you can ask questions about that specific piece of code:
+각 설명 댓글에는 해당 코드 조각에 대한 질문을 입력할 수 있는 답글 입력란이 있습니다:
 
-- "Why did you use this approach instead of X?"
-- "Can you explain this pattern in more detail?"
-- "What would happen if we changed this to Y?"
+- "왜 X 대신 이 접근을 사용했나요?"
+- "이 패턴을 더 자세히 설명해 줄 수 있나요?"
+- "이걸 Y로 바꾸면 어떤 일이 생기나요?"
 
-The AI will respond with context-aware answers, understanding both the code being discussed and the original task context.
+AI는 코드 컨텍스트와 원래 작업 맥락을 모두 이해한 상태에서 맥락에 맞는 답변을 제공합니다.
 
-### Moving to Main Chat
+### 메인 채팅으로 이동
 
-If a conversation in a comment thread becomes complex or you want to continue working on that code, click the title area of the comment thread to move the entire conversation into Cline's main chat input. This lets you:
+댓글 스레드의 대화가 복잡해지거나 해당 코드로 계속 작업하고 싶다면, 댓글 스레드의 제목 영역을 클릭해 전체 대화를 Cline의 메인 채팅 입력으로 옮길 수 있습니다. 이렇게 하면:
 
-- Continue the discussion with full Cline capabilities
-- Have Cline make additional changes based on the discussion
-- Keep the context from your review conversation
+- 전체 Cline 기능을 사용해 논의를 이어갈 수 있음
+- 논의 내용을 바탕으로 Cline이 추가 변경을 수행하도록 할 수 있음
+- 리뷰 대화의 컨텍스트를 유지할 수 있음
 
-## When to Use Explain Changes
+## 변경 사항 설명을 사용할 때
 
-### Learning and Onboarding
+### 학습 및 온보딩
 
-When you're new to a codebase or working with unfamiliar patterns, Explain Changes helps you understand not just what Cline did, but why. The explanations cover:
+코드베이스가 낯설거나 낯선 패턴를 다룰 때, 변경 사항 설명은 Cline이 무엇을 했는지뿐 아니라 왜 했는지까지 이해하도록 도와줍니다. 설명에는 다음이 포함됩니다:
 
-- Design decisions and trade-offs
-- Technical concepts and patterns used
-- Relationships between different changes
+- 설계 결정과 트레이드오프
+- 사용된 기술 개념과 패턴
+- 서로 다른 변경 사항 간의 관계
 
-### Code Review
+### 코드 리뷰
 
-Use Explain Changes as part of your review process:
+리뷰 과정에서 변경 사항 설명을 활용하세요:
 
-- Understand complex changes before committing
-- Verify the AI's reasoning matches your expectations
-- Catch potential issues by understanding the full context
+- 커밋 전에 복잡한 변경을 이해
+- AI의 의도가 기대와 일치하는지 확인
+- 전체 컨텍스트를 이해해 잠재 이슈를 발견
 
-### Knowledge Transfer
+### 지식 이전
 
-The explanations serve as documentation for your changes. When other team members review your code, they can see the reasoning behind each modification.
+설명은 변경 사항에 대한 문서 역할을 합니다. 다른 팀원이 코드를 리뷰할 때 각 수정의 이유를 확인할 수 있습니다.
 
-## Best Practices
+## 모범 사례
 
-1. **Ask specific questions**: The more specific your follow-up questions, the more useful the AI's responses will be.
+1. **구체적인 질문**: 후속 질문이 구체적일수록 AI 답변이 더 유용합니다.
 
-2. **Use for complex changes**: Explain Changes is most valuable for multi-file changes or complex logic. For simple changes, the diff view alone may be sufficient.
+2. **복잡한 변경에 사용**: 다중 파일 변경이나 복잡한 로직에 특히 가치가 큽니다. 단순한 변경은 diff 뷰만으로도 충분할 수 있습니다.
 
-3. **Move important discussions to chat**: If a comment thread reveals something that needs more work, move it to main chat to take action.
+3. **중요한 논의는 채팅으로 이동**: 댓글 스레드에서 추가 작업이 필요하면 메인 채팅으로 옮겨 실행하세요.
 
-4. **Review before committing**: Use Explain Changes as a final check before committing changes to ensure you understand everything Cline did.
+4. **커밋 전 리뷰**: 변경 사항 설명을 마지막 점검으로 사용해 Cline이 한 모든 작업을 이해했는지 확인하세요.
 
-## Related Features
+## 관련 기능
 
-- [Checkpoints](/features/checkpoints) - Required for Explain Changes to work
-- [/explain-changes](/features/slash-commands/explain-changes) - Slash command to explain any git diff
+- [체크포인트](/features/checkpoints) - 변경 사항 설명을 사용하기 위해 필요
+- [/explain-changes](/features/slash-commands/explain-changes) - 어떤 git diff든 설명하는 슬래시 명령

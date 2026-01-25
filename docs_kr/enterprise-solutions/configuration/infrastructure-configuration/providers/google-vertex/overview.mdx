@@ -1,20 +1,20 @@
 ---
-title: "Google Vertex AI Configuration"
+title: "Google Vertex AI 구성"
 sidebarTitle: "Google Vertex"
-description: "Configure Google Vertex AI for your Cline deployment"
+description: "Cline 배포를 위한 Google Vertex AI 구성"
 ---
 
 <Info>
-**Configuration Path: Self-Hosted**
+**구성 경로: 자체 호스팅**
 
-This guide covers Vertex AI configuration for self-hosted deployments. For simple web-based setup, see [Google Vertex SaaS Configuration](/enterprise-solutions/configuration/remote-configuration/google-vertex/admin-configuration).
+이 가이드는 자체 호스팅 배포를 위한 Vertex AI 구성을 다룹니다. 웹 기반 간단 설정은 [Google Vertex SaaS 구성](/enterprise-solutions/configuration/remote-configuration/google-vertex/admin-configuration)을 참고하세요.
 </Info>
 
-Configure Cline to use Google Vertex AI for enterprise access to Gemini and other Google AI models through Google Cloud Platform.
+Google Cloud Platform을 통해 Gemini 및 기타 Google AI 모델을 엔터프라이즈에서 사용할 수 있도록 Cline에 Google Vertex AI를 구성합니다.
 
-## Configuration Format
+## 구성 형식
 
-Configure Vertex AI through your remote configuration JSON using the `providerSettings.Vertex` section:
+원격 구성 JSON에서 `providerSettings.Vertex` 섹션으로 Vertex AI를 구성합니다:
 
 ```json
 {
@@ -33,17 +33,17 @@ Configure Vertex AI through your remote configuration JSON using the `providerSe
 }
 ```
 
-## Configuration Fields
+## 구성 필드
 
-| Field | Type | Description | Required |
+| 필드 | 타입 | 설명 | 필수 |
 |-------|------|-------------|----------|
-| `models` | Array | List of model configurations | Yes |
-| `vertexProjectId` | String | Google Cloud project ID | Yes |
-| `vertexRegion` | String | GCP region (e.g., `us-central1`) | Yes |
+| `models` | Array | 모델 구성 목록 | 예 |
+| `vertexProjectId` | String | Google Cloud 프로젝트 ID | 예 |
+| `vertexRegion` | String | GCP 리전(예: `us-central1`) | 예 |
 
-### Model Configuration
+### 모델 구성
 
-Each model in the `models` array requires:
+`models` 배열의 각 모델은 다음을 포함해야 합니다:
 
 ```json
 {
@@ -58,24 +58,24 @@ Each model in the `models` array requires:
 }
 ```
 
-## Common Model IDs
+## 일반적인 모델 ID
 
-| Model ID | Description | Context Window |
+| 모델 ID | 설명 | 컨텍스트 윈도우 |
 |----------|-------------|----------------|
-| `claude-3-5-sonnet-v2@20241022` | Claude 3.5 Sonnet | 200K tokens |
-| `claude-3-5-haiku@20241022` | Claude 3.5 Haiku | 200K tokens |
-| `claude-3-opus@20240229` | Claude 3 Opus | 200K tokens |
-| `gemini-2.0-flash-exp` | Gemini Flash (experimental) | 1M tokens |
-| `gemini-1.5-pro-002` | Gemini Pro | 2M tokens |
-| `gemini-1.5-flash-002` | Gemini Flash | 1M tokens |
+| `claude-3-5-sonnet-v2@20241022` | Claude 3.5 Sonnet | 200K 토큰 |
+| `claude-3-5-haiku@20241022` | Claude 3.5 Haiku | 200K 토큰 |
+| `claude-3-opus@20240229` | Claude 3 Opus | 200K 토큰 |
+| `gemini-2.0-flash-exp` | Gemini Flash(실험적) | 1M 토큰 |
+| `gemini-1.5-pro-002` | Gemini Pro | 2M 토큰 |
+| `gemini-1.5-flash-002` | Gemini Flash | 1M 토큰 |
 
 <Note>
-Model availability varies by region. See [Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models) for region-specific model availability.
+모델 가용성은 리전에 따라 다릅니다. 리전별 모델 가용성은 [Vertex AI 문서](https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models)를 참고하세요.
 </Note>
 
-## Example Configurations
+## 구성 예시
 
-### Basic Configuration
+### 기본 구성
 
 ```json
 {
@@ -94,7 +94,7 @@ Model availability varies by region. See [Vertex AI documentation](https://cloud
 }
 ```
 
-### Multiple Models
+### 다중 모델
 
 ```json
 {
@@ -117,7 +117,7 @@ Model availability varies by region. See [Vertex AI documentation](https://cloud
 }
 ```
 
-### With Extended Thinking
+### 확장된 사고(Thinking) 사용
 
 ```json
 {
@@ -137,49 +137,49 @@ Model availability varies by region. See [Vertex AI documentation](https://cloud
 }
 ```
 
-## Prerequisites
+## 사전 준비
 
-Before configuring Cline to use Vertex AI, you need:
+Vertex AI를 사용하기 전에 다음이 필요합니다:
 
-1. **Google Cloud Project** with Vertex AI API enabled
-2. **Service Account** with Vertex AI User role (`roles/aiplatform.user`)
-3. **Service Account Credentials** configured for authentication
-4. **Model Access** verified in your project and region
+1. Vertex AI API가 활성화된 **Google Cloud 프로젝트**
+2. Vertex AI User 역할(`roles/aiplatform.user`)을 가진 **서비스 계정**
+3. **서비스 계정 자격 증명** 구성
+4. 프로젝트 및 리전에서 **모델 접근** 확인
 
 <Tip>
-For Google Cloud setup and authentication configuration, see the [Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal).
+Google Cloud 설정과 인증 구성은 [Vertex AI 문서](https://cloud.google.com/vertex-ai/docs/generative-ai/start/quickstarts/quickstart-multimodal)를 참고하세요.
 </Tip>
 
-## Troubleshooting
+## 문제 해결
 
-**"Permission Denied" Errors**
+**"Permission Denied" 오류**
 
-Ensure your service account has the required Vertex AI permissions. See [Google Cloud IAM documentation](https://cloud.google.com/vertex-ai/docs/general/access-control) for permission requirements.
+서비스 계정에 필요한 Vertex AI 권한이 있는지 확인하세요. 권한 요구사항은 [Google Cloud IAM 문서](https://cloud.google.com/vertex-ai/docs/general/access-control)를 참고하세요.
 
-**"API Not Enabled" Errors**
+**"API Not Enabled" 오류**
 
-Verify the Vertex AI API is enabled in your Google Cloud project.
+Google Cloud 프로젝트에서 Vertex AI API가 활성화되어 있는지 확인하세요.
 
-**"Model Not Found" Errors**
+**"Model Not Found" 오류**
 
-Check that the model is available in your configured region and that your project has access to it.
+구성한 리전에서 모델이 उपलब्ध하고 프로젝트에 접근 권한이 있는지 확인하세요.
 
-## Related Resources
+## 관련 자료
 
 <CardGroup cols={2}>
-  <Card title="Vertex AI Docs" icon="book" href="https://cloud.google.com/vertex-ai/docs">
-    Complete Vertex AI documentation
+  <Card title="Vertex AI 문서" icon="book" href="https://cloud.google.com/vertex-ai/docs">
+    Vertex AI 전체 문서
   </Card>
   
-  <Card title="Service Accounts" icon="key" href="https://cloud.google.com/iam/docs/service-accounts">
-    Service account best practices
+  <Card title="서비스 계정" icon="key" href="https://cloud.google.com/iam/docs/service-accounts">
+    서비스 계정 모범 사례
   </Card>
   
-  <Card title="Model Guide" icon="brain" href="https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models">
-    Available models and features
+  <Card title="모델 가이드" icon="brain" href="https://cloud.google.com/vertex-ai/docs/generative-ai/learn/models">
+    사용 가능한 모델과 기능
   </Card>
   
-  <Card title="Pricing" icon="dollar-sign" href="https://cloud.google.com/vertex-ai/pricing">
-    Vertex AI pricing details
+  <Card title="가격" icon="dollar-sign" href="https://cloud.google.com/vertex-ai/pricing">
+    Vertex AI 가격 정보
   </Card>
 </CardGroup>

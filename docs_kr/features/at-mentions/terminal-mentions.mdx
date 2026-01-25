@@ -1,13 +1,13 @@
 ---
-title: "Terminal Mentions"
-sidebarTitle: "Terminal Mentions"
+title: "터미널 멘션"
+sidebarTitle: "터미널 멘션"
 ---
 
-The terminal mention lets you bring your terminal output directly into your conversation with Cline. Just type `@terminal` and Cline can see the recent output from your terminal.
+터미널 멘션을 사용하면 터미널 출력을 Cline 대화에 바로 가져올 수 있습니다. `@terminal`을 입력하면 최근 터미널 출력이 Cline에 전달됩니다.
 
-When you type `@` in chat, select "Terminal" from the menu or just type `@terminal` directly. Cline will immediately see the recent output from your active terminal, including error messages, build logs, or command results.
+채팅에서 `@`를 입력하고 메뉴에서 "Terminal"을 선택하거나 `@terminal`을 직접 입력하세요. Cline은 활성 터미널의 최근 출력(에러 메시지, 빌드 로그, 명령 결과 등)을 즉시 확인합니다.
 
-I use the terminal mention all the time when I'm dealing with build errors, test failures, or debugging output. Instead of trying to copy and paste terminal output (which often loses formatting), I just ask:
+저는 빌드 오류, 테스트 실패, 디버깅 출력 문제를 다룰 때 터미널 멘션을 자주 사용합니다. 터미널 출력은 복사/붙여넣기 할 때 포맷이 깨지는 경우가 많으므로, 이렇게 요청합니다:
 
 ```
 I'm getting this error when running my tests: @terminal
@@ -15,9 +15,9 @@ I'm getting this error when running my tests: @terminal
 What's causing this and how can I fix it?
 ```
 
-This gives Cline the complete terminal output with all its formatting intact. Cline can then analyze the error messages, stack traces, and surrounding context to provide more accurate help.
+이렇게 하면 Cline이 포맷이 유지된 전체 터미널 출력을 확인할 수 있습니다. 오류 메시지, 스택 트레이스, 주변 컨텍스트를 분석해 더 정확한 도움을 제공할 수 있습니다.
 
-The terminal mention is especially powerful when combined with file mentions. When I'm debugging a failed API call, I'll reference both:
+터미널 멘션은 파일 멘션과 함께 사용할 때 특히 유용합니다. 실패한 API 호출을 디버깅할 때는 다음과 같이 참조할 수 있습니다:
 
 ```
 I'm getting this error when calling my API: @terminal
@@ -28,18 +28,18 @@ And the endpoint implementation: @/src/server/routes/users.js
 What am I doing wrong?
 ```
 
-This approach gives Cline everything it needs - the exact error output, the client code, and the server implementation - all without me having to copy anything manually.
+이 방식은 정확한 오류 출력, 클라이언트 코드, 서버 구현까지 모두 제공하므로, 별도로 복사하지 않아도 Cline이 필요한 정보를 모두 볼 수 있습니다.
 
-Next time you're running into issues with command output or build errors, try using `@terminal` instead of copying the output. You'll get more accurate help because Cline can see the complete terminal context with proper formatting.
+다음에 명령 출력이나 빌드 오류로 막히면 `@terminal`을 사용해 보세요. 터미널 컨텍스트 전체를 포맷 그대로 전달하므로 더 정확한 도움을 받을 수 있습니다.
 
-## How It Works Under the Hood
+## 내부 동작 방식
 
-When you use the terminal mention in your message, here's what happens behind the scenes:
+터미널 멘션을 사용할 때 내부적으로는 다음과 같이 동작합니다:
 
-1. When you send your message, Cline detects the `@terminal` pattern in your text
-2. The extension calls `getLatestTerminalOutput()` which accesses VSCode's terminal API
-3. It captures the recent output buffer from your active terminal
-4. The terminal output is appended to your message in a structured format:
+1. 메시지를 전송하면 Cline이 텍스트에서 `@terminal` 패턴을 감지
+2. 확장이 `getLatestTerminalOutput()`을 호출하여 VS Code 터미널 API에 접근
+3. 활성 터미널의 최근 출력 버퍼를 캡처
+4. 터미널 출력이 구조화된 형식으로 메시지에 첨부됨:
 
     ```
     <terminal_output>
@@ -54,20 +54,20 @@ When you use the terminal mention in your message, here's what happens behind th
     </terminal_output>
     ```
 
-5. This enhanced message with the embedded terminal output is sent to the AI
-6. The AI can now "see" the complete terminal output with all formatting preserved
+5. 터미널 출력이 포함된 메시지가 AI로 전송
+6. AI가 포맷이 유지된 전체 터미널 출력을 확인 가능
 
-This process happens automatically whenever you use the terminal mention, giving the AI access to your command results, error messages, and other terminal output without you having to copy it manually.
+이 과정은 터미널 멘션을 사용할 때마다 자동으로 수행되어, 명령 결과나 오류 출력을 수동으로 복사하지 않아도 AI가 전체 출력 맥락을 볼 수 있게 해줍니다.
 
-## Troubleshooting Terminal Issues
+## 터미널 문제 해결
 
-If you're experiencing issues with terminal mentions or terminal integration in general (such as "Shell Integration Unavailable" or commands not showing output), please refer to our comprehensive [Terminal Integration Troubleshooting Guide](/troubleshooting/terminal-integration-guide).
+터미널 멘션 또는 터미널 통합 전반에서 문제가 발생하는 경우(예: "Shell Integration Unavailable" 또는 출력 미표시), [터미널 통합 문제 해결 가이드](/troubleshooting/terminal-integration-guide)를 참고하세요.
 
-Common issues include:
+일반적인 이슈:
 
--   Terminal mentions not capturing output
--   "Shell Integration Unavailable" messages in Cline chat
--   Commands executing but output not visible to Cline
--   Terminal integration working inconsistently
+-   터미널 멘션이 출력 내용을 캡처하지 못함
+-   Cline 채팅에 "Shell Integration Unavailable" 메시지 표시
+-   명령이 실행되지만 출력이 Cline에 표시되지 않음
+-   터미널 통합이 간헐적으로 동작
 
-The troubleshooting guide provides platform-specific solutions and detailed configuration steps to resolve these issues.
+해당 가이드는 플랫폼별 해결 방법과 자세한 설정 단계를 제공합니다.

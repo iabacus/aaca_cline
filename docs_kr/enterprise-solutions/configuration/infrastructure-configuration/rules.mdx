@@ -1,29 +1,29 @@
 ---
-title: "Rules"
-sidebarTitle: "Rules"
-description: "Custom instruction files that guide Cline's behavior in your enterprise deployment"
+title: "규칙"
+sidebarTitle: "규칙"
+description: "엔터프라이즈 배포에서 Cline 동작을 안내하는 커스텀 지침 파일"
 ---
 
-Rules are custom instruction files that provide Cline with guidelines about your coding preferences, standards, and best practices. These instructions get added to Cline's context when working on tasks.
+규칙은 코딩 선호도, 표준, 모범 사례에 대한 가이드를 Cline에 제공하는 커스텀 지침 파일입니다. 작업 시 이 지침들이 Cline의 컨텍스트에 추가됩니다.
 
-## What are Rules?
+## 규칙이란?
 
-Rules are simple markdown files stored in a `.clinerules/` directory that contain your team's conventions, preferences, and guidelines. They help Cline understand your:
+규칙은 `.clinerules/` 디렉터리에 저장되는 간단한 마크다운 파일이며, 팀의 관례, 선호, 가이드라인을 담고 있습니다. Cline이 다음을 이해하도록 돕습니다:
 
-- Coding style and conventions
-- Preferred libraries and frameworks
-- Architectural patterns
-- Testing strategies
-- Documentation standards
-- Communication preferences
+- 코딩 스타일과 관례
+- 선호하는 라이브러리와 프레임워크
+- 아키텍처 패턴
+- 테스트 전략
+- 문서화 표준
+- 커뮤니케이션 선호도
 
 <Tip>
-Rules are just `.md` files - no complex configuration needed!
+규칙은 그냥 `.md` 파일입니다. 복잡한 설정이 필요 없습니다!
 </Tip>
 
-## Quick Example
+## 빠른 예시
 
-Here's a simple rule file that guides TypeScript development:
+TypeScript 개발을 안내하는 간단한 규칙 파일 예시:
 
 ```markdown
 # TypeScript Conventions
@@ -45,17 +45,17 @@ Here's a simple rule file that guides TypeScript development:
 - Use date-fns for date manipulation
 ```
 
-## Creating Rules
+## 규칙 만들기
 
 <Tabs>
-  <Tab title="Using /newrule Command">
-    The easiest way to create a rule is with the `/newrule` command:
+  <Tab title="/newrule 명령 사용">
+    규칙을 만드는 가장 쉬운 방법은 `/newrule` 명령입니다:
     
-    1. During a conversation with Cline, type `/newrule`
-    2. Cline will analyze your conversation and preferences
-    3. It creates an appropriately named `.md` file in `.clinerules/`
+    1. Cline과의 대화 중 `/newrule` 입력
+    2. Cline이 대화 내용과 선호도를 분석
+    3. `.clinerules/`에 적절한 이름의 `.md` 파일 생성
     
-    **Example:**
+    **예시:**
     ```
     /newrule
     
@@ -63,14 +63,14 @@ Here's a simple rule file that guides TypeScript development:
     ```
   </Tab>
   
-  <Tab title="Manual Creation">
-    You can also create rule files manually:
+  <Tab title="수동 생성">
+    규칙 파일을 수동으로 만들 수도 있습니다:
     
-    1. Create a `.clinerules/` directory in your repository root
-    2. Add markdown files with your guidelines
-    3. Use descriptive names like `react-patterns.md` or `api-conventions.md`
+    1. 저장소 루트에 `.clinerules/` 디렉터리 생성
+    2. 가이드라인을 담은 마크다운 파일 추가
+    3. `react-patterns.md`, `api-conventions.md`처럼 설명적인 이름 사용
     
-    **File structure:**
+    **파일 구조:**
     ```
     your-repo/
     ├── .clinerules/
@@ -82,100 +82,100 @@ Here's a simple rule file that guides TypeScript development:
   </Tab>
 </Tabs>
 
-## Global vs Workspace Rules
+## 글로벌 규칙 vs 워크스페이스 규칙
 
 <CardGroup cols={2}>
-  <Card title="Workspace Rules" icon="folder">
-    **Location:** `.clinerules/` in your repository
+  <Card title="워크스페이스 규칙" icon="folder">
+    **위치:** 저장소의 `.clinerules/`
     
-    **Scope:** Specific to that project
+    **범위:** 해당 프로젝트에만 적용
     
-    **Use for:** Project-specific conventions and patterns
+    **용도:** 프로젝트별 관례와 패턴
   </Card>
   
-  <Card title="Global Rules" icon="globe">
-    **Location:** `Documents/Cline/` directory
+  <Card title="글로벌 규칙" icon="globe">
+    **위치:** `Documents/Cline/` 디렉터리
     
-    **Scope:** All your projects
+    **범위:** 모든 프로젝트에 적용
     
-    **Use for:** Personal preferences that apply everywhere
+    **용도:** 어디서나 적용되는 개인 선호도
   </Card>
 </CardGroup>
 
-## Managing Rules
+## 규칙 관리
 
-### Toggling Rules
+### 규칙 토글
 
-You can enable or disable individual rule files:
+개별 규칙 파일을 활성/비활성화할 수 있습니다:
 
-1. Click the rules icon in Cline's interface
-2. Toggle rules on/off as needed
-3. Changes apply immediately to new tasks
+1. Cline 인터페이스의 규칙 아이콘 클릭
+2. 필요한 규칙을 켜거나 끔
+3. 변경 사항은 새 작업에 즉시 적용
 
 <Note>
-Disabling a rule removes it from Cline's context, but keeps the file intact. You can re-enable it anytime.
+규칙을 비활성화해도 파일은 유지되며 언제든 다시 활성화할 수 있습니다.
 </Note>
 
-### Enterprise Remote Rules
+### 엔터프라이즈 원격 규칙
 
 <Info>
-Enterprise deployments can configure **remote global rules** that apply to all team members. These are managed through your infrastructure configuration and cannot be toggled off by individual developers.
+엔터프라이즈 배포에서는 **원격 글로벌 규칙**을 구성하여 모든 팀원에게 적용할 수 있습니다. 이는 인프라 구성으로 관리되며 개별 개발자가 끌 수 없습니다.
 
-See [Self-Hosted Configuration](/enterprise-solutions/configuration/infrastructure-configuration/overview) for details on remote rules.
+원격 규칙에 대한 자세한 내용은 [자체 호스팅 구성](/enterprise-solutions/configuration/infrastructure-configuration/overview)을 참고하세요.
 </Info>
 
-## Compatible Formats
+## 호환 포맷
 
-Cline also respects rules from other AI coding tools:
+Cline은 다른 AI 코딩 도구의 규칙도 지원합니다:
 
-| File/Directory | Tool | Location |
+| 파일/디렉터리 | 도구 | 위치 |
 |----------------|------|----------|
-| `.cursorrules` | Cursor | Workspace root (single file) |
-| `.cursor/rules/` | Cursor | Workspace directory (`.mdc` files) |
-| `.windsurfrules` | Windsurf | Workspace root (single file) |
-| `AGENTS.md` | Various | Workspace root + recursive search |
+| `.cursorrules` | Cursor | 워크스페이스 루트(단일 파일) |
+| `.cursor/rules/` | Cursor | 워크스페이스 디렉터리(`.mdc` 파일) |
+| `.windsurfrules` | Windsurf | 워크스페이스 루트(단일 파일) |
+| `AGENTS.md` | Various | 워크스페이스 루트 + 재귀 검색 |
 
 <Note>
-**AGENTS.md behavior:** Cline only searches for nested `AGENTS.md` files recursively if a top-level `AGENTS.md` exists in your workspace root. If found, all `AGENTS.md` files are combined with their relative paths as headers.
+**AGENTS.md 동작:** Cline은 워크스페이스 루트에 최상위 `AGENTS.md`가 있을 때만 하위 `AGENTS.md`를 재귀적으로 검색합니다. 발견되면 모든 `AGENTS.md`를 상대 경로 헤더와 함께 병합합니다.
 </Note>
 
-These files work the same way as `.clinerules/` files and can be toggled on/off independently.
+이 파일들은 `.clinerules/`와 동일하게 동작하며 독립적으로 켜고 끌 수 있습니다.
 
-## Best Practices
+## 모범 사례
 
 <AccordionGroup>
-  <Accordion title="Keep Rules Focused" icon="bullseye">
-    Each rule file should focus on one topic:
+  <Accordion title="규칙을 집중적으로 유지" icon="bullseye">
+    각 규칙 파일은 한 가지 주제에만 집중하세요:
     - ✅ `typescript-conventions.md`
     - ✅ `react-component-structure.md`
     - ❌ `everything-about-our-codebase.md`
   </Accordion>
   
-  <Accordion title="Be Specific, Not Generic" icon="crosshairs">
-    Base rules on actual team preferences, not assumptions:
-    - ✅ "We use React Query for server state management"
-    - ❌ "Use best practices for state management"
+  <Accordion title="구체적으로 작성" icon="crosshairs">
+    가정이 아닌 실제 팀 선호를 기반으로 작성하세요:
+    - ✅ "서버 상태 관리는 React Query를 사용합니다"
+    - ❌ "상태 관리는 모범 사례를 따릅니다"
   </Accordion>
   
-  <Accordion title="Update Rules as Projects Evolve" icon="rotate">
-    Review and update rules periodically:
-    - When adopting new technologies
-    - After major architectural changes
-    - When team conventions evolve
+  <Accordion title="프로젝트 변화에 맞춰 업데이트" icon="rotate">
+    규칙을 주기적으로 검토 및 업데이트하세요:
+    - 새로운 기술 도입 시
+    - 주요 아키텍처 변경 후
+    - 팀 관례가 변할 때
   </Accordion>
   
-  <Accordion title="Don't Overdo It" icon="gauge-simple-high">
-    Too many rules can overwhelm Cline's context:
-    - Start with 3-5 essential rules
-    - Add more only when truly needed
-    - Remove outdated rules promptly
+  <Accordion title="과도하게 늘리지 않기" icon="gauge-simple-high">
+    너무 많은 규칙은 Cline 컨텍스트를 과부하할 수 있습니다:
+    - 3~5개의 핵심 규칙으로 시작
+    - 정말 필요할 때만 추가
+    - 오래된 규칙은 즉시 제거
   </Accordion>
 </AccordionGroup>
 
-## Example Rule Files
+## 규칙 예시
 
 <AccordionGroup>
-  <Accordion title="API Design Standards" icon="code">
+  <Accordion title="API 설계 표준" icon="code">
 ```markdown
 # API Design Standards
 
@@ -203,7 +203,7 @@ These files work the same way as `.clinerules/` files and can be toggled on/off 
 ```
   </Accordion>
   
-  <Accordion title="Testing Requirements" icon="vial">
+  <Accordion title="테스트 요구사항" icon="vial">
 ```markdown
 # Testing Requirements
 
@@ -226,14 +226,14 @@ These files work the same way as `.clinerules/` files and can be toggled on/off 
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Workflows" icon="diagram-project" href="/enterprise-solutions/configuration/infrastructure-configuration/workflows">
-    Combine rules with automated workflows
+  <Card title="워크플로" icon="diagram-project" href="/enterprise-solutions/configuration/infrastructure-configuration/workflows">
+    규칙과 자동화 워크플로를 결합하세요
   </Card>
   
-  <Card title="Remote Configuration" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
-    Deploy global rules for your team
+  <Card title="원격 구성" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
+    팀 전체에 글로벌 규칙을 배포하세요
   </Card>
 </CardGroup>

@@ -1,204 +1,204 @@
 ---
-title: "Keyboard Shortcuts"
-sidebarTitle: "Keyboard Shortcuts"
+title: "키보드 단축키"
+sidebarTitle: "키보드 단축키"
 ---
 
-Speed up your workflow by accessing Cline's AI assistance without taking your hands off the keyboard.
+키보드에서 손을 떼지 않고 Cline의 AI 도움을 받을 수 있어 워크플로가 빨라집니다.
 
 <Tip>
-**The One Shortcut You Need:** `Ctrl+'` (Windows/Linux) or `Cmd+'` (macOS)
+**꼭 알아둘 단축키 하나:** `Ctrl+'` (Windows/Linux) 또는 `Cmd+'` (macOS)
 
-This context-aware shortcut handles your most common needs:
-- **With text selected:** Adds code to Cline chat
-- **Without selection:** Focuses the chat input
+이 컨텍스트 인지 단축키는 가장 흔한 요구를 처리합니다:
+- **텍스트 선택됨:** 선택한 코드를 Cline 채팅에 추가
+- **선택 없음:** 채팅 입력에 포커스
 
-Master this one shortcut, and you're 90% there.
+이 한 가지 단축키만 익혀도 90%는 해결됩니다.
 </Tip>
 
-## Default Shortcuts
+## 기본 단축키
 
-Cline has minimal default shortcuts by design, so they won't conflict with your existing VSCode setup:
+Cline은 기본 단축키를 최소화해 기존 VS Code 설정과 충돌하지 않도록 설계되었습니다:
 
-| Shortcut | Windows/Linux | macOS | What It Does |
+| 단축키 | Windows/Linux | macOS | 기능 |
 | -------- | ------------- | ----- | ------------ |
-| **Add to Chat / Focus Input** | `Ctrl+'` | `Cmd+'` | Context-aware: adds selected code or focuses chat |
+| **채팅에 추가 / 입력 포커스** | `Ctrl+'` | `Cmd+'` | 컨텍스트 인지: 선택한 코드를 추가하거나 채팅에 포커스 |
 
-That's it! Everything else is available for you to customize.
+끝입니다! 나머지는 직접 커스터마이즈하면 됩니다.
 
-## Quick Workflow Examples
+## 빠른 워크플로 예시
 
-Here's how keyboard shortcuts fit into real coding workflows:
+키보드 단축키가 실제 코딩 흐름에 어떻게 들어오는지 살펴봅니다:
 
-### Debug & Fix Workflow
+### 디버그 & 수정 워크플로
 
-1. **Find error in code** → VSCode highlights it
-2. **Select the problematic code** → `Shift+Arrow` or `Ctrl+L` / `Cmd+L`
-3. **Send to Cline** → `Ctrl+'` / `Cmd+'`
-4. **Ask for help** → Type your question, hit `Enter`
+1. **코드에서 오류 발견** → VS Code가 강조 표시
+2. **문제 코드 선택** → `Shift+Arrow` 또는 `Ctrl+L` / `Cmd+L`
+3. **Cline에 전송** → `Ctrl+'` / `Cmd+'`
+4. **도움 요청** → 질문 입력 후 `Enter`
 
-### Code Review Workflow
+### 코드 리뷰 워크플로
 
-1. **Review a function** → Select it with `Ctrl+L` / `Cmd+L`
-2. **Get AI review** → `Ctrl+'` / `Cmd+'` then ask "Review this"
-3. **Iterate** → Apply suggestions and repeat
+1. **함수 검토** → `Ctrl+L` / `Cmd+L`로 선택
+2. **AI 리뷰 요청** → `Ctrl+'` / `Cmd+'` 후 "Review this" 입력
+3. **반복 개선** → 제안 적용 후 반복
 
-### Terminal Integration Workflow
+### 터미널 통합 워크플로
 
-1. **Open terminal** → Press `` Ctrl+` `` / `` Cmd+` ``
-2. **Run your command** → Execute in terminal
-3. **Capture output** → Press `Alt+T` (after assigning shortcut)
-4. **Get help** → Ask Cline to interpret errors or output
+1. **터미널 열기** → `` Ctrl+` `` / `` Cmd+` ``
+2. **명령 실행** → 터미널에서 실행
+3. **출력 캡처** → `Alt+T`(단축키 할당 후)
+4. **도움 요청** → 오류나 출력 해석을 Cline에게 요청
 
 <Info>
-**Pro Tip:** Assign `Alt+T` to the `cline.addTerminalOutputToChat` command for quick terminal output capture. Without a shortcut, you can still right-click in the terminal and select "Add to Cline" - but the keyboard approach is much faster for frequent debugging workflows.
+**프로 팁:** 빠른 터미널 출력 캡처를 위해 `cline.addTerminalOutputToChat` 명령에 `Alt+T`를 할당하세요. 단축키가 없어도 터미널에서 우클릭 후 "Add to Cline"을 선택할 수 있지만, 키보드 방식이 자주 쓰는 디버깅 워크플로에서는 훨씬 빠릅니다.
 </Info>
 
-## Customizing Shortcuts
+## 단축키 커스터마이즈
 
-Want to assign shortcuts to more Cline commands? Here's how:
+더 많은 Cline 명령에 단축키를 할당하고 싶다면 다음 순서를 따르세요:
 
-**Step 1:** Open VSCode's Keyboard Shortcuts editor
-- Press `Ctrl+K Ctrl+S` (Windows/Linux) or `Cmd+K Cmd+S` (macOS)
-- Or: **File → Preferences → Keyboard Shortcuts**
+**1단계:** VS Code 키보드 단축키 편집기 열기
+- `Ctrl+K Ctrl+S` (Windows/Linux) 또는 `Cmd+K Cmd+S` (macOS)
+- 또는: **File → Preferences → Keyboard Shortcuts**
 
-**Step 2:** Search for "Cline"
+**2단계:** "Cline" 검색
 
-**Step 3:** Click the ✏️ icon next to any command
+**3단계:** 원하는 명령 옆의 ✏️ 아이콘 클릭
 
-**Step 4:** Press your desired key combo, then `Enter`
-
-<Warning>
-**Avoid Conflicts:** Check that your shortcut doesn't override important VSCode commands. The shortcuts editor will warn you about conflicts.
-</Warning>
-
-## Available Commands Reference
-
-<Accordion title="Task Management Commands">
-
-These commands help you navigate and manage Cline tasks:
-
-| Command ID | Description | Suggested Shortcut |
-| ---------- | ----------- | ------------------ |
-| `cline.plusButtonClicked` | Start a new task | `Ctrl+Shift+N` / `Cmd+Shift+N` |
-| `cline.historyButtonClicked` | Open task history | `Ctrl+Shift+H` / `Cmd+Shift+H` |
-| `claude-dev.SidebarProvider.focus` | Open Cline sidebar | `Ctrl+Shift+L` / `Cmd+Shift+L` |
-
-**Note:** `claude-dev` prefix is for historical reasons - it works with Cline.
-
-</Accordion>
-
-<Accordion title="Code Interaction Commands">
-
-Work directly with your code:
-
-| Command ID | Description | Suggested Shortcut |
-| ---------- | ----------- | ------------------ |
-| `cline.addToChat` | Add selected code to chat | `Ctrl+'` / `Cmd+'` ⭐ (default) |
-| `cline.focusChatInput` | Focus chat input | `Ctrl+'` / `Cmd+'` ⭐ (default) |
-| `cline.explainCode` | Explain selected code | `Ctrl+Shift+E` / `Cmd+Shift+E` |
-| `cline.improveCode` | Suggest code improvements | `Ctrl+Shift+I` / `Cmd+Shift+I` |
-
-⭐ These share the same shortcut - it's context-aware!
-
-</Accordion>
-
-<Accordion title="Terminal Integration Commands">
-
-Connect Cline with your terminal:
-
-| Command ID | Description | Suggested Shortcut |
-| ---------- | ----------- | ------------------ |
-| `cline.addTerminalOutputToChat` | Add terminal output to Cline | `Alt+T` |
-
-**Tip:** Use this after running commands to get help interpreting output or fixing errors.
-
-</Accordion>
-
-<Accordion title="Git Integration Commands">
-
-Generate commit messages with AI:
-
-| Command ID | Description | Suggested Shortcut |
-| ---------- | ----------- | ------------------ |
-| `cline.generateGitCommitMessage` | Generate commit message | `Ctrl+Shift+G` / `Cmd+Shift+G` |
-| `cline.abortGitCommitMessage` | Stop generation | `Ctrl+Shift+Esc` / `Cmd+Shift+Esc` |
-
-</Accordion>
-
-<Accordion title="Settings & Configuration Commands (Advanced)">
-
-These commands open Cline's configuration panels. Most users access these via the sidebar buttons, but keyboard shortcuts can be useful for:
-
-- **Frequent MCP server developers** who constantly adjust server configurations
-- **Demo/presentation scenarios** where you need quick, keyboard-only navigation
-- **Accessibility workflows** where mouse usage is minimized
-
-| Command ID | Description | Suggested Shortcut |
-| ---------- | ----------- | ------------------ |
-| `cline.settingsButtonClicked` | Open Cline settings | `Ctrl+Alt+,` / `Cmd+Opt+,` |
-| `cline.mcpButtonClicked` | Open MCP servers config | `Ctrl+Alt+M` / `Cmd+Opt+M` |
-| `cline.accountButtonClicked` | Open account settings | `Ctrl+Alt+A` / `Cmd+Opt+A` |
-| `cline.openWalkthrough` | Open walkthrough guide | (not recommended) |
-
-**Our take:** Unless you're constantly tweaking settings or building MCP servers, the sidebar buttons are more convenient. But if you find yourself opening these panels frequently, shortcuts can save time.
-
-</Accordion>
-
-## What About "Fix with Cline"?
+**4단계:** 원하는 키 조합을 누른 뒤 `Enter`
 
 <Warning>
-**You CAN'T assign a keyboard shortcut to "Fix with Cline"**
-
-This command only appears in the **lightbulb menu** (💡) when VSCode detects errors in your code. It needs the error context to work, so it's not available as a standalone command.
-
-**Workarounds:**
-- Click the 💡 lightbulb icon that appears next to errors
-- Or select code with errors and use `Ctrl+'` / `Cmd+'` to ask Cline to fix them
-- Or right-click and select "Add to Cline"
+**충돌 주의:** 중요한 VS Code 명령을 덮어쓰지 않는지 확인하세요. 단축키 편집기가 충돌을 경고합니다.
 </Warning>
 
-Learn more about code actions in our [Code Commands documentation](/features/commands-and-shortcuts/code-commands).
+## 사용 가능한 명령 참고
 
-## Best Practices
+<Accordion title="작업 관리 명령">
+
+이 명령들은 Cline 작업을 탐색하고 관리하는 데 도움이 됩니다:
+
+| Command ID | 설명 | 추천 단축키 |
+| ---------- | ----------- | ------------------ |
+| `cline.plusButtonClicked` | 새 작업 시작 | `Ctrl+Shift+N` / `Cmd+Shift+N` |
+| `cline.historyButtonClicked` | 작업 히스토리 열기 | `Ctrl+Shift+H` / `Cmd+Shift+H` |
+| `claude-dev.SidebarProvider.focus` | Cline 사이드바 열기 | `Ctrl+Shift+L` / `Cmd+Shift+L` |
+
+**참고:** `claude-dev` 접두사는 역사적 이유로 남아 있으며 Cline에서 정상 동작합니다.
+
+</Accordion>
+
+<Accordion title="코드 상호작용 명령">
+
+코드와 직접 상호작용합니다:
+
+| Command ID | 설명 | 추천 단축키 |
+| ---------- | ----------- | ------------------ |
+| `cline.addToChat` | 선택한 코드를 채팅에 추가 | `Ctrl+'` / `Cmd+'` ⭐ (기본) |
+| `cline.focusChatInput` | 채팅 입력 포커스 | `Ctrl+'` / `Cmd+'` ⭐ (기본) |
+| `cline.explainCode` | 선택한 코드 설명 | `Ctrl+Shift+E` / `Cmd+Shift+E` |
+| `cline.improveCode` | 코드 개선 제안 | `Ctrl+Shift+I` / `Cmd+Shift+I` |
+
+⭐ 두 명령은 같은 단축키를 공유합니다. 컨텍스트 인지 방식입니다!
+
+</Accordion>
+
+<Accordion title="터미널 통합 명령">
+
+Cline과 터미널을 연결합니다:
+
+| Command ID | 설명 | 추천 단축키 |
+| ---------- | ----------- | ------------------ |
+| `cline.addTerminalOutputToChat` | 터미널 출력을 Cline에 추가 | `Alt+T` |
+
+**팁:** 명령 실행 후 이 단축키를 사용하면 출력 해석이나 오류 수정에 도움을 받을 수 있습니다.
+
+</Accordion>
+
+<Accordion title="Git 통합 명령">
+
+AI로 커밋 메시지를 생성합니다:
+
+| Command ID | 설명 | 추천 단축키 |
+| ---------- | ----------- | ------------------ |
+| `cline.generateGitCommitMessage` | 커밋 메시지 생성 | `Ctrl+Shift+G` / `Cmd+Shift+G` |
+| `cline.abortGitCommitMessage` | 생성 중지 | `Ctrl+Shift+Esc` / `Cmd+Shift+Esc` |
+
+</Accordion>
+
+<Accordion title="설정 및 구성 명령 (고급)">
+
+이 명령들은 Cline의 설정 패널을 엽니다. 대부분은 사이드바 버튼으로 접근하지만, 단축키는 다음 상황에서 유용합니다:
+
+- **MCP 서버 개발을 자주 하는 사용자**가 서버 구성을 수시로 조정할 때
+- **데모/발표**처럼 키보드만으로 빠르게 이동해야 할 때
+- **접근성 워크플로**로 마우스 사용을 최소화할 때
+
+| Command ID | 설명 | 추천 단축키 |
+| ---------- | ----------- | ------------------ |
+| `cline.settingsButtonClicked` | Cline 설정 열기 | `Ctrl+Alt+,` / `Cmd+Opt+,` |
+| `cline.mcpButtonClicked` | MCP 서버 설정 열기 | `Ctrl+Alt+M` / `Cmd+Opt+M` |
+| `cline.accountButtonClicked` | 계정 설정 열기 | `Ctrl+Alt+A` / `Cmd+Opt+A` |
+| `cline.openWalkthrough` | 워크스루 가이드 열기 | (권장하지 않음) |
+
+**참고:** 설정을 자주 조정하거나 MCP 서버를 만드는 경우가 아니라면, 사이드바 버튼이 더 편리합니다. 하지만 패널을 자주 열어야 한다면 단축키가 시간을 절약해 줍니다.
+
+</Accordion>
+
+## "Fix with Cline"은 어떨까요?
+
+<Warning>
+**"Fix with Cline"에는 키보드 단축키를 할당할 수 없습니다**
+
+이 명령은 VS Code가 코드 오류를 감지했을 때만 **전구 메뉴**(💡)에 나타납니다. 오류 컨텍스트가 필요하므로 독립 명령으로 사용할 수 없습니다.
+
+**대안:**
+- 오류 옆에 나타나는 💡 전구 아이콘을 클릭
+- 오류가 있는 코드를 선택하고 `Ctrl+'` / `Cmd+'`로 Cline에 수정 요청
+- 또는 우클릭 후 "Add to Cline" 선택
+</Warning>
+
+코드 액션에 대해 더 알아보려면 [코드 명령 문서](/features/commands-and-shortcuts/code-commands)를 참고하세요.
+
+## 모범 사례
 
 <Tip>
-**Start Simple**
+**간단하게 시작하세요**
 
-Don't try to memorize 20 shortcuts on day one. Start with:
-1. `Ctrl+'` / `Cmd+'` (the essential one)
-2. Add 1-2 more based on your actual usage patterns
-3. Build muscle memory over time
+첫날부터 20개의 단축키를 외우려 하지 마세요. 먼저 다음부터 시작하세요:
+1. `Ctrl+'` / `Cmd+'` (핵심 단축키)
+2. 실제 사용 패턴에 맞는 1~2개 추가
+3. 시간에 따라 근육 기억을 형성
 </Tip>
 
-**Choose Shortcuts Wisely:**
-- **Be ergonomic:** Use comfortable key combinations
-- **Create patterns:** Group related commands (e.g., all Cline shortcuts use `Ctrl+Shift+...`)
-- **Avoid conflicts:** Don't override VSCode essentials like `Ctrl+C` or `Ctrl+S`
-- **Use modifiers:** Combine `Ctrl`/`Cmd` + `Shift` + `Alt` to reduce conflicts
+**단축키 선택 요령:**
+- **인체공학적:** 편한 키 조합 사용
+- **패턴 만들기:** 관련 명령을 묶기(예: 모든 Cline 단축키는 `Ctrl+Shift+...`)
+- **충돌 회피:** `Ctrl+C`나 `Ctrl+S` 같은 필수 단축키를 덮어쓰지 않기
+- **수정키 활용:** `Ctrl`/`Cmd` + `Shift` + `Alt` 조합으로 충돌 감소
 
-**Build the Habit:**
-- Use shortcuts consistently for a week to build muscle memory
-- Keep a note of your custom shortcuts until they're automatic
-- Review monthly to see if your workflow has changed
+**습관 만들기:**
+- 일주일 동안 꾸준히 사용해 근육 기억을 만들기
+- 커스텀 단축키를 메모해 익숙해질 때까지 참고하기
+- 매월 워크플로 변화 여부를 점검
 
-## Discovering Commands
+## 명령 찾기
 
-Not sure what commands are available? Use VSCode's Command Palette:
+어떤 명령이 있는지 확실하지 않다면 VS Code 명령 팔레트를 사용하세요:
 
-1. Press `Ctrl+Shift+P` / `Cmd+Shift+P`
-2. Type "Cline" to filter
-3. Browse all available commands
-4. Assign shortcuts to your favorites
+1. `Ctrl+Shift+P` / `Cmd+Shift+P`
+2. "Cline"을 입력해 필터링
+3. 사용 가능한 명령을 모두 확인
+4. 자주 쓰는 명령에 단축키 할당
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/editor-integration.png"
-		alt="Editor Integration Overview"
+		alt="에디터 통합 개요"
 	/>
 </Frame>
 
 ---
 
 <Info>
-**Remember:** The goal isn't to memorize every possible shortcut. Master `Ctrl+'` / `Cmd+'` first, then gradually add shortcuts for commands you use frequently. Quality over quantity!
+**기억하세요:** 모든 단축키를 외우는 것이 목표가 아닙니다. 먼저 `Ctrl+'` / `Cmd+'`를 익힌 뒤, 자주 쓰는 명령에만 단축키를 점진적으로 추가하세요. 양보다 질이 중요합니다!
 </Info>

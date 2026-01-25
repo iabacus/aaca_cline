@@ -1,54 +1,54 @@
 ---
-title: "OpenTelemetry Integration"
+title: "OpenTelemetry 통합"
 sidebarTitle: "OpenTelemetry"
-description: "Export Cline telemetry to your observability platform using OpenTelemetry Protocol (OTLP)"
+description: "OpenTelemetry Protocol(OTLP)로 Cline 텔레메트리를 관측성 플랫폼으로 내보냅니다"
 ---
 
-Cline includes opt-in OpenTelemetry support for exporting metrics and logs to your own observability infrastructure using the OpenTelemetry Protocol (OTLP).
+Cline은 OpenTelemetry Protocol(OTLP)을 사용해 메트릭과 로그를 자체 관측성 인프라로 내보낼 수 있는 선택형(OpenTelemetry) 기능을 제공합니다.
 
 <Note>
-OpenTelemetry integration is **optional** and intended for advanced users with existing observability infrastructure. Most users won't need this feature.
+OpenTelemetry 통합은 **선택 사항**이며 기존 관측성 인프라가 있는 고급 사용자에게 적합합니다. 대부분의 사용자는 이 기능이 필요하지 않습니다.
 </Note>
 
-## What is OpenTelemetry?
+## OpenTelemetry란?
 
-[OpenTelemetry](https://opentelemetry.io/) is an industry-standard observability framework that provides a unified way to collect and export telemetry data (metrics, logs, and traces).
+[OpenTelemetry](https://opentelemetry.io/)는 메트릭, 로그, 트레이스를 수집하고 내보내는 통합 방식을 제공하는 업계 표준 관측성 프레임워크입니다.
 
-Cline's OpenTelemetry support allows you to:
-- Export telemetry to your own systems
-- Integrate with observability platforms like Datadog, New Relic, Grafana Cloud, etc.
-- Maintain full control over your monitoring data
-- Use your organization's existing monitoring infrastructure
+Cline의 OpenTelemetry 지원으로 다음을 할 수 있습니다:
+- 텔레메트리를 자체 시스템으로 내보내기
+- Datadog, New Relic, Grafana Cloud 등 관측성 플랫폼과 통합
+- 모니터링 데이터에 대한 완전한 제어 유지
+- 기존 조직 모니터링 인프라 활용
 
-## Supported Features
+## 지원 기능
 
-Cline supports OpenTelemetry's **OTLP (OpenTelemetry Protocol)** export with:
+Cline은 OpenTelemetry의 **OTLP(OpenTelemetry Protocol)** 내보내기를 지원합니다:
 
 <CardGroup cols={2}>
-  <Card title="Metrics Export" icon="chart-bar">
-    Export metrics about Cline usage, performance, and errors
+  <Card title="메트릭 내보내기" icon="chart-bar">
+    Cline 사용량, 성능, 오류에 대한 메트릭 내보내기
   </Card>
   
-  <Card title="Logs Export" icon="file-lines">
-    Export structured logs for debugging and analysis
+  <Card title="로그 내보내기" icon="file-lines">
+    디버깅과 분석을 위한 구조화 로그 내보내기
   </Card>
 </CardGroup>
 
-### Export Formats
+### 내보내기 형식
 
-Cline supports three OTLP export protocols:
+Cline은 세 가지 OTLP 전송 프로토콜을 지원합니다:
 
-- **gRPC** (default, recommended)
+- **gRPC**(기본값, 권장)
 - **HTTP/protobuf**
 - **HTTP/JSON**
 
-## Configuration
+## 구성
 
-OpenTelemetry is configured using [Remote Configuration](/enterprise-solutions/configuration/remote-configuration/overview#how-remote-configuration-works) from the [dashboard](https://app.cline.bot/dashboard/organization?tab=settings).
+OpenTelemetry는 [대시보드](https://app.cline.bot/dashboard/organization?tab=settings)의 [원격 구성](/enterprise-solutions/configuration/remote-configuration/overview#how-remote-configuration-works)으로 설정합니다.
 
-### Basic Setup
+### 기본 설정
 
-Enable OpenTelemetry, configure an OTLP endpoint and select a protocol:
+OpenTelemetry를 활성화하고 OTLP 엔드포인트 및 프로토콜을 선택하세요:
 
 <Frame>
 	<img
@@ -56,15 +56,15 @@ Enable OpenTelemetry, configure an OTLP endpoint and select a protocol:
 	/>
 </Frame>
 
-If you're using gRPC, you can opt out of TLS.
+gRPC를 사용하는 경우 TLS를 비활성화할 수 있습니다.
 
-Once the collector has been configured, you can enable logs and/or metrics collection. At least one of them needs to be enabled.
+콜렉터를 구성한 뒤 로그 및/또는 메트릭 수집을 활성화합니다. 둘 중 하나 이상은 반드시 활성화해야 합니다.
 
-You only need to configure it further if you need an advanced configuration.
+고급 구성이 필요하지 않다면 추가 설정은 필요 없습니다.
 
-### Advanced Configuration
+### 고급 구성
 
-You can add custom protocols and endpoints for both, logs and metrics. You can also configure the metrics export interval, and the logs batch size, batch timeout and max queue size.
+로그와 메트릭에 대해 커스텀 프로토콜/엔드포인트를 추가할 수 있습니다. 또한 메트릭 내보내기 간격, 로그 배치 크기, 배치 타임아웃, 최대 큐 크기를 설정할 수 있습니다.
 
 <Frame>
 	<img
@@ -72,9 +72,9 @@ You can add custom protocols and endpoints for both, logs and metrics. You can a
 	/>
 </Frame>
 
-**Custom headers for authentication:**
+**인증을 위한 커스텀 헤더:**
 
-Finally, if your collector needs authentication headers, you can add key value pairs in the headers section.
+콜렉터에 인증 헤더가 필요하면 헤더 섹션에서 키-값 쌍을 추가하세요.
 
 <Frame>
 	<img
@@ -82,11 +82,11 @@ Finally, if your collector needs authentication headers, you can add key value p
 	/>
 </Frame>
 
-## Integration Examples
+## 통합 예시
 
 ### Datadog
 
-Export to Datadog using their OTLP endpoint:
+Datadog의 OTLP 엔드포인트로 내보내기:
 
 <Frame>
 	<img
@@ -96,7 +96,7 @@ Export to Datadog using their OTLP endpoint:
 
 ### New Relic
 
-Export to New Relic:
+New Relic으로 내보내기:
 
 <Frame>
 	<img
@@ -106,7 +106,7 @@ Export to New Relic:
 
 ### Grafana Cloud
 
-Export to Grafana Cloud:
+Grafana Cloud로 내보내기:
 
 <Frame>
 	<img
@@ -114,92 +114,91 @@ Export to Grafana Cloud:
 	/>
 </Frame>
 
-## Testing Configuration
+## 구성 테스트
 
-To test your configuration, log in to your account, perform some actions in a task, wait for the export interval, and verify that the data has arrived at your collector.
+구성을 테스트하려면 계정에 로그인한 뒤 작업에서 몇 가지 행동을 수행하고, 내보내기 간격을 기다린 뒤 데이터가 콜렉터에 도착했는지 확인하세요.
 
-## Troubleshooting
+## 문제 해결
 
-If you aren’t getting any data in your collector, the easiest way to verify your integration is to enable the developer tools in your editor.
+콜렉터에 데이터가 보이지 않는다면, 가장 쉬운 확인 방법은 에디터에서 개발자 도구를 활성화하는 것입니다.
 
-To do this, open the [webview developer tools](https://code.visualstudio.com/api/extension-guides/webview#inspecting-and-debugging-webviews).
+[웹뷰 개발자 도구](https://code.visualstudio.com/api/extension-guides/webview#inspecting-and-debugging-webviews)를 열어 디버깅할 수 있습니다.
 
-Once you’ve done so, if you perform some actions that trigger metrics and/or logs (such as doing a task with Cline), 
-you will see error logs if any error occurs when sending the data to your collector.
+이후 메트릭/로그를 트리거하는 작업(예: Cline으로 작업 수행)을 하면, 콜렉터로 전송할 때 발생하는 오류 로그가 표시됩니다.
 
-If you don't see any logs, enable [debug mode](#debug-mode).
+로그가 보이지 않는다면 [디버그 모드](#debug-mode)를 활성화하세요.
 
-### Connection Errors
+### 연결 오류
 
-1. **Verify endpoint is accessible:**
+1. **엔드포인트 접근 확인:**
    ```bash
    curl -v https://your-otlp-endpoint:4317
    ```
 
-2. **Check if insecure mode is needed** by opting out of TLS
+2. **TLS 비활성화가 필요한지 확인**
 
-3. **Verify authentication headers:**
-   Double-check your API keys and authentication headers are correct
+3. **인증 헤더 확인:**
+   API 키 및 인증 헤더가 올바른지 재확인하세요.
 
-### Debug Mode
+### 디버그 모드
 
-Enable debug logging to see detailed OpenTelemetry information:
+OpenTelemetry 상세 로그를 보기 위해 디버그 로깅을 활성화합니다:
 
 ```bash
 TEL_DEBUG_DIAGNOSTICS=true code .
 ```
 
-This will output detailed information about:
-- Configuration being used
-- Exporters being created
-- Connection attempts
-- Export successes/failures
+다음에 대한 상세 정보가 출력됩니다:
+- 사용 중인 구성
+- 생성되는 exporter
+- 연결 시도
+- 내보내기 성공/실패
 
-## What Gets Exported
+## 내보내는 데이터
 
-When OpenTelemetry is enabled, Cline exports:
+OpenTelemetry를 활성화하면 Cline은 다음을 내보냅니다:
 
-### Metrics
-- Feature usage counts
-- Task execution metrics 
-- Error rates and types
-- Performance measurements
+### 메트릭
+- 기능 사용 횟수
+- 작업 실행 메트릭 
+- 오류율 및 유형
+- 성능 측정
 
-### Logs
-- System events
-- Error logs with context
-- Operational information
+### 로그
+- 시스템 이벤트
+- 맥락이 포함된 오류 로그
+- 운영 정보
 
 <Warning>
-Exported data is already anonymous and doesn't include code content, file paths, or sensitive information. However, you're responsible for securing the data once exported to your systems.
+내보내는 데이터는 이미 익명화되어 있으며 코드 내용, 파일 경로, 민감 정보는 포함하지 않습니다. 다만, 내보낸 이후 데이터 보안은 사용자가 책임져야 합니다.
 </Warning>
 
-## Limitations
+## 제한 사항
 
-Current OpenTelemetry support in Cline:
-- ✅ OTLP metrics export (gRPC, HTTP)
-- ✅ OTLP logs export (gRPC, HTTP)
-- ✅ Basic configuration via [Remote Configuration](/enterprise-solutions/configuration/remote-configuration/overview#how-remote-configuration-works)
-- ❌ Distributed tracing (not yet implemented)
-- ❌ Custom instrumentation API (not yet exposed)
-- ❌ Sampling configuration (uses defaults)
+현재 Cline의 OpenTelemetry 지원:
+- ✅ OTLP 메트릭 내보내기(gRPC, HTTP)
+- ✅ OTLP 로그 내보내기(gRPC, HTTP)
+- ✅ [원격 구성](/enterprise-solutions/configuration/remote-configuration/overview#how-remote-configuration-works)을 통한 기본 설정
+- ❌ 분산 트레이싱(아직 미구현)
+- ❌ 커스텀 계측 API(아직 노출되지 않음)
+- ❌ 샘플링 구성(기본값 사용)
 
-## Best Practices
+## 모범 사례
 
-1. **Test First**: Always test with console exporter before sending to production
-2. **Secure Credentials**: Never hardcode API keys; use secure environment variable management
-3. **Monitor Costs**: Be aware of data ingestion costs with your observability platform
-4. **Start Simple**: Begin with metrics only, add logs if needed
-5. **Use Compression**: OTLP supports compression; check if your endpoint requires it
+1. **먼저 테스트**: 프로덕션 전 콘솔 exporter로 테스트
+2. **자격 증명 보안**: API 키를 하드코딩하지 말고 안전한 환경 변수로 관리
+3. **비용 모니터링**: 관측성 플랫폼의 데이터 수집 비용 확인
+4. **단순하게 시작**: 메트릭만 먼저 시작하고 필요 시 로그 추가
+5. **압축 사용**: OTLP는 압축을 지원하므로 엔드포인트 요구사항을 확인
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Cline Telemetry" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
-    Configure simple built-in telemetry
+  <Card title="Cline 텔레메트리" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
+    간단한 내장 텔레메트리 구성
   </Card>
   
-  <Card title="OpenTelemetry Docs" icon="book" href="https://opentelemetry.io/docs/">
-    Learn more about OpenTelemetry
+  <Card title="OpenTelemetry 문서" icon="book" href="https://opentelemetry.io/docs/">
+    OpenTelemetry 자세히 보기
   </Card>
 </CardGroup>

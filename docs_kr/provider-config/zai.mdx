@@ -1,162 +1,162 @@
 ---
 title: "Z AI (Zhipu AI)"
-description: "Learn how to configure and use Z AI's GLM-4.5 models with Cline. Experience advanced hybrid reasoning, agentic capabilities, and open-source excellence with regional optimization."
+description: "Cline에서 Z AI의 GLM-4.5 모델을 설정하고 사용하는 방법을 알아보세요. 하이브리드 추론, 에이전트 기능, 오픈소스 강점을 지역 최적화와 함께 제공합니다."
 ---
 
-Z AI (formerly Zhipu AI) offers the groundbreaking GLM-4.5 series, featuring hybrid reasoning capabilities and agentic AI design. Released in July 2025, these models excel in unified reasoning, coding, and intelligent agent applications while maintaining open-source accessibility under MIT license.
+Z AI(구 Zhipu AI)는 하이브리드 추론 기능과 에이전트형 AI 설계를 갖춘 GLM-4.5 시리즈를 제공합니다. 2025년 7월 출시된 이 모델들은 통합 추론, 코딩, 지능형 에이전트 애플리케이션에서 뛰어난 성능을 보이며, MIT 라이선스 기반 오픈소스 접근성을 유지합니다.
 
-**Website:** [https://z.ai/model-api](https://z.ai/model-api) (International) | [https://open.bigmodel.cn/](https://open.bigmodel.cn/) (China)
+**웹사이트:** [https://z.ai/model-api](https://z.ai/model-api) (International) | [https://open.bigmodel.cn/](https://open.bigmodel.cn/) (China)
 
-### Getting an API Key
+### API 키 받기
 
-#### International Users
-1.  **Sign Up/Sign In:** Go to [https://z.ai/model-api](https://z.ai/model-api). Create an account or sign in.
-2.  **Navigate to API Keys:** Access your account dashboard and find the API keys section.
-3.  **Create a Key:** Generate a new API key for your application.
-4.  **Copy the Key:** Copy the API key immediately and store it securely.
+#### 해외 사용자
+1.  **가입/로그인:** [https://z.ai/model-api](https://z.ai/model-api)로 이동해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 계정 대시보드에서 API keys 섹션을 찾습니다.
+3.  **키 생성:** 애플리케이션용 새 API 키를 생성합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다.
 
-#### China Mainland Users
-1.  **Sign Up/Sign In:** Go to [https://open.bigmodel.cn/](https://open.bigmodel.cn/). Create an account or sign in.
-2.  **Navigate to API Keys:** Access your account dashboard and find the API keys section.
-3.  **Create a Key:** Generate a new API key for your application.
-4.  **Copy the Key:** Copy the API key immediately and store it securely.
+#### 중국 본토 사용자
+1.  **가입/로그인:** [https://open.bigmodel.cn/](https://open.bigmodel.cn/)로 이동해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 계정 대시보드에서 API keys 섹션을 찾습니다.
+3.  **키 생성:** 애플리케이션용 새 API 키를 생성합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다.
 
-### Supported Models
+### 지원 모델
 
-Z AI provides different model catalogs based on your selected region:
+Z AI는 선택한 지역에 따라 서로 다른 모델 카탈로그를 제공합니다:
 
-#### GLM-4.5 Series
--   **GLM-4.5** - Flagship model with 355B total parameters, 32B active parameters
--   **GLM-4.5-Air** - Compact model with 106B total parameters, 12B active parameters
+#### GLM-4.5 시리즈
+-   **GLM-4.5** - 총 355B 파라미터, 활성 32B 파라미터의 플래그십 모델
+-   **GLM-4.5-Air** - 총 106B 파라미터, 활성 12B 파라미터의 컴팩트 모델
 
-#### GLM-4.5 Hybrid Reasoning Models
--   **GLM-4.5 (Thinking Mode)** - Advanced reasoning with step-by-step analysis
--   **GLM-4.5-Air (Thinking Mode)** - Efficient reasoning for mainstream hardware
+#### GLM-4.5 하이브리드 추론 모델
+-   **GLM-4.5 (Thinking Mode)** - 단계별 분석을 포함한 고급 추론
+-   **GLM-4.5-Air (Thinking Mode)** - 일반 하드웨어에 최적화된 효율적 추론
 
-All models feature:
--   **128,000 token context window** for extensive document processing
--   **Mixture of Experts (MoE) architecture** for optimal performance
--   **Agent-native design** integrating reasoning, coding, and tool usage
--   **Open-source availability** under MIT license
+모든 모델 특징:
+-   **128,000 토큰 컨텍스트 창**으로 대규모 문서 처리
+-   **Mixture of Experts(MoE) 아키텍처**로 최적 성능
+-   **에이전트 네이티브 설계**로 추론, 코딩, 도구 사용 통합
+-   **MIT 라이선스 오픈소스** 제공
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Z AI" from the "API Provider" dropdown.
-3.  **Select Region:** Choose your region:
-    -   "International" for global access
-    -   "China" for mainland China access
-4.  **Enter API Key:** Paste your Z AI API key into the "Z AI API Key" field.
-5.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Z AI"를 선택합니다.
+3.  **지역 선택:**
+    -   글로벌 접근은 "International"
+    -   중국 본토 접근은 "China"
+4.  **API 키 입력:** Z AI API 키를 "Z AI API Key" 필드에 붙여넣습니다.
+5.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-### GLM Coding Plans
+### GLM 코딩 플랜
 
-Z AI offers subscription plans specifically designed for coding applications. These plans provide cost-effective access to GLM-4.5 models through a prompt-based structure rather than traditional API usage billing.
+Z AI는 코딩 애플리케이션을 위해 설계된 구독 플랜을 제공합니다. 이 플랜은 전통적인 API 사용 과금 대신 프롬프트 기반 구조로 GLM-4.5 모델에 비용 효율적으로 접근할 수 있습니다.
 
-#### Plan Options
+#### 플랜 옵션
 
-**GLM Coding Lite** - $3/month
-- 120 prompts per 5-hour cycle
-- Access to GLM-4.5 model
-- Works exclusively through coding tools like Cline
+**GLM Coding Lite** - 월 $3
+- 5시간 주기당 120 프롬프트
+- GLM-4.5 모델 접근
+- Cline 같은 코딩 도구에서만 사용 가능
 
-**GLM Coding Pro** - $15/month  
-- 600 prompts per 5-hour cycle
-- Access to GLM-4.5 model
-- Works exclusively through coding tools like Cline
+**GLM Coding Pro** - 월 $15  
+- 5시간 주기당 600 프롬프트
+- GLM-4.5 모델 접근
+- Cline 같은 코딩 도구에서만 사용 가능
 
-Both plans offer promotional pricing for the first month: Lite drops from \$6 to \$3, Pro drops from \$30 to \$15.
-
-<Frame>
-  <img src="https://storage.googleapis.com/cline_public_images/docs/assets/zAI-coding-plan.png" alt="zAI subscription page showing GLM Coding Lite and Pro plans with pricing" />
-</Frame>
-
-#### Setting up GLM Coding Plans
-
-To use the GLM Coding Plans with Cline:
-
-1. **Subscribe:** Go to [https://z.ai/subscribe](https://z.ai/subscribe) and choose your plan.
-
-2. **Create API Key:** After subscribing, log into your zAI dashboard and create an API key for your coding plan.
-
-3. **Configure in Cline:** Open Cline settings, select "Z AI" as your provider, and paste your API key into the "Z AI API Key" field.
+두 플랜 모두 첫 달 프로모션 가격을 제공합니다: Lite는 $6 → $3, Pro는 $30 → $15.
 
 <Frame>
-  <img src="https://storage.googleapis.com/cline_public_images/docs/assets/zAI-provider.png" alt="Cline settings with zAI provider selected and API key field highlighted" />
+  <img src="https://storage.googleapis.com/cline_public_images/docs/assets/zAI-coding-plan.png" alt="GLM Coding Lite와 Pro 요금제 가격을 보여주는 zAI 구독 페이지" />
 </Frame>
 
-The setup connects your subscription directly to Cline, giving you access to GLM-4.5's tool-calling capabilities optimized for coding workflows.
+#### GLM 코딩 플랜 설정
 
-### Z AI's Hybrid Intelligence
+Cline에서 GLM 코딩 플랜을 사용하려면:
 
-Z AI's GLM-4.5 series introduces revolutionary capabilities that set it apart from conventional language models:
+1. **구독:** [https://z.ai/subscribe](https://z.ai/subscribe)로 이동해 플랜을 선택합니다.
 
-#### Hybrid Reasoning Architecture
-GLM-4.5 operates in two distinct modes:
-- **Thinking Mode:** Designed for complex reasoning tasks and tool usage, engaging in deeper analytical processes
-- **Non-Thinking Mode:** Provides immediate responses for straightforward queries, optimizing efficiency
+2. **API 키 생성:** 구독 후 zAI 대시보드에 로그인해 코딩 플랜용 API 키를 생성합니다.
 
-This dual-mode architecture represents an "agent-native" design philosophy that adapts processing intensity based on query complexity.
+3. **Cline에서 설정:** Cline 설정에서 프로바이더로 "Z AI"를 선택하고 "Z AI API Key" 필드에 API 키를 붙여넣습니다.
 
-#### Exceptional Performance
-GLM-4.5 achieves a comprehensive score of **63.2** across 12 benchmarks spanning agentic tasks, reasoning, and coding challenges, securing **3rd place** among all proprietary and open-source models. GLM-4.5-Air maintains competitive performance with a score of **59.8** while delivering superior efficiency.
+<Frame>
+  <img src="https://storage.googleapis.com/cline_public_images/docs/assets/zAI-provider.png" alt="zAI 프로바이더가 선택되고 API 키 필드가 강조된 Cline 설정 화면" />
+</Frame>
 
-#### Mixture of Experts Excellence
-The sophisticated MoE architecture optimizes performance while maintaining computational efficiency:
-- **GLM-4.5:** 355B total parameters with 32B active parameters
-- **GLM-4.5-Air:** 106B total parameters with 12B active parameters
+이 설정을 통해 구독이 Cline과 직접 연결되며, 코딩 워크플로에 최적화된 GLM-4.5의 도구 호출 기능을 사용할 수 있습니다.
 
-#### Extended Context Capabilities
-The 128,000-token context window enables comprehensive understanding of lengthy documents and codebases, with real-world testing confirming effective processing of nearly 2,000-line codebases while maintaining remarkable performance.
+### Z AI의 하이브리드 지능
 
-#### Open-Source Leadership
-Released under MIT license, GLM-4.5 provides researchers and developers with access to state-of-the-art capabilities without proprietary restrictions, including base models, hybrid reasoning versions, and optimized FP8 variants.
+Z AI의 GLM-4.5 시리즈는 기존 언어 모델과 차별화되는 혁신적인 기능을 제공합니다:
 
-### Regional Optimization
+#### 하이브리드 추론 아키텍처
+GLM-4.5는 두 가지 모드로 동작합니다:
+- **Thinking Mode:** 복잡한 추론 및 도구 사용을 위한 깊은 분석
+- **Non-Thinking Mode:** 간단한 질문에 즉시 응답하여 효율성 최적화
 
-#### API Endpoints
-- **International:** Uses `https://api.z.ai/api/paas/v4`
-- **China:** Uses `https://open.bigmodel.cn/api/paas/v4`
+이 이중 모드 아키텍처는 쿼리 복잡도에 따라 처리 강도를 조정하는 "에이전트 네이티브" 설계 철학을 반영합니다.
 
-#### Model Availability
-The region setting determines both API endpoint and available models, with automatic filtering to ensure compatibility with your selected region.
+#### 뛰어난 성능
+GLM-4.5는 에이전트 작업, 추론, 코딩 과제 등 12개 벤치마크에서 **63.2** 종합 점수를 기록하며, 상용 및 오픈소스 모델 전체에서 **3위**를 차지했습니다. GLM-4.5-Air는 **59.8** 점으로 경쟁력 있는 성능을 유지하면서 효율성을 제공합니다.
 
-### Special Features
+#### MoE의 탁월함
+정교한 MoE 아키텍처는 계산 효율을 유지하면서 성능을 최적화합니다:
+- **GLM-4.5:** 총 355B 파라미터, 활성 32B 파라미터
+- **GLM-4.5-Air:** 총 106B 파라미터, 활성 12B 파라미터
 
-#### Agentic Capabilities
-GLM-4.5's unified architecture makes it particularly suitable for complex intelligent agent applications requiring integrated reasoning, coding, and tool utilization capabilities.
+#### 확장된 컨텍스트
+128,000 토큰 컨텍스트 창으로 긴 문서와 코드베이스를 포괄적으로 이해할 수 있으며, 실제 테스트에서 약 2,000줄 코드베이스도 우수하게 처리함이 확인되었습니다.
 
-#### Comprehensive Benchmarking
-Performance evaluation encompasses:
-- **3 agentic task benchmarks**
-- **7 reasoning benchmarks** 
-- **2 coding benchmarks**
+#### 오픈소스 리더십
+MIT 라이선스로 공개되어 연구자와 개발자가 고급 기능을 자유롭게 활용할 수 있습니다. 기본 모델, 하이브리드 추론 버전, 최적화된 FP8 변형까지 제공합니다.
 
-This comprehensive assessment demonstrates versatility across diverse AI applications.
+### 지역 최적화
 
-#### Developer Integration
-Models support integration through multiple frameworks:
+#### API 엔드포인트
+- **International:** `https://api.z.ai/api/paas/v4`
+- **China:** `https://open.bigmodel.cn/api/paas/v4`
+
+#### 모델 가용성
+지역 설정은 API 엔드포인트와 사용 가능한 모델을 결정하며, 선택한 지역과 호환되는 모델만 표시됩니다.
+
+### 특별 기능
+
+#### 에이전트 기능
+GLM-4.5의 통합 아키텍처는 추론, 코딩, 도구 사용을 통합해야 하는 복잡한 지능형 에이전트 애플리케이션에 특히 적합합니다.
+
+#### 포괄적 벤치마킹
+성능 평가는 다음을 포함합니다:
+- **에이전트 작업 벤치마크 3개**
+- **추론 벤치마크 7개** 
+- **코딩 벤치마크 2개**
+
+이 종합 평가로 다양한 AI 애플리케이션에서의 다재다능함이 입증됩니다.
+
+#### 개발자 통합
+모델은 여러 프레임워크에서 통합을 지원합니다:
 - **transformers**
 - **vLLM**
 - **SGLang**
 
-Complete with dedicated model code, tool parser, and reasoning parser implementations.
+모델 코드, 도구 파서, 추론 파서 구현이 함께 제공됩니다.
 
-### Performance Comparisons
+### 성능 비교
 
-#### vs Claude 4 Sonnet
-GLM-4.5 shows competitive performance in agentic coding and reasoning tasks, though Claude Sonnet 4 maintains advantages in coding success rates and autonomous multi-feature application development.
+#### Claude 4 Sonnet 대비
+GLM-4.5는 에이전트 코딩 및 추론 작업에서 경쟁력 있는 성능을 보이지만, Claude Sonnet 4는 코딩 성공률과 자율적 멀티 기능 애플리케이션 개발에서 우위를 유지합니다.
 
-#### vs GPT-4.5
-GLM-4.5 ranks competitively in reasoning and agent benchmarks, with GPT-4.5 generally leading in raw task accuracy on professional benchmarks like MMLU and AIME.
+#### GPT-4.5 대비
+GLM-4.5는 추론 및 에이전트 벤치마크에서 경쟁력 있는 순위를 보이며, GPT-4.5는 MMLU와 AIME 같은 전문 벤치마크에서 일반적으로 더 높은 정확도를 보입니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Region Selection:** Choose the appropriate region for optimal performance and compliance with local regulations.
--   **Model Selection:** GLM-4.5 for maximum performance, GLM-4.5-Air for efficiency and mainstream hardware compatibility.
--   **Context Advantage:** Large 128K context window enables processing of substantial codebases and documents.
--   **Open Source Benefits:** MIT license enables both commercial use and secondary development.
--   **Agentic Applications:** Particularly strong for applications requiring reasoning, coding, and tool usage integration.
--   **Hybrid Reasoning:** Use Thinking Mode for complex problems, Non-Thinking Mode for simple queries.
--   **API Compatibility:** OpenAI-compatible API provides streaming responses and usage reporting.
--   **Framework Support:** Multiple integration options available for different deployment scenarios.
+-   **지역 선택:** 성능과 지역 규정 준수를 위해 적절한 지역을 선택하세요.
+-   **모델 선택:** 최고 성능은 GLM-4.5, 효율성과 일반 하드웨어 호환성은 GLM-4.5-Air.
+-   **컨텍스트 장점:** 128K 컨텍스트 창으로 대규모 코드와 문서를 처리할 수 있습니다.
+-   **오픈소스 혜택:** MIT 라이선스는 상업적 사용과 2차 개발을 허용합니다.
+-   **에이전트 애플리케이션:** 추론, 코딩, 도구 사용 통합이 필요한 애플리케이션에 특히 강합니다.
+-   **하이브리드 추론:** 복잡한 문제는 Thinking Mode, 간단한 질의는 Non-Thinking Mode를 사용하세요.
+-   **API 호환성:** OpenAI 호환 API로 스트리밍 응답 및 사용량 보고를 지원합니다.
+-   **프레임워크 지원:** 배포 시나리오에 따라 여러 통합 옵션을 제공합니다.

@@ -1,65 +1,70 @@
 ---
-title: "Workflows Best Practices"
-sidebarTitle: "Best Practices"
-description: "Tips and strategies for creating effective and reliable Cline workflows."
+title: "워크플로 모범 사례"
+sidebarTitle: "모범 사례"
+description: "효율적이고 신뢰할 수 있는 Cline 워크플로를 만들기 위한 팁과 전략"
 ---
 
-Creating effective workflows requires a balance of clear instructions, modular design, and intelligent tool usage. Follow these best practices to get the most out of Cline's automation capabilities.
+효과적인 워크플로를 만들려면 명확한 지침, 모듈형 설계, 그리고 지능적인 도구 사용의 균형이 필요합니다. 아래 모범 사례를 따르면 Cline의 자동화 기능을 최대한 활용할 수 있습니다.
 
-## Use Cline to Build Workflows
+## Cline으로 워크플로 만들기
 
-We highly recommend using Cline to help you build your workflows. Since Cline understands your project's context and structure, it can be an invaluable partner in designing automation that fits your specific needs.
+Cline을 사용해 워크플로를 설계하는 것을 강력히 추천합니다. Cline은 프로젝트 컨텍스트와 구조를 이해하므로, 특정 요구에 맞는 자동화를 설계하는 데 훌륭한 파트너가 됩니다.
 
-### Building your own workflows
+### 나만의 워크플로 만들기
 
-Creating a workflow is simpler than you might think. There's actually a workflow for building workflows!
+워크플로 생성은 생각보다 쉽습니다. 사실 워크플로를 만드는 워크플로도 있습니다!
 
-First, **save the [create-new-workflow.md](https://github.com/cline/prompts/blob/main/workflows/create-new-workflow.md) file to your workspace** (e.g., in `.clinerules/workflows/`).
+먼저, **[create-new-workflow.md](https://github.com/cline/prompts/blob/main/workflows/create-new-workflow.md) 파일을 워크스페이스에 저장**하세요(예: `.clinerules/workflows/`).
 
-Then, type `/create-new-workflow.md` and Cline guides you through it:
+그다음 `/create-new-workflow.md`를 입력하면 Cline이 안내합니다:
 
-1.  It asks for the purpose and a concise name.
-2.  You describe the objective and expected outputs.
-3.  You list the major steps (Cline can help determine details).
-4.  It generates the properly structured workflow file.
-
-<Tip>
-  **Automate Your History:** The best workflows come from tasks you've already done. After completing something you'll need to repeat, tell Cline: "Create a workflow for the process I just completed." It analyzes the conversation, identifies the steps, and generates the workflow file. Your accumulated context becomes reusable automation.
-</Tip>
-
-Workflows live in `.clinerules/workflows/` for project-specific ones or `~/Documents/Cline/Workflows/` for global ones you use across projects. Project workflows take precedence when names match.
-
-## Workflow Design
+1.  목적과 간결한 이름을 묻습니다.
+2.  목표와 기대 출력물을 설명합니다.
+3.  주요 단계를 나열합니다(Cline이 상세를 도와줍니다).
+4.  올바른 구조의 워크플로 파일을 생성합니다.
 
 <Tip>
-  **Start Simple:** Begin with small, single-task workflows. As you get comfortable, you can combine them or create more complex sequences.
+  **히스토리 자동화:** 가장 좋은 워크플로는 이미 완료한 작업에서 나옵니다. 반복해야 할 작업을 끝낸 뒤 Cline에게 "방금 완료한 프로세스를 워크플로로 만들어줘"라고 말하세요. 대화를 분석해 단계를 추출하고 워크플로 파일을 생성합니다. 축적된 컨텍스트가 재사용 가능한 자동화로 바뀝니다.
 </Tip>
 
-### Be Modular
-Instead of creating one massive workflow file, break complex tasks into smaller, reusable workflows. This makes them easier to maintain and debug.
+워크플로는 프로젝트 전용(`.clinerules/workflows/`) 또는 전역(`~/Documents/Cline/Workflows/`)으로 저장됩니다. 이름이 같으면 프로젝트 워크플로가 우선합니다.
 
-### Use Clear Comments
-Just like with code, commenting your workflow steps is crucial. Explain *why* a step is happening, not just *what* is happening. This helps both you (the future maintainer) and Cline understand the intent.
+## 워크플로 설계
 
-### Version Control
-Treat your workflows as part of your codebase. Store them in your Git repository (in `.clinerules/workflows/`) so they are versioned, reviewed, and shared with your team.
+<Tip>
+  **단순하게 시작:** 처음에는 작은 단일 작업 워크플로로 시작하세요. 익숙해지면 결합하거나 더 복잡한 시퀀스를 만들 수 있습니다.
+</Tip>
 
-## Prompt Engineering for Cline
+### 모듈화
 
-### Be Specific with Tool Use
-Don't just say "find the file." Be explicit about which tool Cline should use.
+거대한 워크플로 파일 하나로 만들기보다는, 복잡한 작업을 더 작은 재사용 워크플로로 쪼개세요. 유지보수와 디버깅이 쉬워집니다.
 
-*   **Bad:** "Find the user controller."
-*   **Good:** "Use `search_files` to look for `UserController` in the `src/controllers` directory."
+### 명확한 주석 사용
 
-## Advanced Techniques
+코드와 마찬가지로, 워크플로 단계에 주석을 다는 것이 중요합니다. *무엇*을 하는지만이 아니라 *왜* 하는지도 설명하세요. 이는 미래의 유지보수자인 당신과 Cline 모두가 의도를 이해하는 데 도움이 됩니다.
 
-### Available Tools
+### 버전 관리
 
-Cline has a powerful set of tools you can use within your workflows. Here are the most common ones:
+워크플로를 코드베이스의 일부로 취급하세요. Git 저장소(`.clinerules/workflows/`)에 저장해 버전 관리, 리뷰, 팀 공유가 가능하도록 합니다.
+
+## Cline을 위한 프롬프트 엔지니어링
+
+### 도구 사용은 구체적으로
+
+"파일을 찾아줘" 같은 모호한 지시 대신 어떤 도구를 사용할지 명시하세요.
+
+*   **나쁜 예:** "사용자 컨트롤러 찾아줘."
+*   **좋은 예:** "`search_files`를 사용해 `src/controllers` 디렉터리에서 `UserController`를 찾아줘."
+
+## 고급 기법
+
+### 사용 가능한 도구
+
+Cline에는 워크플로에서 사용할 수 있는 강력한 도구가 있습니다. 가장 흔한 도구는 다음과 같습니다:
 
 #### execute_command
-Executes a CLI command on your system. Use this for running tests, builds, git commands, or any other terminal operation.
+
+시스템에서 CLI 명령을 실행합니다. 테스트, 빌드, git 명령 등 터미널 작업에 사용하세요.
 
 ```xml
 <execute_command>
@@ -69,7 +74,8 @@ Executes a CLI command on your system. Use this for running tests, builds, git c
 ```
 
 #### read_file
-Reads the contents of a file. Essential for analyzing code or configuration.
+
+파일 내용을 읽습니다. 코드나 설정 분석에 필수입니다.
 
 ```xml
 <read_file>
@@ -78,7 +84,8 @@ Reads the contents of a file. Essential for analyzing code or configuration.
 ```
 
 #### write_to_file
-Creates or overwrites a file. Use this to generate boilerplate, config files, or documentation.
+
+파일을 생성하거나 덮어씁니다. 보일러플레이트, 설정 파일, 문서 생성에 사용하세요.
 
 ```xml
 <write_to_file>
@@ -90,7 +97,8 @@ Creates or overwrites a file. Use this to generate boilerplate, config files, or
 ```
 
 #### search_files
-Searches for a regex pattern across files in a directory. Great for finding TODOs, usage examples, or specific code patterns.
+
+디렉터리 전체에서 정규식 패턴을 검색합니다. TODO, 사용 예시, 특정 코드 패턴 찾기에 좋습니다.
 
 ```xml
 <search_files>
@@ -101,7 +109,8 @@ Searches for a regex pattern across files in a directory. Great for finding TODO
 ```
 
 #### ask_followup_question
-Asks the user for input or confirmation. This makes your workflow interactive and allows for human-in-the-loop decision making.
+
+사용자에게 입력이나 확인을 요청합니다. 워크플로를 인터랙티브하게 만들어 human-in-the-loop 의사결정을 가능하게 합니다.
 
 ```xml
 <ask_followup_question>
@@ -111,7 +120,8 @@ Asks the user for input or confirmation. This makes your workflow interactive an
 ```
 
 #### browser_action
-Controls a built-in browser to interact with websites or local servers. Useful for testing web UIs or scraping data.
+
+내장 브라우저를 제어해 웹사이트나 로컬 서버를 상호작용합니다. 웹 UI 테스트나 데이터 스크래핑에 유용합니다.
 
 ```xml
 <browser_action>
@@ -120,23 +130,23 @@ Controls a built-in browser to interact with websites or local servers. Useful f
 </browser_action>
 ```
 
-### Leveraging MCP Tools
+### MCP 도구 활용
 
-MCP tools allow Cline to interact with external services like GitHub, Slack, or databases. You can reference them in your workflows using natural language or explicit XML tags for deterministic control.
+MCP 도구를 사용하면 Cline이 GitHub, Slack, 데이터베이스 같은 외부 서비스와 상호작용할 수 있습니다. 자연어로 참조하거나, 결정적 제어를 위해 XML 태그를 사용할 수 있습니다.
 
-#### Natural Language (Heuristic)
+#### 자연어(휴리스틱)
 
-Most of the time, the simplest way to use an MCP tool is to describe the action you want Cline to take.
+대부분의 경우, Cline에게 수행할 액션을 자연어로 설명하는 것이 가장 간단합니다.
 
 ```markdown
-1. Fetch the latest issues from the github-repo MCP server.
-2. Summarize the critical bugs.
-3. Post the summary to the #engineering channel using the slack-notifications MCP.
+1. github-repo MCP 서버에서 최신 이슈를 가져와.
+2. 치명적 버그를 요약해.
+3. slack-notifications MCP를 사용해 #engineering 채널에 요약을 게시해.
 ```
 
-#### Explicit XML Tag (Deterministic)
+#### 명시적 XML 태그(결정적)
 
-For critical automation where you need exact control over parameters, use the `use_mcp_tool` tag.
+정확한 파라미터 제어가 필요한 중요한 자동화에는 `use_mcp_tool` 태그를 사용하세요.
 
 ```xml
 <use_mcp_tool>
@@ -153,13 +163,14 @@ For critical automation where you need exact control over parameters, use the `u
 </use_mcp_tool>
 ```
 
-### Manage Context Window
-Be mindful of Cline's context window. If a workflow is too long or processes too much data, it might exceed the token limit.
-*   **Break it down:** Split long workflows into smaller parts.
-*   **Be concise:** Keep instructions clear and to the point.
+### 컨텍스트 윈도우 관리
 
-## Learn More
+Cline의 컨텍스트 윈도우를 고려하세요. 워크플로가 너무 길거나 데이터를 너무 많이 처리하면 토큰 한도를 초과할 수 있습니다.
+*   **분할하기:** 긴 워크플로는 작은 부분으로 나누세요.
+*   **간결하게:** 지침을 명확하고 간단하게 유지하세요.
+
+## 더 알아보기
 
 <Card title="Cline Learn" icon="lightbulb" href="https://cline.bot/learn">
-  Dive deeper into general prompt engineering strategies to write even better instructions for Cline.
+  Cline을 위한 더 나은 지침을 작성할 수 있도록, 일반적인 프롬프트 엔지니어링 전략을 더 깊게 살펴보세요.
 </Card>

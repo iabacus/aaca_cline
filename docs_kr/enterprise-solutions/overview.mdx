@@ -1,95 +1,95 @@
 ---
 title: "Cline Enterprise"
-sidebarTitle: "Overview"
-description: "Enterprise security, governance, and observability for the coding agent millions of developers trust"
+sidebarTitle: "개요"
+description: "수백만 개발자가 신뢰하는 코딩 에이전트를 위한 엔터프라이즈 보안, 거버넌스, 관측성"
 ---
 
-Cline Enterprise brings centralized governance to the same open-source architecture that millions of developers already use. Your code stays in your environment, you use your own inference at your negotiated rates, and you get the security and observability capabilities that platform teams need for org-wide deployment.
+Cline Enterprise는 수백만 개발자가 사용하는 동일한 오픈 소스 아키텍처에 중앙 거버넌스를 제공합니다. 코드는 여러분의 환경에 그대로 남고, 협상된 요금으로 자체 추론을 사용하며, 플랫폼 팀이 조직 전체 배포에 필요한 보안과 관측성 기능을 제공합니다.
 
-<Card title="Learn More About Enterprise" icon="building" href="https://cline.bot/enterprise">
-  Visit our website for detailed information about enterprise features, pricing, and deployment options.
+<Card title="엔터프라이즈 자세히 보기" icon="building" href="https://cline.bot/enterprise">
+  엔터프라이즈 기능, 가격, 배포 옵션에 대한 자세한 정보를 웹사이트에서 확인하세요.
 </Card>
 
-## What You Get
+## 제공되는 핵심 가치
 
-It delivers five core capabilities that platform teams need for production deployment. Each addresses a specific requirement for scaling AI coding across your organization.
+플랫폼 팀이 프로덕션 배포에 필요로 하는 5가지 핵심 기능을 제공합니다. 각 기능은 조직에서 AI 코딩을 확장하는 데 필요한 요건을 해결합니다.
 
-### Security by Design
+### 설계 단계부터 보안
 
-Your code never leaves your environment. Cline processes everything locally - no uploads, no indexing, no training on your data.
+코드는 여러분의 환경 밖으로 나가지 않습니다. Cline은 모든 처리를 로컬에서 수행합니다. 업로드도, 인덱싱도, 데이터 학습도 없습니다.
 
 <CardGroup cols={2}>
-  <Card title="Client-side execution" icon="computer">
-    All processing happens within your environment
+  <Card title="클라이언트 측 실행" icon="computer">
+    모든 처리가 여러분의 환경 내에서 이루어집니다
   </Card>
 
-  <Card title="No data exfiltration" icon="shield-check">
-    Code and context never transmitted externally
+  <Card title="데이터 유출 없음" icon="shield-check">
+    코드와 컨텍스트가 외부로 전송되지 않습니다
   </Card>
 
-  <Card title="No codebase indexing" icon="database">
-    Repositories are never indexed or cached
+  <Card title="코드베이스 인덱싱 없음" icon="database">
+    리포지토리는 인덱싱 또는 캐싱되지 않습니다
   </Card>
 
-  <Card title="No model training" icon="ban">
-    Your code and prompts aren't used for training
+  <Card title="모델 학습 없음" icon="ban">
+    코드와 프롬프트는 학습에 사용되지 않습니다
   </Card>
 </CardGroup>
 
 ### Bring Your Own Inference
 
-Use your existing cloud contracts and negotiated rates. Most AI tools force you to buy inference through them with markup. Cline connects directly to your providers.
+기존 클라우드 계약과 협상된 요금을 그대로 사용하세요. 대부분의 AI 도구는 마진이 붙은 자체 추론을 강제합니다. Cline은 제공자에 직접 연결합니다.
 
-Connect to any inference provider:
+지원 제공자:
 - AWS Bedrock
 - Google Vertex AI
 - Azure OpenAI
 - Anthropic direct
 - OpenAI direct
 - Cerebras
-- Any OpenAI-compatible endpoint
+- 모든 OpenAI 호환 엔드포인트
 
-Switch models instantly as new ones release. Use Claude Sonnet 4.5 as your daily driver, GPT-5 for complex refactoring, open-source models for simple tasks. Your existing cloud credits and startup program contracts now cover AI coding. We handle the agent loop. You handle the inference. No markup, no vendor lock-in.
+새 모델이 나오면 즉시 전환할 수 있습니다. 일상 작업은 Claude Sonnet 4.5, 복잡한 리팩터링은 GPT-5, 단순 작업은 오픈 소스 모델을 사용하세요. 기존 클라우드 크레딧과 스타트업 프로그램 계약을 그대로 AI 코딩에 활용할 수 있습니다. 에이전트 루프는 Cline이 담당하고, 추론은 여러분이 관리합니다. 마진 없음, 벤더 락인 없음.
 
-### Governance at Scale
+### 대규모 거버넌스
 
-Platform teams need central control when thousands of developers use AI. Individual API keys scattered across laptops create security risks and cost overruns.
+수천 명의 개발자가 AI를 사용할 때 플랫폼 팀은 중앙 제어가 필요합니다. 개인 API 키가 노트북에 흩어져 있으면 보안 리스크와 비용 초과가 발생합니다.
 
-Enterprise governance provides:
-- **SSO authentication**: Corporate credentials instead of personal API keys
-- **Role-based access control**: Three-tier hierarchy (Member/Admin/Owner) with organization-scoped permissions
-- **Model and tool controls**: Govern which models and tools each team accesses
-- **Remote configuration**: Manage settings for all developers from one dashboard
-- **Usage tracking and observability**: OpenTelemetry integration for monitoring usage, costs, and performance with selective audit logging for administrative operations
+엔터프라이즈 거버넌스 제공 기능:
+- **SSO 인증**: 개인 API 키 대신 회사 계정 사용
+- **역할 기반 접근 제어**: 3단계 계층(Member/Admin/Owner)과 조직 범위 권한
+- **모델 및 도구 제어**: 팀별 접근 가능한 모델과 도구 관리
+- **원격 구성**: 하나의 대시보드에서 모든 개발자 설정 관리
+- **사용량 추적 및 관측성**: OpenTelemetry 통합으로 사용량, 비용, 성능 모니터링 및 관리자 작업에 대한 선택적 감사 로깅
 
-Configure once, deploy everywhere. Developers work how they prefer while you maintain control.
+한 번 설정하면 어디든 배포됩니다. 개발자는 원하는 방식으로 작업하고, 여러분은 제어권을 유지합니다.
 
-### Complete Observability
+### 완전한 관측성
 
-Export logs to your existing observability stack. Track usage, costs, and performance across all teams.
+기존 관측성 스택으로 로그를 내보내고, 모든 팀의 사용량/비용/성능을 추적하세요.
 
-- **OpenTelemetry export**: Direct integration with Datadog, Grafana, Splunk
-- **Real-time analytics**: Track adoption, performance, and patterns
-- **Cost breakdown**: See exactly what each team spends on which models
-- **JSON output**: Build custom dashboards in your existing tools
+- **OpenTelemetry 내보내기**: Datadog, Grafana, Splunk와 직접 통합
+- **실시간 분석**: 도입률, 성능, 패턴 추적
+- **비용 분해**: 팀별/모델별 비용을 정확히 파악
+- **JSON 출력**: 기존 도구로 커스텀 대시보드 구축
 
-The same observability standards you require for production systems.
+프로덕션 시스템에 요구되는 동일한 관측성 기준을 제공합니다.
 
-## Deployment
+## 배포
 
-Cline Enterprise connects securely to your infrastructure. Deploy in cloud environments. Configure to work with your existing security policies and compliance requirements.
+Cline Enterprise는 인프라에 안전하게 연결됩니다. 클라우드 환경에 배포하고 기존 보안 정책과 컴플라이언스 요구사항에 맞게 구성할 수 있습니다.
 
-Rolling out to your organization:
-1. Configure Cline Core to connect to your infrastructure
-2. Set SSO, RBAC, and governance policies
-3. Deploy to developers via your existing software distribution
-4. Monitor usage through your observability tools
+조직 배포 절차:
+1. Cline Core가 인프라에 연결되도록 구성
+2. SSO, RBAC, 거버넌스 정책 설정
+3. 기존 소프트웨어 배포 방식으로 개발자에게 배포
+4. 관측성 도구로 사용량 모니터링
 
-## Next Steps
+## 다음 단계
 
-- Review security architecture
-- Configure [cloud provider setup](/provider-config/aws-bedrock/api-key) (AWS Bedrock, Vertex AI, Azure)
-- Set up [MCP servers](/mcp/mcp-overview) for custom tooling
-- Add [custom instructions](/features/cline-rules) for your codebase
+- 보안 아키텍처 검토
+- [클라우드 제공자 설정](/provider-config/aws-bedrock/api-key) 구성(AWS Bedrock, Vertex AI, Azure)
+- 커스텀 도구를 위한 [MCP 서버](/mcp/mcp-overview) 설정
+- 코드베이스를 위한 [커스텀 지침](/features/cline-rules) 추가
 
-Schedule a walkthrough to see how Cline Enterprise fits your infrastructure. We'll work with your security and compliance requirements to deploy in your environment.
+Cline Enterprise가 인프라에 어떻게 맞는지 데모를 예약해 보세요. 보안 및 컴플라이언스 요구사항에 맞춰 배포를 함께 설계합니다.

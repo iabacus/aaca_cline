@@ -1,20 +1,20 @@
 ---
-title: "AWS Bedrock Configuration"
+title: "AWS Bedrock 구성"
 sidebarTitle: "AWS Bedrock"
-description: "Configure AWS Bedrock for your Cline deployment"
+description: "Cline 배포에서 AWS Bedrock을 구성합니다"
 ---
 
 <Info>
-**Configuration Path: Self-Hosted**
+**구성 경로: 자체 호스팅**
 
-This guide covers Bedrock configuration for self-hosted deployments. For simple web-based setup, see [AWS Bedrock SaaS Configuration](/enterprise-solutions/configuration/remote-configuration/aws-bedrock/admin-configuration).
+이 가이드는 자체 호스팅 배포를 위한 Bedrock 구성을 다룹니다. 웹 기반 간단 설정은 [AWS Bedrock SaaS 구성](/enterprise-solutions/configuration/remote-configuration/aws-bedrock/admin-configuration)을 참고하세요.
 </Info>
 
-Configure Cline to use AWS Bedrock for enterprise access to Claude and other foundation models through Amazon's managed service.
+Cline이 AWS Bedrock을 사용하도록 구성하여 Amazon 관리형 서비스를 통해 Claude 및 기타 파운데이션 모델에 엔터프라이즈 액세스를 제공합니다.
 
-## Configuration Format
+## 구성 형식
 
-Configure Bedrock through your remote configuration JSON using the `providerSettings.AwsBedrock` section:
+원격 구성 JSON에서 `providerSettings.AwsBedrock` 섹션으로 Bedrock을 구성합니다:
 
 ```json
 {
@@ -32,21 +32,21 @@ Configure Bedrock through your remote configuration JSON using the `providerSett
 }
 ```
 
-## Configuration Fields
+## 구성 필드
 
-| Field | Type | Description | Required |
+| 필드 | 타입 | 설명 | 필수 |
 |-------|------|-------------|----------|
-| `models` | Array | List of model configurations | Yes |
-| `awsRegion` | String | AWS region (e.g., `us-east-1`) | Yes |
-| `awsUseCrossRegionInference` | Boolean | Enable cross-region inference | No |
-| `awsUseGlobalInference` | Boolean | Enable global inference routing | No |
-| `awsBedrockUsePromptCache` | Boolean | Enable prompt caching | No |
-| `awsBedrockEndpoint` | String | Custom Bedrock endpoint URL | No |
-| `customModels` | Array | Custom model configurations | No |
+| `models` | Array | 모델 구성 목록 | 예 |
+| `awsRegion` | String | AWS 리전(예: `us-east-1`) | 예 |
+| `awsUseCrossRegionInference` | Boolean | 교차 리전 추론 활성화 | 아니오 |
+| `awsUseGlobalInference` | Boolean | 글로벌 추론 라우팅 활성화 | 아니오 |
+| `awsBedrockUsePromptCache` | Boolean | 프롬프트 캐싱 활성화 | 아니오 |
+| `awsBedrockEndpoint` | String | 커스텀 Bedrock 엔드포인트 URL | 아니오 |
+| `customModels` | Array | 커스텀 모델 구성 | 아니오 |
 
-### Model Configuration
+### 모델 구성
 
-Each model in the `models` array requires:
+`models` 배열의 각 모델은 다음을 포함해야 합니다:
 
 ```json
 {
@@ -61,21 +61,21 @@ Each model in the `models` array requires:
 }
 ```
 
-## Common Model IDs
+## 일반적인 모델 ID
 
-| Model ID | Description | Context Window |
+| 모델 ID | 설명 | 컨텍스트 윈도우 |
 |----------|-------------|----------------|
-| `anthropic.claude-3-5-sonnet-20241022-v2:0` | Latest Claude Sonnet | 200K tokens |
-| `anthropic.claude-3-5-haiku-20241022-v1:0` | Latest Claude Haiku | 200K tokens |
-| `anthropic.claude-3-opus-20240229-v1:0` | Claude Opus | 200K tokens |
+| `anthropic.claude-3-5-sonnet-20241022-v2:0` | 최신 Claude Sonnet | 200K 토큰 |
+| `anthropic.claude-3-5-haiku-20241022-v1:0` | 최신 Claude Haiku | 200K 토큰 |
+| `anthropic.claude-3-opus-20240229-v1:0` | Claude Opus | 200K 토큰 |
 
 <Note>
-Model availability varies by region. See [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html) for region-specific model availability.
+모델 사용 가능 여부는 리전에 따라 다릅니다. 리전별 모델 가용성은 [AWS Bedrock 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html)를 참고하세요.
 </Note>
 
-## Example Configurations
+## 구성 예시
 
-### Basic Configuration
+### 기본 구성
 
 ```json
 {
@@ -93,7 +93,7 @@ Model availability varies by region. See [AWS Bedrock documentation](https://doc
 }
 ```
 
-### With Prompt Caching
+### 프롬프트 캐싱 사용
 
 ```json
 {
@@ -112,7 +112,7 @@ Model availability varies by region. See [AWS Bedrock documentation](https://doc
 }
 ```
 
-### Multiple Models
+### 다중 모델
 
 ```json
 {
@@ -134,49 +134,49 @@ Model availability varies by region. See [AWS Bedrock documentation](https://doc
 }
 ```
 
-## Prerequisites
+## 사전 준비
 
-Before configuring Cline to use Bedrock, you need:
+Cline에서 Bedrock을 사용하기 전에 다음이 필요합니다:
 
-1. **AWS Account** with Bedrock access enabled
-2. **IAM Permissions** for Bedrock API calls (`bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream`)
-3. **Model Access** enabled for desired models in the Bedrock console
-4. **AWS Credentials** configured (IAM role, access keys, or AWS profile)
+1. Bedrock 접근이 활성화된 **AWS 계정**
+2. Bedrock API 호출을 위한 **IAM 권한**(`bedrock:InvokeModel`, `bedrock:InvokeModelWithResponseStream`)
+3. Bedrock 콘솔에서 원하는 모델에 대한 **모델 접근 활성화**
+4. **AWS 자격 증명** 구성(IAM 역할, 액세스 키, AWS 프로필)
 
 <Tip>
-For AWS account setup and IAM configuration, see the [AWS Bedrock documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html).
+AWS 계정 설정 및 IAM 구성은 [AWS Bedrock 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html)를 참고하세요.
 </Tip>
 
-## Troubleshooting
+## 문제 해결
 
-**"Access Denied" Errors**
+**"Access Denied" 오류**
 
-Ensure your AWS credentials have the required Bedrock permissions. See [AWS IAM documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html) for permission requirements.
+AWS 자격 증명에 필요한 Bedrock 권한이 있는지 확인하세요. 권한 요구사항은 [AWS IAM 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html)를 참고하세요.
 
-**"Model Not Found" Errors**
+**"Model Not Found" 오류**
 
-Verify model access is enabled in the AWS Bedrock console and the model is available in your configured region.
+AWS Bedrock 콘솔에서 모델 접근이 활성화되어 있고 구성한 리전에서 모델이 उपलब्ध한지 확인하세요.
 
-**High Latency**
+**지연 시간 증가**
 
-Consider using a region closer to your users or enabling cross-region inference for better performance.
+사용자와 가까운 리전을 선택하거나 성능 개선을 위해 교차 리전 추론을 활성화하는 것을 고려하세요.
 
-## Related Resources
+## 관련 자료
 
 <CardGroup cols={2}>
-  <Card title="AWS Bedrock Docs" icon="book" href="https://docs.aws.amazon.com/bedrock/">
-    Complete AWS Bedrock documentation
+  <Card title="AWS Bedrock 문서" icon="book" href="https://docs.aws.amazon.com/bedrock/">
+    AWS Bedrock 전체 문서
   </Card>
   
-  <Card title="Model Access" icon="key" href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html">
-    How to enable model access
+  <Card title="모델 접근" icon="key" href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-access.html">
+    모델 접근 활성화 방법
   </Card>
   
-  <Card title="IAM Permissions" icon="shield" href="https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html">
-    Required IAM permissions
+  <Card title="IAM 권한" icon="shield" href="https://docs.aws.amazon.com/bedrock/latest/userguide/security-iam.html">
+    필요한 IAM 권한
   </Card>
   
-  <Card title="Pricing" icon="dollar-sign" href="https://aws.amazon.com/bedrock/pricing/">
-    AWS Bedrock pricing details
+  <Card title="가격" icon="dollar-sign" href="https://aws.amazon.com/bedrock/pricing/">
+    AWS Bedrock 가격 정보
   </Card>
 </CardGroup>

@@ -1,22 +1,22 @@
 ---
 title: "Mistral"
-description: "Learn how to configure and use Mistral AI models, including Codestral, with Cline. Covers API key setup and model selection."
+description: "Codestral을 포함한 Mistral AI 모델을 Cline에서 설정하고 사용하는 방법을 알아보세요. API 키 설정과 모델 선택을 다룹니다."
 ---
 
-Cline supports accessing models through the Mistral AI API, including both standard Mistral models and the code-specialized Codestral model.
+Cline은 Mistral AI API를 통해 표준 Mistral 모델과 코드 특화 Codestral 모델에 접근할 수 있습니다.
 
-**Website:** [https://mistral.ai/](https://mistral.ai/)
+**웹사이트:** [https://mistral.ai/](https://mistral.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to the [Mistral Platform](https://console.mistral.ai/). Create an account or sign in. You may need to go through a verification process.
-2.  **Create an API Key:**
-    -   [La Plateforme API Key](https://console.mistral.ai/api-keys/) and/or
-    -   [Codestral API Key](https://console.mistral.ai/codestral)
+1.  **가입/로그인:** [Mistral Platform](https://console.mistral.ai/)으로 이동해 계정을 만들거나 로그인합니다. 검증 절차가 필요할 수 있습니다.
+2.  **API 키 생성:**
+    -   [La Plateforme API 키](https://console.mistral.ai/api-keys/) 및/또는
+    -   [Codestral API 키](https://console.mistral.ai/codestral)
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Mistral models:
+Cline은 다음 Mistral 모델을 지원합니다:
 
 -   pixtral-large-2411
 -   ministral-3b-2410
@@ -30,24 +30,24 @@ Cline supports the following Mistral models:
 -   codestral-2501
 -   devstral-small-2505
 
-**Note:** Model availability and specifications may change.
-Refer to the [Mistral AI documentation](https://docs.mistral.ai/api/) and [Mistral Model Overview](https://docs.mistral.ai/getting-started/models/models_overview/) for the most current information.
+**참고:** 모델 가용성과 사양은 변경될 수 있습니다.
+최신 정보는 [Mistral AI 문서](https://docs.mistral.ai/api/)와 [Mistral 모델 개요](https://docs.mistral.ai/getting-started/models/models_overview/)를 참고하세요.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Mistral" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Mistral API key into the "Mistral API Key" field if you're using a standard `mistral` model. If you intend to use `codestral-latest`, see the "Using Codestral" section below.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Mistral"을 선택합니다.
+3.  **API 키 입력:** 표준 `mistral` 모델을 사용하는 경우 Mistral API 키를 "Mistral API Key" 필드에 붙여넣습니다. `codestral-latest`를 사용하려면 아래 "Codestral 사용" 섹션을 참고하세요.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-### Using Codestral
+### Codestral 사용
 
-[Codestral](https://docs.mistral.ai/capabilities/code_generation/) is a model specifically designed for code generation and interaction.
-For Codestral, you can use different endpoints (Default: codestral.mistral.ai).
-If using the La Plateforme API Key for Codestral, change the **Codestral Base Url** to: `https://api.mistral.ai`
+[Codestral](https://docs.mistral.ai/capabilities/code_generation/)은 코드 생성과 상호작용에 특화된 모델입니다.
+Codestral은 다른 엔드포인트를 사용할 수 있습니다(기본값: codestral.mistral.ai).
+La Plateforme API 키로 Codestral을 사용할 경우 **Codestral Base Url**을 `https://api.mistral.ai`로 변경하세요.
 
-To use Codestral with Cline:
+Cline에서 Codestral을 사용하려면:
 
-1.  **Select "Mistral" as the API Provider in Cline Settings.**
-2.  **Select a Codestral Model** (e.g., `codestral-latest`) from the "Model" dropdown.
-3.  **Enter your Codestral API Key** (from `codestral.mistral.ai`) or your La Plateforme API Key (from `api.mistral.ai`) into the appropriate API key field in Cline.
+1.  **Cline 설정에서 API Provider로 "Mistral"을 선택합니다.**
+2.  **"Model" 드롭다운에서 Codestral 모델**(예: `codestral-latest`)을 선택합니다.
+3.  **Codestral API 키**(`codestral.mistral.ai`) 또는 **La Plateforme API 키**(`api.mistral.ai`)를 Cline의 해당 API 키 필드에 입력합니다.

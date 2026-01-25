@@ -1,163 +1,163 @@
 ---
-title: "Worktrees"
-sidebarTitle: "Worktrees"
+title: "워크트리"
+sidebarTitle: "워크트리"
 ---
 
-Worktrees let you work on multiple branches simultaneously, each in its own folder. This enables Cline to work on tasks in parallel across separate VS Code windows, or lets Cline work independently while you continue coding in your main workspace.
+워크트리는 여러 브랜치를 동시에 작업할 수 있게 해 주며, 각 브랜치는 별도의 폴더를 사용합니다. 이를 통해 Cline이 여러 VS Code 창에서 병렬로 작업하거나, Cline이 별도 워크트리에서 작업하는 동안 메인 워크스페이스에서 계속 코딩할 수 있습니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/worktrees-overview.png"
-		alt="Worktrees view showing multiple linked worktrees"
+		alt="여러 연결된 워크트리를 보여주는 Worktrees 뷰"
 	/>
 </Frame>
 
-## What Are Git Worktrees?
+## Git 워크트리란?
 
-A Git worktree is a linked copy of your repository in a separate folder, checked out to a specific branch. All worktrees share the same Git history and `.git` directory, but each has its own working directory with different code checked out.
+Git 워크트리는 특정 브랜치로 체크아웃된 저장소의 연결된 복사본을 별도 폴더에 만드는 기능입니다. 모든 워크트리는 동일한 Git 히스토리와 `.git` 디렉터리를 공유하지만, 각 워크트리는 다른 코드를 체크아웃한 독립적인 작업 디렉터리를 가집니다.
 
-Key concepts:
-- **Main worktree**: Your original repository folder where the `.git` directory lives
-- **Linked worktrees**: Additional folders you create, each checked out to a different branch
-- **Shared history**: All worktrees share commits, branches, and Git configuration
-
-<Tip>
-  Unlike regular branch switching, worktrees let you have multiple branches checked out at the same time in different folders. This means you can have VS Code windows open for different features simultaneously.
-</Tip>
-
-## Why Use Worktrees with Cline?
-
-Worktrees solve a common problem: **Cline takes over your VS Code window while working on a task**. With worktrees, you can:
-
-1. **Run Cline in parallel** - Have Cline work on multiple tasks simultaneously, each in its own worktree and VS Code window
-2. **Keep working while Cline works** - Let Cline handle a task in a separate worktree while you continue coding in your main workspace
-3. **Isolate experimental changes** - Test risky changes in a worktree without affecting your main branch
-4. **Quick context switching** - Jump between features without stashing or committing incomplete work
-
-## Getting Started
-
-### Quick Launch (Recommended)
-
-The fastest way to start using worktrees is the **New Worktree Window** button on Cline's home screen:
-
-1. Click **New Worktree Window** on the home screen
-2. Enter a branch name and folder path (defaults are auto-filled)
-3. Click **Create & Open**
-
-A new VS Code window opens with your worktree, and Cline automatically opens ready to work.
+핵심 개념:
+- **메인 워크트리**: `.git` 디렉터리가 있는 원본 저장소 폴더
+- **연결된 워크트리**: 추가로 생성한 폴더, 각각 다른 브랜치로 체크아웃
+- **공유 히스토리**: 모든 워크트리가 커밋, 브랜치, Git 설정을 공유
 
 <Tip>
-  The home screen also shows your current branch and worktree path. Click it to open the full Worktrees view.
+  일반적인 브랜치 전환과 달리, 워크트리를 사용하면 서로 다른 폴더에 여러 브랜치를 동시에 체크아웃할 수 있습니다. 즉, 각 기능에 대해 다른 VS Code 창을 동시에 열 수 있습니다.
 </Tip>
 
-### Full Worktrees View
+## Cline에서 워크트리를 사용하는 이유
 
-For more control, open the full Worktrees view by clicking the **Worktrees** button in the Cline sidebar header, or by clicking your current branch info on the home screen:
+워크트리는 일반적인 문제를 해결합니다: **Cline은 작업 중 VS Code 창을 점유**합니다. 워크트리를 사용하면 다음이 가능합니다:
+
+1. **Cline 병렬 실행** - 각 워크트리/VS Code 창에서 Cline이 여러 작업을 동시에 수행
+2. **Cline이 일하는 동안 계속 작업** - Cline이 별도 워크트리에서 작업하는 동안 메인 워크스페이스에서 코딩 지속
+3. **실험적 변경 분리** - 메인 브랜치에 영향을 주지 않고 워크트리에서 위험한 변경 테스트
+4. **빠른 컨텍스트 전환** - 스태시나 미완료 커밋 없이 기능 간 전환
+
+## 시작하기
+
+### 빠른 실행(권장)
+
+가장 빠른 시작 방법은 Cline 홈 화면의 **New Worktree Window** 버튼입니다:
+
+1. 홈 화면에서 **New Worktree Window** 클릭
+2. 브랜치 이름과 폴더 경로 입력(기본값 자동 입력)
+3. **Create & Open** 클릭
+
+새 VS Code 창이 열리고, Cline이 자동으로 준비된 상태로 열립니다.
+
+<Tip>
+  홈 화면에는 현재 브랜치와 워크트리 경로가 표시됩니다. 클릭하면 전체 Worktrees 뷰를 열 수 있습니다.
+</Tip>
+
+### 전체 Worktrees 뷰
+
+더 많은 제어가 필요하면 Cline 사이드바 헤더의 **Worktrees** 버튼을 클릭하거나, 홈 화면에서 현재 브랜치 정보를 클릭해 전체 Worktrees 뷰를 여세요:
 
 <Steps>
-  <Step title="Create a New Worktree">
-    Click **New Worktree** at the bottom of the view. Enter a branch name and path (defaults are auto-filled).
+  <Step title="새 워크트리 만들기">
+    뷰 하단의 **New Worktree**를 클릭합니다. 브랜치 이름과 경로를 입력하세요(기본값 자동 입력).
   </Step>
-  <Step title="Open in New Window">
-    Once created, click the **Open in new window** button to open the worktree in a separate VS Code window. Cline will automatically open in the new window.
+  <Step title="새 창에서 열기">
+    생성 후 **Open in new window** 버튼을 클릭해 별도 VS Code 창에서 워크트리를 엽니다. 새 창에 Cline이 자동으로 열립니다.
   </Step>
 </Steps>
 
-## Typical Workflow
+## 일반적인 워크플로
 
-Here's how a typical worktree session looks:
+일반적인 워크트리 흐름은 다음과 같습니다:
 
 <Steps>
-  <Step title="Create a new worktree">
-    Click **New Worktree Window** on the home screen or use the Worktrees view. A new VS Code window opens with Cline ready to go.
+  <Step title="새 워크트리 생성">
+    홈 화면에서 **New Worktree Window**를 클릭하거나 Worktrees 뷰를 사용합니다. 새 VS Code 창이 열리고 Cline이 준비됩니다.
   </Step>
-  <Step title="Do your work">
-    Work on your feature or let Cline handle a task. Make commits as you go.
+  <Step title="작업 수행">
+    기능 작업을 하거나 Cline에게 맡깁니다. 진행 중에 커밋을 수행하세요.
   </Step>
-  <Step title="Close the worktree window">
-    When you're done, close the worktree's VS Code window.
+  <Step title="워크트리 창 닫기">
+    완료되면 워크트리의 VS Code 창을 닫습니다.
   </Step>
-  <Step title="Merge from your primary worktree">
-    Back in your main VS Code window, open the Worktrees view and click the **merge button** on the worktree you just worked in. This merges the branch and optionally deletes the worktree.
+  <Step title="메인 워크트리에서 병합">
+    메인 VS Code 창으로 돌아가 Worktrees 뷰에서 해당 워크트리의 **merge 버튼**을 클릭해 브랜치를 병합하고(선택적으로) 워크트리를 삭제합니다.
   </Step>
 </Steps>
 
-## Managing Worktrees
+## 워크트리 관리
 
-### Viewing Worktrees
+### 워크트리 보기
 
-The Worktrees view shows all worktrees for your repository:
+Worktrees 뷰에는 저장소의 모든 워크트리가 표시됩니다:
 
-- **Current**: The worktree you're currently in (highlighted)
-- **Main**: The primary worktree where your `.git` directory lives (cannot be deleted)
-- **Locked**: Worktrees that are locked to prevent accidental deletion
+- **Current**: 현재 워크트리(하이라이트됨)
+- **Main**: `.git` 디렉터리가 있는 기본 워크트리(삭제 불가)
+- **Locked**: 실수로 삭제되지 않도록 잠긴 워크트리
 
-### Opening Worktrees
+### 워크트리 열기
 
-Each worktree has two open options:
-- **Open in current window**: Replace your current workspace with the worktree
-- **Open in new window**: Open the worktree in a separate VS Code window (recommended for parallel Cline sessions)
+각 워크트리는 두 가지 열기 옵션이 있습니다:
+- **Open in current window**: 현재 워크스페이스를 워크트리로 교체
+- **Open in new window**: 별도 VS Code 창에서 워크트리 열기(Cline 병렬 작업에 권장)
 
-Either way, Cline automatically opens in the new workspace, ready to start a task.
+어느 쪽이든, Cline은 새 워크스페이스에서 자동으로 열려 작업을 시작할 준비가 됩니다.
 
-### Deleting Worktrees
+### 워크트리 삭제
 
-Click the trash icon on any linked worktree to delete it. A confirmation dialog will show you exactly what will be deleted:
-- The branch itself
-- All project files in the worktree folder
+연결된 워크트리의 휴지통 아이콘을 클릭하면 삭제됩니다. 확인 대화 상자에는 삭제될 내용이 명확히 표시됩니다:
+- 해당 브랜치
+- 워크트리 폴더 내 모든 프로젝트 파일
 
 <Warning>
-  Deleting a worktree permanently removes the branch and all files in that folder. Make sure any important changes are committed and pushed first.
+  워크트리를 삭제하면 브랜치와 해당 폴더의 모든 파일이 영구적으로 삭제됩니다. 중요한 변경은 먼저 커밋하고 push하세요.
 </Warning>
 
 <Note>
-  You cannot delete the main worktree. It's the primary repository where your `.git` directory lives.
+  메인 워크트리는 삭제할 수 없습니다. `.git` 디렉터리가 있는 기본 저장소입니다.
 </Note>
 
-### Merging Worktrees
+### 워크트리 병합
 
-When you're done working in a worktree and ready to merge your changes back to the main branch:
+워크트리에서 작업을 끝내고 메인 브랜치로 병합할 때:
 
-1. Click the **merge icon** (git merge symbol) on any linked worktree
-2. Review the merge details in the confirmation modal
-3. Choose whether to delete the worktree after merging
-4. Click **Merge**
+1. 연결된 워크트리의 **merge 아이콘**(git merge 기호)을 클릭
+2. 확인 모달에서 병합 내용을 검토
+3. 병합 후 워크트리 삭제 여부 선택
+4. **Merge** 클릭
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/worktrees-merge.png"
-		alt="Merge worktree modal"
+		alt="워크트리 병합 모달"
 	/>
 </Frame>
 
-#### Handling Merge Conflicts
+#### 병합 충돌 처리
 
-If your branch has conflicts with the main branch, Cline will detect them and show you the conflicting files. You have two options:
+브랜치가 메인 브랜치와 충돌하면 Cline이 이를 감지해 충돌 파일을 보여줍니다. 두 가지 선택지가 있습니다:
 
-1. **Ask Cline to Resolve & Merge** - Creates a new Cline task with a prompt asking Cline to resolve the conflicts, complete the merge, and clean up the worktree
-2. **Resolve Manually** - Close the modal and resolve conflicts yourself using your preferred Git tools
+1. **Cline에게 해결 및 병합 요청** - Cline이 충돌을 해결하고 병합 및 정리를 수행하도록 새 작업을 생성
+2. **수동으로 해결** - 모달을 닫고 선호하는 Git 도구로 직접 해결
 
 <Tip>
-  The "Ask Cline to Resolve" option is particularly useful for complex conflicts. Cline will analyze the conflicting files and attempt to merge them intelligently based on the intent of both branches.
+  "Cline에게 해결 요청" 옵션은 복잡한 충돌에서 특히 유용합니다. Cline은 양쪽 브랜치의 의도를 분석해 지능적으로 병합을 시도합니다.
 </Tip>
 
-## .worktreeinclude: Automatic File Copying
+## .worktreeinclude: 자동 파일 복사
 
-When you create a new worktree, it starts with a fresh checkout—no `node_modules`, no build artifacts, no IDE settings. This means you'd normally need to run `npm install` or similar setup commands.
+새 워크트리를 만들면 새 체크아웃으로 시작됩니다—`node_modules`도, 빌드 산출물도, IDE 설정도 없습니다. 따라서 보통 `npm install` 같은 초기 설정이 필요합니다.
 
-The `.worktreeinclude` file solves this by automatically copying specified files to new worktrees.
+`.worktreeinclude` 파일은 지정한 파일을 새 워크트리에 자동으로 복사해 이 문제를 해결합니다.
 
-### How It Works
+### 동작 방식
 
-1. Create a `.worktreeinclude` file in your repository root
-2. Add glob patterns for files you want copied (using `.gitignore` syntax)
-3. When Cline creates a new worktree, files matching **both** `.worktreeinclude` **and** `.gitignore` are copied automatically
+1. 저장소 루트에 `.worktreeinclude` 파일 생성
+2. 복사할 파일에 대한 glob 패턴 추가(`.gitignore` 문법 사용)
+3. Cline이 새 워크트리를 만들 때, **`.worktreeinclude`와 `.gitignore` 둘 다** 매칭되는 파일이 자동 복사됨
 
 <Note>
-  Only files that are both matched by `.worktreeinclude` AND listed in `.gitignore` are copied. This prevents accidentally duplicating tracked files.
+  `.worktreeinclude`와 `.gitignore`에 모두 매칭되는 파일만 복사됩니다. 추적된 파일이 실수로 복제되는 것을 방지합니다.
 </Note>
 
-### Example `.worktreeinclude`
+### `.worktreeinclude` 예시
 
 ```gitignore
 # Copy node_modules to avoid npm install
@@ -174,97 +174,97 @@ dist/
 .env.local
 ```
 
-### Creating a `.worktreeinclude` File
+### `.worktreeinclude` 만들기
 
-The Worktrees view will show a tip if you don't have a `.worktreeinclude` file. If you have a `.gitignore`, you can click **Create from .gitignore** to create one pre-filled with your gitignore contents. Then edit it to keep only the patterns you want copied.
+Worktrees 뷰는 `.worktreeinclude`가 없으면 팁을 표시합니다. `.gitignore`가 있다면 **Create from .gitignore**를 클릭해 내용을 복사한 파일을 만들 수 있습니다. 이후 필요한 패턴만 남기도록 편집하세요.
 
 <Tip>
-  For most JavaScript/TypeScript projects, just including `node_modules/` in your `.worktreeinclude` saves significant setup time for each new worktree.
+  대부분의 JavaScript/TypeScript 프로젝트에서는 `.worktreeinclude`에 `node_modules/`만 포함해도 각 워크트리의 초기 설정 시간을 크게 줄일 수 있습니다.
 </Tip>
 
-### Pro Tip: Symlink to .gitignore
+### 팁: .gitignore와 심볼릭 링크
 
-Since `.gitignore` usually contains most of the files you'd want copied to new worktrees (dependencies, environment files, build caches, etc.), you can create a symlink so they stay in sync automatically:
+`.gitignore`에는 보통 새 워크트리에 복사하고 싶은 파일(의존성, 환경 파일, 빌드 캐시 등)이 대부분 포함됩니다. 이 경우 심볼릭 링크를 만들어 자동 동기화할 수 있습니다:
 
 ```bash
-# In your repository root
+# 저장소 루트에서
 ln -s .gitignore .worktreeinclude
 ```
 
-Now whenever you update your `.gitignore`, your `.worktreeinclude` will have the same patterns. This is especially useful for projects where gitignored files are exactly what you want copied—no need to maintain two separate files.
+이제 `.gitignore`를 업데이트하면 `.worktreeinclude`도 동일한 패턴을 갖게 됩니다. gitignore된 파일이 곧 복사 대상인 프로젝트에서 특히 유용합니다.
 
 <Note>
-  If you need different patterns than your `.gitignore`, create a regular `.worktreeinclude` file instead of a symlink.
+  `.gitignore`와 다른 패턴이 필요하면 심볼릭 링크 대신 일반 `.worktreeinclude` 파일을 만드세요.
 </Note>
 
-## Best Practices
+## 모범 사례
 
 <AccordionGroup>
-  <Accordion title="For Parallel Cline Sessions">
-    1. **Create purpose-specific worktrees** - Name branches clearly (e.g., `cline/refactor-auth`, `cline/add-tests`)
-    2. **Open in new windows** - Always use "Open in new window" for true parallelism
-    3. **Use .worktreeinclude** - Set up automatic file copying to reduce setup time
+  <Accordion title="Cline 병렬 세션">
+    1. **목적별 워크트리 생성** - 브랜치 이름을 명확히 지정(예: `cline/refactor-auth`, `cline/add-tests`)
+    2. **새 창에서 열기** - 진정한 병렬 작업을 위해 항상 "Open in new window" 사용
+    3. **.worktreeinclude 사용** - 자동 복사로 초기 설정 시간 단축
   </Accordion>
-  <Accordion title="For Solo Development">
-    1. **Keep your main branch clean** - Use worktrees for experimental or risky changes
-    2. **Quick feature switches** - Instead of stashing, create a worktree for interruptions
-    3. **Review in isolation** - Create worktrees to review PRs without disrupting your work
+  <Accordion title="개인 개발">
+    1. **메인 브랜치 청결 유지** - 실험적/위험한 변경은 워크트리에서 수행
+    2. **빠른 기능 전환** - 스태시 대신 워크트리를 만들어 중단 작업 처리
+    3. **격리된 리뷰** - PR 리뷰를 워크트리에서 수행해 작업 흐름 유지
   </Accordion>
-  <Accordion title="Worktree Hygiene">
-    1. **Delete unused worktrees** - Remove worktrees when their branches are merged
-    2. **Use meaningful names** - Branch names should indicate the worktree's purpose
-    3. **Check for stale worktrees** - Periodically review and clean up old worktrees
+  <Accordion title="워크트리 위생">
+    1. **사용하지 않는 워크트리 삭제** - 브랜치가 병합되면 워크트리 제거
+    2. **의미 있는 이름 사용** - 워크트리 목적을 알 수 있도록 브랜치 이름 지정
+    3. **오래된 워크트리 점검** - 주기적으로 확인하고 정리
   </Accordion>
 </AccordionGroup>
 
-## Limitations
+## 제한 사항
 
-Worktrees are not available in certain workspace configurations:
+워크트리는 일부 워크스페이스 구성에서 사용할 수 없습니다:
 
-- **Multi-root workspaces**: If you have multiple folders open in VS Code, worktrees are disabled. Open a single repository folder instead.
-- **Subfolder of a repository**: If you've opened a subfolder within a Git repository (not the root), worktrees are disabled. Open the repository root folder instead.
+- **멀티 루트 워크스페이스**: VS Code에서 여러 폴더를 열어둔 경우 워크트리가 비활성화됩니다. 단일 저장소 폴더를 여세요.
+- **저장소의 하위 폴더**: Git 저장소의 하위 폴더(루트가 아닌)를 열었다면 워크트리가 비활성화됩니다. 저장소 루트 폴더를 여세요.
 
-The Worktrees view will display a message explaining the limitation if either of these applies to your workspace.
+해당하는 경우 Worktrees 뷰에 제한 이유가 표시됩니다.
 
-## Troubleshooting
+## 문제 해결
 
 <AccordionGroup>
-  <Accordion title="Branch already exists error">
-    Git doesn't allow the same branch to be checked out in multiple worktrees. Either:
-    - Use a different branch name
-    - Delete the existing worktree using that branch
+  <Accordion title="Branch already exists 오류">
+    Git은 같은 브랜치를 여러 워크트리에서 동시에 체크아웃할 수 없습니다. 다음 중 하나를 선택하세요:
+    - 다른 브랜치 이름 사용
+    - 해당 브랜치를 사용하는 워크트리를 삭제
   </Accordion>
   <Accordion title="Worktree folder already exists">
-    The path you specified already contains files. Choose a different path or delete the existing folder first.
+    지정한 경로에 이미 파일이 있습니다. 다른 경로를 선택하거나 기존 폴더를 먼저 삭제하세요.
   </Accordion>
-  <Accordion title="Can't delete worktree">
-    If a worktree is locked, you'll need to unlock it first using `git worktree unlock <path>` in the terminal. If the worktree has uncommitted changes, you may need to use force delete.
+  <Accordion title="워크트리를 삭제할 수 없음">
+    워크트리가 잠겨 있다면 터미널에서 `git worktree unlock <path>`로 해제해야 합니다. 커밋되지 않은 변경이 있다면 강제 삭제가 필요할 수 있습니다.
   </Accordion>
-  <Accordion title=".worktreeinclude files not copying">
-    Make sure the files you want copied are:
-    1. Listed in your `.worktreeinclude` file
-    2. Also listed in your `.gitignore` (only gitignored files are copied)
-    3. Actually exist in your current worktree
+  <Accordion title=".worktreeinclude 파일이 복사되지 않음">
+    복사하려는 파일이 다음 조건을 만족하는지 확인하세요:
+    1. `.worktreeinclude`에 포함되어 있음
+    2. `.gitignore`에도 포함되어 있음(깃이 무시하는 파일만 복사됨)
+    3. 현재 워크트리에 실제로 존재함
   </Accordion>
 </AccordionGroup>
 
-## Technical Details
+## 기술 상세
 
 <AccordionGroup>
-  <Accordion title="How Worktrees Work Internally">
-    - Worktrees are a native Git feature (`git worktree` command)
-    - All worktrees share the same `.git` directory and object database
-    - Each worktree has its own index, working directory, and HEAD
-    - Worktree list is stored in `.git/worktrees/`
+  <Accordion title="워크트리 내부 동작">
+    - 워크트리는 Git의 네이티브 기능(`git worktree` 명령)
+    - 모든 워크트리는 동일한 `.git` 디렉터리와 오브젝트 DB 공유
+    - 각 워크트리는 고유한 인덱스, 작업 디렉터리, HEAD를 가짐
+    - 워크트리 목록은 `.git/worktrees/`에 저장됨
   </Accordion>
-  <Accordion title="Storage Considerations">
-    - Each worktree contains a full checkout of the repository
-    - `.worktreeinclude` can significantly increase worktree size (e.g., copying `node_modules`)
-    - Consider your disk space when creating many worktrees
+  <Accordion title="스토리지 고려사항">
+    - 각 워크트리는 저장소의 전체 체크아웃을 포함
+    - `.worktreeinclude`는 워크트리 크기를 크게 늘릴 수 있음(예: `node_modules` 복사)
+    - 많은 워크트리를 만들 경우 디스크 용량 고려
   </Accordion>
-  <Accordion title="Relationship with Checkpoints">
-    Worktrees are separate from Cline's [checkpoint system](/features/checkpoints). Each worktree has its own checkpoint history. Checkpoints track changes within a single worktree, while worktrees let you work across multiple branches simultaneously.
+  <Accordion title="체크포인트와의 관계">
+    워크트리는 Cline의 [체크포인트 시스템](/features/checkpoints)과 별개입니다. 각 워크트리는 자체 체크포인트 히스토리를 가집니다. 체크포인트는 단일 워크트리 내 변경을 추적하고, 워크트리는 여러 브랜치에서 동시에 작업할 수 있게 해줍니다.
   </Accordion>
 </AccordionGroup>
 
-Worktrees unlock true parallel development with Cline. Create a worktree, open it in a new window, and let Cline work independently while you continue coding!
+워크트리는 Cline과 함께 진정한 병렬 개발을 가능하게 합니다. 워크트리를 만들고 새 창에서 열어두면, Cline이 독립적으로 작업하는 동안 여러분은 계속 코딩할 수 있습니다!

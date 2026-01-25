@@ -1,168 +1,170 @@
 ---
-title: "Configure LiteLLM in VS Code (Members)"
-sidebarTitle: "Configure LiteLLM (Member)"
-description: "Guide for engineers connecting to their organization's LiteLLM proxy through VS Code after admin setup"
+title: "VS Code에서 LiteLLM 설정(멤버)"
+sidebarTitle: "LiteLLM 설정(멤버)"
+description: "관리자 설정 이후 VS Code에서 조직의 LiteLLM 프록시에 연결하는 엔지니어용 가이드"
 ---
 
-As a team member, you can connect your local development environment to your organization's LiteLLM proxy setup. This guide walks you through configuring your connection in VS Code so you can start using multiple AI models through your organization's unified proxy interface. Your administrator has already configured the provider settings—you just need to add your credentials to get started.
+팀원으로서 로컬 개발 환경을 조직의 LiteLLM 프록시 설정에 연결할 수 있습니다. 이 가이드는 VS Code에서 연결을 구성하여 조직의 통합 프록시 인터페이스를 통해 여러 AI 모델을 사용할 수 있도록 안내합니다. 제공자 설정은 이미 관리자가 구성했으므로, 시작을 위해 자격 증명만 추가하면 됩니다.
 
-## Before You Begin
+## 시작하기 전에
 
-To successfully connect to your organization's LiteLLM proxy, you'll need a few things ready.
+조직의 LiteLLM 프록시에 성공적으로 연결하려면 다음을 준비해야 합니다.
 
-**Cline extension installed and configured**  
-The Cline extension must be installed in VS Code and you need to be signed into your organization account. If you haven't installed Cline yet, follow our [installation guide](/getting-started/installing-cline).
+**Cline 확장 설치 및 구성**  
+VS Code에 Cline 확장이 설치되어 있어야 하며, 조직 계정으로 로그인해야 합니다. 아직 설치하지 않았다면 [설치 가이드](/getting-started/installing-cline)를 따라주세요.
 
 <Info>
-**Quick Check**: Open the Cline panel in VS Code. If you see your organization name in the bottom left, you're signed in correctly.
+**빠른 확인**: VS Code의 Cline 패널을 열고 좌하단에 조직명이 보이면 정상 로그인 상태입니다.
 </Info>
 
-**Access credentials for your organization's LiteLLM proxy**  
-You need credentials to access your organization's LiteLLM proxy. This might be an API key, or the proxy might be configured for open access within your network.
+**조직 LiteLLM 프록시 접근 자격 증명**  
+조직의 LiteLLM 프록시에 접근하기 위한 자격 증명이 필요합니다. 이는 API 키일 수도 있고, 조직 네트워크 내에서 오픈 액세스로 구성되어 있을 수도 있습니다.
 
 <Note>
-If you're unsure about the credentials needed, check with your administrator or IT team about how to access your organization's LiteLLM proxy.
+필요한 자격 증명이 무엇인지 확실하지 않다면, 관리자나 IT 팀에 조직의 LiteLLM 접근 방법을 문의하세요.
 </Note>
 
-## Configuration Steps
+## 구성 단계
 
 <Steps>
-<Step title="Open Cline Settings">
-Open VS Code and access the Cline settings panel using either of these methods:
+<Step title="Cline 설정 열기">
+VS Code에서 다음 중 하나의 방법으로 Cline 설정 패널을 엽니다:
 
-- Click the settings icon (⚙️) in the Cline panel
-- Click on the API Provider dropdown located directly below the chat area (it will display as `LiteLLM` or show a specific model name)
+- Cline 패널의 설정 아이콘(⚙️) 클릭
+- 채팅 영역 바로 아래의 API Provider 드롭다운 클릭(표시는 `LiteLLM` 또는 특정 모델명)
 
 </Step>
 
-<Step title="Configure LiteLLM Connection">
-The LiteLLM configuration options depend on how your organization has set up the proxy:
+<Step title="LiteLLM 연결 구성">
+LiteLLM 구성 옵션은 조직의 프록시 설정 방식에 따라 달라집니다:
 
 <AccordionGroup>
-<Accordion title="API Key Authentication">
-If your organization requires API key authentication:
+<Accordion title="API 키 인증">
+조직이 API 키 인증을 요구하는 경우:
 
-1. Select or confirm the **LiteLLM** provider is selected
-2. Enter your assigned API key in the **API Key** field
-3. The base URL should already be configured by your administrator
-4. Click **Save** to store your credentials
+1. **LiteLLM** 제공자가 선택되어 있는지 확인
+2. **API Key** 필드에 할당된 API 키 입력
+3. Base URL은 관리자가 이미 구성했어야 합니다.
+4. **Save**를 클릭해 자격 증명을 저장
 
 <Tip>
-API keys are stored locally in VS Code and are only used by the Cline extension.
+API 키는 VS Code 로컬에 저장되며 Cline 확장만 사용합니다.
 </Tip>
 </Accordion>
 
-<Accordion title="Open Access (No Authentication)">
-If your LiteLLM proxy is configured for open access within your network:
+<Accordion title="오픈 액세스(인증 없음)">
+LiteLLM 프록시가 네트워크 내부 오픈 액세스로 구성된 경우:
 
-1. Select or confirm the **LiteLLM** provider is selected  
-2. Leave the API key field empty
-3. The extension will connect directly to the configured proxy endpoint
-4. No additional authentication is required
+1. **LiteLLM** 제공자가 선택되어 있는지 확인
+2. API 키 필드는 비워둠
+3. 확장이 구성된 프록시 엔드포인트에 직접 연결
+4. 추가 인증 필요 없음
 
 <Info>
-Open access is common when the LiteLLM proxy is deployed within a secure network environment.
+오픈 액세스는 LiteLLM 프록시가 보안 네트워크 내부에 배포된 경우 흔하게 사용됩니다.
 </Info>
 </Accordion>
 
-<Accordion title="Custom Configuration">
-If your organization uses custom authentication or specific connection parameters:
+<Accordion title="커스텀 구성">
+조직에서 커스텀 인증 또는 특정 연결 파라미터를 사용하는 경우:
 
-1. Follow any custom instructions provided by your administrator
-2. Contact your IT team if you encounter connection issues
-3. Additional configuration may be needed outside of VS Code
+1. 관리자에게 제공받은 커스텀 지침을 따르세요.
+2. 연결 문제가 있다면 IT 팀에 문의하세요.
+3. VS Code 외부에서 추가 설정이 필요할 수 있습니다.
 
 <Note>
-Custom configurations might require specific network settings or additional authentication steps.
+커스텀 구성에는 특정 네트워크 설정이나 추가 인증 단계가 필요할 수 있습니다.
 </Note>
 </Accordion>
 </AccordionGroup>
 </Step>
 
-<Step title="Select Available Models">
-Once connected, you'll see the models available through your organization's LiteLLM proxy:
+<Step title="사용 가능한 모델 선택">
+연결되면 LiteLLM 프록시를 통해 사용 가능한 모델이 표시됩니다:
 
-- View available models in the model dropdown
-- Models are determined by your administrator's proxy configuration  
-- You can switch between models for different types of tasks
-- Some models may be restricted based on your access level
+- 모델 드롭다운에서 사용 가능한 모델 확인
+- 모델 목록은 관리자의 프록시 구성에 따라 결정
+- 작업 유형에 따라 모델을 전환 가능
+- 일부 모델은 접근 권한에 따라 제한될 수 있음
 
 <Tip>
-**Model Selection**
+**모델 선택**
 
-Choose models based on your task requirements:
-- **Fast models** (like GPT-3.5-turbo) for quick responses
-- **Powerful models** (like GPT-4) for complex reasoning
-- **Specialized models** for code generation or specific domains
+작업 요구에 따라 모델을 선택하세요:
+- **빠른 모델**(예: GPT-3.5-turbo)은 빠른 응답에 적합
+- **강력한 모델**(예: GPT-4)은 복잡한 추론에 적합
+- **특화 모델**은 코드 생성 또는 특정 도메인에 적합
 </Tip>
 </Step>
 
-<Step title="Test the Connection">
-Send a test message in Cline to verify your connection works correctly with the LiteLLM proxy.
+<Step title="연결 테스트">
+Cline에서 테스트 메시지를 보내 LiteLLM 프록시와의 연결이 정상 동작하는지 확인합니다.
 
 <Tip>
-**Testing Recommendation**
+**테스트 권장**
 
-Test the connection in plan mode first to verify everything works correctly before using it for actual development tasks.
+실제 개발 작업에 사용하기 전에 plan 모드로 연결을 먼저 테스트하세요.
 </Tip>
 </Step>
 </Steps>
 
-## Model Usage
+## 모델 사용
 
-### Available Model Categories
-The models available through your LiteLLM proxy typically include:
+### 사용 가능한 모델 카테고리
 
-**Text Generation Models:**
-- OpenAI GPT-4, GPT-3.5-turbo variants
+LiteLLM 프록시에서 일반적으로 사용할 수 있는 모델:
+
+**텍스트 생성 모델:**
+- OpenAI GPT-4, GPT-3.5-turbo 계열
 - Anthropic Claude 3 Sonnet, Haiku, Opus
-- Open source models like Llama 2, Mistral
+- Llama 2, Mistral 등 오픈 소스 모델
 
-**Code-Specific Models:**
+**코드 특화 모델:**
 - OpenAI GPT-4 for code
-- CodeLlama variants
-- Specialized code completion models
+- CodeLlama 계열
+- 코드 완성 특화 모델
 
-**Multimodal Models:**
-- GPT-4 Vision for image analysis
-- Claude 3 models with vision capabilities
+**멀티모달 모델:**
+- 이미지 분석용 GPT-4 Vision
+- 비전 기능이 있는 Claude 3 모델
 
-### Model Selection Strategy
-Choose models based on your development needs:
+### 모델 선택 전략
 
-- **Quick iterations**: Use faster, cost-effective models
-- **Complex problems**: Use more powerful models  
-- **Code-heavy tasks**: Use code-specialized models
-- **Visual content**: Use multimodal models when working with images
+개발 요구에 따라 모델을 선택하세요:
 
-## Troubleshooting
+- **빠른 반복**: 빠르고 비용 효율적인 모델
+- **복잡한 문제**: 더 강력한 모델  
+- **코드 중심 작업**: 코드 특화 모델
+- **시각 콘텐츠**: 이미지 작업 시 멀티모달 모델
 
-**LiteLLM not available as provider option**  
-Confirm you're signed into the correct Cline organization. Verify your administrator has saved the LiteLLM configuration and that you have the latest version of the Cline extension.
+## 문제 해결
 
-**Connection errors or timeouts**  
-Verify your network can reach the LiteLLM proxy endpoint. Check with your IT team about firewall rules or VPN requirements. Ensure the proxy endpoint is accessible from your development environment.
+**LiteLLM이 제공자 옵션에 없음**  
+올바른 Cline 조직에 로그인했는지 확인하세요. 관리자가 LiteLLM 구성을 저장했는지 확인하고 Cline 확장이 최신 버전인지 확인하세요.
 
-**Authentication failures**  
-If using API key authentication, verify the key is correctly entered and hasn't expired. Contact your administrator to confirm your key is active and has the proper permissions.
+**연결 오류 또는 타임아웃**  
+네트워크에서 LiteLLM 프록시 엔드포인트에 접근 가능한지 확인하세요. 방화벽/VPN 요구사항을 IT 팀에 확인하세요. 개발 환경에서 프록시 엔드포인트가 접근 가능한지 확인하세요.
 
-**Models not loading or are limited**  
-The available models depend on your organization's LiteLLM configuration. Contact your administrator if you need access to specific models or if expected models aren't available.
+**인증 실패**  
+API 키 인증을 사용하는 경우 키가 올바르게 입력되었고 만료되지 않았는지 확인하세요. 관리자에게 키가 활성화되어 있고 적절한 권한이 있는지 확인하세요.
 
-**Slow response times**  
-Response times depend on the models being used and proxy load. Try switching to faster models for routine tasks. Contact your administrator if performance is consistently poor.
+**모델이 로드되지 않거나 제한됨**  
+사용 가능한 모델은 조직의 LiteLLM 구성에 따라 다릅니다. 필요한 모델이 보이지 않으면 관리자에게 문의하세요.
 
-**Error messages from specific models**  
-Some models may be temporarily unavailable or have specific limitations. Try alternative models or contact your administrator if specific models are consistently failing.
+**응답이 느림**  
+응답 시간은 사용 중인 모델과 프록시 부하에 따라 달라집니다. 반복 작업은 빠른 모델로 전환해 보세요. 성능 문제가 지속되면 관리자에게 문의하세요.
 
-## Security Best Practices
+**특정 모델 오류**  
+일부 모델은 일시적으로 사용 불가하거나 제한이 있을 수 있습니다. 다른 모델을 시도하거나 문제가 지속되면 관리자에게 문의하세요.
 
-When working with your organization's LiteLLM proxy:
+## 보안 모범 사례
 
-- Keep your API credentials secure and don't share them
-- Use appropriate models for the sensitivity of your data  
-- Follow your organization's usage guidelines
-- Report any suspicious activity or unauthorized access attempts
-- Regularly update the Cline extension for security patches
+조직의 LiteLLM 프록시를 사용할 때는 다음을 준수하세요:
 
-Your organization administrator controls which models are available and usage policies. The extension will automatically display available models based on your proxy configuration and access level.
+- API 자격 증명을 안전하게 보관하고 공유하지 않기
+- 데이터 민감도에 맞는 모델 사용
+- 조직의 사용 가이드라인 준수
+- 의심스러운 활동이나 무단 접근 시도 보고
+- 보안 패치를 위해 Cline 확장을 नियमित적으로 업데이트
+
+조직 관리자가 사용 가능한 모델과 정책을 제어합니다. 확장은 프록시 구성과 접근 권한에 따라 사용 가능한 모델을 자동으로 표시합니다.

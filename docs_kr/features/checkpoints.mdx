@@ -1,103 +1,103 @@
 ---
-title: "Checkpoints"
-sidebarTitle: "Checkpoints"
+title: "체크포인트"
+sidebarTitle: "체크포인트"
 ---
 
-Checkpoints automatically save snapshots of your workspace after each step in a task. This feature lets you track changes, roll back when needed, and experiment confidently with your code.
+체크포인트는 작업의 각 단계가 끝날 때 워크스페이스 스냅샷을 자동으로 저장합니다. 변경 사항을 추적하고 필요 시 롤백하며, 안심하고 코드를 실험할 수 있게 해줍니다.
 
-## How Checkpoints Work
+## 체크포인트 동작 방식
 
-Cline creates a checkpoint after each tool use (file edits, commands, etc.). These checkpoints:
+Cline은 각 도구 사용(파일 편집, 명령 실행 등) 후 체크포인트를 생성합니다. 이 체크포인트는:
 
--   Work alongside your Git workflow without interference
--   Maintain context between restores
--   Use a shadow Git repository to track changes
+- Git 워크플로와 충돌 없이 나란히 동작
+- 복원 사이의 컨텍스트를 유지
+- 섀도우 Git 저장소로 변경 사항을 추적
 
-For example, if you're working on a feature and Cline makes multiple file changes, each change creates a checkpoint. This means you can review each modification and, if needed, roll back to any point without affecting your main Git repository.
+예를 들어 기능 개발 중 Cline이 여러 파일을 변경하면 각 변경마다 체크포인트가 생성됩니다. 덕분에 각 수정 사항을 검토하고, 필요하면 메인 Git 저장소에 영향을 주지 않고 어느 시점으로든 되돌릴 수 있습니다.
 
-## Enabling or Disabling Checkpoints
+## 체크포인트 활성화/비활성화
 
-Checkpoints are enabled by default in Cline. To toggle this feature:
+체크포인트는 기본적으로 활성화되어 있습니다. 토글하려면:
 
-1. Open the Cline settings by clicking the gear icon in the Cline panel
-2. Go to "Feature Settings"
-3. Toggle the **"Enable Checkpoints"** checkbox on or off
+1. Cline 패널의 톱니바퀴 아이콘을 클릭해 설정을 열기
+2. "Feature Settings"로 이동
+3. **"Enable Checkpoints"** 체크박스를 켜거나 끄기
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/checkpoints.gif"
-		alt="Checkpoints toggle in settings"
+		alt="설정에서 체크포인트 토글"
 	/>
 </Frame>
 
-### When to Disable Checkpoints
+### 체크포인트를 비활성화할 때
 
-While checkpoints provide valuable safety nets, you might want to disable them in certain situations:
+체크포인트는 유용한 안전장치이지만, 다음과 같은 경우 비활성화할 수 있습니다:
 
--   **Large repositories**: If you're working with very large codebases, checkpoints may use additional storage space
--   **Performance concerns**: On systems with limited resources, disabling checkpoints can slightly improve performance
--   **Simple tasks**: For quick, low-risk operations where rollback isn't needed
+- **대규모 저장소**: 매우 큰 코드베이스에서는 추가 저장 공간을 사용할 수 있음
+- **성능 고려**: 리소스가 제한된 시스템에서는 약간의 성능 향상이 가능
+- **간단한 작업**: 롤백이 필요 없는 간단하고 저위험한 작업
 
 
-## Viewing Changes & Restoring
+## 변경 사항 보기 및 복원
 
-After each tool use, you can:
+각 도구 사용 후 다음을 할 수 있습니다:
 
-1. Click the "Compare" button to see modified files
-2. Click the "Restore" button to open restore options
+1. "Compare" 버튼으로 변경된 파일 확인
+2. "Restore" 버튼으로 복원 옵션 열기
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(13).png"
-		alt="Checkpoint comparison and restore options"
+		alt="체크포인트 비교 및 복원 옵션"
 	/>
 </Frame>
 
-## Restore Options
+## 복원 옵션
 
-To restore to a previous point:
+이전 시점으로 복원하려면:
 
-1. Click the "Restore" button next to any step
-2. Choose from three options:
-    - **Restore Task and Workspace**: Reset both codebase and task to that point
-    - **Restore Task Only**: Keep codebase changes but revert task context
-    - **Restore Workspace Only**: Reset codebase while preserving task context
+1. 각 단계 옆의 "Restore" 버튼 클릭
+2. 세 가지 옵션 중 선택:
+    - **작업과 워크스페이스 복원**: 코드베이스와 작업을 모두 해당 시점으로 되돌림
+    - **작업만 복원**: 코드베이스 변경은 유지하고 작업 컨텍스트만 되돌림
+    - **워크스페이스만 복원**: 코드베이스를 되돌리되 작업 컨텍스트는 유지
 
-Example: If Cline makes changes you don't like while styling a component, you can use "Restore Workspace Only" to revert the code changes while keeping the conversation context, allowing you to try a different approach.
+예시: 컴포넌트 스타일을 바꾸는 동안 Cline의 변경이 마음에 들지 않는다면 "워크스페이스만 복원"을 사용해 코드 변경만 되돌리고 대화 컨텍스트는 유지한 채 다른 접근을 시도할 수 있습니다.
 
-<Frame caption="Reverting both codebase and task to before any changes were made to start fresh">
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/checkpointsDemo.gif" alt="Checkpoint restore demo" />
+<Frame caption="변경 이전 시점으로 코드베이스와 작업을 모두 되돌려 새로 시작하기">
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/checkpointsDemo.gif" alt="체크포인트 복원 데모" />
 </Frame>
 
-## Use Cases
+## 사용 사례
 
-Checkpoints let you be more experimental with Cline. While human coding is often methodical and iterative, AI can make substantial changes quickly. Checkpoints help you track these changes and revert if needed.
+체크포인트는 Cline을 더 실험적으로 사용할 수 있게 해줍니다. 사람의 코딩은 보통 점진적이지만, AI는 빠르게 큰 변경을 만들 수 있습니다. 체크포인트는 이런 변경을 추적하고 필요 시 되돌릴 수 있게 해줍니다.
 
-### Using Auto-Approve Mode
+### 자동 승인 모드 사용
 
--   Provides safety net for rapid iterations
--   Makes it easy to undo unexpected results
+- 빠른 반복 작업을 위한 안전장치
+- 예상치 못한 결과를 손쉽게 되돌릴 수 있음
 
-### Testing Different Approaches
+### 다양한 접근 테스트
 
--   Try multiple solutions confidently
--   Compare different implementations
--   Quickly revert to working states
--   Ideal for exploring different design patterns or architectural approaches
+- 여러 해결책을 자신 있게 시도
+- 서로 다른 구현을 비교
+- 정상 동작 상태로 빠르게 복귀
+- 다양한 디자인 패턴이나 아키텍처 접근을 탐색할 때 이상적
 
-## Best Practices
+## 권장 사항
 
-1. Use checkpoints as safety nets when experimenting
-2. Leverage auto-approve mode more confidently, knowing you can always roll back
-3. Restore selectively based on needs:
-    - Use "Restore Task and Workspace" for a fresh start
-    - Use "Restore Task Only" to try different prompts, but keep file changes
-    - Use "Restore Workspace Only" to attempt different implementations while preserving conversation context
+1. 실험할 때 안전장치로 체크포인트 활용
+2. 언제든 롤백할 수 있다는 확신으로 자동 승인 모드 더 적극 활용
+3. 필요에 따라 선택적으로 복원:
+    - 새로 시작하려면 "작업과 워크스페이스 복원"
+    - 다른 프롬프트를 시도하되 파일 변경을 유지하려면 "작업만 복원"
+    - 대화 컨텍스트를 유지한 채 다른 구현을 시도하려면 "워크스페이스만 복원"
 
-## Relationship with Message Editing
+## 메시지 편집과의 관계
 
-The [message editing feature](/features/editing-messages) uses checkpoints under the hood when you select the "Restore All" option. This allows you to not only edit and resubmit your message but also restore your workspace to the state it was in at that point in the conversation.
+[메시지 편집 기능](/features/editing-messages)은 "Restore All" 옵션을 선택할 때 내부적으로 체크포인트를 사용합니다. 즉, 메시지를 수정해 다시 제출할 뿐 아니라 그 시점의 워크스페이스 상태까지 복원할 수 있습니다.
 
-## Deleting Checkpoints
+## 체크포인트 삭제
 
-You can delete all checkpoints by using the **"Delete All History"** button in the task history menu. Note that this will also delete all tasks. Checkpoints are stored in VS Code's globalStorage.
+작업 히스토리 메뉴에서 **"Delete All History"** 버튼을 사용하면 모든 체크포인트를 삭제할 수 있습니다. 이 작업은 모든 작업도 함께 삭제합니다. 체크포인트는 VS Code의 globalStorage에 저장됩니다.

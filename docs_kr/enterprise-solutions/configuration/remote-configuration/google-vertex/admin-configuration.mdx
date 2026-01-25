@@ -1,112 +1,111 @@
 ---
-title: "Configure Google Vertex AI Provider (Admin)"
-sidebarTitle: "Configure Google Vertex (Admin)"
-description: "This guide explains how administrators configure Google Vertex AI as the organization-wide LLM provider for Cline."
+title: "Google Vertex AI 제공자 구성(관리자)"
+sidebarTitle: "Google Vertex 구성(관리자)"
+description: "관리자가 Cline의 조직 공용 LLM 제공자로 Google Vertex AI를 구성하는 방법을 설명합니다."
 ---
 
+관리자는 호스팅된 관리자 콘솔에서 모든 Cline 사용자에게 Google Vertex AI를 조직 공용 LLM 제공자로 추가할 수 있습니다. 이 중앙화된 접근은 Google의 Gemini 모델에 대한 일관된 접근을 보장하면서, 조직의 프로젝트 경계와 리전 설정을 유지합니다.
 
-As an administrator, you can add Google Vertex AI as the organization-wide LLM provider for all Cline users through the hosted admin console. This centralized approach ensures consistent access to Google's Gemini models while maintaining your organization's project boundaries and regional settings.
+## 시작하기 전에
 
-## Before You Begin
+조직의 LLM 제공자로 Google Vertex AI를 설정하기 전에 다음이 필요합니다.
 
-To get started with setting up Google Vertex AI as your organization's LLM provider, you'll need a few items in place.
-
-**Administrator access to the Cline Admin console**  
-You need admin privileges to enforce provider settings across your organization. If you can navigate to **Settings → Cline Settings** in the admin console at [app.cline.bot](https://app.cline.bot), you have the right access level.
+**Cline 관리자 콘솔의 관리자 권한**  
+조직 전체에 제공자 설정을 적용하려면 관리자 권한이 필요합니다. [app.cline.bot](https://app.cline.bot) 관리자 콘솔에서 **Settings → Cline Settings**로 이동할 수 있다면 필요한 권한이 있습니다.
 
 
-**Google Cloud Project with Vertex AI enabled**  
-You need a Google Cloud project with the Vertex AI API enabled and appropriate models accessible.
+**Vertex AI가 활성화된 Google Cloud 프로젝트**  
+Vertex AI API가 활성화되고 필요한 모델에 접근 가능한 Google Cloud 프로젝트가 필요합니다.
 
 <Note>
-If you haven't set up Google Cloud or Vertex AI yet, work with your cloud team to enable the Vertex AI API and ensure necessary quotas are configured.
+아직 Google Cloud나 Vertex AI를 설정하지 않았다면, 클라우드 팀과 협력하여 Vertex AI API를 활성화하고 필요한 쿼터가 설정되어 있는지 확인하세요.
 </Note>
 
-**Project configuration details**  
-You'll need your Google Cloud project ID and preferred region for Vertex AI model access.
+**프로젝트 구성 정보**  
+Vertex AI 모델 접근에 사용할 Google Cloud 프로젝트 ID와 선호 리전을 준비하세요.
 
 <Tip>
-Service accounts should have the minimum IAM permissions needed for Vertex AI access to follow security best practices.
+서비스 계정은 보안 모범 사례에 따라 Vertex AI 접근에 필요한 최소 IAM 권한만 갖도록 구성하세요.
 </Tip>
 
-## Configuration Steps
+## 구성 단계
 
 <Steps>
-<Step title="Access Cline Settings">
-Navigate to [app.cline.bot](https://app.cline.bot) and sign in with your administrator account. Go to **Settings → Cline Settings**.
+<Step title="Cline 설정 접근">
+[app.cline.bot](https://app.cline.bot)에 관리자 계정으로 로그인한 뒤 **Settings → Cline Settings**로 이동합니다.
 
 <Info>
-You should see the provider configuration options if you have the correct admin access level.
+관리자 권한이 올바르다면 제공자 구성 옵션이 표시됩니다.
 </Info>
 </Step>
 
-<Step title="Enable Remote Provider Configuration">
-Toggle on **Enable settings** to reveal the remote provider configuration options. This allows you to enforce provider settings across your organization.
+<Step title="원격 제공자 구성 활성화">
+**Enable settings**를 켜 원격 제공자 구성 옵션을 표시합니다. 이를 통해 조직 전체에 제공자 설정을 강제할 수 있습니다.
 </Step>
 
-<Step title="Select Google Vertex AI as the API Provider">
-Open the **API Provider** dropdown menu and select **Google Vertex AI**. This will open the Vertex AI configuration panel where you'll configure all your organization-wide settings.
+<Step title="API 제공자로 Google Vertex AI 선택">
+**API Provider** 드롭다운에서 **Google Vertex AI**를 선택합니다. 그러면 조직 공용 설정을 구성할 수 있는 Vertex AI 구성 패널이 열립니다.
 </Step>
 
-<Step title="Configure Vertex AI Settings">
-The configuration panel includes settings that control how Vertex AI works for your organization:
+<Step title="Vertex AI 설정 구성">
+구성 패널에는 조직에서 Vertex AI를 사용하는 방법을 제어하는 설정이 포함됩니다:
 
 <AccordionGroup>
-<Accordion title="Project ID (required)">
-Enter your Google Cloud project ID where Vertex AI is enabled. This project will be used for all AI model requests from your organization members.
+<Accordion title="프로젝트 ID (필수)">
+Vertex AI가 활성화된 Google Cloud 프로젝트 ID를 입력합니다. 이 프로젝트가 모든 조직 구성원의 AI 모델 요청에 사용됩니다.
 
 <Tip>
-Use a dedicated project for AI workloads to better track usage and costs. Ensure the project has sufficient quotas for your team's expected usage.
+AI 워크로드 전용 프로젝트를 사용하면 사용량과 비용을 더 잘 추적할 수 있습니다. 팀의 예상 사용량에 맞는 충분한 쿼터가 있는지 확인하세요.
 </Tip>
 </Accordion>
 
-<Accordion title="Region (required)">
-Select the Google Cloud region where your Vertex AI models should be accessed. Common options include `us-central1`, `us-east4`, or `europe-west4`.
+<Accordion title="리전 (필수)">
+Vertex AI 모델에 접근할 Google Cloud 리전을 선택합니다. 일반적으로 `us-central1`, `us-east4`, `europe-west4` 등이 사용됩니다.
 
-[View Google Cloud Regions](https://cloud.google.com/docs/geography-and-regions)
+[Google Cloud 리전 보기](https://cloud.google.com/docs/geography-and-regions)
 
 <Note>
-Choose a region close to your team's location for optimal performance. Some models may not be available in all regions.
+팀과 가까운 리전을 선택하면 성능이 최적화됩니다. 일부 모델은 특정 리전에서만 제공될 수 있습니다.
 </Note>
 </Accordion>
 </AccordionGroup>
 </Step>
 
-<Step title="Save Configuration">
-After configuring your settings, close the provider configuration panel and click **Save** on the settings page to persist your changes.
+<Step title="구성 저장">
+설정을 마치면 제공자 구성 패널을 닫고 설정 페이지에서 **Save**를 클릭해 변경 사항을 저장합니다.
 
-Once saved, all organization members signed into the Cline extension will automatically use Google Vertex AI with your configured settings. They won't be able to select other providers or switch to their personal Cline accounts.
+저장 후 Cline 확장에 로그인한 조직 구성원은 모두 설정된 Google Vertex AI를 자동으로 사용합니다. 다른 제공자를 선택하거나 개인 Cline 계정으로 전환할 수 없습니다.
 
 <Warning>
-Members can't switch to personal Cline accounts or join other organizations once remote configuration is enabled. This ensures consistent provider usage across your team.
+원격 구성이 활성화되면 구성원은 개인 Cline 계정으로 전환하거나 다른 조직에 가입할 수 없습니다. 이는 팀 전체에 일관된 제공자 사용을 보장하기 위함입니다.
 </Warning>
 </Step>
 </Steps>
 
-## Verification
+## 검증
 
-To verify the configuration:
+구성이 제대로 되었는지 확인하려면:
 
-1. Check that the provider shows as "Google Vertex AI" in the Enabled provider field
-2. Confirm the settings persist after refreshing the page
-3. Test with a member account to ensure they see only Vertex AI as a provider
-4. Verify that Gemini models are available in the model dropdown
+1. Enabled provider 필드에 "Google Vertex AI"가 표시되는지 확인
+2. 페이지 새로고침 후에도 설정이 유지되는지 확인
+3. 멤버 계정으로 테스트해 Vertex AI만 표시되는지 확인
+4. 모델 드롭다운에서 Gemini 모델이 표시되는지 확인
 
-## Troubleshooting
+## 문제 해결
 
-**Members don't see the configured provider**  
-Ensure you clicked Save after closing the configuration panel. Verify the member account belongs to the correct organization and that your Google Cloud project has Vertex AI API enabled.
+**구성된 제공자가 멤버에게 보이지 않음**  
+구성 패널을 닫은 뒤 **Save**를 클릭했는지 확인하세요. 멤버 계정이 올바른 조직에 속해 있는지, Google Cloud 프로젝트에 Vertex AI API가 활성화되어 있는지도 확인하세요.
 
-**Project access errors**  
-Verify the project ID is correct and that Vertex AI API is enabled. Check that the project has appropriate billing configured and hasn't exceeded quotas.
+**프로젝트 접근 오류**  
+프로젝트 ID가 정확한지 확인하고 Vertex AI API가 활성화되어 있는지 확인하세요. 프로젝트에 적절한 결제가 설정되어 있고 쿼터를 초과하지 않았는지도 확인하세요.
 
-**Regional availability issues**  
-Confirm the selected region supports the Gemini models you want to use. Some newer models may only be available in specific regions.
+**리전 가용성 문제**  
+선택한 리전에서 사용하려는 Gemini 모델을 지원하는지 확인하세요. 일부 최신 모델은 특정 리전에서만 제공될 수 있습니다.
 
-**Configuration changes don't persist**  
-Make sure to click the Save button on the main settings page, not just close the configuration panel.
+**구성 변경이 저장되지 않음**  
+구성 패널만 닫지 말고 메인 설정 페이지의 **Save** 버튼을 반드시 클릭하세요.
 
-**Need to change project or region later**  
-You can update these settings at any time. Members will need to ensure their local Google Cloud credentials have access to the new project/region.
+**나중에 프로젝트/리전을 변경해야 하는 경우**  
+언제든 설정을 변경할 수 있습니다. 구성원은 로컬 Google Cloud 자격 증명이 새 프로젝트/리전에 접근할 수 있어야 합니다.
 
-For further details, consult the [Google Cloud Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs) and coordinate with your internal cloud team.
+추가 정보는 [Google Cloud Vertex AI 문서](https://cloud.google.com/vertex-ai/docs)를 확인하고 내부 클라우드 팀과 협력하세요.

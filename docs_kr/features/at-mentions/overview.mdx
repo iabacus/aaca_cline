@@ -1,71 +1,65 @@
 ---
-title: "@ Mentions Overview"
-sidebarTitle: "Overview"
+title: "@ 멘션 개요"
+sidebarTitle: "개요"
 ---
 
-@ mentions are one of Cline's most powerful features, letting you seamlessly bring external context into your conversations. Instead of copying and pasting code, error messages, or documentation, you can simply reference them with an @ symbol.
+@ 멘션은 Cline의 가장 강력한 기능 중 하나로, 외부 컨텍스트를 대화에 자연스럽게 가져올 수 있습니다. 코드, 에러 메시지, 문서를 복사/붙여넣기 하는 대신, @ 기호로 참조만 하면 됩니다.
 
 <Frame>
 	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/at-mentions.png" alt="@ Mentions Overview" />
 </Frame>
 
-When you type `@` in the chat input, Cline shows a menu of available mention types. These mentions let you reference files, folders, problems, terminal output, git changes, and even web content directly in your conversations.
+채팅 입력창에서 `@`를 입력하면, 사용할 수 있는 멘션 유형 목록이 표시됩니다. 파일, 폴더, 문제, 터미널 출력, git 변경, 웹 콘텐츠 등을 대화에 바로 포함할 수 있습니다.
 
-## Available @ Mentions
+## 사용 가능한 @ 멘션
 
-Cline supports several types of @ mentions, each designed to bring different kinds of context into your conversations:
+Cline은 다양한 @ 멘션 유형을 지원하며, 각각 다른 종류의 컨텍스트를 제공합니다:
 
 <Columns cols={2}>
-  <Card title="File Mentions" icon="file" href="/features/at-mentions/file-mentions">
-    Reference any file in your workspace with `@/path/to/file`. Cline sees the complete file content, including imports, related
-    functions, and surrounding context.
+  <Card title="파일 멘션" icon="file" href="/features/at-mentions/file-mentions">
+    `@/path/to/file`로 워크스페이스의 파일을 참조하세요. Cline이 import, 관련 함수, 주변 컨텍스트까지 포함한 전체 파일 내용을 확인합니다.
   </Card>
 
 {" "}
 
-<Card title="Folder Mentions" icon="folder" href="/features/at-mentions/folder-mentions">
-	Reference entire directories with `@/path/to/folder/`. Cline sees the folder structure and all file contents, perfect for
-	understanding complex interactions between multiple files.
+<Card title="폴더 멘션" icon="folder" href="/features/at-mentions/folder-mentions">
+	`@/path/to/folder/`로 디렉터리 전체를 참조하세요. Cline이 폴더 구조와 모든 파일 내용을 확인해 여러 파일 간 상호작용을 이해합니다.
 </Card>
 
 {" "}
 
-<Card title="Problem Mentions" icon="triangle-exclamation" href="/features/at-mentions/problem-mentions">
-	Use `@problems` to show Cline all the errors and warnings in your workspace. Cline sees the complete list with file locations
-	and error messages.
+<Card title="문제 멘션" icon="triangle-exclamation" href="/features/at-mentions/problem-mentions">
+	`@problems`로 워크스페이스의 모든 오류/경고를 보여주세요. 파일 위치와 오류 메시지까지 포함된 전체 목록을 확인합니다.
 </Card>
 
 {" "}
 
-<Card title="Terminal Mentions" icon="terminal" href="/features/at-mentions/terminal-mentions">
-	Use `@terminal` to share your recent terminal output. Cline sees the complete output with formatting preserved, perfect for
-	debugging build errors or test failures.
+<Card title="터미널 멘션" icon="terminal" href="/features/at-mentions/terminal-mentions">
+	`@terminal`로 최근 터미널 출력을 공유하세요. 포맷을 유지한 전체 출력으로 빌드 에러나 테스트 실패 디버깅에 적합합니다.
 </Card>
 
 {" "}
 
-<Card title="Git Mentions" icon="code-branch" href="/features/at-mentions/git-mentions">
-	Reference uncommitted changes with `@git-changes` or specific commits with `@[commit-hash]`. Cline sees the complete diff,
-	commit message, and other relevant information.
+<Card title="Git 멘션" icon="code-branch" href="/features/at-mentions/git-mentions">
+	`@git-changes`로 커밋되지 않은 변경을, `@[commit-hash]`로 특정 커밋을 참조하세요. Cline이 전체 diff, 커밋 메시지 등 관련 정보를 확인합니다.
 </Card>
 
-  <Card title="URL Mentions" icon="globe" href="/features/at-mentions/url-mentions">
-    Reference web content with `@https://example.com`. Cline fetches and sees the complete webpage content, perfect for
-    referencing documentation or GitHub issues.
+  <Card title="URL 멘션" icon="globe" href="/features/at-mentions/url-mentions">
+    `@https://example.com`로 웹 콘텐츠를 참조하세요. Cline이 전체 웹페이지를 가져와 문서나 GitHub 이슈 참고에 유용합니다.
   </Card>
 </Columns>
 
-## Why @ Mentions Matter
+## @ 멘션이 중요한 이유
 
-@ mentions transform how you interact with Cline by:
+@ 멘션은 다음과 같은 방식으로 Cline과의 상호작용을 바꿉니다:
 
-1. **Eliminating copy-paste**: No more copying and pasting code, error messages, or terminal output. Just reference them directly.
+1. **복사/붙여넣기 제거**: 코드, 오류 메시지, 터미널 출력 등을 직접 복사하지 않아도 됩니다.
 
-2. **Preserving context**: Cline sees the complete context, including imports, related functions, and surrounding code that might be relevant.
+2. **컨텍스트 유지**: import, 관련 함수, 주변 코드까지 포함한 전체 컨텍스트를 제공합니다.
 
-3. **Maintaining formatting**: Terminal output, error messages, and web content keep their formatting, making them easier to understand.
+3. **포맷 유지**: 터미널 출력, 오류 메시지, 웹 콘텐츠의 포맷이 그대로 유지됩니다.
 
-4. **Enabling complex workflows**: Combine multiple @ mentions to give Cline a complete picture of your problem:
+4. **복합 워크플로 지원**: 여러 @ 멘션을 조합해 문제의 전체 맥락을 제공합니다:
 
     ```
     I'm getting these errors: @problems
@@ -78,29 +72,29 @@ Cline supports several types of @ mentions, each designed to bring different kin
     I think this commit might have caused it: @a1b2c3d
     ```
 
-## Getting Started
+## 시작하기
 
-To use @ mentions:
+@ 멘션을 사용하려면:
 
-1. Type `@` in the chat input
-2. Select the type of mention from the menu or continue typing
-3. For files and folders, navigate through your workspace structure
-4. Send your message as usual
+1. 채팅 입력창에 `@` 입력
+2. 메뉴에서 멘션 유형 선택 또는 계속 입력
+3. 파일/폴더는 워크스페이스 구조를 탐색
+4. 평소처럼 메시지 전송
 
-Cline will automatically process the mentions and include the referenced content in the context sent to the AI.
+Cline이 멘션을 자동 처리해 참조된 내용을 AI 컨텍스트에 포함합니다.
 
-Try using @ mentions in your next conversation with Cline - you'll be amazed at how much more efficient and effective your interactions become when you can seamlessly bring in external context.
+다음 대화에서 @ 멘션을 사용해 보세요. 외부 컨텍스트를 자연스럽게 포함할 수 있어 훨씬 효율적인 대화를 할 수 있습니다.
 
-## How It Works Under the Hood
+## 내부 동작 방식
 
-When you use @ mentions in your messages, there's a sophisticated process happening behind the scenes:
+@ 멘션을 사용할 때 내부적으로는 다음 과정이 진행됩니다:
 
-1. **Detection**: When you send a message, Cline scans the text for @ mention patterns using regular expressions
-2. **Processing**: For each detected mention, Cline:
-    - Determines the mention type (file, folder, problems, terminal, git, URL)
-    - Fetches the relevant content (file contents, terminal output, etc.)
-    - Formats the content appropriately
-3. **Enhancement**: The original message is enhanced with structured data:
+1. **감지**: 메시지 전송 시 정규식으로 @ 멘션 패턴을 스캔
+2. **처리**: 각 멘션 유형별로 처리
+    - 멘션 유형 결정(파일, 폴더, 문제, 터미널, git, URL)
+    - 관련 콘텐츠 가져오기(파일 내용, 터미널 출력 등)
+    - 적절한 형식으로 포맷
+3. **메시지 확장**: 원본 메시지에 구조화된 데이터를 첨부
 
     ```
     Your original message with @/path/to/file
@@ -110,9 +104,9 @@ When you use @ mentions in your messages, there's a sophisticated process happen
     </file_content>
     ```
 
-4. **Context Inclusion**: This enhanced message with all the embedded content is sent to the AI model
-5. **Seamless Response**: The AI can now "see" all the referenced content as if you had manually copied and pasted it
+4. **컨텍스트 포함**: 확장된 메시지가 AI 모델에 전달됨
+5. **응답**: AI가 복사/붙여넣기처럼 모든 참조 콘텐츠를 확인할 수 있음
 
-This entire process happens automatically and seamlessly whenever you use @ mentions, giving the AI complete context without you having to manually copy anything.
+이 과정은 @ 멘션을 사용할 때마다 자동으로 수행되어, 사용자가 직접 복사하지 않아도 AI에게 완전한 컨텍스트를 제공합니다.
 
-Each type of @ mention has its own specific implementation details, which you can find in their respective documentation pages.
+각 @ 멘션 유형의 자세한 구현은 해당 문서 페이지에서 확인할 수 있습니다.

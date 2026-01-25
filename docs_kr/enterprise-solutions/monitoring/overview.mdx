@@ -1,117 +1,117 @@
 ---
-title: "Enterprise Monitoring"
-sidebarTitle: "Overview"
-description: "Optional telemetry and observability for your Cline deployment"
+title: "엔터프라이즈 모니터링"
+sidebarTitle: "개요"
+description: "Cline 배포를 위한 선택형 텔레메트리 및 관측성"
 ---
 
-Cline includes optional monitoring capabilities for organizations that want to track usage and integrate with their observability infrastructure.
+Cline은 사용량 추적 및 관측성 인프라와의 통합을 원하는 조직을 위해 선택형 모니터링 기능을 제공합니다.
 
-## Monitoring Options
+## 모니터링 옵션
 
 <CardGroup cols={2}> 
   <Card title="OpenTelemetry" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry">
-    Export metrics and logs to your own observability backends
+    메트릭과 로그를 자체 관측성 백엔드로 내보내기
   </Card>
 
-  <Card title="OpenTelemetry Override" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry_override">
-    Export to your own observability backends through environment variables (advanced)
+  <Card title="OpenTelemetry 오버라이드" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry_override">
+    환경 변수를 통해 관측성 백엔드로 내보내기(고급)
   </Card>
 </CardGroup>
 
 <CardGroup cols={1}>
-  <Card title="Cline Telemetry" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
-    Built-in anonymous usage tracking that helps improve Cline (opt-in)
+  <Card title="Cline 텔레메트리" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
+    Cline 개선을 돕는 내장 익명 사용량 추적(옵트인)
   </Card>  
 </CardGroup>
 
-## Cline Telemetry
+## Cline 텔레메트리
 
-Cline includes opt-in telemetry for anonymous usage tracking:
+Cline은 익명 사용량 추적을 위한 옵트인 텔레메트리를 제공합니다:
 
-- Feature usage patterns
-- Task completion rates  
-- Error occurrences
-- Performance metrics
+- 기능 사용 패턴
+- 작업 완료율  
+- 오류 발생
+- 성능 지표
 
-Users can enable or disable telemetry in Cline settings. All data is anonymous and does not include code content, file paths, or sensitive information.
+사용자는 Cline 설정에서 텔레메트리를 켜거나 끌 수 있습니다. 모든 데이터는 익명이며 코드 내용, 파일 경로, 민감 정보는 포함하지 않습니다.
 
-See [Cline Telemetry](/enterprise-solutions/monitoring/telemetry) for configuration details.
+자세한 구성은 [Cline 텔레메트리](/enterprise-solutions/monitoring/telemetry)를 참고하세요.
 
-## OpenTelemetry Integration
+## OpenTelemetry 통합
 
-For advanced monitoring needs, Cline supports OpenTelemetry's OTLP (OpenTelemetry Protocol) for exporting metrics and logs to your own infrastructure.
+고급 모니터링이 필요하다면 Cline은 OTLP(OpenTelemetry Protocol)로 메트릭과 로그를 자체 인프라로 내보낼 수 있습니다.
 
-This allows you to:
-- Export telemetry to your existing observability platforms
-- Integrate with tools like Datadog, New Relic, or Grafana Cloud
-- Maintain full control over your monitoring data
-- Aggregate metrics across your organization
+이를 통해:
+- 기존 관측성 플랫폼으로 텔레메트리 내보내기
+- Datadog, New Relic, Grafana Cloud 등과 통합
+- 모니터링 데이터에 대한 완전한 제어
+- 조직 전반의 메트릭 집계
 
 <Note>
-OpenTelemetry integration is **optional** and requires additional configuration. Most users don't need this feature.
+OpenTelemetry 통합은 **선택 사항**이며 추가 구성이 필요합니다. 대부분의 사용자는 이 기능이 필요하지 않습니다.
 </Note>
 
-See [OpenTelemetry](/enterprise-solutions/monitoring/opentelemetry) for setup instructions.
+설정 방법은 [OpenTelemetry](/enterprise-solutions/monitoring/opentelemetry)를 참고하세요.
 
-## Use Cases
+## 사용 사례
 
-### When to Use Cline Telemetry
-- You want to help improve Cline through anonymous usage data
-- No additional setup required
-- Suitable for most users
+### Cline 텔레메트리를 사용할 때
+- 익명 사용량 데이터를 통해 Cline 개선에 기여하고 싶을 때
+- 추가 설정 없이 사용하고 싶을 때
+- 대부분의 사용자에게 적합
 
-### When to Use OpenTelemetry
-- You need granular metrics in your own systems
-- You're integrating with existing observability infrastructure
-- You want detailed logs and metrics for debugging
-- You need custom dashboards or alerting
+### OpenTelemetry를 사용할 때
+- 자체 시스템에서 세밀한 메트릭이 필요할 때
+- 기존 관측성 인프라와 통합해야 할 때
+- 디버깅을 위한 상세 로그/메트릭이 필요할 때
+- 커스텀 대시보드 또는 알림이 필요할 때
 
-## Getting Started
+## 시작하기
 
 <Steps>
-<Step title="Choose Your Approach">
-Decide whether basic telemetry or OpenTelemetry integration fits your needs
+<Step title="접근 방식 선택">
+기본 텔레메트리 또는 OpenTelemetry 통합 중 필요에 맞는 방식을 선택하세요.
 </Step>
 
-<Step title="Enable Telemetry">
-For basic telemetry, enable it in Cline settings. For OpenTelemetry, see the configuration guide.
+<Step title="텔레메트리 활성화">
+기본 텔레메트리는 Cline 설정에서 활성화합니다. OpenTelemetry는 구성 가이드를 참고하세요.
 </Step>
 
-<Step title="Verify Data Collection">
-Confirm telemetry is being collected as expected
+<Step title="데이터 수집 확인">
+텔레메트리가 정상적으로 수집되는지 확인하세요.
 </Step>
 </Steps>
 
-## Privacy & Security
+## 개인정보 및 보안
 
-All Cline monitoring features are designed with privacy in mind:
+Cline 모니터링 기능은 개인정보를 고려해 설계되었습니다:
 
 <CardGroup cols={2}>
-  <Card title="Anonymous" icon="user-secret">
-    No personal information collected
+  <Card title="익명성" icon="user-secret">
+    개인정보를 수집하지 않음
   </Card>
   
-  <Card title="Optional" icon="toggle-on">
-    Users can disable at any time
+  <Card title="선택 사항" icon="toggle-on">
+    사용자가 언제든 비활성화 가능
   </Card>
   
-  <Card title="Local First" icon="laptop">
-    Code never leaves your machine
+  <Card title="로컬 우선" icon="laptop">
+    코드가 기기 밖으로 나가지 않음
   </Card>
   
-  <Card title="Transparent" icon="code">
-    Open source - see what's collected
+  <Card title="투명성" icon="code">
+    오픈 소스 - 수집 항목 확인 가능
   </Card>
 </CardGroup>
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Configure Telemetry" icon="gear" href="/enterprise-solutions/monitoring/telemetry">
-    Set up basic telemetry settings
+  <Card title="텔레메트리 구성" icon="gear" href="/enterprise-solutions/monitoring/telemetry">
+    기본 텔레메트리 설정
   </Card>
   
-  <Card title="OpenTelemetry Setup" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry">
-    Advanced monitoring with OpenTelemetry
+  <Card title="OpenTelemetry 설정" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry">
+    OpenTelemetry로 고급 모니터링
   </Card>
 </CardGroup>

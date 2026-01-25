@@ -1,85 +1,85 @@
 ---
 title: "xAI (Grok)"
-description: "Learn how to configure and use xAI's Grok models with Cline, including API key setup, supported models, and reasoning capabilities."
+description: "Cline에서 xAI의 Grok 모델을 설정하고 사용하는 방법을 알아보세요. API 키 설정, 지원 모델, 추론 기능을 포함합니다."
 ---
 
-xAI is the company behind Grok, a large language model known for its conversational abilities and large context window. Grok models are designed to provide helpful, informative, and contextually relevant responses.
+xAI는 대화 능력과 큰 컨텍스트 창으로 알려진 대형 언어 모델 Grok의 개발사입니다. Grok 모델은 유용하고 정보성이 높으며 맥락에 맞는 응답을 제공하도록 설계되었습니다.
 
-**Website:** [https://x.ai/](https://x.ai/)
+**웹사이트:** [https://x.ai/](https://x.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to the [xAI Console](https://console.x.ai/). Create an account or sign in.
-2.  **Navigate to API Keys:** Go to the API keys section in your dashboard.
-3.  **Create a Key:** Click to create a new API key. Give your key a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** **Important:** Copy the API key _immediately_. You will not be able to see it again. Store it securely.
+1.  **가입/로그인:** [xAI Console](https://console.x.ai/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 대시보드의 API keys 섹션으로 이동합니다.
+3.  **키 생성:** 새 API 키를 만들고 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** **중요:** API 키를 _즉시_ 복사하세요. 다시 확인할 수 없습니다. 안전하게 보관하세요.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following xAI Grok models:
+Cline은 다음 xAI Grok 모델을 지원합니다:
 
-#### Grok-3 Models
+#### Grok-3 모델
 
--   `grok-3-beta` (Default) - xAI's Grok-3 beta model with 131K context window
--   `grok-3-fast-beta` - xAI's Grok-3 fast beta model with 131K context window
--   `grok-3-mini-beta` - xAI's Grok-3 mini beta model with 131K context window
--   `grok-3-mini-fast-beta` - xAI's Grok-3 mini fast beta model with 131K context window
+-   `grok-3-beta` (기본) - 131K 컨텍스트 창의 Grok-3 베타 모델
+-   `grok-3-fast-beta` - 131K 컨텍스트 창의 Grok-3 fast 베타 모델
+-   `grok-3-mini-beta` - 131K 컨텍스트 창의 Grok-3 mini 베타 모델
+-   `grok-3-mini-fast-beta` - 131K 컨텍스트 창의 Grok-3 mini fast 베타 모델
 
-#### Grok-2 Models
+#### Grok-2 모델
 
--   `grok-2-latest` - xAI's Grok-2 model - latest version with 131K context window
--   `grok-2` - xAI's Grok-2 model with 131K context window
--   `grok-2-1212` - xAI's Grok-2 model (version 1212) with 131K context window
+-   `grok-2-latest` - 131K 컨텍스트 창의 Grok-2 최신 모델
+-   `grok-2` - 131K 컨텍스트 창의 Grok-2 모델
+-   `grok-2-1212` - 131K 컨텍스트 창의 Grok-2 모델(버전 1212)
 
-#### Grok Vision Models
+#### Grok Vision 모델
 
--   `grok-2-vision-latest` - xAI's Grok-2 Vision model - latest version with image support and 32K context window
--   `grok-2-vision` - xAI's Grok-2 Vision model with image support and 32K context window
--   `grok-2-vision-1212` - xAI's Grok-2 Vision model (version 1212) with image support and 32K context window
--   `grok-vision-beta` - xAI's Grok Vision Beta model with image support and 8K context window
+-   `grok-2-vision-latest` - 이미지 지원과 32K 컨텍스트 창을 가진 Grok-2 Vision 최신 모델
+-   `grok-2-vision` - 이미지 지원과 32K 컨텍스트 창을 가진 Grok-2 Vision 모델
+-   `grok-2-vision-1212` - 이미지 지원과 32K 컨텍스트 창을 가진 Grok-2 Vision 모델(버전 1212)
+-   `grok-vision-beta` - 이미지 지원과 8K 컨텍스트 창을 가진 Grok Vision 베타 모델
 
-#### Legacy Models
+#### 레거시 모델
 
--   `grok-beta` - xAI's Grok Beta model (legacy) with 131K context window
+-   `grok-beta` - 131K 컨텍스트 창의 Grok 베타 모델(레거시)
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "xAI" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your xAI API key into the "xAI API Key" field.
-4.  **Select Model:** Choose your desired Grok model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "xAI"를 선택합니다.
+3.  **API 키 입력:** xAI API 키를 "xAI API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 Grok 모델을 선택합니다.
 
-### Reasoning Capabilities
+### 추론 기능
 
-Grok 3 Mini models feature specialized reasoning capabilities, allowing them to "think before responding" - particularly useful for complex problem-solving tasks.
+Grok 3 Mini 모델은 "응답 전에 생각하기" 기능을 제공하며, 복잡한 문제 해결에 특히 유용합니다.
 
-#### Reasoning-Enabled Models
+#### 추론 지원 모델
 
-Reasoning is only supported by:
+추론은 다음 모델에서만 지원됩니다:
 
 -   `grok-3-mini-beta`
 -   `grok-3-mini-fast-beta`
 
-The Grok 3 models `grok-3-beta` and `grok-3-fast-beta` do not support reasoning.
+`grok-3-beta`와 `grok-3-fast-beta`는 추론을 지원하지 않습니다.
 
-#### Controlling Reasoning Effort
+#### 추론 강도 조절
 
-When using reasoning-enabled models, you can control how hard the model thinks with the `reasoning_effort` parameter:
+추론 지원 모델을 사용할 때 `reasoning_effort` 파라미터로 추론 강도를 조절할 수 있습니다:
 
--   `low`: Minimal thinking time, using fewer tokens for quick responses
--   `high`: Maximum thinking time, leveraging more tokens for complex problems
+-   `low`: 최소한의 사고 시간으로 빠르게 응답(적은 토큰 사용)
+-   `high`: 최대한의 사고 시간으로 복잡한 문제를 해결(더 많은 토큰 사용)
 
-Choose `low` for simple queries that should complete quickly, and `high` for harder problems where response latency is less important.
+간단한 질문에는 `low`, 복잡한 문제에는 `high`를 사용하세요.
 
-#### Key Features
+#### 핵심 기능
 
--   **Step-by-Step Problem Solving**: The model thinks through problems methodically before delivering an answer
--   **Math & Quantitative Strength**: Excels at numerical challenges and logic puzzles
--   **Reasoning Trace Access**: The model's thinking process is available via the `reasoning_content` field in the response completion object
+-   **단계별 문제 해결**: 답변 전에 문제를 체계적으로 사고
+-   **수학/정량 강점**: 수치 계산과 논리 퍼즐에 강함
+-   **추론 트레이스 접근**: 모델의 사고 과정이 응답 완료 객체의 `reasoning_content` 필드를 통해 제공됨
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Context Window:** Most Grok models feature large context windows (up to 131K tokens), allowing you to include substantial amounts of code and context in your prompts.
--   **Vision Capabilities:** Select vision-enabled models (`grok-2-vision-latest`, `grok-2-vision`, etc.) when you need to process or analyze images.
--   **Pricing:** Pricing varies by model, with input costs ranging from $0.3 to $5.0 per million tokens and output costs from $0.5 to $25.0 per million tokens. Refer to the xAI documentation for the most current pricing information.
--   **Performance Tradeoffs:** "Fast" variants typically offer quicker response times but may have higher costs, while "mini" variants are more economical but may have reduced capabilities.
+-   **컨텍스트 창:** 대부분의 Grok 모델은 최대 131K 토큰의 큰 컨텍스트 창을 제공하여 많은 코드와 컨텍스트를 포함할 수 있습니다.
+-   **비전 기능:** 이미지 처리/분석이 필요하면 비전 지원 모델(`grok-2-vision-latest`, `grok-2-vision` 등)을 선택하세요.
+-   **가격:** 모델별 가격이 다르며, 입력은 100만 토큰당 $0.3~$5.0, 출력은 100만 토큰당 $0.5~$25.0 수준입니다. 최신 가격은 xAI 문서를 참고하세요.
+-   **성능 트레이드오프:** "Fast" 변형은 응답 속도가 빠르지만 비용이 높을 수 있고, "Mini" 변형은 더 경제적이지만 기능이 제한될 수 있습니다.

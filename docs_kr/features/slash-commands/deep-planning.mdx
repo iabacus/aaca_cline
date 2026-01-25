@@ -1,20 +1,20 @@
 ---
-title: "Deep Planning Command"
+title: "딥 플래닝 명령"
 sidebarTitle: "/deep-planning"
 ---
 
-`/deep-planning` transforms Cline into a meticulous architect who investigates your codebase, asks clarifying questions, and creates a comprehensive implementation plan before writing a single line of code. 
+`/deep-planning`은 Cline을 꼼꼼한 설계자로 변신시켜, 코드베이스를 조사하고 맞춤형 질문을 던지며, 한 줄의 코드도 쓰기 전에 종합적인 구현 계획을 만듭니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/deep-planning.png"
-		alt="Deep Planning command in action showing investigation and planning process"
+		alt="조사와 계획 과정을 보여주는 Deep Planning 명령"
 	/>
 </Frame>
 
-## Demo Video
+## 데모 영상
 
-Watch Deep Planning in action as Cline investigates a codebase, asks clarifying questions, and generates a comprehensive implementation plan:
+Cline이 코드베이스를 조사하고 질문을 한 뒤 종합적인 구현 계획을 생성하는 Deep Planning 데모를 확인하세요:
 
 <Frame>
 	<video
@@ -25,149 +25,149 @@ Watch Deep Planning in action as Cline investigates a codebase, asks clarifying 
 	/>
 </Frame>
 
-When you use `/deep-planning`, Cline follows a four-step process that mirrors how senior developers approach complex features: thorough investigation, discussion & clarification of requirements, detailed planning, and structured task creation with progress tracking.
+`/deep-planning`을 사용하면 Cline은 숙련 개발자가 복잡한 기능을 접근하는 방식과 동일한 네 단계 과정을 따릅니다: 철저한 조사, 요구사항 논의 및 명확화, 상세 계획, 진행 추적이 가능한 작업 생성.
 
-## The Four-Step Process
+## 4단계 프로세스
 
-### Step 1: Silent Investigation
+### 1단계: 조용한 조사
 
-Cline becomes a detective, silently exploring your codebase to understand its structure, patterns, and constraints. He examines source files, analyzes import patterns, discovers class hierarchies, and identifies technical debt markers. No commentary, no narration - just focused research.
+Cline이 탐정처럼 조용히 코드베이스를 탐색해 구조, 패턴, 제약을 이해합니다. 소스 파일을 살펴보고 import 패턴을 분석하며, 클래스 계층을 발견하고 기술 부채 표식을 찾아냅니다. 해설 없이, 오직 조사에 집중합니다.
 
-During this phase, Cline runs commands like:
-- Finding all class and function definitions across your codebase
-- Analyzing import patterns to understand dependencies
-- Discovering project structure and file organization
-- Identifying TODOs and technical debt
+이 단계에서 Cline은 다음과 같은 명령을 실행합니다:
+- 코드베이스 전반의 클래스/함수 정의 검색
+- 의존성을 파악하기 위한 import 패턴 분석
+- 프로젝트 구조와 파일 조직 파악
+- TODO 및 기술 부채 식별
 
-### Step 2: Discussion and Questions
+### 2단계: 논의와 질문
 
-Once Cline understands your codebase, he asks targeted questions that will shape the implementation. These aren't generic questions - they're specific to your project and the feature you're building.
+코드베이스를 이해한 뒤, Cline은 구현에 영향을 줄 핵심 질문을 합니다. 일반적인 질문이 아니라, 프로젝트와 기능에 특화된 질문입니다.
 
-Questions might cover:
-- Clarifying ambiguous requirements
-- Choosing between equally valid implementation approaches
-- Confirming assumptions about system behavior
-- Understanding preferences for technical decisions
+질문 예:
+- 모호하게 정의된 요구사항 명확화
+- 유효한 여러 구현 접근 중 선택
+- 시스템 동작에 대한 가정 확인
+- 기술적 결정에 대한 선호 이해
 
-### Step 3: Implementation Plan Document
+### 3단계: 구현 계획 문서
 
-Cline creates a structured markdown document (`implementation_plan.md`) that serves as your implementation blueprint. This isn't a vague outline - it's a detailed specification with exact file paths, function signatures, and implementation order.
+Cline은 `implementation_plan.md`라는 구조화된 마크다운 문서를 생성합니다. 이는 애매한 개요가 아니라, 정확한 파일 경로, 함수 시그니처, 구현 순서를 포함한 상세 사양입니다.
 
-The plan includes eight comprehensive sections:
-- **Overview**: The goal and high-level approach
-- **Types**: Complete type definitions and data structures
-- **Files**: Exact files to create, modify, or delete
-- **Functions**: New and modified functions with signatures
-- **Classes**: Class modifications and inheritance details
-- **Dependencies**: Package requirements and versions
-- **Testing**: Validation strategies and test requirements
-- **Implementation Order**: Step-by-step execution sequence
+계획에는 8개의 포괄적 섹션이 포함됩니다:
+- **Overview**: 목표와 상위 접근
+- **Types**: 타입 정의와 데이터 구조
+- **Files**: 생성/수정/삭제할 정확한 파일 목록
+- **Functions**: 새로운/수정된 함수와 시그니처
+- **Classes**: 클래스 수정 및 상속 상세
+- **Dependencies**: 필요한 패키지와 버전
+- **Testing**: 검증 전략과 테스트 요구사항
+- **Implementation Order**: 단계별 실행 순서
 
-### Step 4: Implementation Task Creation
+### 4단계: 구현 작업 생성
 
-Cline creates a new task that references the plan document and includes trackable implementation steps. The task comes with specific commands to read each section of the plan, ensuring the implementing agent (whether that's you or Cline in Act Mode) can navigate the blueprint efficiently.
+Cline은 계획 문서를 참조하는 새 작업을 생성하고, 추적 가능한 구현 단계들을 포함합니다. 각 섹션을 읽는 명령이 포함되어 있어, 구현 담당자(사용자 또는 Cline의 Act 모드)가 효율적으로 설계를 따라갈 수 있습니다.
 
 <Tip>
-  Deep Planning works beautifully with [Focus Chain](/features/focus-chain). The implementation steps automatically become a todo list with real-time progress tracking, keeping complex projects organized and on track.
+  Deep Planning은 [Focus Chain](/features/focus-chain)과 매우 잘 맞습니다. 구현 단계가 자동으로 할 일 목록이 되어 실시간 진행 추적이 가능하므로, 복잡한 프로젝트도 체계적으로 관리할 수 있습니다.
 </Tip>
 
-## Using Deep Planning
+## Deep Planning 사용법
 
-Start a deep planning session by typing `/deep-planning` followed by your feature description:
+`/deep-planning` 뒤에 기능 설명을 붙여 시작하세요:
 
 ```
-/deep-planning Add user authentication with JWT tokens and role-based access control
+/deep-planning JWT 토큰과 역할 기반 접근 제어를 포함한 사용자 인증 추가
 ```
 
-Cline will begin his investigation immediately. You'll see him reading files and running commands to understand your codebase. Once he's gathered enough context, he'll engage you in discussion before creating the plan.
+Cline은 즉시 조사에 들어갑니다. 파일을 읽고 명령을 실행하는 모습을 볼 수 있습니다. 충분한 컨텍스트를 수집한 뒤, 논의를 거쳐 계획을 생성합니다.
 
-## Example Workflow
+## 예시 워크플로
 
-Here's how I use `/deep-planning` for a real feature:
+실제 기능에 `/deep-planning`을 쓰는 방법은 다음과 같습니다:
 
 <Steps>
-  <Step title="Initiate Planning">
-    I type `/deep-planning implement a caching layer for API responses`
+  <Step title="계획 시작">
+    `/deep-planning API 응답을 위한 캐싱 레이어 구현`을 입력
   </Step>
-  <Step title="Silent Investigation">
-    Cline explores my codebase, examining:
-    - Current API structure and endpoints
-    - Existing data flow patterns
-    - Database queries and performance bottlenecks
-    - Configuration and environment setup
+  <Step title="조용한 조사">
+    Cline이 코드베이스를 탐색하며 다음을 확인:
+    - 현재 API 구조와 엔드포인트
+    - 기존 데이터 흐름 패턴
+    - DB 쿼리와 성능 병목
+    - 설정 및 환경 구성
   </Step>
-  <Step title="Targeted Discussion">
-    Cline asks me:
-    - "Should we use Redis or in-memory caching?"
-    - "What's the acceptable cache staleness for user data?"
-    - "Do you need cache invalidation webhooks?"
+  <Step title="맞춤형 논의">
+    Cline이 다음 질문을 함:
+    - "Redis를 사용할까요, 인메모리 캐싱을 사용할까요?"
+    - "사용자 데이터 캐시의 허용되는 최신성은 어느 정도인가요?"
+    - "캐시 무효화 웹훅이 필요한가요?"
   </Step>
-  <Step title="Plan Creation">
-    Cline generates `implementation_plan.md` with:
-    - Cache service class specifications
-    - Redis connection configuration
-    - Modified API endpoints with caching logic
-    - Cache key generation strategies
-    - TTL configurations for different data types
+  <Step title="계획 생성">
+    `implementation_plan.md`를 생성하며 다음을 포함:
+    - 캐시 서비스 클래스 사양
+    - Redis 연결 설정
+    - 캐싱 로직이 포함된 API 엔드포인트 수정
+    - 캐시 키 생성 전략
+    - 데이터 유형별 TTL 설정
   </Step>
-  <Step title="Task Generation">
-    Cline creates a new task with:
-    - Reference to the implementation plan
-    - Commands to read specific sections
-    - Trackable todo items for each implementation step
-    - Request to switch to Act Mode for execution
+  <Step title="작업 생성">
+    새 작업을 생성하며 포함되는 내용:
+    - 구현 계획에 대한 참조
+    - 특정 섹션을 읽는 명령
+    - 단계별 구현을 위한 추적 가능한 todo 항목
+    - 실행을 위해 Act 모드로 전환 요청
   </Step>
 </Steps>
 
-## Integration with Plan/Act Mode
+## Plan/Act 모드와의 통합
 
-Deep Planning is designed to work seamlessly with [Plan/Act Mode](/features/plan-and-act):
+Deep Planning은 [Plan/Act 모드](/features/plan-and-act)와 자연스럽게 연동되도록 설계되었습니다:
 
-- Use `/deep-planning` in Plan Mode for the investigation and planning phases
-- The generated task requests switching to Act Mode for implementation
-- Focus Chain automatically tracks progress through the implementation steps
+- Plan 모드에서 `/deep-planning`을 사용해 조사 및 계획
+- 생성된 작업은 구현을 위해 Act 모드 전환을 요청
+- Focus Chain이 구현 단계의 진행 상황을 자동 추적
 
-This separation ensures planning stays focused on architecture while implementation stays focused on execution.
+이 분리는 계획은 아키텍처에 집중하고, 구현은 실행에 집중하도록 해줍니다.
 
-## Best Practices
+## 모범 사례
 
-### When to Use Deep Planning
+### Deep Planning을 사용할 때
 
-Use `/deep-planning` for:
-- Features touching multiple parts of your codebase
-- Architectural changes requiring careful coordination
-- Complex integrations with external services
-- Refactoring efforts that need systematic execution
-- Any feature where you'd normally spend time whiteboarding
+다음과 같은 경우 `/deep-planning`을 사용하세요:
+- 코드베이스의 여러 부분을 건드리는 기능
+- 신중한 조율이 필요한 아키텍처 변경
+- 외부 서비스와의 복잡한 통합
+- 체계적인 실행이 필요한 리팩터링
+- 보통 화이트보드 설계가 필요한 기능
 
-### Making the Most of Investigation
+### 조사 효과를 높이는 방법
 
-Let Cline complete his investigation thoroughly. The quality of the plan directly correlates with how well he understands your codebase. If you have specific areas he should examine, mention them in your initial request.
+Cline이 충분히 조사하도록 맡기세요. 계획 품질은 코드베이스 이해 수준과 정비례합니다. 특정 영역을 꼭 살펴봐야 한다면 초기 요청에 명시하세요.
 
-### Reviewing the Plan
+### 계획 검토
 
-Always review `implementation_plan.md` before starting implementation. The plan is comprehensive but not immutable - you can edit it directly if needed. Think of it as a collaborative document between you and Cline.
+구현을 시작하기 전 `implementation_plan.md`를 반드시 검토하세요. 계획은 포괄적이지만 불변은 아닙니다. 필요하면 직접 수정해도 됩니다. Cline과 협업하는 문서라고 생각하세요.
 
-### Tracking Progress
+### 진행 추적
 
-With Focus Chain enabled, your implementation progress displays in the task header. Each completed step gets checked off automatically as Cline works through the plan, giving you real-time visibility into complex implementations.
+Focus Chain이 켜져 있으면 작업 헤더에서 구현 진행 상황이 표시됩니다. Cline이 계획을 따라 작업할 때 완료된 단계가 자동 체크되어, 복잡한 구현도 실시간으로 파악할 수 있습니다.
 
-## Inspiration
+## 영감
 
-I use `/deep-planning` whenever I'm about to build something that would normally require a design document. Recent examples from my workflow:
+저는 디자인 문서가 필요할 것 같은 작업에서 `/deep-planning`을 사용합니다. 최근 워크플로의 예시는 다음과 같습니다:
 
-- **Migrating authentication systems**: Deep Planning mapped every endpoint, identified all authentication touchpoints, and created a migration plan that avoided breaking changes.
+- **인증 시스템 마이그레이션**: Deep Planning이 모든 엔드포인트를 매핑하고 인증 접점을 식별해, 파괴적 변경 없이 마이그레이션 계획을 수립했습니다.
 
-- **Adding real-time features**: The plan covered WebSocket integration, event handling, state synchronization, and fallback mechanisms for disconnections.
+- **실시간 기능 추가**: WebSocket 통합, 이벤트 처리, 상태 동기화, 연결 끊김에 대한 대체 전략을 포함한 계획을 만들었습니다.
 
-- **Database schema refactoring**: Cline identified all affected queries, created migration scripts, and planned the rollout to minimize downtime.
+- **DB 스키마 리팩터링**: 영향을 받는 쿼리를 모두 식별하고, 마이그레이션 스크립트를 생성하며, 다운타임을 최소화하는 배포 계획을 수립했습니다.
 
-- **API versioning implementation**: The plan detailed route changes, backward compatibility layers, deprecation notices, and client migration paths.
+- **API 버저닝 구현**: 라우트 변경, 하위 호환 레이어, 사용 중단 공지, 클라이언트 마이그레이션 경로를 상세히 설계했습니다.
 
-The power of `/deep-planning` is that it forces thoughtful architecture before implementation. It's like having a senior developer review your approach before you write code, except that developer has perfect knowledge of your entire codebase.
+`/deep-planning`의 힘은 구현 전에 신중한 아키텍처를 강제한다는 점입니다. 마치 숙련 개발자가 코드를 쓰기 전에 접근 방법을 리뷰해 주는 것과 같습니다. 다만 그 개발자는 코드베이스 전체를 완벽하게 이해하고 있습니다.
 
 <Note>
-  Deep Planning requires models with strong reasoning capabilities. It works best with the latest generation of models, like GPT-5, Claude 4, Gemini 2.5, or Grok 4. Smaller models may struggle with the comprehensive analysis required.
+  Deep Planning은 강한 추론 능력을 가진 모델이 필요합니다. GPT-5, Claude 4, Gemini 2.5, Grok 4 같은 최신 세대 모델에서 가장 잘 동작합니다. 작은 모델은 필요한 수준의 포괄적 분석을 수행하기 어려울 수 있습니다.
 </Note>
 
-For simpler tasks that don't require extensive planning, consider using [/newtask](/features/slash-commands/new-task) to create focused tasks with context, or jump straight into implementation if the path forward is clear.
+광범위한 계획이 필요 없는 간단한 작업은 [/newtask](/features/slash-commands/new-task)로 컨텍스트를 포함한 집중 작업을 만들거나, 경로가 명확하다면 바로 구현으로 들어가세요.

@@ -1,31 +1,31 @@
 ---
-title: "Custom Provider Configuration"
-sidebarTitle: "Custom Providers"
-description: "Configure custom OpenAI-compatible providers for your Cline deployment"
+title: "커스텀 제공자 구성"
+sidebarTitle: "커스텀 제공자"
+description: "Cline 배포를 위한 커스텀 OpenAI 호환 제공자를 구성합니다"
 ---
 
 <Info>
-**Configuration Path: Self-Hosted**
+**구성 경로: 자체 호스팅**
 
-This guide covers custom provider configuration for self-hosted deployments.
+이 가이드는 자체 호스팅 배포에서 커스텀 제공자 구성을 다룹니다.
 </Info>
 
-Configure Cline to use any OpenAI-compatible API provider, including Azure OpenAI, self-hosted inference servers, and other third-party services.
+Azure OpenAI, 자체 호스팅 추론 서버, 기타 서드파티 서비스 등 OpenAI API 형식을 지원하는 어떤 제공자도 Cline에서 사용할 수 있도록 구성할 수 있습니다.
 
-## What are Custom Providers?
+## 커스텀 제공자란?
 
-Custom providers include any API that implements the OpenAI API format:
+커스텀 제공자는 OpenAI API 형식을 구현하는 모든 API를 의미합니다:
 
-- **Azure OpenAI Service**: Microsoft's managed OpenAI models
-- **vLLM**: Self-hosted inference server
-- **Ollama**: Local model runner
-- **Text Generation Inference (TGI)**: Hugging Face's inference server
-- **LocalAI**: Local OpenAI API replacement
-- **Other OpenAI-compatible APIs**: Any custom implementation
+- **Azure OpenAI Service**: Microsoft의 관리형 OpenAI 모델
+- **vLLM**: 자체 호스팅 추론 서버
+- **Ollama**: 로컬 모델 실행기
+- **Text Generation Inference (TGI)**: Hugging Face 추론 서버
+- **LocalAI**: 로컬 OpenAI API 대체재
+- **기타 OpenAI 호환 API**: 사용자 정의 구현체
 
-## Configuration Format
+## 구성 형식
 
-Configure custom providers through your remote configuration JSON using the `providerSettings.OpenAiCompatible` section:
+원격 구성 JSON에서 `providerSettings.OpenAiCompatible` 섹션으로 커스텀 제공자를 구성합니다:
 
 ```json
 {
@@ -43,24 +43,24 @@ Configure custom providers through your remote configuration JSON using the `pro
 }
 ```
 
-## Configuration Fields
+## 구성 필드
 
-| Field | Type | Description | Required |
+| 필드 | 타입 | 설명 | 필수 |
 |-------|------|-------------|----------|
-| `models` | Array | List of model configurations | Yes |
-| `openAiBaseUrl` | String | API endpoint base URL | Yes |
-| `openAiApiKey` | String | API key for authentication | No |
-| `openAiModelId` | String | Default model identifier | No |
+| `models` | Array | 모델 구성 목록 | 예 |
+| `openAiBaseUrl` | String | API 엔드포인트 기본 URL | 예 |
+| `openAiApiKey` | String | 인증용 API 키 | 아니오 |
+| `openAiModelId` | String | 기본 모델 식별자 | 아니오 |
 
-### Azure OpenAI Specific Fields
+### Azure OpenAI 전용 필드
 
-For Azure OpenAI, additional fields are available:
+Azure OpenAI의 경우 추가 필드를 사용할 수 있습니다:
 
-| Field | Type | Description |
+| 필드 | 타입 | 설명 |
 |-------|------|-------------|
-| `azureApiVersion` | String | Azure API version (e.g., `2024-02-15-preview`) |
+| `azureApiVersion` | String | Azure API 버전(예: `2024-02-15-preview`) |
 
-## Example Configurations
+## 구성 예시
 
 ### Azure OpenAI
 
@@ -82,7 +82,7 @@ For Azure OpenAI, additional fields are available:
 }
 ```
 
-### Self-Hosted vLLM
+### 자체 호스팅 vLLM
 
 ```json
 {
@@ -100,7 +100,7 @@ For Azure OpenAI, additional fields are available:
 }
 ```
 
-### Local Ollama
+### 로컬 Ollama
 
 ```json
 {
@@ -155,7 +155,7 @@ For Azure OpenAI, additional fields are available:
 }
 ```
 
-### Internal Network (No Auth)
+### 내부 네트워크(인증 없음)
 
 ```json
 {
@@ -173,9 +173,9 @@ For Azure OpenAI, additional fields are available:
 }
 ```
 
-## Model Configuration
+## 모델 구성
 
-Each model requires basic information:
+각 모델에는 기본 정보가 필요합니다:
 
 ```json
 {
@@ -190,27 +190,27 @@ Each model requires basic information:
 }
 ```
 
-## Prerequisites
+## 사전 준비
 
-Before configuring a custom provider, you need:
+커스텀 제공자를 구성하기 전에 다음이 필요합니다:
 
-1. **API Endpoint**: URL of your OpenAI-compatible API
-2. **API Key** (if required): Authentication credentials
-3. **Model IDs**: Names of available models
-4. **Network Access**: Connectivity from where Cline is being used
+1. **API 엔드포인트**: OpenAI 호환 API의 URL
+2. **API 키**(필요한 경우): 인증 자격 증명
+3. **모델 ID**: 사용 가능한 모델 이름
+4. **네트워크 접근**: Cline이 사용되는 위치에서의 연결성
 
-## Troubleshooting
+## 문제 해결
 
-**Connection Errors**
+**연결 오류**
 
-Verify the endpoint is accessible:
+엔드포인트 접근을 확인하세요:
 ```bash
 curl https://your-api.company.com/v1/models
 ```
 
-**Authentication Errors**
+**인증 오류**
 
-Test authentication with your API key:
+API 키로 인증을 테스트하세요:
 ```bash
 curl -H "Authorization: Bearer your-api-key" \
   https://your-api.company.com/v1/models
@@ -218,37 +218,37 @@ curl -H "Authorization: Bearer your-api-key" \
 
 **Model Not Found**
 
-Ensure the model ID in your configuration matches what the API expects. Check available models:
+구성의 모델 ID가 API에서 기대하는 값과 일치하는지 확인하세요. 사용 가능한 모델을 확인하려면:
 ```bash
 curl -H "Authorization: Bearer your-api-key" \
   https://your-api.company.com/v1/models
 ```
 
-**Timeout Issues**
+**타임아웃 문제**
 
-If responses are slow:
-- Check network latency
-- Verify server has adequate resources
-- Consider using faster models
+응답이 느린 경우:
+- 네트워크 지연 확인
+- 서버 리소스가 충분한지 확인
+- 더 빠른 모델 사용 고려
 
-## Provider Documentation
+## 제공자 문서
 
-For setup and deployment of these services, see their official documentation:
+설정 및 배포에 대한 공식 문서:
 
 <CardGroup cols={2}>
   <Card title="Azure OpenAI" icon="microsoft" href="https://learn.microsoft.com/en-us/azure/ai-services/openai/">
-    Microsoft's managed OpenAI service
+    Microsoft의 관리형 OpenAI 서비스
   </Card>
   
   <Card title="vLLM" icon="server" href="https://docs.vllm.ai/">
-    High-performance inference engine
+    고성능 추론 엔진
   </Card>
   
   <Card title="Ollama" icon="download" href="https://ollama.ai/">
-    Run models locally
+    로컬에서 모델 실행
   </Card>
   
   <Card title="Text Generation Inference" icon="code" href="https://huggingface.co/docs/text-generation-inference/">
-    Hugging Face inference server
+    Hugging Face 추론 서버
   </Card>
 </CardGroup>

@@ -1,113 +1,113 @@
 ---
-title: "Remote Browser Support"
-description: "Remote browser support allows Cline to utilize a remote Chrome instance, leveraging authentication tokens and session cookies relevant to certain web development test cases."
+title: "원격 브라우저 지원"
+description: "원격 브라우저 지원을 통해 Cline은 원격 Chrome 인스턴스를 사용하여 인증 토큰과 세션 쿠키가 필요한 웹 개발 테스트 케이스를 수행할 수 있습니다."
 ---
 
-The Remote Browser feature in Cline allows the AI assistant to interact with web content directly through a controlled browser instance. This enables several powerful capabilities:
+Cline의 원격 브라우저 기능은 제어된 브라우저 인스턴스를 통해 웹 콘텐츠와 직접 상호작용할 수 있게 합니다. 이를 통해 다음과 같은 강력한 기능을 제공합니다:
 
--   Viewing and interacting with websites
--   Testing locally running web applications
--   Monitoring console logs and errors
--   Performing browser actions like clicking, typing, and scrolling
+-   웹사이트 보기 및 상호작용
+-   로컬에서 실행 중인 웹 애플리케이션 테스트
+-   콘솔 로그 및 오류 모니터링
+-   클릭, 입력, 스크롤 같은 브라우저 동작 수행
 
-## Remote Browser in Cline
+## Cline의 원격 브라우저
 
-### What is Remote Browser?
+### 원격 브라우저란?
 
-Remote Browser allows Cline to view and interact with websites directly. This feature enables Cline to:
+원격 브라우저는 Cline이 웹사이트를 직접 보고 상호작용할 수 있게 합니다. 이를 통해 다음이 가능합니다:
 
--   Visit websites and view their content
--   Test your locally running web applications
--   Fill out forms and click on elements
--   Capture screenshots of what it sees
--   Scroll through pages to see more content
+-   웹사이트 방문 및 내용 확인
+-   로컬에서 실행 중인 웹 앱 테스트
+-   폼 입력 및 요소 클릭
+-   화면 캡처
+-   스크롤로 더 많은 콘텐츠 확인
 
-### How to Use Remote Browser
+### 원격 브라우저 사용 방법
 
-#### Basic Commands
+#### 기본 명령
 
-You can ask Cline to use the browser with simple instructions:
+간단한 지시로 브라우저를 사용하도록 요청할 수 있습니다:
 
--   **Open a website**: "Use the browser to check the website at [https://example.com](https://example.com/)"
--   **Click on elements**: "Click the login button"
--   **Type text**: "Type 'Hello world' in the search box"
--   **Scroll the page**: "Scroll down to see more content"
--   **Close the browser**: "Close the browser now"
+-   **웹사이트 열기**: "브라우저로 [https://example.com](https://example.com/) 확인해줘"
+-   **요소 클릭**: "로그인 버튼 클릭해줘"
+-   **텍스트 입력**: "검색창에 'Hello world' 입력해줘"
+-   **페이지 스크롤**: "아래로 스크롤해서 더 보여줘"
+-   **브라우저 닫기**: "지금 브라우저 닫아줘"
 
-#### Example Workflows
+#### 예시 워크플로
 
-**Testing a Web Application:**
+**웹 애플리케이션 테스트:**
 
 ```javascript
 Can you start my React app with "npm start" and then check if it's working properly at http://localhost:3000?
 ```
 
-**Analyzing a Website:**
+**웹사이트 분석:**
 
 ```javascript
 Can you visit https://example.com and tell me what you think about its design and layout?
 ```
 
-**Filling Out a Form:**
+**폼 채우기:**
 
 ```javascript
 Please go to https://example.com/contact, fill out the contact form with some test data, and submit it.
 ```
 
-### Important Things to Know
+### 알아두어야 할 사항
 
-#### One Browser at a Time
+#### 한 번에 하나의 브라우저만 사용
 
-Cline can only use one browser at a time. If you want to visit a different website, you can either:
+Cline은 동시에 하나의 브라우저만 사용할 수 있습니다. 다른 사이트로 이동하려면:
 
--   Ask Cline to navigate to a new URL within the same browser session
--   Ask Cline to close the current browser and open a new one
+-   동일한 브라우저 세션에서 새 URL로 이동 요청
+-   현재 브라우저를 닫고 새로 열도록 요청
 
-#### Browser Must Be Closed Before Using Other Tools
+#### 다른 도구를 사용하기 전에는 브라우저를 닫아야 함
 
-If you want Cline to edit files or run commands after using the browser, you must first ask it to close the browser:
+브라우저 사용 후 파일 편집이나 명령 실행을 하려면 먼저 브라우저를 닫아야 합니다:
 
 ```javascript
 Close the browser and then update the CSS file to fix the alignment issue we saw.
 ```
 
-#### What Cline Sees
+#### Cline이 보는 화면
 
-The browser has a fixed viewport size (900x600 pixels by default), similar to a small laptop screen. Cline will share screenshots after each action so you can see exactly what it sees.
+브라우저 뷰포트는 고정 크기(기본 900x600 픽셀)로, 작은 노트북 화면과 비슷합니다. Cline은 각 동작 후 스크린샷을 공유해 실제로 보는 화면을 보여줍니다.
 
-#### Console Logs
+#### 콘솔 로그
 
-Cline captures browser console logs, which can be helpful for debugging web applications. These logs are included with each screenshot.
+Cline은 브라우저 콘솔 로그를 캡처합니다. 이는 웹 앱 디버깅에 유용하며, 스크린샷과 함께 제공됩니다.
 
-### Common Use Cases
+### 일반적인 사용 사례
 
--   **Web Development**: Test your websites and web applications
--   **UI/UX Review**: Get feedback on website design and usability
--   **Content Research**: Have Cline browse websites to gather information
--   **Form Testing**: Verify that forms work correctly
--   **Responsive Design Testing**: Check how websites look at different screen sizes
+-   **웹 개발**: 웹사이트 및 웹 애플리케이션 테스트
+-   **UI/UX 리뷰**: 디자인/사용성 피드백 수집
+-   **콘텐츠 리서치**: 웹 탐색으로 정보 수집
+-   **폼 테스트**: 폼 동작 확인
+-   **반응형 디자인 테스트**: 다양한 화면 크기에서의 레이아웃 확인
 
-### Troubleshooting
+### 문제 해결
 
--   **If a website doesn't load**: Try providing a direct URL with the http:// or https:// prefix
--   **If clicking doesn't work**: Try describing the location of the element more precisely
--   **If the browser seems stuck**: Ask Cline to close the browser and try again
+-   **웹사이트가 로드되지 않음**: http:// 또는 https://가 포함된 직접 URL 제공
+-   **클릭이 동작하지 않음**: 요소 위치를 더 구체적으로 설명
+-   **브라우저가 멈춘 것 같음**: 브라우저를 닫고 다시 시도
 
-### Using Remote Browser with VS Code in WSL
+### WSL에서 VS Code 사용 시 원격 브라우저
 
-When running VS Code in WSL, you'll need to configure Windows to allow WSL to connect to Chrome. Follow these steps:
+WSL에서 VS Code를 실행하는 경우, Windows에서 WSL이 Chrome에 연결할 수 있도록 설정해야 합니다. 다음 단계를 따라 주세요:
 
-#### Open PowerShell as Administrator and Run:
+#### 관리자 권한으로 PowerShell 실행 후:
 
 ```powershell
-# Allow WSL to connect to Chrome's debugging port
+# WSL이 Chrome 디버깅 포트에 연결할 수 있도록 허용
 New-NetFirewallRule -DisplayName "WSL Chrome Debug" -Direction Inbound -LocalPort 9222 -Protocol TCP -Action Allow
 ```
 
-#### Configure Cline in VS Code:
+#### VS Code에서 Cline 설정:
 
-1. Open VS Code settings
-2. Search for "Cline: Chrome Executable Path"
-3. Set the value to the path of your Chrome executable (e.g., `C:\Program Files\Google\Chrome\Application\chrome.exe`)
+1. VS Code 설정 열기
+2. "Cline: Chrome Executable Path" 검색
+3. Chrome 실행 파일 경로 설정(예: `C:\Program Files\Google\Chrome\Application\chrome.exe`)
 
-Cline should now be able to use the Remote Browser feature from within WSL.
+이제 WSL에서도 Cline의 원격 브라우저 기능을 사용할 수 있습니다.

@@ -1,40 +1,40 @@
 ---
 title: "OpenRouter"
-description: "Learn how to use OpenRouter with Cline to access a wide variety of language models through a single API."
+description: "Cline에서 OpenRouter를 사용해 단일 API로 다양한 언어 모델에 접근하는 방법을 알아보세요."
 ---
 
-OpenRouter is an AI platform that provides access to a wide variety of language models from different providers, all through a single API. This can simplify setup and allow you to easily experiment with different models.
+OpenRouter는 다양한 제공자의 언어 모델에 단일 API로 접근할 수 있게 해주는 AI 플랫폼입니다. 이를 통해 설정이 간단해지고 여러 모델을 쉽게 실험할 수 있습니다.
 
-**Website:** [https://openrouter.ai/](https://openrouter.ai/)
+**웹사이트:** [https://openrouter.ai/](https://openrouter.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to the [OpenRouter website](https://openrouter.ai/). Sign in with your Google or GitHub account.
-2.  **Get an API Key:** Go to the [keys page](https://openrouter.ai/keys). You should see an API key listed. If not, create a new key.
-3.  **Copy the Key:** Copy the API key.
+1.  **가입/로그인:** [OpenRouter 웹사이트](https://openrouter.ai/)에 접속합니다. Google 또는 GitHub 계정으로 로그인합니다.
+2.  **API 키 받기:** [keys 페이지](https://openrouter.ai/keys)로 이동합니다. API 키가 표시됩니다. 없으면 새 키를 생성합니다.
+3.  **키 복사:** API 키를 복사합니다.
 
-### Supported Models
+### 지원 모델
 
-OpenRouter supports a large and growing number of models. Cline automatically fetches the list of available models. Refer to the [OpenRouter Models page](https://openrouter.ai/models) for the complete and up-to-date list.
+OpenRouter는 많은 모델을 지원하며 계속 늘어납니다. Cline은 사용 가능한 모델 목록을 자동으로 가져옵니다. 전체 최신 목록은 [OpenRouter Models 페이지](https://openrouter.ai/models)를 참고하세요.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "OpenRouter" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your OpenRouter API key into the "OpenRouter API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
-5.  **(Optional) Custom Base URL:** If you need to use a custom base URL for the OpenRouter API, check "Use custom base URL" and enter the URL. Leave this blank for most users.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "OpenRouter"를 선택합니다.
+3.  **API 키 입력:** OpenRouter API 키를 "OpenRouter API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
+5.  **(선택) 사용자 지정 Base URL:** OpenRouter API의 사용자 지정 base URL이 필요하다면 "Use custom base URL"을 체크하고 URL을 입력합니다. 대부분의 사용자는 비워두면 됩니다.
 
-### Supported Transforms
+### 지원 변환(Transforms)
 
-OpenRouter provides an [optional "middle-out" message transform](https://openrouter.ai/docs/features/message-transforms) to help with prompts that exceed the maximum context size of a model. You can enable it by checking the "Compress prompts and message chains to the context size" box.
+OpenRouter는 모델의 최대 컨텍스트 크기를 초과하는 프롬프트에 도움이 되도록 [선택적 "middle-out" 메시지 변환](https://openrouter.ai/docs/features/message-transforms)을 제공합니다. "Compress prompts and message chains to the context size" 체크박스를 활성화하면 사용할 수 있습니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Model Selection:** OpenRouter offers a wide range of models. Experiment to find the best one for your needs.
--   **Pricing:** OpenRouter charges based on the underlying model's pricing. See the [OpenRouter Models page](https://openrouter.ai/models) for details.
--   **Prompt Caching:**
-    -   OpenRouter passes caching requests to underlying models that support it. Check the [OpenRouter Models page](https://openrouter.ai/models) to see which models offer caching.
-    -   For most models, caching should activate automatically if supported by the model itself (similar to how Requesty works).
-    -   **Exception for Gemini Models via OpenRouter:** Due to potential response delays sometimes observed with Google's caching mechanism when accessed via OpenRouter, a manual activation step is required _specifically for Gemini models_.
-    -   If using a **Gemini model** via OpenRouter, you **must manually check** the "Enable Prompt Caching" box in the provider settings to activate caching for that model. This checkbox serves as a temporary workaround. For non-Gemini models on OpenRouter, this checkbox is not necessary for caching.
+-   **모델 선택:** OpenRouter는 폭넓은 모델을 제공합니다. 필요에 맞는 모델을 찾아보세요.
+-   **가격:** OpenRouter는 기본 모델의 가격을 기준으로 과금합니다. 자세한 내용은 [OpenRouter Models 페이지](https://openrouter.ai/models)를 참고하세요.
+-   **프롬프트 캐싱:**
+    -   OpenRouter는 캐싱을 지원하는 기본 모델에 캐싱 요청을 전달합니다. 어떤 모델이 캐싱을 제공하는지 [OpenRouter Models 페이지](https://openrouter.ai/models)에서 확인하세요.
+    -   대부분의 모델은 자체적으로 캐싱을 지원하면 자동으로 활성화됩니다(Requesty와 유사).
+    -   **OpenRouter에서 Gemini 모델 사용 시 예외:** OpenRouter 경유로 Google 캐싱 메커니즘을 사용할 때 응답 지연이 관측되는 경우가 있어, **Gemini 모델에 한해** 수동 활성화 단계가 필요합니다.
+    -   OpenRouter에서 **Gemini 모델**을 사용한다면, 프로바이더 설정에서 "Enable Prompt Caching" 체크박스를 **직접** 켜야 합니다. 이 체크박스는 임시 우회책입니다. OpenRouter의 비-Gemini 모델은 캐싱에 이 체크박스가 필요하지 않습니다.

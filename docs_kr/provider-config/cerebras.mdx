@@ -1,95 +1,95 @@
 ---
 title: "Cerebras"
-description: "Learn how to configure and use Cerebras's ultra-fast inference with Cline. Experience up to 2,600 tokens per second with wafer-scale chip architecture and real-time reasoning models."
+description: "Cline에서 Cerebras의 초고속 추론을 설정하고 사용하는 방법을 알아보세요. 웨이퍼 스케일 칩 아키텍처와 실시간 추론 모델로 초당 최대 2,600 토큰을 경험할 수 있습니다."
 ---
 
-Cerebras delivers the world's fastest AI inference through their revolutionary wafer-scale chip architecture. Unlike traditional GPUs that shuttle model weights from external memory, Cerebras stores entire models on-chip, eliminating bandwidth bottlenecks and achieving speeds up to 2,600 tokens per second—often 20x faster than GPUs.
+Cerebras는 혁신적인 웨이퍼 스케일 칩 아키텍처로 세계에서 가장 빠른 AI 추론을 제공합니다. 전통적인 GPU가 외부 메모리에서 모델 가중치를 반복적으로 가져오는 것과 달리, Cerebras는 모델 전체를 칩에 저장해 대역폭 병목을 제거하고 초당 최대 2,600 토큰의 속도를 달성합니다. 이는 종종 GPU보다 20배 빠릅니다.
 
-**Website:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)
+**웹사이트:** [https://cloud.cerebras.ai/](https://cloud.cerebras.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to [Cerebras Cloud](https://cloud.cerebras.ai/) and create an account or sign in.
-2.  **Navigate to API Keys:** Access the API keys section in your dashboard.
-3.  **Create a Key:** Generate a new API key. Give it a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** Copy the API key immediately. Store it securely.
+1.  **가입/로그인:** [Cerebras Cloud](https://cloud.cerebras.ai/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 대시보드의 API keys 섹션으로 이동합니다.
+3.  **키 생성:** 새 API 키를 생성하고 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Cerebras models:
+Cline은 다음 Cerebras 모델을 지원합니다:
 
--   `zai-glm-4.7` - Highly capable general-purpose model on Cerebras (up to 1,000 tokens/s), competitive with leading proprietary models on coding tasks.
--   `qwen-3-235b-a22b-instruct-2507` - Advanced instruction-following model
--   `qwen-3-235b-a22b-thinking-2507` - Reasoning model with step-by-step thinking
--   `llama-3.3-70b` - Meta's Llama 3.3 model optimized for speed
--   `qwen-3-32b` - Compact yet powerful model for general tasks
+-   `zai-glm-4.7` - Cerebras에서 구동되는 고성능 범용 모델(최대 1,000 토큰/초), 코딩 작업에서 주요 상용 모델과 경쟁력
+-   `qwen-3-235b-a22b-instruct-2507` - 고급 지시 따르기 모델
+-   `qwen-3-235b-a22b-thinking-2507` - 단계별 사고를 포함한 추론 모델
+-   `llama-3.3-70b` - 속도 최적화된 Meta Llama 3.3 모델
+-   `qwen-3-32b` - 일반 작업에 적합한 소형 고성능 모델
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Cerebras" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Cerebras API key into the "Cerebras API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
-5.  **(Optional) Custom Base URL:** Most users won't need to adjust this setting.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Cerebras"를 선택합니다.
+3.  **API 키 입력:** Cerebras API 키를 "Cerebras API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
+5.  **(선택) 사용자 지정 Base URL:** 대부분의 사용자는 이 설정을 변경할 필요가 없습니다.
 
-### Cerebras's Wafer-Scale Advantage
+### Cerebras의 웨이퍼 스케일 강점
 
-Cerebras has fundamentally reimagined AI hardware architecture to solve the inference speed problem:
+Cerebras는 추론 속도 문제를 해결하기 위해 AI 하드웨어 아키텍처를 근본적으로 재구성했습니다:
 
-#### Wafer-Scale Architecture
-Traditional GPUs use separate chips for compute and memory, forcing them to constantly shuttle model weights back and forth. Cerebras built the world's largest AI chip—a wafer-scale engine that stores entire models on-chip. No external memory, no bandwidth bottlenecks, no waiting.
+#### 웨이퍼 스케일 아키텍처
+전통적인 GPU는 연산과 메모리를 분리된 칩에서 수행해 모델 가중치를 지속적으로 이동시켜야 합니다. Cerebras는 세계 최대 규모의 AI 칩인 웨이퍼 스케일 엔진을 구축해 모델 전체를 칩에 저장합니다. 외부 메모리와 대역폭 병목이 없어 대기 시간이 크게 줄어듭니다.
 
-#### Revolutionary Speed
-- **Up to 2,600 tokens per second** - often 20x faster than GPUs
-- **Single-second reasoning** - what used to take minutes now happens instantly
-- **Real-time applications** - reasoning models become practical for interactive use
-- **No bandwidth limits** - entire models stored on-chip eliminate memory bottlenecks
+#### 혁신적인 속도
+- **초당 최대 2,600 토큰** - GPU보다 종종 20배 빠름
+- **1초 내 추론** - 이전에는 수분이 걸리던 작업을 즉시 처리
+- **실시간 애플리케이션** - 추론 모델을 대화형 사용에 실용적으로 만듦
+- **대역폭 제약 없음** - 모델 전체를 칩에 저장해 메모리 병목 제거
 
-#### The Cerebras Scaling Law
-Cerebras discovered that **faster inference enables smarter AI**. Modern reasoning models generate thousands of tokens as "internal monologue" before answering. On traditional hardware, this takes too long for real-time use. Cerebras makes reasoning models fast enough for everyday applications.
+#### Cerebras 스케일링 법칙
+Cerebras는 **더 빠른 추론이 더 똑똑한 AI를 가능하게 한다**는 사실을 확인했습니다. 최신 추론 모델은 답변 전에 수천 토큰의 "내부 독백"을 생성합니다. 기존 하드웨어에서는 실시간 사용이 어렵지만, Cerebras는 이를 일상적 사용이 가능할 정도로 빠르게 만듭니다.
 
-#### Quality Without Compromise
-Unlike other speed optimizations that sacrifice accuracy, Cerebras maintains full model quality while delivering unprecedented speed. You get the intelligence of frontier models with the responsiveness of lightweight ones.
+#### 품질 저하 없는 속도
+정확도를 희생하는 다른 속도 최적화와 달리, Cerebras는 모델 품질을 그대로 유지하면서 전례 없는 속도를 제공합니다. 프런티어 모델의 지능을 경량 모델의 반응성으로 활용할 수 있습니다.
 
-Learn more about Cerebras's technology in their blog posts:
-- [The Cerebras Scaling Law: Faster Inference Is Smarter AI](https://www.cerebras.ai/blog/the-cerebras-scaling-law-faster-inference-is-smarter-ai)
+Cerebras 기술에 대한 자세한 내용은 블로그 글을 참고하세요:
+- [Cerebras Scaling Law: Faster Inference Is Smarter AI](https://www.cerebras.ai/blog/the-cerebras-scaling-law-faster-inference-is-smarter-ai)
 - [Introducing Cerebras Code](https://www.cerebras.ai/blog/introducing-cerebras-code)
 
-### Cerebras Code Plans
+### Cerebras Code 요금제
 
-Cerebras offers specialized plans for developers:
+Cerebras는 개발자를 위한 특화 요금제를 제공합니다:
 
-#### Code Pro ($50/month)
-- Access to Qwen3-Coder with fast, high-context completions
-- Up to 24 million tokens per day
-- Ideal for indie developers and weekend projects
-- 3-4 hours of uninterrupted coding per day
+#### Code Pro (월 $50)
+- Qwen3-Coder에 빠르고 고컨텍스트 완성 기능 제공
+- 하루 최대 2,400만 토큰
+- 인디 개발자와 주말 프로젝트에 적합
+- 하루 3~4시간 연속 코딩 가능
 
-#### Code Max ($200/month)
-- Heavy coding workflow support
-- Up to 120 million tokens per day
-- Perfect for full-time development and multi-agent systems
-- No weekly limits, no IDE lock-in
+#### Code Max (월 $200)
+- 고강도 코딩 워크플로 지원
+- 하루 최대 1억 2,000만 토큰
+- 풀타임 개발 및 멀티 에이전트 시스템에 적합
+- 주간 제한 없음, IDE 제한 없음
 
-### Special Features
+### 특별 기능
 
-#### Free Tier
-The `qwen-3-coder-480b-free` model provides access to high-performance inference at no cost—unique among speed-focused providers.
+#### 무료 티어
+`qwen-3-coder-480b-free` 모델은 비용 없이 고성능 추론에 접근할 수 있습니다. 속도 중심 제공자 중에서도 독보적입니다.
 
-#### Real-Time Reasoning
-Reasoning models like `qwen-3-235b-a22b-thinking-2507` can complete complex multi-step reasoning in under a second, making them practical for interactive development workflows.
+#### 실시간 추론
+`qwen-3-235b-a22b-thinking-2507` 같은 추론 모델은 복잡한 다단계 추론을 1초 이내에 완료해 대화형 개발 워크플로에서 실용적입니다.
 
-#### Coding Specialization
-Qwen3-Coder models are specifically optimized for programming tasks, delivering performance comparable to Claude Sonnet 4 and GPT-4.1 in coding benchmarks.
+#### 코딩 특화
+Qwen3-Coder 모델은 프로그래밍 작업에 최적화되어 있으며, 코딩 벤치마크에서 Claude Sonnet 4 및 GPT-4.1에 견줄 성능을 제공합니다.
 
-#### No IDE Lock-In
-Works with any OpenAI-compatible tool—Cursor, Continue.dev, Cline, or any other editor that supports OpenAI endpoints.
+#### IDE 종속 없음
+OpenAI 호환 도구(Cursor, Continue.dev, Cline 등)라면 어디서든 사용 가능합니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Speed Advantage:** Cerebras excels at making reasoning models practical for real-time use. Perfect for agentic workflows that require multiple LLM calls.
--   **Free Tier:** Start with the free model to experience Cerebras speed before upgrading to paid plans.
--   **Context Windows:** Models support context windows ranging from 64K to 131K tokens for including substantial code context.
--   **Rate Limits:** Generous rate limits designed for development workflows. Check your dashboard for current limits.
--   **Pricing:** Competitive pricing with significant speed advantages. Visit [Cerebras Cloud](https://cloud.cerebras.ai/) for current rates.
--   **Real-Time Applications:** Ideal for applications where AI response time matters—code generation, debugging, and interactive development.
+-   **속도 강점:** Cerebras는 추론 모델을 실시간 사용에 적합하게 만드는 데 탁월합니다. 여러 LLM 호출이 필요한 에이전트 워크플로에 적합합니다.
+-   **무료 티어:** 유료 요금제로 업그레이드하기 전에 무료 모델로 Cerebras 속도를 체험해 보세요.
+-   **컨텍스트 창:** 모델은 64K~131K 토큰 범위의 컨텍스트 창을 지원합니다.
+-   **요율 제한:** 개발 워크플로를 위해 넉넉한 제한이 제공됩니다. 현재 제한은 대시보드에서 확인하세요.
+-   **가격:** 경쟁력 있는 가격에 큰 속도 이점을 제공합니다. 최신 요금은 [Cerebras Cloud](https://cloud.cerebras.ai/)에서 확인하세요.
+-   **실시간 애플리케이션:** 코드 생성, 디버깅, 대화형 개발처럼 응답 시간이 중요한 작업에 이상적입니다.

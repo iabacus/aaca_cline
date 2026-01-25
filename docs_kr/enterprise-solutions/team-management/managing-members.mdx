@@ -1,317 +1,317 @@
 ---
-title: "Managing Members"
-sidebarTitle: "Managing Members"
-description: "Complete guide to managing team members, roles, and permissions in your Cline Enterprise organization"
+title: "멤버 관리"
+sidebarTitle: "멤버 관리"
+description: "Cline Enterprise 조직의 팀 멤버, 역할, 권한을 관리하는 완전한 가이드"
 ---
 
-Effective member management is essential for maintaining security and enabling your team to work productively. This guide covers everything you need to know about roles, permissions, and day-to-day member administration.
+효과적인 멤버 관리는 보안을 유지하고 팀의 생산성을 높이는 데 필수입니다. 이 가이드는 역할, 권한, 일상적인 멤버 관리에 필요한 모든 내용을 다룹니다.
 
-## Understanding Roles
+## 역할 이해하기
 
-Choose the right role for each team member to balance security with productivity. Here's what each role is designed for:
+보안과 생산성의 균형을 위해 각 팀원에게 적절한 역할을 부여하세요. 역할별 목적은 다음과 같습니다:
 
 <CardGroup cols={3}>
   <Card title="Owner" icon="crown" color="#9D4EDD">
-    **Primary account holder**
+    **주요 계정 보유자**
     
-    Unrestricted access to all settings including billing, security, and ownership transfer. Keep this limited to 1-2 key leaders.
+    결제, 보안, 소유권 이전을 포함한 모든 설정에 무제한 접근. 1~2명의 핵심 리더에게만 부여하세요.
   </Card>
   
   <Card title="Admin" icon="user-gear" color="#7209B7">
-    **Team leads & IT managers**
+    **팀 리드 및 IT 관리자**
     
-    Can manage users and configure providers. Ideal for trusted managers who need operational control without billing access.
+    사용자 관리 및 제공자 구성 가능. 결제 권한 없이 운영 제어가 필요한 신뢰할 수 있는 관리자에게 적합합니다.
   </Card>
   
   <Card title="Member" icon="user" color="#560BAD">
-    **Developers & contributors**
+    **개발자 및 기여자**
     
-    Can use Cline with shared resources but cannot change settings. The safest default for most team members.
+    공유 리소스로 Cline 사용 가능하지만 설정 변경 불가. 대부분의 팀원에게 가장 안전한 기본 역할입니다.
   </Card>
 </CardGroup>
 
-## Permissions Matrix
+## 권한 매트릭스
 
-Understand exactly what each role can do with this comprehensive permissions breakdown:
+역할별 권한을 정확히 이해하세요:
 
-| Permission | Member | Admin | Owner |
+| 권한 | Member | Admin | Owner |
 | :--- | :---: | :---: | :---: |
-| **General Usage** | | | |
-| Use Cline | ✅ | ✅ | ✅ |
-| Access Shared API Providers | ✅ | ✅ | ✅ |
+| **일반 사용** | | | |
+| Cline 사용 | ✅ | ✅ | ✅ |
+| 공유 API 제공자 접근 | ✅ | ✅ | ✅ |
 | | | | |
-| **Member Management** | | | |
-| View Members | ❌ | ✅ | ✅ |
-| Invite New Members | ❌ | ✅ | ✅ |
-| Edit Member Roles | ❌ | ✅ | ✅ |
-| Remove Members | ❌ | ✅ | ✅ |
-| Remove Admins | ❌ | ❌ | ✅ |
+| **멤버 관리** | | | |
+| 멤버 조회 | ❌ | ✅ | ✅ |
+| 새 멤버 초대 | ❌ | ✅ | ✅ |
+| 멤버 역할 변경 | ❌ | ✅ | ✅ |
+| 멤버 제거 | ❌ | ✅ | ✅ |
+| Admin 제거 | ❌ | ❌ | ✅ |
 | | | | |
-| **Configuration** | | | |
-| Configure API Providers | ❌ | ✅ | ✅ |
-| Manage Security Settings | ❌ | ❌ | ✅ |
+| **구성** | | | |
+| API 제공자 구성 | ❌ | ✅ | ✅ |
+| 보안 설정 관리 | ❌ | ❌ | ✅ |
 | | | | |
-| **Billing & Ownership** | | | |
-| View Billing Information | ❌ | ❌ | ✅ |
-| Manage Subscription | ❌ | ❌ | ✅ |
-| Transfer Ownership | ❌ | ❌ | ✅ |
+| **결제 및 소유권** | | | |
+| 결제 정보 조회 | ❌ | ❌ | ✅ |
+| 구독 관리 | ❌ | ❌ | ✅ |
+| 소유권 이전 | ❌ | ❌ | ✅ |
 
 <Note>
-**Quick Reference:** Most users should be **Members**. Grant **Admin** only to those managing users or configs. Reserve **Owner** for 1-2 account leaders.
+**빠른 참고:** 대부분의 사용자는 **Member**가 적합합니다. 사용자/구성을 관리해야 하는 경우에만 **Admin**을 부여하세요. **Owner**는 1~2명의 계정 리더로 제한하세요.
 </Note>
 
-## Member Management Tasks
+## 멤버 관리 작업
 
 <Tabs>
-  <Tab title="Adding Members">
-    ### Inviting New Team Members
+  <Tab title="멤버 추가">
+    ### 새 팀원 초대
     
-    1. **Navigate to Members**
-       - Go to your organization dashboard at app.cline.bot
-       - Click on "Members" in the sidebar
+    1. **Members로 이동**
+       - app.cline.bot의 조직 대시보드로 이동
+       - 사이드바의 "Members" 클릭
     
-    2. **Send Invitation**
-       - Click "Invite Member"
-       - Enter the user's email address (must be from your verified domain)
-       - Select the appropriate role (Member, Admin, or Owner)
-       - Click "Send Invite"
+    2. **초대 전송**
+       - "Invite Member" 클릭
+       - 사용자 이메일 입력(검증된 도메인이어야 함)
+       - 역할 선택(Member, Admin, Owner)
+       - "Send Invite" 클릭
     
-    3. **Invitation Status**
-       - Invited users will receive an email with a join link
-       - Pending invitations show in your member list with "Pending" status
-       - Each pending invitation holds one seat from your license
+    3. **초대 상태 확인**
+       - 초대된 사용자는 이메일로 참여 링크를 받음
+       - 대기 중인 초대는 멤버 목록에 "Pending"으로 표시
+       - 대기 초대 1건당 라이선스 좌석 1개가 차지됨
     
     <Tip>
-    **Bulk Invitations:** Need to add multiple users? Contact support@cline.bot for assistance with bulk invite CSV imports.
+    **대량 초대:** 여러 사용자를 한 번에 추가해야 한다면 support@cline.bot에 문의해 CSV 일괄 초대를 지원받을 수 있습니다.
     </Tip>
   </Tab>
   
-  <Tab title="Editing Roles">
-    ### Changing Member Permissions
+  <Tab title="역할 변경">
+    ### 멤버 권한 변경
     
-    1. **Locate the Member**
-       - Navigate to the Members page
-       - Find the user you want to modify
+    1. **멤버 찾기**
+       - Members 페이지로 이동
+       - 변경할 사용자를 찾기
     
-    2. **Change Role**
-       - Click the dropdown next to their current role
-       - Select the new role from the menu
-       - Confirm the change
+    2. **역할 변경**
+       - 현재 역할 옆의 드롭다운 클릭
+       - 새 역할 선택
+       - 변경 확인
     
-    3. **Effective Immediately**
-       - Role changes take effect instantly
-       - The user may need to sign out and back in to see updated permissions
+    3. **즉시 적용**
+       - 역할 변경은 즉시 적용됨
+       - 사용자가 권한 변화를 보려면 로그아웃 후 재로그인이 필요할 수 있음
     
     <Warning>
-    **Admin to Member:** Downgrading an Admin to Member will immediately revoke their ability to manage users and configurations. Ensure they no longer need these permissions.
+    **Admin → Member:** Admin을 Member로 내리면 사용자/구성 관리 권한이 즉시 회수됩니다. 해당 권한이 더 이상 필요하지 않은지 확인하세요.
     </Warning>
   </Tab>
   
-  <Tab title="Removing Members">
-    ### Offboarding Team Members
+  <Tab title="멤버 제거">
+    ### 팀원 오프보딩
     
-    1. **Access Member List**
-       - Navigate to your organization's Members page
-       - Locate the user to remove
+    1. **멤버 목록 접근**
+       - 조직의 Members 페이지로 이동
+       - 제거할 사용자를 찾기
     
-    2. **Remove User**
-       - Click the menu icon (⋮) next to their name
-       - Select "Remove from Organization"
-       - Confirm the removal
+    2. **사용자 제거**
+       - 이름 옆의 메뉴 아이콘(⋮) 클릭
+       - "Remove from Organization" 선택
+       - 제거 확인
     
-    3. **Immediate Effects**
-       - User loses access to the organization immediately
-       - Their seat is freed and can be assigned to someone else
-       - Audit logs are preserved for compliance
+    3. **즉시 효과**
+       - 사용자는 즉시 조직 접근 권한 상실
+       - 좌석이 해제되어 다른 사용자에게 할당 가능
+       - 감사 로그는 컴플라이언스 용도로 보존
     
     <Info>
-    **Data Retention:** Removing a member does not delete their historical activity logs. All audit trails remain intact for compliance purposes.
+    **데이터 보존:** 멤버 제거는 과거 활동 로그를 삭제하지 않습니다. 모든 감사 추적은 컴플라이언스 목적으로 유지됩니다.
     </Info>
   </Tab>
   
-  <Tab title="Revoking Invites">
-    ### Canceling Pending Invitations
+  <Tab title="초대 취소">
+    ### 대기 초대 취소
     
-    If an invited user hasn't accepted yet, you can revoke the invitation:
+    초대된 사용자가 아직 수락하지 않았다면 초대를 취소할 수 있습니다:
     
-    1. Find the pending invitation in your Members list
-    2. Click "Revoke Invitation"
-    3. The seat is immediately freed for another user
+    1. Members 목록에서 대기 초대 찾기
+    2. "Revoke Invitation" 클릭
+    3. 좌석이 즉시 해제되어 다른 사용자에게 할당 가능
     
-    This is useful when:
-    - The wrong email was used
-    - The user no longer needs access
-    - You need to reassign the seat urgently
+    다음과 같은 경우 유용합니다:
+    - 잘못된 이메일로 초대했을 때
+    - 사용자가 더 이상 접근이 필요 없을 때
+    - 좌석을 긴급 재할당해야 할 때
   </Tab>
 </Tabs>
 
-## Identity & Access Requirements
+## ID 및 접근 요구사항
 
-For users to successfully join your organization, two conditions must be met:
+사용자가 조직에 참여하려면 다음 두 조건을 만족해야 합니다:
 
 <Steps>
-  <Step title="Verified Identity Provider">
-    Your organization must use a verified **Identity Provider (IDP)** such as:
-    - Microsoft Entra ID (Azure AD)
+  <Step title="검증된 ID 제공자">
+    조직은 다음과 같은 검증된 **ID 제공자(IdP)**를 사용해야 합니다:
+    - Microsoft Entra ID(Azure AD)
     - Okta
     - Google Workspace
     - AWS IAM Identity Center
     
-    Users must authenticate through your IDP to access the organization.
+    사용자는 IdP를 통해 인증해야 조직에 접근할 수 있습니다.
   </Step>
   
-  <Step title="Domain Verification">
-    Your organization must have a **verified domain**. You'll need to verify ownership of your domain through your domain provider (e.g., Google, Microsoft, Cloudflare).
+  <Step title="도메인 검증">
+    조직은 **검증된 도메인**을 보유해야 합니다. 도메인 제공자(예: Google, Microsoft, Cloudflare)를 통해 소유권을 검증해야 합니다.
     
-    Only users with email addresses from verified domains can join.
+    검증된 도메인의 이메일 주소를 가진 사용자만 참여할 수 있습니다.
   </Step>
 </Steps>
 
 <Note>
-These requirements ensure that only authenticated users from your company can access your Cline organization, preventing unauthorized access.
+이 요구사항은 회사 소속의 인증된 사용자만 Cline 조직에 접근하도록 보장하여 무단 접근을 방지합니다.
 </Note>
 
-## Seat Management
+## 좌석 관리
 
-Understanding how seats work helps you manage your license effectively:
+좌석이 어떻게 계산되는지 이해하면 라이선스를 효율적으로 관리할 수 있습니다:
 
 <AccordionGroup>
-  <Accordion title="How Seats Are Calculated" icon="chair">
-    - Each user (Owner, Admin, or Member) consumes **one seat**
-    - Pending invitations also hold one seat
-    - Removing a member or revoking an invite immediately frees the seat
-    - Your license determines the maximum number of seats available
+  <Accordion title="좌석 계산 방식" icon="chair">
+    - 각 사용자(Owner/Admin/Member)는 **좌석 1개**를 사용
+    - 대기 중인 초대도 좌석 1개를 차지
+    - 멤버 제거 또는 초대 취소 시 좌석 즉시 해제
+    - 라이선스가 사용 가능한 최대 좌석 수를 결정
   </Accordion>
   
-  <Accordion title="When Seats Are Used" icon="user-plus">
-    A seat is consumed when:
-    - You send an invitation (marked as "pending")
-    - An invited user accepts and joins
-    - An existing user is granted access through SSO
+  <Accordion title="좌석이 사용되는 시점" icon="user-plus">
+    좌석이 사용되는 경우:
+    - 초대장을 보내면("pending" 상태)
+    - 초대된 사용자가 수락하여 참여
+    - SSO를 통해 기존 사용자가 접근 권한을 부여받음
   </Accordion>
   
-  <Accordion title="Freeing Up Seats" icon="user-minus">
-    To free a seat:
-    - Remove an active member from the organization
-    - Revoke a pending invitation
-    - Wait for a pending invite to expire (if configured)
+  <Accordion title="좌석 해제" icon="user-minus">
+    좌석을 해제하려면:
+    - 활성 멤버 제거
+    - 대기 초대 취소
+    - (설정된 경우) 초대 만료 대기
   </Accordion>
   
-  <Accordion title="Upgrading Your License" icon="arrow-up">
-    Need more seats?
-    - **Teams Plan:** Contact your account manager or visit app.cline.bot/settings/billing to upgrade your license.
-    - **Enterprise Plan:** Includes unlimited seats with no per-user restrictions.
+  <Accordion title="라이선스 업그레이드" icon="arrow-up">
+    좌석이 더 필요하신가요?
+    - **Teams 플랜:** 계정 담당자에게 문의하거나 app.cline.bot/settings/billing에서 업그레이드
+    - **Enterprise 플랜:** 사용자 수 제한 없는 무제한 좌석 포함
   </Accordion>
 </AccordionGroup>
 
-## Security Best Practices
+## 보안 모범 사례
 
-Follow these guidelines to maintain a secure organization:
+다음 지침으로 조직 보안을 강화하세요:
 
 <CardGroup cols={2}>
-  <Card title="Principle of Least Privilege" icon="shield-check">
-    Always assign the minimum role necessary. Most users should be Members. Only grant Admin or Owner privileges when required for job duties.
+  <Card title="최소 권한 원칙" icon="shield-check">
+    필요한 최소 역할만 부여하세요. 대부분의 사용자는 Member가 적합합니다. 업무상 필요할 때만 Admin/Owner를 부여하세요.
   </Card>
   
-  <Card title="Limit Owner Roles" icon="user-lock">
-    Keep Owners to 1-2 key individuals who manage billing and security. This centralization prevents accidental or malicious changes to critical settings.
+  <Card title="Owner 역할 제한" icon="user-lock">
+    결제와 보안을 관리하는 1~2명의 핵심 인물만 Owner로 지정하세요. 중요한 설정의 실수 또는 악의적 변경을 방지합니다.
   </Card>
   
-  <Card title="Regular Audits" icon="clipboard-check">
-    Review your member list quarterly. Remove inactive users promptly and verify that Admin/Owner roles are still appropriate for each user.
+  <Card title="정기 감사" icon="clipboard-check">
+    분기마다 멤버 목록을 검토하세요. 비활성 사용자는 즉시 제거하고 Admin/Owner 역할이 적절한지 확인하세요.
   </Card>
   
-  <Card title="Offboarding Process" icon="door-open">
-    Create a standard offboarding checklist: remove from Cline, revoke IDP access, document in audit log, and reassign any critical responsibilities.
+  <Card title="오프보딩 프로세스" icon="door-open">
+    표준 오프보딩 체크리스트를 마련하세요: Cline에서 제거, IdP 접근 회수, 감사 로그 기록, 주요 책임 재할당.
   </Card>
 </CardGroup>
 
 <Warning>
-**Owner Accountability:** Since Owners control billing and can transfer ownership, choose these individuals carefully and document the selection in your organization's security policies.
+**Owner 책임:** Owner는 결제와 소유권 이전 권한이 있으므로 신중히 선택하고 조직의 보안 정책에 이를 문서화하세요.
 </Warning>
 
-## Advanced Scenarios
+## 고급 시나리오
 
 <AccordionGroup>
-  <Accordion title="Transferring Ownership" icon="exchange">
-    Only the current Owner can transfer ownership:
+  <Accordion title="소유권 이전" icon="exchange">
+    소유권 이전은 현재 Owner만 수행할 수 있습니다:
     
-    1. Navigate to Organization Settings
-    2. Go to the "Ownership" section
-    3. Select the new Owner from the member list
-    4. Confirm the transfer with your authentication
-    5. The new Owner receives immediate control
+    1. 조직 설정으로 이동
+    2. "Ownership" 섹션으로 이동
+    3. 멤버 목록에서 새 Owner 선택
+    4. 인증 후 이전 확인
+    5. 새 Owner가 즉시 제어권을 획득
     
-    **Important:** This action cannot be undone by the previous Owner. The new Owner must initiate a reverse transfer if needed.
+    **중요:** 이 작업은 이전 Owner가 되돌릴 수 없습니다. 필요 시 새 Owner가 역이전을 진행해야 합니다.
   </Accordion>
   
-  <Accordion title="Managing Multiple Admins" icon="users-gear">
-    When you have multiple Admins:
+  <Accordion title="여러 Admin 관리" icon="users-gear">
+    여러 Admin이 있는 경우:
     
-    - Document each Admin's area of responsibility
-    - Use audit logs to track configuration changes
-    - Consider creating rotation schedules for large teams
-    - Establish escalation paths for Owner-level decisions
+    - 각 Admin의 책임 영역을 문서화
+    - 감사 로그로 구성 변경 추적
+    - 대규모 팀은 로테이션 스케줄 고려
+    - Owner 수준 의사결정에 대한 에스컬레이션 경로 정의
   </Accordion>
   
-  <Accordion title="Temporary Access" icon="clock">
-    For contractors or temporary staff:
+  <Accordion title="임시 접근" icon="clock">
+    계약직/임시 인력의 경우:
     
-    - Create them as Members with expiration calendar reminders
-    - Document their access period in your internal systems
-    - Set calendar reminders to remove them when the contract ends
-    - Consider using time-limited IDP accounts if your IDP supports it
+    - 멤버로 생성하고 만료 캘린더 리마인더 설정
+    - 내부 시스템에 접근 기간 문서화
+    - 계약 종료 시 제거하도록 캘린더 리마인더
+    - IdP가 지원한다면 기간 제한 계정 사용 고려
   </Accordion>
 </AccordionGroup>
 
-## Troubleshooting
+## 문제 해결
 
 <AccordionGroup>
-  <Accordion title="User Can't Accept Invitation" icon="circle-exclamation">
-    **Common causes:**
-    - Email domain doesn't match verified domain
-    - User's IDP access hasn't been granted yet
-    - Invitation link expired
+  <Accordion title="사용자가 초대를 수락할 수 없음" icon="circle-exclamation">
+    **일반 원인:**
+    - 이메일 도메인이 검증된 도메인과 일치하지 않음
+    - 사용자의 IdP 접근 권한 미부여
+    - 초대 링크 만료
     
-    **Solution:** Verify domain verification is complete and resend the invitation.
+    **해결:** 도메인 검증이 완료되었는지 확인하고 초대를 재전송하세요.
   </Accordion>
   
-  <Accordion title="Can't Remove an Admin" icon="user-slash">
-    **Cause:** Only Owners can remove Admins.
+  <Accordion title="Admin 제거 불가" icon="user-slash">
+    **원인:** Admin은 Owner만 제거할 수 있습니다.
     
-    **Solution:** Ask an Owner to perform the removal, or if you need to remove your organization's sole Owner, contact support@cline.bot.
+    **해결:** Owner에게 제거를 요청하세요. 조직의 유일한 Owner를 제거해야 한다면 support@cline.bot에 문의하세요.
   </Accordion>
   
-  <Accordion title="Out of Seats" icon="triangle-exclamation">
-    **When you've reached your license limit:**
-    - Remove inactive members to free seats
-    - Revoke pending invitations that are no longer needed
-    - Upgrade your license to add more seats
+  <Accordion title="좌석 부족" icon="triangle-exclamation">
+    **라이선스 한도를 초과한 경우:**
+    - 비활성 멤버 제거로 좌석 확보
+    - 불필요한 대기 초대 취소
+    - 라이선스 업그레이드
   </Accordion>
 </AccordionGroup>
 
-## Next Steps
+## 다음 단계
 
-Now that you understand member management, proceed with configuring your organization:
+이제 멤버 관리를 이해했으니 조직 구성을 이어서 진행하세요:
 
 <CardGroup cols={2}>
   <Card 
-    title="Configure Providers" 
+    title="제공자 구성" 
     icon="plug" 
     href="/enterprise-solutions/configuration/choosing-your-deployment"
   >
-    Set up API providers for your team to use
+    팀에서 사용할 API 제공자를 설정하세요
   </Card>
   
   <Card 
-    title="Monitor Usage" 
+    title="사용량 모니터링" 
     icon="chart-line" 
     href="/enterprise-solutions/monitoring/overview"
   >
-    Track team activity and resource consumption
+    팀 활동과 리소스 사용을 추적하세요
   </Card>
 </CardGroup>
 
 <Tip>
-**Getting Started Fast?** The quickest path is: 1) Invite your team as Members, 2) Configure one API provider, 3) Let your team start using Cline. You can refine roles and settings later.
+**빠르게 시작하기?** 가장 빠른 경로는 1) 팀을 Member로 초대, 2) 하나의 API 제공자 구성, 3) 팀이 Cline 사용 시작입니다. 이후 역할과 설정을 조정해도 됩니다.
 </Tip>

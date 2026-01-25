@@ -1,159 +1,159 @@
 ---
-title: "Context Window Guide"
-description: "Understanding and managing AI model context windows"
+title: "컨텍스트 윈도우 가이드"
+description: "AI 모델의 컨텍스트 윈도우 이해 및 관리"
 ---
 
-## What is a Context Window?
+## 컨텍스트 윈도우란?
 
-A context window is the maximum amount of text an AI model can process at once. Think of it as the model's "working memory" - it determines how much of your conversation and code the model can consider when generating responses.
+컨텍스트 윈도우는 AI 모델이 한 번에 처리할 수 있는 최대 텍스트 양입니다. 모델의 "작업 메모리"라고 생각하면 됩니다. 대화와 코드 중 얼마나 많은 내용을 고려할 수 있는지 결정합니다.
 
 <Note>
-**Key Point**: Larger context windows allow the model to understand more of your codebase at once, but may increase costs and response times.
+**핵심 포인트**: 컨텍스트 윈도우가 클수록 더 많은 코드베이스를 한 번에 이해할 수 있지만, 비용과 응답 시간이 증가할 수 있습니다.
 </Note>
 
-## Context Window Sizes
+## 컨텍스트 윈도우 크기
 
-### Quick Reference
+### 빠른 참고
 
-| Size | Tokens | Approximate Words | Use Case |
+| 크기 | 토큰 | 대략적 단어 수 | 사용 사례 |
 |------|--------|------------------|----------|
-| **Small** | 8K-32K | 6,000-24,000 | Single files, quick fixes |
-| **Medium** | 128K | ~96,000 | Most coding projects |
-| **Large** | 200K | ~150,000 | Complex codebases |
-| **Extra Large** | 400K+ | ~300,000+ | Entire applications |
-| **Massive** | 1M+ | ~750,000+ | Multi-project analysis |
+| **작음** | 8K-32K | 6,000-24,000 | 단일 파일, 빠른 수정 |
+| **중간** | 128K | ~96,000 | 대부분의 코딩 프로젝트 |
+| **큼** | 200K | ~150,000 | 복잡한 코드베이스 |
+| **아주 큼** | 400K+ | ~300,000+ | 전체 애플리케이션 |
+| **초대형** | 1M+ | ~750,000+ | 다중 프로젝트 분석 |
 
-### Model Context Windows
+### 모델 컨텍스트 윈도우
 
-| Model | Context Window | Effective Window* | Notes |
+| 모델 | 컨텍스트 윈도우 | 유효 윈도우* | 비고 |
 |-------|---------------|------------------|-------|
-| **Claude Sonnet 4.5** | 1M tokens | ~500K tokens | Best quality at high context |
-| **GPT-5** | 400K tokens | ~300K tokens | Three modes affect performance |
-| **Gemini 2.5 Pro** | 1M+ tokens | ~600K tokens | Excellent for documents |
-| **DeepSeek V3** | 128K tokens | ~100K tokens | Optimal for most tasks |
-| **Qwen3 Coder** | 256K tokens | ~200K tokens | Good balance |
+| **Claude Sonnet 4.5** | 1M 토큰 | ~500K 토큰 | 높은 컨텍스트에서 최고 품질 |
+| **GPT-5** | 400K 토큰 | ~300K 토큰 | 3가지 모드가 성능에 영향 |
+| **Gemini 2.5 Pro** | 1M+ 토큰 | ~600K 토큰 | 문서 작업에 탁월 |
+| **DeepSeek V3** | 128K 토큰 | ~100K 토큰 | 대부분 작업에 최적 |
+| **Qwen3 Coder** | 256K 토큰 | ~200K 토큰 | 균형 잡힌 선택 |
 
-*Effective window is where model maintains high quality
+*유효 윈도우는 모델 품질이 높게 유지되는 범위입니다.
 
-## Managing Context Efficiently
+## 컨텍스트 효율적으로 관리하기
 
-### What Counts Toward Context
+### 컨텍스트에 포함되는 것
 
-1. **Your current conversation** - All messages in the chat
-2. **File contents** - Any files you've shared or Cline has read
-3. **Tool outputs** - Results from executed commands
-4. **System prompts** - Cline's instructions (minimal impact)
+1. **현재 대화** - 채팅의 모든 메시지
+2. **파일 내용** - 공유했거나 Cline이 읽은 파일
+3. **도구 출력** - 실행된 명령 결과
+4. **시스템 프롬프트** - Cline의 지침(영향은 작음)
 
-### Optimization Strategies
+### 최적화 전략
 
-#### 1. Start Fresh for New Features
+#### 1. 새 기능은 새롭게 시작
 ```
-/new - Creates a new task with clean context
+/new - 깨끗한 컨텍스트로 새 작업 생성
 ```
-Benefits:
-- Maximum context available
-- No irrelevant history
-- Better model focus
+장점:
+- 최대 컨텍스트 확보
+- 불필요한 히스토리 없음
+- 모델 집중도 향상
 
-#### 2. Use @ Mentions Strategically
-Instead of including entire files:
-- `@filename.ts` - Include only when needed
-- Use search instead of reading large files
-- Reference specific functions rather than whole files
+#### 2. @ 멘션을 전략적으로 사용
+전체 파일을 넣는 대신:
+- `@filename.ts` - 필요할 때만 포함
+- 큰 파일은 검색으로 대체
+- 파일 전체가 아닌 특정 함수 참조
 
-#### 3. Enable Auto-compact
-Cline can automatically summarize long conversations:
+#### 3. 자동 압축 활성화
+Cline이 긴 대화를 자동 요약할 수 있습니다:
 - Settings → Features → Auto-compact
-- Preserves important context
-- Reduces token usage
+- 중요한 컨텍스트 유지
+- 토큰 사용량 감소
 
-## Context Window Warnings
+## 컨텍스트 윈도우 경고
 
-### Signs You're Hitting Limits
+### 한도에 도달하는 징후
 
-| Warning Sign | What It Means | Solution |
+| 경고 신호 | 의미 | 해결 방법 |
 |-------------|---------------|----------|
-| **"Context window exceeded"** | Hard limit reached | Start new task or enable auto-compact |
-| **Slower responses** | Model struggling with context | Reduce included files |
-| **Repetitive suggestions** | Context fragmentation | Summarize and start fresh |
-| **Missing recent changes** | Context overflow | Use checkpoints to track changes |
+| **"Context window exceeded"** | 하드 한도 도달 | 새 작업 시작 또는 자동 압축 활성화 |
+| **응답 느려짐** | 컨텍스트 부담 증가 | 포함 파일 줄이기 |
+| **반복 제안** | 컨텍스트 단편화 | 요약 후 새로 시작 |
+| **최근 변경 누락** | 컨텍스트 오버플로 | 체크포인트로 변경 추적 |
 
-### Best Practices by Project Size
+### 프로젝트 규모별 모범 사례
 
-#### Small Projects (< 50 files)
-- Any model works well
-- Include relevant files freely
-- No special optimization needed
+#### 작은 프로젝트(< 50 파일)
+- 어떤 모델이든 잘 작동
+- 관련 파일 자유롭게 포함
+- 특별한 최적화 불필요
 
-#### Medium Projects (50-500 files)
-- Use 128K+ context models
-- Include only working set of files
-- Clear context between features
+#### 중간 프로젝트(50-500 파일)
+- 128K+ 컨텍스트 모델 사용
+- 작업 중인 파일 세트만 포함
+- 기능 단위로 컨텍스트 정리
 
-#### Large Projects (500+ files)
-- Use 200K+ context models
-- Focus on specific modules
-- Use search instead of reading many files
-- Break work into smaller tasks
+#### 큰 프로젝트(500+ 파일)
+- 200K+ 컨텍스트 모델 사용
+- 특정 모듈에 집중
+- 많은 파일 읽기 대신 검색 사용
+- 작업을 작은 단위로 분할
 
-## Advanced Context Management
+## 고급 컨텍스트 관리
 
-### Plan/Act Mode Optimization
+### Plan/Act 모드 최적화
 
-Leverage Plan/Act mode for better context usage:
-- **Plan Mode**: Use smaller context for discussion
-- **Act Mode**: Include necessary files for implementation
+Plan/Act 모드를 활용해 컨텍스트를 효율적으로 사용하세요:
+- **Plan 모드**: 토론용으로 작은 컨텍스트 사용
+- **Act 모드**: 구현에 필요한 파일 포함
 
-Configuration:
+구성 예:
 ```
-Plan Mode: DeepSeek V3 (128K) - Lower cost planning
-Act Mode: Claude Sonnet (1M) - Maximum context for coding
+Plan 모드: DeepSeek V3 (128K) - 저비용 계획
+Act 모드: Claude Sonnet (1M) - 최대 컨텍스트 코딩
 ```
 
-### Context Pruning Strategies
+### 컨텍스트 가지치기 전략
 
-1. **Temporal Pruning**: Remove old conversation parts
-2. **Semantic Pruning**: Keep only relevant code sections
-3. **Hierarchical Pruning**: Maintain high-level structure, prune details
+1. **시간 기반 가지치기**: 오래된 대화 부분 제거
+2. **의미 기반 가지치기**: 관련 코드 부분만 유지
+3. **계층적 가지치기**: 상위 구조는 유지하고 세부는 제거
 
-### Token Counting Tips
+### 토큰 계산 팁
 
-#### Rough Estimates
-- **1 token ≈ 0.75 words**
-- **1 token ≈ 4 characters**
-- **100 lines of code ≈ 500-1000 tokens**
+#### 대략적인 추정
+- **1 토큰 ≈ 0.75 단어**
+- **1 토큰 ≈ 4 글자**
+- **코드 100줄 ≈ 500-1000 토큰**
 
-#### File Size Guidelines
-| File Type | Tokens per KB |
+#### 파일 크기 가이드
+| 파일 유형 | KB당 토큰 |
 |-----------|---------------|
-| **Code** | ~250-400 |
+| **코드** | ~250-400 |
 | **JSON** | ~300-500 |
 | **Markdown** | ~200-300 |
-| **Plain text** | ~200-250 |
+| **일반 텍스트** | ~200-250 |
 
-## Context Window FAQ
+## 컨텍스트 윈도우 FAQ
 
-### Q: Why do responses get worse with very long conversations?
-**A:** Models can lose focus with too much context. The "effective window" is typically 50-70% of the advertised limit.
+### Q: 대화가 길어질수록 왜 응답 품질이 떨어지나요?
+**A:** 모델은 컨텍스트가 너무 많으면 집중을 잃을 수 있습니다. "유효 윈도우"는 보통 광고된 한도의 50~70% 정도입니다.
 
-### Q: Should I use the largest context window available?
-**A:** Not always. Larger contexts increase cost and can reduce response quality. Match the context to your task size.
+### Q: 가능한 가장 큰 컨텍스트 윈도우를 써야 하나요?
+**A:** 항상 그렇진 않습니다. 큰 컨텍스트는 비용을 올리고 응답 품질을 떨어뜨릴 수 있습니다. 작업 규모에 맞는 크기를 선택하세요.
 
-### Q: How can I tell how much context I'm using?
-**A:** Cline shows token usage in the interface. Watch for the context meter approaching limits.
+### Q: 내가 얼마나 컨텍스트를 쓰는지 어떻게 알 수 있나요?
+**A:** Cline 인터페이스에서 토큰 사용량을 보여줍니다. 컨텍스트 미터가 한도에 가까워지는지 확인하세요.
 
-### Q: What happens when I exceed the context limit?
-**A:** Cline will either:
-- Automatically compact the conversation (if enabled)
-- Show an error and suggest starting a new task
-- Truncate older messages (with warning)
+### Q: 컨텍스트 한도를 넘으면 어떻게 되나요?
+**A:** Cline은 다음 중 하나를 수행합니다:
+- 자동으로 대화를 압축(활성화된 경우)
+- 오류를 표시하고 새 작업 시작을 제안
+- 오래된 메시지를 잘라냄(경고 포함)
 
-## Recommendations by Use Case
+## 사용 사례별 추천
 
-| Use Case | Recommended Context | Model Suggestion |
+| 사용 사례 | 추천 컨텍스트 | 모델 추천 |
 |----------|-------------------|------------------|
-| **Quick fixes** | 32K-128K | DeepSeek V3 |
-| **Feature development** | 128K-200K | Qwen3 Coder |
-| **Large refactoring** | 400K+ | Claude Sonnet 4.5 |
-| **Code review** | 200K-400K | GPT-5 |
-| **Documentation** | 128K | Any budget model |
+| **빠른 수정** | 32K-128K | DeepSeek V3 |
+| **기능 개발** | 128K-200K | Qwen3 Coder |
+| **대규모 리팩터링** | 400K+ | Claude Sonnet 4.5 |
+| **코드 리뷰** | 200K-400K | GPT-5 |
+| **문서화** | 128K | 예산형 모델 |

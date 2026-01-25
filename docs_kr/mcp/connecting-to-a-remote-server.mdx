@@ -1,138 +1,138 @@
 ---
-title: "Connecting to a Remote Server"
-description: "The Model Context Protocol (MCP) allows Cline to communicate with external servers that provide additional tools and resources to extend its capabilities. This guide explains how to add and connect to remote MCP servers through the MCP Servers interface."
+title: "원격 서버 연결"
+description: "Model Context Protocol(MCP)을 통해 Cline이 외부 서버와 통신하여 추가 도구와 리소스를 사용할 수 있습니다. 이 가이드는 MCP Servers 인터페이스에서 원격 MCP 서버를 추가하고 연결하는 방법을 설명합니다."
 ---
 
-## Adding and Managing Remote MCP Servers
+## 원격 MCP 서버 추가 및 관리
 
-### Accessing the MCP Servers Interface
+### MCP Servers 인터페이스 접근
 
-To access the MCP Servers interface in Cline:
+Cline에서 MCP Servers 인터페이스에 접근하는 방법:
 
-1. Click on the Cline icon in the VSCode sidebar
-2. Open the menu (⋮) in the top right corner of the Cline panel
-3. Select "MCP Servers" from the dropdown menu
+1. VS Code 사이드바에서 Cline 아이콘 클릭
+2. Cline 패널 우측 상단의 메뉴(⋮) 열기
+3. 드롭다운에서 "MCP Servers" 선택
 
-### Understanding the MCP Servers Interface
+### MCP Servers 인터페이스 이해
 
-The MCP Servers interface is divided into three main tabs:
+MCP Servers 인터페이스는 세 개의 주요 탭으로 구성됩니다:
 
--   **Marketplace**: Discover and install pre-configured MCP servers (if enabled)
--   **Remote Servers**: Connect to existing MCP servers via URL endpoints
--   **Installed**: Manage your connected MCP servers
+-   **Marketplace**: 사전 구성된 MCP 서버 찾기 및 설치(활성화된 경우)
+-   **Remote Servers**: URL 엔드포인트를 통해 기존 MCP 서버에 연결
+-   **Installed**: 연결된 MCP 서버 관리
 
-### Adding a Remote MCP Server
+### 원격 MCP 서버 추가
 
-The "Remote Servers" tab allows you to connect to any MCP server that's accessible via a URL endpoint:
+"Remote Servers" 탭에서 URL로 접근 가능한 MCP 서버에 연결할 수 있습니다:
 
-1. Click on the "Remote Servers" tab in the MCP Servers interface
-2. Fill in the required information:
-    - **Server Name**: Provide a unique, descriptive name for the server
-    - **Server URL**: Enter the complete URL endpoint of the MCP server (e.g., `https://example.com/mcp-sse`)
-    - **Transport Type**: Select the connection protocol (Streamable HTTP is recommended for modern servers)
-3. Click "Add Server" to initiate the connection
-4. Cline will attempt to connect to the server and display the connection status
+1. MCP Servers 인터페이스에서 "Remote Servers" 탭 클릭
+2. 필요한 정보 입력:
+    - **Server Name**: 서버의 고유하고 설명적인 이름
+    - **Server URL**: MCP 서버의 전체 URL 엔드포인트(예: `https://example.com/mcp-sse`)
+    - **Transport Type**: 연결 프로토콜 선택(현대 서버에는 Streamable HTTP 권장)
+3. "Add Server" 클릭하여 연결 시작
+4. Cline이 서버 연결을 시도하고 상태를 표시
 
-> **Note**: When connecting to a remote server, ensure you trust the source, as MCP servers can execute code in your environment.
+> **참고**: 원격 서버에 연결할 때는 소스를 신뢰할 수 있는지 확인하세요. MCP 서버는 실행 환경에서 코드를 실행할 수 있습니다.
 
-#### Transport Types
+#### 전송 유형
 
-Cline supports two transport protocols for remote MCP servers:
+Cline은 원격 MCP 서버에 대해 두 가지 전송 프로토콜을 지원합니다:
 
--   **Streamable HTTP (Recommended)**: The modern MCP transport protocol with better performance, reliability, and full OAuth 2.1 authentication support. Use this for most remote servers.
--   **SSE (Legacy)**: Server-Sent Events transport. Use this only if the server specifically requires SSE or doesn't support Streamable HTTP.
+-   **Streamable HTTP(권장)**: 성능과 안정성이 더 좋고 OAuth 2.1 인증을 지원하는 현대 MCP 전송 프로토콜. 대부분의 원격 서버에 사용하세요.
+-   **SSE(레거시)**: Server-Sent Events 전송. 서버가 SSE를 요구하거나 Streamable HTTP를 지원하지 않을 때만 사용하세요.
 
-#### OAuth Authentication
+#### OAuth 인증
 
-Some MCP servers (like Vercel's MCP) require OAuth authentication to access your data securely. When connecting to an OAuth-enabled server:
+일부 MCP 서버(예: Vercel MCP)는 OAuth 인증이 필요합니다. OAuth 서버에 연결하는 방법:
 
-1. Add the server as usual with its URL
-2. If the server requires authentication, you'll see an error message asking to authenticate.
-3. Click the **"Authenticate"** button that appears
-4. Your browser will open to the server's authorization page
-5. Sign in and grant permission
-6. You'll be redirected back to Cline automatically
-7. The server will connect and show a green status dot
+1. 서버 URL로 일반적인 방식으로 추가
+2. 인증이 필요하면 오류 메시지와 함께 인증 요청이 표시됩니다
+3. 나타나는 **"Authenticate"** 버튼을 클릭
+4. 브라우저가 서버의 인증 페이지로 이동
+5. 로그인하고 권한 승인
+6. Cline으로 자동 리디렉션
+7. 서버가 연결되고 초록색 상태 점 표시
 
-Once authenticated, your credentials are securely stored and the server will reconnect automatically when you reload Cline. You won't need to authenticate again unless you delete the server or your credentials expire.
+인증 후 자격 증명은 안전하게 저장되며, Cline을 다시 로드해도 자동 재연결됩니다. 서버를 삭제하거나 자격 증명이 만료되지 않는 한 재인증이 필요하지 않습니다.
 
-### Remote Server Discovery
+### 원격 서버 탐색
 
-If you're looking for MCP servers to connect to, several third-party marketplaces provide directories of available servers with various capabilities.
+연결할 MCP 서버를 찾는다면, 여러 서드파티 마켓플레이스에서 다양한 서버 디렉터리를 제공합니다.
 
-> **Warning**: The following third-party marketplaces are listed for informational purposes only. Cline does not endorse, verify, or take responsibility for any servers listed on these marketplaces. These servers are cloud-hosted services that process your requests and may have access to data you share with them. Always review privacy policies and terms of use before connecting to third-party services.
+> **경고**: 아래 서드파티 마켓플레이스는 정보 제공 목적이며, Cline은 이들 목록의 서버를 보증/검증하거나 책임지지 않습니다. 이 서버들은 클라우드에서 요청을 처리하며 사용자가 공유한 데이터에 접근할 수 있습니다. 연결 전 반드시 개인정보 처리방침 및 이용 약관을 확인하세요.
 
-#### Composio MCP Integration
+#### Composio MCP 통합
 
-[Composio's MCP Marketplace](https://mcp.composio.dev/) provides access to a wide range of third-party servers that support the Model Context Protocol (MCP). These servers expose APIs for services like GitHub, Notion, Slack, and others. Each server includes configuration instructions and built-in authentication support (e.g. OAuth or API keys). To connect, locate the desired service in the marketplace and follow the integration steps provided there.
+[Composio MCP Marketplace](https://mcp.composio.dev/)는 Model Context Protocol(MCP)을 지원하는 다양한 서드파티 서버를 제공합니다. 이 서버들은 GitHub, Notion, Slack 등 서비스 API를 노출합니다. 각 서버는 구성 지침과 내장 인증(OAuth 또는 API 키)을 제공합니다. 연결하려면 마켓플레이스에서 원하는 서비스를 찾고 제공되는 통합 단계에 따라 진행하세요.
 
-#### Connecting via Smithery
+#### Smithery를 통한 연결
 
-Smithery is a third-party MCP server marketplace that allows users to discover and connect to a variety of Model Context Protocol (MCP) servers. If you're using an MCP-compatible client (such as Cursor, Claude Desktop, or Cline), you can browse available servers and integrate them directly into your workflow.
+Smithery는 Model Context Protocol(MCP) 서버를 탐색하고 연결할 수 있는 서드파티 마켓플레이스입니다. MCP 호환 클라이언트(Cursor, Claude Desktop, Cline 등)를 사용한다면, 서버를 탐색해 워크플로에 통합할 수 있습니다.
 
-To explore available options, visit the Smithery marketplace: [https://smithery.ai](https://smithery.ai)
+옵션을 살펴보려면 Smithery 마켓플레이스를 방문하세요: [https://smithery.ai](https://smithery.ai)
 
-Please note: Smithery is maintained independently and is not affiliated with our project. Use at your own discretion.
+참고: Smithery는 독립적으로 운영되며 본 프로젝트와 무관합니다. 사용 여부는 본인 판단에 따르세요.
 
-### Managing Installed MCP Servers
+### 설치된 MCP 서버 관리
 
-Once added, your MCP servers appear in the "Configure" tab where you can:
+추가된 MCP 서버는 "Configure" 탭에 표시됩니다. 다음을 수행할 수 있습니다:
 
-#### View Server Status
+#### 서버 상태 보기
 
-Each server displays its current status:
+각 서버의 현재 상태가 표시됩니다:
 
--   **Green dot**: Connected and ready to use
--   **Yellow dot**: In the process of connecting
--   **Red dot**: Disconnected or experiencing errors
+-   **초록 점**: 연결됨, 사용 가능
+-   **노란 점**: 연결 중
+-   **빨간 점**: 연결 끊김 또는 오류
 
-#### Configure Server Settings
+#### 서버 설정 구성
 
-Click on a server to expand its settings panel:
+서버를 클릭해 설정 패널을 펼칩니다:
 
-1. **Tools & Resources**:
-    - View all available tools and resources from the server
-    - Configure auto-approval settings for tools (if enabled)
-2. **Request Timeout**:
-    - Set how long Cline should wait for server responses
-    - Options range from 30 seconds to 1 hour
-3. **Server Management**:
-    - **Restart Server**: Reconnect if the server becomes unresponsive
-    - **Delete Server**: Remove the server from your configuration
+1. **도구 및 리소스**:
+    - 서버가 제공하는 도구 및 리소스 확인
+    - 도구의 자동 승인 설정(활성화된 경우) 구성
+2. **요청 타임아웃**:
+    - 서버 응답을 기다리는 시간 설정
+    - 30초~1시간 범위
+3. **서버 관리**:
+    - **Restart Server**: 응답이 없을 때 재연결
+    - **Delete Server**: 서버 구성에서 제거
 
-#### Enable/Disable Servers
+#### 서버 활성화/비활성화
 
-Toggle the switch next to each server to enable or disable it:
+각 서버 옆의 토글 스위치로 활성/비활성화할 수 있습니다:
 
--   **Enabled**: Cline can use the server's tools and resources
--   **Disabled**: The server remains in your configuration but is not active
+-   **Enabled**: Cline이 서버의 도구와 리소스를 사용
+-   **Disabled**: 구성은 유지되지만 비활성 상태
 
-### Troubleshooting Connection Issues
+### 연결 문제 해결
 
-If a server fails to connect:
+서버가 연결되지 않을 경우:
 
-1. An error message will be displayed with details about the failure
-2. **For OAuth errors**: Click the "Authenticate" button to complete the authorization flow
-3. Check that the server URL is correct and the server is running
-4. Try selecting a different transport type (Streamable HTTP vs SSE)
-5. Use the "Restart Server" button to attempt reconnection
-6. If problems persist, you can delete the server and try adding it again
+1. 실패 원인이 포함된 오류 메시지가 표시됨
+2. **OAuth 오류**인 경우 "Authenticate" 버튼을 클릭해 인증 플로우 완료
+3. 서버 URL이 정확한지, 서버가 실행 중인지 확인
+4. 전송 유형을 바꿔 시도(Streamable HTTP vs SSE)
+5. "Restart Server" 버튼으로 재연결 시도
+6. 문제가 지속되면 서버를 삭제하고 다시 추가
 
-#### OAuth-Specific Issues
+#### OAuth 관련 이슈
 
-If you're having trouble authenticating with an OAuth-enabled server:
+OAuth 서버 인증이 잘 안 될 때:
 
--   **"Authentication required" persists**: Make sure you completed the authorization flow in your browser and didn't cancel it
--   **Browser doesn't open**: Check your system's default browser settings and ensure external URLs can be opened
--   **Redirect errors**: Verify you're using the latest version of Cline - older versions may not support OAuth
--   **Reset authentication**: Delete the server and re-add it to start fresh with a new OAuth flow
+-   **"Authentication required"가 계속 표시됨**: 브라우저에서 인증 플로우를 완료했는지, 중간에 취소하지 않았는지 확인
+-   **브라우저가 열리지 않음**: 시스템 기본 브라우저 설정과 외부 URL 열림 여부 확인
+-   **리디렉션 오류**: Cline 최신 버전 사용 여부 확인(구버전은 OAuth를 지원하지 않을 수 있음)
+-   **인증 초기화**: 서버를 삭제하고 다시 추가해 새 OAuth 플로우 시작
 
-### Advanced Configuration
+### 고급 구성
 
-For advanced users, Cline stores MCP server configurations in a JSON file that can be modified:
+고급 사용자는 Cline이 저장하는 MCP 서버 설정 JSON을 직접 수정할 수 있습니다:
 
-1. In the "Configure" tab, click "Configure MCP Servers" to access the settings file
-2. The configuration for each server follows this format:
+1. "Configure" 탭에서 "Configure MCP Servers" 클릭
+2. 서버별 구성은 다음 형식을 따릅니다:
 
 ```json
 {
@@ -148,37 +148,37 @@ For advanced users, Cline stores MCP server configurations in a JSON file that c
 }
 ```
 
-Key configuration options:
+주요 설정 옵션:
 
--   **url**: The endpoint URL (for remote servers)
--   **type**: Transport protocol - `"streamableHttp"` (recommended) or `"sse"` (legacy)
--   **disabled**: Whether the server is currently enabled (true/false)
--   **autoApprove**: List of tool names that don't require confirmation
--   **timeout**: Maximum time in seconds to wait for server responses (default: 60)
+-   **url**: 엔드포인트 URL(원격 서버)
+-   **type**: 전송 프로토콜 - `"streamableHttp"`(권장) 또는 `"sse"`(레거시)
+-   **disabled**: 서버 활성 여부(true/false)
+-   **autoApprove**: 확인 없이 실행되는 도구 이름 목록
+-   **timeout**: 서버 응답 대기 최대 시간(초, 기본 60)
 
-For additional MCP settings, click the "Advanced MCP Settings" link to access VSCode settings.
+추가 MCP 설정은 "Advanced MCP Settings" 링크를 눌러 VS Code 설정에서 확인하세요.
 
-### Using MCP Server Tools
+### MCP 서버 도구 사용
 
-Once connected, Cline can use the tools and resources provided by the MCP server. When Cline suggests using an MCP tool:
+연결이 완료되면 Cline은 MCP 서버가 제공하는 도구와 리소스를 사용할 수 있습니다. Cline이 MCP 도구 사용을 제안할 때:
 
-1. A tool approval prompt will appear (unless auto-approved)
-2. Review the tool details and parameters before approving
-3. The tool will execute and return results to Cline
+1. 도구 승인 프롬프트가 표시됩니다(자동 승인인 경우 제외)
+2. 승인 전에 도구 세부정보와 파라미터를 검토
+3. 도구가 실행되고 결과가 Cline으로 반환됩니다
 
-### Example: Connecting to Vercel MCP
+### 예시: Vercel MCP 연결
 
-[Vercel MCP](https://vercel.com/docs/mcp/vercel-mcp) is an OAuth-enabled server that provides tools for managing your Vercel projects and deployments:
+[Vercel MCP](https://vercel.com/docs/mcp/vercel-mcp)는 Vercel 프로젝트와 배포를 관리하는 OAuth 서버입니다:
 
-1. Click "Remote Servers" tab
-2. Enter:
+1. "Remote Servers" 탭 클릭
+2. 다음 입력:
     - **Server Name**: `vercel`
     - **Server URL**: `https://mcp.vercel.com`
-    - **Transport Type**: Streamable HTTP (pre-selected)
-3. Click "Add Server"
-4. You'll see "Authentication required" - click the **"Authenticate"** button
-5. Sign in to Vercel in your browser and authorize Cline
-6. Return to Cline - the server will automatically connect
-7. Vercel's tools (deploy, logs, projects) are now available to Cline!
+    - **Transport Type**: Streamable HTTP(기본 선택)
+3. "Add Server" 클릭
+4. "Authentication required"가 표시되면 **"Authenticate"** 클릭
+5. 브라우저에서 Vercel 로그인 후 Cline 권한 승인
+6. Cline으로 돌아오면 서버가 자동 연결됨
+7. Vercel 도구(deploy, logs, projects)를 Cline에서 사용할 수 있음
 
-Your Vercel authentication persists across sessions, so you won't need to re-authenticate each time you use Cline.
+Vercel 인증은 세션 간 유지되므로, 매번 다시 인증할 필요가 없습니다.

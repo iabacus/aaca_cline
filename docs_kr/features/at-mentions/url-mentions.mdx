@@ -1,13 +1,13 @@
 ---
-title: "URL Mentions"
-sidebarTitle: "URL Mentions"
+title: "URL 멘션"
+sidebarTitle: "URL 멘션"
 ---
 
-URL mentions let you bring web content directly into your conversation with Cline. Just type `@` followed by any URL, and Cline can see the content of that webpage without you having to copy and paste anything.
+URL 멘션을 사용하면 웹 콘텐츠를 Cline 대화에 바로 가져올 수 있습니다. `@` 뒤에 URL을 입력하면, Cline이 해당 웹페이지 내용을 복사/붙여넣기 없이 확인할 수 있습니다.
 
-When you type `@` in chat followed by a URL (like `@https://example.com`), Cline will fetch the content of that webpage and include it in the context. This works for documentation pages, GitHub issues, Stack Overflow questions, or any other web content you want to reference.
+채팅에서 `@` 뒤에 URL을 입력하면(예: `@https://example.com`), Cline이 해당 웹페이지 내용을 가져와 컨텍스트에 포함합니다. 문서 페이지, GitHub 이슈, Stack Overflow 질문 등 어떤 웹 콘텐츠든 참조할 수 있습니다.
 
-I use URL mentions constantly when I'm working with external APIs or libraries. Instead of trying to explain how an API works or copying documentation snippets, I just reference the docs directly:
+저는 외부 API나 라이브러리를 사용할 때 URL 멘션을 자주 사용합니다. API 동작을 설명하거나 문서 일부를 복사하는 대신, 문서를 직접 참조합니다:
 
 ```
 I'm trying to implement authentication with this API: @https://api.example.com/docs/auth
@@ -15,9 +15,9 @@ I'm trying to implement authentication with this API: @https://api.example.com/d
 Can you help me write the code to get an access token based on these docs?
 ```
 
-This gives Cline the complete documentation page, so it can see all the authentication requirements, endpoints, parameters, and examples. Cline can then provide more accurate and comprehensive help based on the official documentation.
+이렇게 하면 Cline이 인증 요구사항, 엔드포인트, 파라미터, 예시를 포함한 전체 문서를 확인할 수 있습니다. 공식 문서에 기반해 더 정확하고 포괄적인 도움을 제공합니다.
 
-URL mentions are especially useful for referencing GitHub issues or discussions:
+URL 멘션은 GitHub 이슈나 토론을 참조할 때도 특히 유용합니다:
 
 ```
 I'm trying to fix this issue in our project: @https://github.com/our-org/our-repo/issues/123
@@ -27,20 +27,20 @@ Here's my current implementation: @/src/components/Feature.jsx
 What changes do I need to make to address the issue?
 ```
 
-This shows Cline the complete GitHub issue, including the description, comments, and any code snippets or screenshots. Cline can then help you implement a solution that directly addresses the reported issue.
+이렇게 하면 Cline이 이슈 설명, 댓글, 코드 스니펫, 스크린샷 등 이슈 전체를 확인할 수 있습니다. 보고된 문제를 직접 해결하는 방향으로 구현을 도와줍니다.
 
-Next time you're working with external documentation or online resources, try using URL mentions instead of copying and pasting content. You'll get more accurate help because Cline can see the complete context of the webpage, including formatting, code examples, and surrounding information.
+다음에 외부 문서나 온라인 리소스를 참조할 때는 복사/붙여넣기 대신 URL 멘션을 사용해 보세요. 웹페이지의 포맷, 코드 예제, 주변 설명까지 모두 포함되어 더 정확한 도움을 받을 수 있습니다.
 
-## How It Works Under the Hood
+## 내부 동작 방식
 
-When you use a URL mention in your message, here's what happens behind the scenes:
+URL 멘션을 사용할 때 내부적으로는 다음과 같이 동작합니다:
 
-1. When you send your message, Cline detects the `@http://...` or `@https://...` pattern in your text
-2. The extension launches a headless browser (Puppeteer) in the background
-3. It navigates to the URL and waits for the page to load completely
-4. The browser captures the page content, including text, formatting, and code examples
-5. The content is converted to a Markdown format that preserves the structure
-6. This content is appended to your message in a structured format:
+1. 메시지를 전송하면 Cline이 텍스트에서 `@http://...` 또는 `@https://...` 패턴을 감지
+2. 확장이 백그라운드에서 헤드리스 브라우저(Puppeteer)를 실행
+3. 해당 URL로 이동해 페이지가 완전히 로드될 때까지 대기
+4. 텍스트, 포맷, 코드 예제를 포함한 페이지 내용을 캡처
+5. 구조를 유지하는 Markdown 형식으로 변환
+6. 변환된 내용이 구조화된 형식으로 메시지에 첨부됨:
 
     ```
     <url_content url="https://example.com/docs">
@@ -59,7 +59,7 @@ When you use a URL mention in your message, here's what happens behind the scene
     </url_content>
     ```
 
-7. The browser is then closed to free up resources
-8. This enhanced message with the embedded webpage content is sent to the AI
+7. 리소스를 해제하기 위해 브라우저 종료
+8. 웹페이지 내용이 포함된 메시지가 AI로 전송
 
-This process happens automatically whenever you use a URL mention, giving the AI access to the complete content of the webpage without you having to copy and paste anything.
+이 과정은 URL 멘션을 사용할 때마다 자동으로 수행되어, 웹페이지 전체 내용을 복사하지 않아도 AI가 완전한 컨텍스트를 볼 수 있게 해줍니다.

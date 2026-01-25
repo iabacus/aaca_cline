@@ -1,51 +1,51 @@
 ---
 title: "Fireworks AI"
-description: "Learn how to configure and use Fireworks AI models with Cline. Access high-performance open-source language models with fast, cost-effective APIs."
+description: "Cline에서 Fireworks AI 모델을 설정하고 사용하는 방법을 알아보세요. 빠르고 비용 효율적인 API로 고성능 오픈소스 언어 모델에 접근합니다."
 ---
 
-Cline supports accessing models through the Fireworks AI platform, which offers fast, cost-effective access to a wide range of state-of-the-art open-source language models. Built for speed and reliability, Fireworks AI provides serverless deployment options with OpenAI-compatible APIs and context windows up to 256,000 tokens.
+Cline은 Fireworks AI 플랫폼을 통해 다양한 최신 오픈소스 언어 모델에 빠르고 비용 효율적으로 접근할 수 있습니다. 속도와 안정성을 위해 설계된 Fireworks AI는 OpenAI 호환 API와 최대 256,000 토큰의 컨텍스트 창을 제공하는 서버리스 배포 옵션을 지원합니다.
 
-**Website:** [https://fireworks.ai/](https://fireworks.ai/)
+**웹사이트:** [https://fireworks.ai/](https://fireworks.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1. **Sign Up/Sign In:** Go to [Fireworks AI](https://fireworks.ai/) and create an account or sign in.
-2. **Navigate to API Keys:** After logging in, go to the [API Keys page](https://app.fireworks.ai/settings/users/api-keys) in the account settings.
-3. **Create a Key:** Click "Create API key" and give your key a descriptive name (e.g., "Cline").
-4. **Copy the Key:** **Important:** Copy the API key _immediately_. You will not be able to see it again. Store it securely.
+1. **가입/로그인:** [Fireworks AI](https://fireworks.ai/)에 접속해 계정을 만들거나 로그인합니다.
+2. **API Keys로 이동:** 로그인 후 계정 설정의 [API Keys 페이지](https://app.fireworks.ai/settings/users/api-keys)로 이동합니다.
+3. **키 생성:** "Create API key"를 클릭하고 키에 설명적인 이름(예: "Cline")을 지정합니다.
+4. **키 복사:** **중요:** API 키를 _즉시_ 복사하세요. 다시 확인할 수 없습니다. 안전하게 보관하세요.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Fireworks AI models:
+Cline은 다음 Fireworks AI 모델을 지원합니다:
 
--   `accounts/fireworks/models/kimi-k2-instruct` (Default)
+-   `accounts/fireworks/models/kimi-k2-instruct` (기본)
 -   `accounts/fireworks/models/qwen3-235b-a22b-instruct-2507`
 -   `accounts/fireworks/models/qwen3-coder-480b-a35b-instruct`
 -   `accounts/fireworks/models/deepseek-r1-0528`
 -   `accounts/fireworks/models/deepseek-v3`
 
-**Model Details:**
+**모델 상세:**
 
 | Model | Context Window | Best For | Pricing (per 1M tokens) |
 |-------|----------------|----------|-------------------------|
-| Kimi K2 | 128K | General tasks, agentic capabilities | \$0.60 input, \$2.50 output |
-| Qwen3 235B | 256K | Cost-effective general use | \$0.22 input, \$0.88 output |
-| Qwen3 Coder | 256K | Code generation and debugging | \$0.45 input, \$1.80 output |
-| DeepSeek R1 | 160K | Complex reasoning, function calling | \$3.00 input, \$8.00 output |
-| DeepSeek V3 | 128K | Strong general performance | \$0.90 input, \$0.90 output |
+| Kimi K2 | 128K | 일반 작업, 에이전트 기능 | 입력 \$0.60, 출력 \$2.50 |
+| Qwen3 235B | 256K | 비용 효율적 범용 사용 | 입력 \$0.22, 출력 \$0.88 |
+| Qwen3 Coder | 256K | 코드 생성 및 디버깅 | 입력 \$0.45, 출력 \$1.80 |
+| DeepSeek R1 | 160K | 복잡한 추론, 함수 호출 | 입력 \$3.00, 출력 \$8.00 |
+| DeepSeek V3 | 128K | 강력한 범용 성능 | 입력 \$0.90, 출력 \$0.90 |
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1. **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2. **Select Provider:** Choose "Fireworks AI" from the "API Provider" dropdown.
-3. **Enter API Key:** Paste your Fireworks AI API key into the "Fireworks AI API Key" field.
-4. **Select Model:** Choose your desired model from the "Model" dropdown. The default model is Kimi K2.
+1. **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2. **프로바이더 선택:** "API Provider" 드롭다운에서 "Fireworks AI"를 선택합니다.
+3. **API 키 입력:** Fireworks AI API 키를 "Fireworks AI API Key" 필드에 붙여넣습니다.
+4. **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다. 기본 모델은 Kimi K2입니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Cost-Effective:** Fireworks AI offers significantly lower pricing than proprietary models while maintaining competitive performance.
--   **Large Context Windows:** Most models support 128K-256K tokens, suitable for processing large documents and maintaining extended conversations.
--   **OpenAI Compatibility:** The provider uses an OpenAI-compatible API format with streaming support and usage tracking.
--   **Rate Limits:** Fireworks AI has usage-based rate limits. Monitor your usage in the dashboard and consider upgrading your plan if needed.
--   **API Keys:** Stored locally on your machine for security.
--   **Pricing:** See the [Fireworks AI pricing page](https://fireworks.ai/pricing) for current rates. Prices shown are per million tokens.
+-   **비용 효율성:** Fireworks AI는 상용 모델 대비 훨씬 낮은 가격으로 경쟁력 있는 성능을 제공합니다.
+-   **대규모 컨텍스트 창:** 대부분 모델이 128K~256K 토큰을 지원하여 대형 문서와 긴 대화를 처리하기에 적합합니다.
+-   **OpenAI 호환성:** 스트리밍 지원과 사용량 추적을 포함한 OpenAI 호환 API 형식을 사용합니다.
+-   **요율 제한:** Fireworks AI는 사용량 기반 요율 제한이 있습니다. 대시보드에서 사용량을 모니터링하고 필요 시 요금제를 업그레이드하세요.
+-   **API 키:** 보안을 위해 로컬에 저장됩니다.
+-   **가격:** 최신 가격은 [Fireworks AI pricing 페이지](https://fireworks.ai/pricing)를 참고하세요. 표기된 가격은 100만 토큰 기준입니다.

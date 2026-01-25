@@ -1,20 +1,20 @@
 ---
-title: "Cline Memory Bank"
+title: "Cline 메모리 뱅크"
 ---
 
-## The Complete Guide to Cline Memory Bank
+## Cline 메모리 뱅크 완전 가이드
 
-### Quick Setup Guide
+### 빠른 설정 가이드
 
-To get started with Cline Memory Bank:
+Cline 메모리 뱅크를 시작하려면:
 
-1. **Copy the Custom Instructions** - Use the code block below
-2. **Paste into Cline** - Add as custom instructions or in a .clinerules file
-3. **Initialize** - Ask Cline to "initialize memory bank"
+1. **커스텀 지침 복사** - 아래 코드 블록 사용
+2. **Cline에 붙여넣기** - 커스텀 지침 또는 .clinerules 파일에 추가
+3. **초기화** - Cline에게 "initialize memory bank" 요청
 
-[See detailed setup instructions](#getting-started-with-memory-bank)
+[자세한 설정 방법 보기](#메모리-뱅크-시작하기)
 
-### Cline Memory Bank Custom Instructions \[COPY THIS]
+### Cline 메모리 뱅크 커스텀 지침 \[이것을 복사]
 
 ```
 # Cline's Memory Bank
@@ -134,230 +134,230 @@ Note: When triggered by **update memory bank**, I MUST review every memory bank 
 REMEMBER: After every memory reset, I begin completely fresh. The Memory Bank is my only link to previous work. It must be maintained with precision and clarity, as my effectiveness depends entirely on its accuracy.
 ```
 
-### What is the Cline Memory Bank?
+### Cline 메모리 뱅크란?
 
-The Memory Bank is a structured documentation system that allows Cline to maintain context across sessions. It transforms Cline from a stateless assistant into a persistent development partner that can effectively "remember" your project details over time.
+메모리 뱅크는 Cline이 세션을 넘어 컨텍스트를 유지하도록 돕는 구조화된 문서화 시스템입니다. 상태 없는 어시스턴트인 Cline을, 시간이 지나도 프로젝트 정보를 "기억"할 수 있는 지속적 개발 파트너로 바꿔줍니다.
 
-#### Key Benefits
+#### 핵심 이점
 
--   **Context Preservation**: Maintain project knowledge across sessions
--   **Consistent Development**: Experience predictable interactions with Cline
--   **Self-Documenting Projects**: Create valuable project documentation as a side effect
--   **Scalable to Any Project**: Works with projects of any size or complexity
--   **Technology Agnostic**: Functions with any tech stack or language
+-   **컨텍스트 보존**: 세션 간 프로젝트 지식 유지
+-   **일관된 개발**: 예측 가능한 Cline 상호작용
+-   **자기 문서화**: 프로젝트 문서가 자연스럽게 축적
+-   **모든 프로젝트에 확장 가능**: 규모나 복잡도와 무관
+-   **기술 스택 불문**: 어떤 언어/스택에서도 사용 가능
 
-### How Memory Bank Works
+### 메모리 뱅크 동작 방식
 
-The Memory Bank isn't a Cline-specific feature - it's a methodology for managing AI context through structured documentation. When you instruct Cline to "follow custom instructions," it reads the Memory Bank files to rebuild its understanding of your project.
-
-<Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(15).png" alt="Memory Bank Workflow" />
-</Frame>
-
-#### Understanding the Files
-
-Memory Bank files are simply markdown files you create in your project. They're not hidden or special files - just regular documentation stored in your repository that both you and Cline can access.
-
-Files are organized in a hierarchical structure that builds up a complete picture of your project:
+메모리 뱅크는 Cline 전용 기능이 아니라, 구조화된 문서로 AI 컨텍스트를 관리하는 방법론입니다. Cline에게 "follow custom instructions"를 지시하면 메모리 뱅크 파일을 읽고 프로젝트 이해를 재구성합니다.
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(16).png" alt="Memory Bank File Structure" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(15).png" alt="메모리 뱅크 워크플로" />
 </Frame>
 
-### Memory Bank Files Explained
+#### 파일 이해하기
 
-#### Core Files
+메모리 뱅크 파일은 프로젝트에 만드는 일반 마크다운 파일입니다. 숨김 파일이나 특별한 형식이 아니라, 저장소에 있는 일반 문서이며 Cline과 사용자 모두 접근할 수 있습니다.
+
+파일은 계층 구조로 조직되어 프로젝트의 전체 그림을 구성합니다:
+
+<Frame>
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(16).png" alt="메모리 뱅크 파일 구조" />
+</Frame>
+
+### 메모리 뱅크 파일 설명
+
+#### 핵심 파일
 
 1. **projectbrief.md**
-    - The foundation of your project
-    - High-level overview of what you're building
-    - Core requirements and goals
-    - Example: "Building a React web app for inventory management with barcode scanning"
+    - 프로젝트의 기반 문서
+    - 만들고자 하는 것의 고수준 개요
+    - 핵심 요구사항과 목표
+    - 예시: "바코드 스캔이 가능한 재고 관리 React 웹앱"
 2. **productContext.md**
-    - Explains why the project exists
-    - Describes the problems being solved
-    - Outlines how the product should work
-    - Example: "The inventory system needs to support multiple warehouses and real-time updates"
+    - 프로젝트가 존재하는 이유
+    - 해결해야 하는 문제
+    - 제품이 어떻게 동작해야 하는지
+    - 예시: "재고 시스템은 다중 창고와 실시간 업데이트를 지원해야 함"
 3. **activeContext.md**
-    - The most frequently updated file
-    - Contains current work focus and recent changes
-    - Tracks active decisions and considerations
-    - Stores important patterns and learnings
-    - Example: "Currently implementing the barcode scanner component; last session completed the API integration"
+    - 가장 자주 업데이트되는 파일
+    - 현재 작업 포커스와 최근 변경
+    - 활성 결정과 고려사항 추적
+    - 중요한 패턴과 학습 내용 저장
+    - 예시: "바코드 스캐너 컴포넌트 구현 중; 지난 세션에서 API 통합 완료"
 4. **systemPatterns.md**
-    - Documents the system architecture
-    - Records key technical decisions
-    - Lists design patterns in use
-    - Explains component relationships
-    - Example: "Using Redux for state management with a normalized store structure"
+    - 시스템 아키텍처 문서화
+    - 핵심 기술적 결정 기록
+    - 사용하는 디자인 패턴 목록
+    - 컴포넌트 관계 설명
+    - 예시: "정규화된 스토어 구조의 Redux를 사용한 상태 관리"
 5. **techContext.md**
-    - Lists technologies and frameworks used
-    - Describes development setup
-    - Notes technical constraints
-    - Records dependencies and tool configurations
-    - Example: "React 18, TypeScript, Firebase, Jest for testing"
+    - 사용 기술과 프레임워크 목록
+    - 개발 환경 설명
+    - 기술적 제약 사항 기록
+    - 의존성 및 도구 구성 기록
+    - 예시: "React 18, TypeScript, Firebase, Jest"
 6. **progress.md**
-    - Tracks what works and what's left to build
-    - Records current status of features
-    - Lists known issues and limitations
-    - Documents the evolution of project decisions
-    - Example: "User authentication complete; inventory management 80% complete; reporting not started"
+    - 완료된 것과 남은 것 추적
+    - 기능 상태 기록
+    - 알려진 이슈 및 제한 사항
+    - 의사결정의 변화 기록
+    - 예시: "사용자 인증 완료; 재고 관리 80% 완료; 리포팅 미시작"
 
-#### Additional Context
+#### 추가 컨텍스트
 
-Create additional files when needed to organize:
+필요할 때 다음을 정리하기 위해 추가 파일을 만드세요:
 
--   Complex feature documentation
--   Integration specifications
--   API documentation
--   Testing strategies
--   Deployment procedures
+-   복잡한 기능 문서
+-   통합 사양
+-   API 문서
+-   테스트 전략
+-   배포 절차
 
-### Getting Started with Memory Bank
+### 메모리 뱅크 시작하기
 
-#### First-Time Setup
+#### 최초 설정
 
-1. Create a `memory-bank/` folder in your project root
-2. Have a basic project brief ready (can be technical or non-technical)
-3. Ask Cline to "initialize memory bank"
-
-<Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(17).png" alt="Memory Bank Setup" />
-</Frame>
-
-#### Project Brief Tips
-
--   Start simple - it can be as detailed or high-level as you like
--   Focus on what matters most to you
--   Cline will help fill in gaps and ask questions
--   You can update it as your project evolves
-
-### Working with Cline
-
-#### Core Workflows
-
-**Plan Mode**
-
-Start in this mode for strategy discussions and high-level planning.
-
-**Act Mode**
-
-Use this for implementation and executing specific tasks.
-
-#### Key Commands
-
--   **"follow your custom instructions"** - This tells Cline to read the Memory Bank files and continue where you left off (use this at the start of tasks)
--   **"initialize memory bank"** - Use when starting a new project
--   **"update memory bank"** - Triggers a full documentation review and update during a task
--   Toggle Plan/Act modes based on your current needs
-
-#### Documentation Updates
-
-Memory Bank updates should automatically occur when:
-
-1. You discover new patterns in your project
-2. After implementing significant changes
-3. When you explicitly request with **"update memory bank"**
-4. When you feel context needs clarification
-
-### Frequently Asked Questions
-
-#### Where are the memory bank files stored?
-
-The Memory Bank files are regular markdown files stored in your project repository, typically in a `memory-bank/` folder. They're not hidden system files - they're designed to be part of your project documentation.
-
-#### Should I use custom instructions or .clinerules?
-
-Either approach works - it's based on your preference:
-
--   **Custom Instructions**: Applied globally to all Cline conversations. Good for consistent behavior across all projects.
--   **.clinerules file**: Project-specific and stored in your repository. Good for per-project customization.
-
-Both methods achieve the same goal - the choice depends on whether you want global or local application of the Memory Bank system.
-
-#### Managing Context Windows
-
-As you work with Cline, your context window will eventually fill up (note the progress bar). When you notice Cline's responses slowing down or references to earlier parts of the conversation becoming less accurate, it's time to:
-
-1. Ask Cline to **"update memory bank"** to document the current state
-2. Start a new conversation/task
-3. Ask Cline to **"follow your custom instructions"** in the new conversation
-
-This workflow ensures that important context is preserved in your Memory Bank files before the context window is cleared, allowing you to continue seamlessly in a fresh conversation.
+1. 프로젝트 루트에 `memory-bank/` 폴더 생성
+2. 기본 프로젝트 요약 준비(기술/비기술 모두 가능)
+3. Cline에게 "initialize memory bank" 요청
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(18).png" alt="Memory Bank Context Window" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(17).png" alt="메모리 뱅크 설정" />
 </Frame>
 
-#### How often should I update the memory bank?
+#### 프로젝트 브리프 팁
 
-Update the Memory Bank after significant milestones or changes in direction. For active development, updates every few sessions can be helpful. Use the **"update memory bank"** command when you want to ensure all context is preserved. However, you will notice Cline automatically updating the Memory Bank as well.
+-   간단하게 시작하세요. 자세하거나 고수준이어도 됩니다.
+-   중요한 내용에 집중하세요.
+-   Cline이 빈틈을 메우고 질문합니다.
+-   프로젝트가 진화하면 업데이트하세요.
 
-#### Does this work with other AI tools beyond Cline?
+### Cline과 작업하기
 
-Yes! The Memory Bank concept is a documentation methodology that can work with any AI assistant that can read documentation files. The specific commands might differ, but the structured approach to maintaining context works across tools.
+#### 핵심 워크플로
 
-#### How does the memory bank relate to context window limitations?
+**Plan 모드**
 
-The Memory Bank helps manage context limitations by storing important information in a structured format that can be efficiently loaded when needed. This prevents context bloat while ensuring critical information is available.
+전략 논의와 고수준 계획에는 이 모드로 시작하세요.
 
-#### Can the memory bank concept be used for non-coding projects?
+**Act 모드**
 
-Absolutely! The Memory Bank approach works for any project that benefits from structured documentation - from writing books to planning events. The file structure might vary, but the concept remains powerful.
+구현과 구체적인 작업 실행에는 이 모드를 사용합니다.
 
-#### Is this different from using README files?
+#### 핵심 명령
 
-While similar in concept, the Memory Bank provides a more structured and comprehensive approach specifically designed to maintain context across AI sessions. It goes beyond what a single README typically covers.
+-   **"follow your custom instructions"** - 메모리 뱅크 파일을 읽고 이어서 작업하도록 지시(작업 시작 시 사용)
+-   **"initialize memory bank"** - 새 프로젝트 시작 시 사용
+-   **"update memory bank"** - 작업 중 전체 문서 검토 및 업데이트 트리거
+-   상황에 따라 Plan/Act 모드를 전환
 
-### Best Practices
+#### 문서 업데이트
 
-#### Getting Started
+메모리 뱅크는 다음 상황에서 자동으로 업데이트하는 것이 좋습니다:
 
--   Start with a basic project brief and let the structure evolve
--   Let Cline help create the initial structure
--   Review and adjust files as needed to match your workflow
+1. 프로젝트의 새로운 패턴을 발견했을 때
+2. 중요한 변경을 구현한 직후
+3. **"update memory bank"**를 명시적으로 요청했을 때
+4. 컨텍스트 명확화가 필요할 때
 
-#### Ongoing Work
+### 자주 묻는 질문
 
--   Let patterns emerge naturally as you work
--   Don't force documentation updates - they should happen organically
--   Trust the process - the value compounds over time
--   Watch for context confirmation at the start of sessions
+#### 메모리 뱅크 파일은 어디에 저장되나요?
 
-#### Documentation Flow
+메모리 뱅크 파일은 프로젝트 저장소의 일반 마크다운 파일이며, 보통 `memory-bank/` 폴더에 저장됩니다. 숨김 시스템 파일이 아니라 프로젝트 문서의 일부입니다.
 
--   **projectbrief.md** is your foundation
--   **activeContext.md** changes most frequently
--   **progress.md** tracks your milestones
--   All files collectively maintain project intelligence
+#### 커스텀 지침과 .clinerules 중 무엇을 사용해야 하나요?
 
-### Detailed Setup Instructions
+둘 다 가능합니다. 선호에 따라 선택하세요:
 
-#### For Custom Instructions (Global)
+-   **커스텀 지침**: 모든 Cline 대화에 전역 적용. 전체 프로젝트에서 일관된 동작에 유리
+-   **.clinerules 파일**: 프로젝트 전용. 저장소에 저장되며 프로젝트별 커스터마이즈에 적합
 
-1. Open VSCode
-2. Click the Cline extension settings ⚙️
-3. Find "Custom Instructions"
-4. Copy and paste the complete Memory Bank instructions from the top of this guide
+둘 다 메모리 뱅크 시스템을 적용하는 데 동일한 목적을 달성합니다. 전역 적용/로컬 적용 중 원하는 방식으로 선택하세요.
 
-#### For .clinerules (Project-Specific)
+#### 컨텍스트 윈도우 관리
 
-1. Create a `.clinerules` file in your project root
-2. Copy and paste the Memory Bank instructions from the top of this guide
-3. Save the file
-4. Cline will automatically apply these rules when working in this project
+Cline과 작업하다 보면 컨텍스트 윈도우가 결국 가득 찹니다(진행 바 확인). 응답이 느려지거나 이전 대화의 정확도가 떨어진다면 다음을 수행하세요:
 
-### Remember
+1. Cline에게 **"update memory bank"**를 요청해 현재 상태를 문서화
+2. 새 대화/작업 시작
+3. 새 대화에서 **"follow your custom instructions"** 요청
 
-The Memory Bank is Cline's only link to previous work. Its effectiveness depends entirely on maintaining clear, accurate documentation and confirming context preservation in every interaction.
+이 워크플로는 컨텍스트 윈도우를 비우기 전에 중요한 정보를 메모리 뱅크에 보존하여, 새로운 대화에서도 매끄럽게 이어갈 수 있도록 합니다.
 
-_For more information, reference our_ [_blog_](https://cline.bot/blog/memory-bank-how-to-make-cline-an-ai-agent-that-never-forgets) _on Cline Memory Bank_
+<Frame>
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(18).png" alt="메모리 뱅크 컨텍스트 윈도우" />
+</Frame>
+
+#### 메모리 뱅크는 얼마나 자주 업데이트해야 하나요?
+
+중요한 마일스톤이나 방향 전환 이후에 업데이트하세요. 활발한 개발에서는 몇 세션마다 업데이트하면 유용합니다. 모든 컨텍스트를 보존하고 싶을 때 **"update memory bank"**를 사용하세요. 다만 Cline이 자동으로 메모리 뱅크를 업데이트하는 경우도 있습니다.
+
+#### Cline 말고 다른 AI 도구에서도 동작하나요?
+
+네! 메모리 뱅크는 문서화 방법론이므로 문서를 읽을 수 있는 어떤 AI 도구에서도 적용 가능합니다. 명령어는 달라질 수 있지만, 구조화된 컨텍스트 유지 방식은 도구에 상관없이 유효합니다.
+
+#### 메모리 뱅크와 컨텍스트 윈도우 한도는 어떤 관계인가요?
+
+메모리 뱅크는 중요한 정보를 구조화된 형태로 저장해 필요할 때 효율적으로 로드할 수 있게 합니다. 컨텍스트가 불필요하게 부풀어오르는 것을 방지하면서 핵심 정보는 유지할 수 있습니다.
+
+#### 코딩이 아닌 프로젝트에도 사용할 수 있나요?
+
+물론입니다! 메모리 뱅크 접근은 구조화된 문서화가 필요한 모든 프로젝트에 유용합니다. 책 집필부터 행사 기획까지, 파일 구조는 달라질 수 있지만 개념은 그대로 적용됩니다.
+
+#### README와 무엇이 다른가요?
+
+README와 비슷하지만, 메모리 뱅크는 AI 세션 간 컨텍스트 유지에 최적화된 더 구조적이고 포괄적인 접근입니다. 단일 README가 담기 어려운 내용을 체계적으로 포함합니다.
+
+### 모범 사례
+
+#### 시작 단계
+
+-   기본 프로젝트 브리프부터 시작하고 구조는 점진적으로 발전
+-   초기 구조는 Cline이 만들도록 도움 받기
+-   워크플로에 맞게 파일을 검토하고 조정
+
+#### 진행 단계
+
+-   작업 중 자연스럽게 패턴이 드러나도록 허용
+-   업데이트를 강요하지 말고 자연스럽게 진행
+-   과정에 신뢰; 시간이 지날수록 가치가 누적됨
+-   세션 시작 시 컨텍스트 확인을 습관화
+
+#### 문서 흐름
+
+-   **projectbrief.md**는 기초
+-   **activeContext.md**는 가장 자주 변경
+-   **progress.md**는 마일스톤 추적
+-   모든 파일이 함께 프로젝트 지식을 유지
+
+### 상세 설정 방법
+
+#### 커스텀 지침(전역)
+
+1. VS Code 열기
+2. Cline 확장 설정 ⚙️ 클릭
+3. "Custom Instructions" 찾기
+4. 이 가이드 상단의 메모리 뱅크 지침을 복사해 붙여넣기
+
+#### .clinerules(프로젝트 전용)
+
+1. 프로젝트 루트에 `.clinerules` 파일 생성
+2. 이 가이드 상단의 메모리 뱅크 지침을 복사해 붙여넣기
+3. 파일 저장
+4. Cline이 이 프로젝트에서 자동으로 규칙을 적용
+
+### 기억하세요
+
+메모리 뱅크는 Cline이 이전 작업을 이어갈 수 있는 유일한 연결고리입니다. 정확하고 명확한 문서 유지와 매 작업 시작 시 컨텍스트 보존 확인이 필수입니다.
+
+_더 많은 정보는 Cline 메모리 뱅크에 대한_ [_블로그_](https://cline.bot/blog/memory-bank-how-to-make-cline-an-ai-agent-that-never-forgets) _를 참고하세요._
 
 ---
 
-### Contributing to Cline Memory Bank
+### Cline 메모리 뱅크 기여
 
-This guide is maintained by the Cline and the Cline Discord Community:
+이 가이드는 Cline과 Cline Discord 커뮤니티가 유지합니다:
 
 -   nickbaumann98
 -   Krylo
@@ -365,4 +365,4 @@ This guide is maintained by the Cline and the Cline Discord Community:
 
 ---
 
-_The Memory Bank methodology is an open approach to AI context management and can be adapted to different tools and workflows._
+_메모리 뱅크 방법론은 AI 컨텍스트 관리에 대한 오픈 접근이며, 다양한 도구와 워크플로에 맞게 적용할 수 있습니다._

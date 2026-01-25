@@ -1,12 +1,12 @@
 ---
-title: "Auto Approve"
-sidebarTitle: "Auto Approve"
-description: "Let Cline take specific actions without asking for approval every time."
+title: "자동 승인"
+sidebarTitle: "자동 승인"
+description: "Cline이 매번 승인 요청 없이 특정 작업을 수행하도록 허용합니다."
 ---
 
-Auto Approve lets you decide which actions Cline can take without prompting you each time. It keeps you out of approval popups during routine work, while still letting you keep tight control over high-risk actions.
+자동 승인(Auto Approve)은 Cline이 매번 승인 팝업을 띄우지 않고 수행할 수 있는 작업을 선택하게 해줍니다. 반복적인 안전 작업에서는 방해를 줄이고, 고위험 작업은 여전히 엄격하게 제어할 수 있습니다.
 
-If you find yourself repeatedly clicking approve for the same safe operations, Auto Approve is the setting that fixes that. The goal is fewer interruptions without losing the ability to review changes when it matters.
+같은 안전 작업에 매번 승인 버튼을 누르고 있다면 자동 승인이 문제를 해결합니다. 중요한 변경은 검토하면서도 불필요한 중단을 줄이는 것이 목표입니다.
 
 <Frame>
 	<video
@@ -18,90 +18,90 @@ If you find yourself repeatedly clicking approve for the same safe operations, A
 	/>
 </Frame>
 
-## How it works
+## 동작 방식
 
-Auto Approve is evaluated per tool call. When Cline is about to read a file, edit a file, run a command, or use the browser, Cline checks your Auto Approve settings for that category.
+자동 승인은 **도구 호출 단위**로 평가됩니다. Cline이 파일 읽기/편집, 명령 실행, 브라우저 사용을 하려는 순간 각 카테고리별 자동 승인 설정을 확인합니다.
 
-A few details matter in practice:
+실제로 중요한 몇 가지 사항:
 
-- **Workspace vs outside your workspace**: “Read all files” and “Edit all files” only extend the base toggle. If the base toggle is off, the “all files” option does nothing.
+- **워크스페이스 내부 vs 외부**: “모든 파일 읽기/편집”은 기본 토글이 켜져 있을 때만 동작합니다. 기본 토글이 꺼져 있으면 “모든 파일” 옵션은 효과가 없습니다.
 
-- **Terminal commands**: Cline treats terminal commands as either safe or requiring approval. “Execute safe commands” covers the first category. “Execute all commands” extends this to commands flagged as requiring approval.
+- **터미널 명령**: Cline은 명령을 안전(safe) 또는 승인 필요로 구분합니다. “안전한 명령 실행”은 첫 번째 카테고리만 포함하고, “모든 명령 실행”은 승인 필요 명령까지 확장합니다.
 
-- **Notifications**: If enabled, Cline sends OS-level notifications when approval is required, and when an auto-approved terminal command has been running for 30 seconds and may need attention.
+- **알림**: 활성화하면 승인 필요한 경우와 자동 승인된 터미널 명령이 30초 이상 실행될 때 OS 알림을 보냅니다.
 
 <Note>
-	[YOLO mode](/features/yolo-mode) bypasses these granular approvals.
+	[YOLO 모드](/features/yolo-mode)는 이러한 세부 승인 설정을 모두 우회합니다.
 </Note>
 
-## Permissions
+## 권한 설정
 
-These labels match what you see in the Auto Approve menu.
+아래 라벨은 자동 승인 메뉴에 표시되는 항목과 동일합니다.
 
-| Setting | What it allows | Notes |
+| 설정 | 허용되는 동작 | 비고 |
 |--------|-----------------|------|
-| Read project files | Read files, list files, search in your workspace | Good default for most tasks |
-| Read all files | Read files outside your workspace | Requires “Read project files” |
-| Edit project files | Create and edit files in your workspace | Consider using checkpoints |
-| Edit all files | Edit files outside your workspace | Requires “Edit project files” |
-| Execute safe commands | Run terminal commands marked safe | Can still run long |
-| Execute all commands | Run commands marked as requiring approval | Requires “Execute safe commands” |
-| Use the browser | Allows use of the browser tool for web fetching and searching | Proxy issues can apply |
-| Use MCP servers | Use MCP tools and access MCP resources | Some servers also have per-tool auto-approve |
-| Enable notifications | Notifies you about long-running auto-approved commands | Accessible directly in the Auto Approve menu |
+| 프로젝트 파일 읽기 | 워크스페이스 파일 읽기, 파일 목록, 검색 | 대부분의 작업에 적합한 기본값 |
+| 모든 파일 읽기 | 워크스페이스 외부 파일 읽기 | “프로젝트 파일 읽기” 필요 |
+| 프로젝트 파일 편집 | 워크스페이스 파일 생성/편집 | 체크포인트 사용 권장 |
+| 모든 파일 편집 | 워크스페이스 외부 파일 편집 | “프로젝트 파일 편집” 필요 |
+| 안전한 명령 실행 | 안전으로 표시된 명령 실행 | 장시간 실행 가능 |
+| 모든 명령 실행 | 승인 필요 명령까지 실행 | “안전한 명령 실행” 필요 |
+| 브라우저 사용 | 웹 검색/가져오기용 브라우저 도구 사용 | 프록시 이슈 가능 |
+| MCP 서버 사용 | MCP 도구 사용 및 리소스 접근 | 일부 서버는 도구별 자동 승인 있음 |
+| 알림 활성화 | 장시간 실행 중인 자동 승인 명령 알림 | 자동 승인 메뉴에서 직접 설정 |
 
 <Warning>
-	“Read all files” and “Edit all files” only matter if their base toggle is enabled. They extend access outside your workspace.
+	“모든 파일 읽기/편집”은 기본 토글이 켜져 있을 때만 의미가 있습니다. 워크스페이스 외부 접근을 확장하는 옵션입니다.
 </Warning>
 
-<Card title="Networking & proxies" icon="globe" href="/troubleshooting/networking-and-proxies">
-	If browser-based tools fail in corporate networks, this page covers the common fixes.
+<Card title="네트워킹 & 프록시" icon="globe" href="/troubleshooting/networking-and-proxies">
+	기업 네트워크에서 브라우저 도구가 실패하면 이 페이지의 해결 방법을 참고하세요.
 </Card>
 
-## Safe vs approval-required command examples
+## 안전 명령 vs 승인 필요 명령 예시
 
-Cline does not use a fixed allowlist of safe or unsafe commands. The model marks each command with a `requires_approval` flag based on the command and its arguments, and Auto Approve uses that flag.
+Cline은 고정된 allowlist로 안전/위험을 구분하지 않습니다. 모델이 명령과 인자를 보고 `requires_approval` 플래그를 지정하고, 자동 승인은 그 플래그를 사용합니다.
 
-These are examples, not guarantees.
+아래는 예시일 뿐이며 보장을 의미하지 않습니다.
 
-### Commonly treated as safe
+### 보통 안전한 명령
 
-| Example | Why it is usually safe |
+| 예시 | 보통 안전한 이유 |
 |--------|-------------------------|
-| `npm run build` | Build output, no direct file deletions |
-| `npm test` | Runs tests |
-| `git status` | Read-only |
-| `ls -la` | Read-only |
-| `cat package.json` | Read-only |
+| `npm run build` | 빌드 출력, 직접 파일 삭제 없음 |
+| `npm test` | 테스트 실행 |
+| `git status` | 읽기 전용 |
+| `ls -la` | 읽기 전용 |
+| `cat package.json` | 읽기 전용 |
 
-### Commonly requires approval
+### 보통 승인 필요
 
-| Example | Why it often needs approval |
+| 예시 | 승인 필요 이유 |
 |--------|------------------------------|
-| `npm install <pkg>` | Modifies dependencies and lockfiles |
-| `rm -rf <path>` | Deletes files |
-| `mv <a> <b>` | Moves files (can overwrite) |
-| `sed -i ...` | In-place file edits |
-| `curl https://...` | Downloads and executes remote code |
+| `npm install <pkg>` | 의존성 및 lockfile 변경 |
+| `rm -rf <path>` | 파일 삭제 |
+| `mv <a> <b>` | 파일 이동(덮어쓰기 가능) |
+| `sed -i ...` | 파일 직접 수정 |
+| `curl https://...` | 원격 코드 다운로드/실행 |
 
 <Note>
-	Whether a command is treated as safe depends on the exact command, flags, and the current task. When in doubt, keep command auto-approval off and approve commands manually.
+	명령이 안전으로 분류되는지는 정확한 명령, 플래그, 현재 작업에 따라 달라집니다. 확실하지 않다면 명령 자동 승인을 끄고 수동으로 승인하세요.
 </Note>
 
-## Enable notifications
+## 알림 활성화
 
-Auto-approved actions can run for a while, especially long terminal commands. If you enable notifications, Cline can notify you when an auto-approved command has been running for a while and may need attention.
+자동 승인된 작업은 길어질 수 있습니다. 알림을 활성화하면 자동 승인된 명령이 오래 실행될 때 알림을 받을 수 있습니다.
 
-The **Enable notifications** toggle is located at the bottom of the Auto Approve menu, below a separator line. This puts the notification setting right where you manage your auto-approval permissions, making it easy to discover and adjust.
+**알림 활성화** 토글은 자동 승인 메뉴 하단(구분선 아래)에 있습니다. 승인 권한을 관리하는 위치와 함께 배치되어 쉽게 찾고 조정할 수 있습니다.
 
 
-## Recommendations
+## 권장 설정
 
-A good default setup is:
+좋은 기본 설정은 다음과 같습니다:
 
-- Enable **Read project files**
-- Leave **Edit project files**, **Execute safe commands**, **Use the browser**, and **Use MCP servers** off until you have a specific reason to enable them
+- **프로젝트 파일 읽기** 활성화
+- **프로젝트 파일 편집**, **안전한 명령 실행**, **브라우저 사용**, **MCP 서버 사용**은 필요할 때까지 비활성화
 
-If you enable edits, use [Checkpoints](/features/checkpoints) so you can roll back quickly.
+편집을 허용한다면 [체크포인트](/features/checkpoints)로 빠른 롤백을 준비하세요.
 
-If you’re working in a sensitive environment (production credentials, personal files, corporate devices), keep external file access and command execution locked down and approve actions manually as you go.
+민감한 환경(프로덕션 자격 증명, 개인 파일, 회사 기기)에서는 외부 파일 접근과 명령 실행을 엄격히 제한하고 수동 승인으로 진행하세요.

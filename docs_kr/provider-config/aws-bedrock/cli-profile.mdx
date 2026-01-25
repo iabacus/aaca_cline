@@ -1,43 +1,43 @@
 ---
-title: "CLI Profile (SSO)"
-sidebarTitle: "CLI Profile (SSO)"
-description: "Configure AWS Bedrock to use AWS CLI profiles for authentication with Cline. Best for SSO/federated roles and secure enterprise access."
+title: "CLI 프로필(SSO)"
+sidebarTitle: "CLI 프로필(SSO)"
+description: "Cline에서 인증을 위해 AWS CLI 프로필을 사용하도록 AWS Bedrock을 구성합니다. SSO/연합 역할 및 안전한 엔터프라이즈 접근에 적합합니다."
 ---
 
-### Overview
+### 개요
 
-Cline offers the option of utilizing AWS credentials or AWS profiles to access AWS Bedrock services. SSO/Federated roles are suggested over Legacy IAM configuration; this guide describes how to configure your environment so that Cline uses SSO roles for authentication.
+Cline은 AWS Bedrock 서비스에 접근하기 위해 AWS 자격 증명 또는 AWS 프로필을 사용할 수 있습니다. 레거시 IAM 구성보다 SSO/연합 역할을 권장하며, 이 가이드는 Cline이 SSO 역할로 인증하도록 환경을 구성하는 방법을 설명합니다.
 
 ---
 
-### Configuration Steps
+### 설정 단계
 
-1. Install the [latest version](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) of AWS CLI
+1. [AWS CLI 최신 버전](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)을 설치합니다.
 
-    - Follow the AWS docs to install your OS-specific version of AWS CLI
+    - AWS 문서를 따라 OS에 맞는 AWS CLI를 설치합니다.
 
-2. [Configure IAM authentication](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html) with the AWS CLI
+2. AWS CLI로 [IAM 인증 구성](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html)을 합니다.
 
-    - If you do not already have AWS access through the IAM Identity Center, follow the [IAM User Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html) to set up IAM users and roles. Ensure you have a `PowerUserAccess` role.
-    - If you have access to AWS through your employer, open your AWS access portal and find the appropriate account. Ensure you have `PowerUserAccess` permissions.
-    - Open the `Access keys` link and note the `SSO start URL` and `SSO region`, which are needed in the next step
+    - IAM Identity Center를 통해 아직 AWS 접근 권한이 없다면 [IAM 사용자 가이드](https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html)를 따라 IAM 사용자와 역할을 설정하세요. `PowerUserAccess` 역할이 필요합니다.
+    - 직장에서 AWS 접근 권한이 있다면 AWS 액세스 포털을 열고 해당 계정을 찾으세요. `PowerUserAccess` 권한이 있는지 확인합니다.
+    - `Access keys` 링크를 열고 `SSO start URL`과 `SSO region`을 기록합니다. 다음 단계에 필요합니다.
 
-3. Continue configuring your profile using [the `aws configure sso` CLI wizard](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#cli-configure-sso-configure)
+3. [ `aws configure sso` CLI 마법사](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html#cli-configure-sso-configure)로 프로필 구성을 계속합니다.
 
-    - Once configured, use the following command to authenticate the AWS CLI: `aws sso login --profile <AWS-profile-name>`
-    - Note which profile name you attach to your AWS account, this is needed to configure Cline in the following steps
+    - 구성이 끝나면 다음 명령으로 AWS CLI 인증을 수행합니다: `aws sso login --profile <AWS-profile-name>`
+    - AWS 계정에 연결한 프로필 이름을 기록하세요. 다음 단계에서 Cline 설정에 필요합니다.
 
-4. If you haven't already done so, install VSCode and the Cline extension. Consult the [Getting Started](/getting-started) page for guidance.
+4. 아직 설치하지 않았다면 VSCode와 Cline 확장을 설치합니다. [시작하기](/getting-started) 페이지를 참고하세요.
 
-5. Open the Cline extension, then click on the settings button ⚙️ to select your API Provider.
-    - From the API Provider dropdown, select AWS Bedrock
-    - Select the AWS Profile radio button, then enter the AWS Profile Name from step 3
-    - Select your AWS Region from the dropdown menu
-    - Selecting the cross-region inference checkbox is required for some models
+5. Cline 확장을 열고 설정 버튼 ⚙️을 클릭해 API Provider를 선택합니다.
+    - API Provider 드롭다운에서 AWS Bedrock을 선택합니다.
+    - AWS Profile 라디오 버튼을 선택한 다음 3단계에서 기록한 AWS 프로필 이름을 입력합니다.
+    - 드롭다운에서 AWS 리전을 선택합니다.
+    - 일부 모델은 cross-region inference 체크박스가 필요합니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/cline-aws-setup-markup%20(1).png"
-		alt="AWS Bedrock configuration in Cline settings showing profile authentication setup"
+		alt="프로필 인증 설정이 표시된 Cline 설정의 AWS Bedrock 구성 화면"
 	/>
 </Frame>

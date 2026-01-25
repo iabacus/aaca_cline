@@ -1,102 +1,101 @@
 ---
-title: "SaaS Provider Configuration"
-sidebarTitle: "Overview"
-description: "Configure inference providers through the Cline hosted admin console for centralized organization management"
+title: "SaaS 제공자 구성"
+sidebarTitle: "개요"
+description: "Cline 호스팅 관리자 콘솔에서 추론 제공자를 구성해 조직을 중앙 관리합니다"
 ---
 
+SaaS 제공자 구성은 Cline 호스팅 관리자 콘솔을 통해 조직 전체의 추론 제공자를 중앙에서 설정할 수 있게 합니다. 이 방식은 개발자 개인 설정이나 인프라 배포 없이도 조직 구성원 전반에 일관된 제공자 접근, 보안 정책, 비용 관리를 보장합니다.
 
-SaaS Provider Configuration allows administrators to centrally configure inference providers for their entire organization through the Cline hosted admin console. This approach ensures consistent provider access, security policies, and cost management across all team members without requiring individual developer setup or infrastructure deployment.
+## 원격 구성이 동작하는 방식
 
-## How Remote Configuration Works
-
-Remote configuration operates through Cline's hosted service at [app.cline.bot](https://app.cline.bot), where administrators can:
+원격 구성은 [app.cline.bot](https://app.cline.bot)에서 제공되는 Cline 호스팅 서비스로 동작합니다. 관리자는 다음을 수행할 수 있습니다:
 
 <CardGroup cols={2}>
-  <Card title="Centralized Setup" icon="gear">
-    Configure providers once for the entire organization through the web-based admin console.
+  <Card title="중앙 설정" icon="gear">
+    웹 기반 관리자 콘솔에서 제공자를 한 번 설정해 조직 전체에 적용합니다.
   </Card>
   
-  <Card title="Automatic Enforcement" icon="shield-check">
-    Team members automatically receive the configured provider settings when signed into their organization.
+  <Card title="자동 강제" icon="shield-check">
+    구성원이 조직에 로그인하면 설정된 제공자 설정이 자동으로 적용됩니다.
   </Card>
   
-  <Card title="Simplified Onboarding" icon="user-plus">
-    New team members get instant access to inference providers without complex individual configuration.
+  <Card title="간편한 온보딩" icon="user-plus">
+    신규 구성원이 복잡한 설정 없이 즉시 추론 제공자에 접근할 수 있습니다.
   </Card>
   
-  <Card title="Consistent Experience" icon="users">
-    Ensure all team members use the same models, regions, and settings organization-wide.
+  <Card title="일관된 경험" icon="users">
+    조직 전체에서 동일한 모델, 리전, 설정을 사용합니다.
   </Card>
 </CardGroup>
 
-## Supported Providers
+## 지원 제공자
 
-Cline supports remote configuration for the following inference providers:
+Cline은 다음 추론 제공자에 대해 원격 구성을 지원합니다:
 
-| Provider | Use Case | Configuration | Member Setup |
+| 제공자 | 사용 사례 | 구성 | 멤버 설정 |
 |----------|----------|---------------|--------------|
-| **Cline** | Organizations using Cline's native provider with centralized API key management | API provider selection, model access | No individual API keys needed - fully managed by organization |
-| **Amazon Bedrock** | Organizations using AWS infrastructure | Region selection, VPC endpoints, cross-region inference, prompt caching | AWS credential configuration in VS Code |
-| **LiteLLM** | Organizations requiring multi-model access through a unified proxy | Proxy endpoint, authentication, model routing | API key or endpoint configuration in VS Code (or centralized with Master Key) |
-| **Google Vertex AI** | Organizations using Google Cloud Platform | Project ID, region selection, model access | Service account or credential configuration in VS Code |
+| **Cline** | 중앙 API 키 관리가 가능한 Cline 기본 제공자 사용 조직 | API 제공자 선택, 모델 접근 | 개별 API 키 불필요 - 조직에서 완전 관리 |
+| **Amazon Bedrock** | AWS 인프라를 사용하는 조직 | 리전 선택, VPC 엔드포인트, 교차 리전 추론, 프롬프트 캐싱 | VS Code에서 AWS 자격 증명 구성 |
+| **LiteLLM** | 통합 프록시로 멀티 모델 접근이 필요한 조직 | 프록시 엔드포인트, 인증, 모델 라우팅 | VS Code에서 API 키 또는 엔드포인트 구성(또는 Master Key로 중앙 관리) |
+| **Google Vertex AI** | Google Cloud Platform을 사용하는 조직 | 프로젝트 ID, 리전 선택, 모델 접근 | VS Code에서 서비스 계정/자격 증명 구성 |
 
 
-## Configuration Process
+## 구성 프로세스
 
-The typical remote configuration process follows these steps:
+일반적인 원격 구성 흐름은 다음과 같습니다:
 
 <Steps>
-<Step title="Administrator Setup">
-Access the Cline admin console and configure the desired inference provider with organization-wide settings.
+<Step title="관리자 설정">
+Cline 관리자 콘솔에서 조직 공용 설정으로 원하는 추론 제공자를 구성합니다.
 </Step>
 
-<Step title="Automatic Distribution">
-Provider configuration is automatically distributed to all organization members signed into Cline.
+<Step title="자동 배포">
+제공자 설정이 Cline에 로그인한 모든 조직 구성원에게 자동 배포됩니다.
 </Step>
 
-<Step title="Member Credential Setup">
-Team members add their individual credentials (API keys, AWS profiles, etc.) to connect to the configured provider.
+<Step title="멤버 자격 증명 설정">
+구성원은 설정된 제공자에 연결하기 위해 개별 자격 증명(API 키, AWS 프로필 등)을 추가합니다.
 </Step>
 
-<Step title="Immediate Access">
-Once credentials are configured, members can immediately start using the inference provider through Cline.
+<Step title="즉시 사용">
+자격 증명이 설정되면 구성원은 즉시 Cline에서 해당 제공자를 사용할 수 있습니다.
 </Step>
 </Steps>
 
-## Benefits of Remote Configuration
+## 원격 구성의 장점
 
-### **For Administrators**
-- **Centralized Control**: Manage all provider settings from one location
-- **Security Compliance**: Ensure consistent security policies across the organization
-- **Easy Updates**: Change provider settings organization-wide instantly
+### **관리자 관점**
+- **중앙 제어**: 제공자 설정을 한 곳에서 관리
+- **보안 준수**: 조직 전반에 일관된 보안 정책 적용
+- **쉬운 업데이트**: 제공자 설정을 즉시 조직 전체에 적용
 
-### **For Team Members**  
-- **Simplified Setup**: No need to research provider configuration options
-- **Consistent Experience**: Same models and features available to everyone
-- **Quick Onboarding**: Get started immediately with pre-configured providers
-- **Focus on Development**: Spend time coding instead of configuring inference providers
+### **구성원 관점**  
+- **간편한 설정**: 제공자 구성 옵션을 따로 조사할 필요 없음
+- **일관된 경험**: 모든 구성원이 동일한 모델과 기능 사용
+- **빠른 온보딩**: 사전 구성된 제공자로 바로 시작
+- **개발 집중**: 제공자 설정 대신 개발에 집중
 
-## Getting Started
+## 시작하기
 
-To get started with provider remote configuration:
+원격 제공자 구성을 시작하려면:
 
-1. **Choose Your Provider**: Select the inference provider that best fits your organization's needs and existing infrastructure
-2. **Admin Configuration**: Follow the provider-specific admin configuration guide
-3. **Member Onboarding**: Have team members complete the provider-specific member configuration
-4. **Start Developing**: Begin using Cline with centrally managed inference provider access
+1. **제공자 선택**: 조직의 요구사항과 기존 인프라에 맞는 제공자 선택
+2. **관리자 구성**: 제공자별 관리자 구성 가이드 따라 설정
+3. **멤버 온보딩**: 구성원이 제공자별 멤버 구성을 완료하도록 안내
+4. **개발 시작**: 중앙 관리된 제공자 접근으로 Cline 사용 시작
 
-Select your provider below to begin the configuration process:
+아래에서 제공자를 선택해 구성 과정을 시작하세요:
 
 <CardGroup cols={3}>
   <Card title="Amazon Bedrock" icon="aws" href="/enterprise-solutions/configuration/remote-configuration/aws-bedrock/admin-configuration">
-    AWS-based AI models with enterprise security and compliance features.
+    엔터프라이즈 보안/컴플라이언스 기능을 갖춘 AWS 기반 AI 모델.
   </Card>
   
   <Card title="LiteLLM" icon="layer-group" href="/enterprise-solutions/configuration/remote-configuration/litellm/admin-configuration">
-    Unified proxy for accessing 100+ AI models through a single interface.
+    단일 인터페이스로 100+ AI 모델에 접근하는 통합 프록시.
   </Card>
   
   <Card title="Google Vertex AI" icon="google" href="/enterprise-solutions/configuration/remote-configuration/google-vertex/admin-configuration">
-    Google Cloud's AI platform with advanced ML capabilities and global infrastructure.
+    고급 ML 기능과 글로벌 인프라를 갖춘 Google Cloud AI 플랫폼.
   </Card>
 </CardGroup>

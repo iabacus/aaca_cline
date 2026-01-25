@@ -1,28 +1,28 @@
 ---
-title: "LiteLLM Configuration"
+title: "LiteLLM 구성"
 sidebarTitle: "LiteLLM"
-description: "Configure LiteLLM proxy for your Cline deployment"
+description: "Cline 배포를 위한 LiteLLM 프록시를 구성합니다"
 ---
 
 <Info>
-**Configuration Path: Self-Hosted**
+**구성 경로: 자체 호스팅**
 
-This guide covers LiteLLM configuration for self-hosted deployments. For web-based setup, see [LiteLLM SaaS Configuration](/enterprise-solutions/configuration/remote-configuration/litellm/admin-configuration).
+이 가이드는 자체 호스팅 배포를 위한 LiteLLM 구성을 다룹니다. 웹 기반 설정은 [LiteLLM SaaS 구성](/enterprise-solutions/configuration/remote-configuration/litellm/admin-configuration)을 참고하세요.
 </Info>
 
-Configure Cline to use an existing LiteLLM proxy for unified access to multiple AI models through a single API endpoint.
+단일 API 엔드포인트를 통해 여러 AI 모델에 통합 접근할 수 있도록 기존 LiteLLM 프록시를 사용하도록 Cline을 구성합니다.
 
-## What is LiteLLM?
+## LiteLLM이란?
 
-[LiteLLM](https://github.com/BerriAI/litellm) is an open-source proxy that provides a unified OpenAI-compatible API for accessing 100+ AI models from different providers. Cline connects to your deployed LiteLLM instance.
+[LiteLLM](https://github.com/BerriAI/litellm)은 서로 다른 제공자의 100개 이상 AI 모델에 접근할 수 있는 통합 OpenAI 호환 API를 제공하는 오픈 소스 프록시입니다. Cline은 배포된 LiteLLM 인스턴스에 연결합니다.
 
 <Note>
-LiteLLM is a separate service you deploy and manage. This guide covers how to configure Cline to connect to an existing LiteLLM deployment.
+LiteLLM은 별도로 배포/운영하는 서비스입니다. 이 가이드는 기존 LiteLLM 배포에 Cline을 연결하는 방법을 다룹니다.
 </Note>
 
-## Configuration Format
+## 구성 형식
 
-Configure LiteLLM through your remote configuration JSON using the `providerSettings.OpenAiCompatible` section:
+원격 구성 JSON에서 `providerSettings.OpenAiCompatible` 섹션으로 LiteLLM을 구성합니다:
 
 ```json
 {
@@ -40,17 +40,17 @@ Configure LiteLLM through your remote configuration JSON using the `providerSett
 }
 ```
 
-## Configuration Fields
+## 구성 필드
 
-| Field | Type | Description | Required |
+| 필드 | 타입 | 설명 | 필수 |
 |-------|------|-------------|----------|
-| `models` | Array | List of model configurations | Yes |
-| `openAiBaseUrl` | String | LiteLLM proxy endpoint URL | Yes |
-| `openAiApiKey` | String | API key for authentication | No |
+| `models` | Array | 모델 구성 목록 | 예 |
+| `openAiBaseUrl` | String | LiteLLM 프록시 엔드포인트 URL | 예 |
+| `openAiApiKey` | String | 인증용 API 키 | 아니오 |
 
-### Model Configuration
+### 모델 구성
 
-Each model in the `models` array requires:
+`models` 배열의 각 모델은 다음을 포함해야 합니다:
 
 ```json
 {
@@ -65,12 +65,12 @@ Each model in the `models` array requires:
 ```
 
 <Note>
-Model IDs must match the model names configured in your LiteLLM proxy deployment.
+모델 ID는 LiteLLM 프록시 구성에 정의된 모델 이름과 일치해야 합니다.
 </Note>
 
-## Example Configurations
+## 구성 예시
 
-### Basic Configuration
+### 기본 구성
 
 ```json
 {
@@ -88,7 +88,7 @@ Model IDs must match the model names configured in your LiteLLM proxy deployment
 }
 ```
 
-### With Authentication
+### 인증 포함
 
 ```json
 {
@@ -107,7 +107,7 @@ Model IDs must match the model names configured in your LiteLLM proxy deployment
 }
 ```
 
-### Multiple Models
+### 다중 모델
 
 ```json
 {
@@ -134,7 +134,7 @@ Model IDs must match the model names configured in your LiteLLM proxy deployment
 }
 ```
 
-### Internal Network (No Auth)
+### 내부 네트워크(인증 없음)
 
 ```json
 {
@@ -152,31 +152,31 @@ Model IDs must match the model names configured in your LiteLLM proxy deployment
 }
 ```
 
-## Prerequisites
+## 사전 준비
 
-Before configuring Cline to use LiteLLM, you need:
+LiteLLM을 사용하기 전에 다음이 필요합니다:
 
-1. **LiteLLM Proxy** deployed and accessible
-2. **LiteLLM Configuration** with desired models enabled
-3. **API Key** (if authentication is enabled)
-4. **Network Access** from where Cline is being used
+1. 배포 및 접근 가능한 **LiteLLM 프록시**
+2. 원하는 모델이 활성화된 **LiteLLM 구성**
+3. **API 키**(인증이 활성화된 경우)
+4. **네트워크 접근**(Cline 실행 환경에서의 연결성)
 
 <Tip>
-For LiteLLM deployment and configuration, see the [LiteLLM documentation](https://docs.litellm.ai/docs/proxy/quick_start).
+LiteLLM 배포와 구성은 [LiteLLM 문서](https://docs.litellm.ai/docs/proxy/quick_start)를 참고하세요.
 </Tip>
 
-## Troubleshooting
+## 문제 해결
 
-**Connection Errors**
+**연결 오류**
 
-Verify the LiteLLM proxy is running and accessible:
+LiteLLM 프록시가 실행 중이고 접근 가능한지 확인하세요:
 ```bash
 curl https://litellm.yourcompany.com/health
 ```
 
-**Authentication Errors**
+**인증 오류**
 
-Check your API key is valid:
+API 키가 유효한지 확인하세요:
 ```bash
 curl -H "Authorization: Bearer sk-your-key" \
   https://litellm.yourcompany.com/v1/models
@@ -184,32 +184,32 @@ curl -H "Authorization: Bearer sk-your-key" \
 
 **Model Not Found**
 
-Verify the model is configured in your LiteLLM deployment. Model IDs in Cline's config must match the model names in LiteLLM's configuration.
+LiteLLM 배포에 모델이 구성되어 있는지 확인하세요. Cline 설정의 모델 ID는 LiteLLM 구성의 모델 이름과 일치해야 합니다.
 
-## Benefits of Using LiteLLM
+## LiteLLM 사용의 장점
 
-- **Multi-Provider Access**: Connect to multiple AI providers through one endpoint
-- **Load Balancing**: Distribute requests across providers automatically
-- **Fallback Support**: Automatic retry with different models on failure
-- **Cost Tracking**: Monitor usage and costs across all models
-- **Rate Limiting**: Control usage at the proxy level
+- **멀티 제공자 접근**: 단일 엔드포인트로 여러 제공자 연결
+- **로드 밸런싱**: 제공자 간 요청 자동 분산
+- **폴백 지원**: 실패 시 다른 모델로 자동 재시도
+- **비용 추적**: 전체 모델 사용량/비용 모니터링
+- **레이트 리미팅**: 프록시 수준에서 사용량 제어
 
-## Related Resources
+## 관련 자료
 
 <CardGroup cols={2}>
-  <Card title="LiteLLM Docs" icon="book" href="https://docs.litellm.ai/">
-    Complete LiteLLM documentation
+  <Card title="LiteLLM 문서" icon="book" href="https://docs.litellm.ai/">
+    LiteLLM 전체 문서
   </Card>
   
   <Card title="LiteLLM GitHub" icon="github" href="https://github.com/BerriAI/litellm">
-    Source code and deployment examples
+    소스 코드 및 배포 예제
   </Card>
   
-  <Card title="Proxy Setup" icon="server" href="https://docs.litellm.ai/docs/proxy/quick_start">
-    LiteLLM proxy deployment guide
+  <Card title="프록시 설정" icon="server" href="https://docs.litellm.ai/docs/proxy/quick_start">
+    LiteLLM 프록시 배포 가이드
   </Card>
   
-  <Card title="Supported Providers" icon="list" href="https://docs.litellm.ai/docs/providers">
-    List of supported AI providers
+  <Card title="지원 제공자" icon="list" href="https://docs.litellm.ai/docs/providers">
+    지원하는 AI 제공자 목록
   </Card>
 </CardGroup>

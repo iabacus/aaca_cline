@@ -1,13 +1,13 @@
 ---
-title: "Problem Mentions"
-sidebarTitle: "Problem Mentions"
+title: "문제 멘션"
+sidebarTitle: "문제 멘션"
 ---
 
-The problems mention gives Cline instant access to all the errors and warnings in your workspace. Just type `@problems` and Cline can see every diagnostic issue VSCode has detected.
+문제 멘션은 워크스페이스의 모든 오류와 경고를 Cline이 즉시 확인할 수 있게 합니다. `@problems`를 입력하면 VS Code가 감지한 모든 진단 문제를 볼 수 있습니다.
 
-When you type `@` in chat, select "Problems" from the menu or just type `@problems` directly. Cline will immediately see all the errors and warnings from your workspace, complete with file locations and error messages.
+채팅에서 `@`를 입력하고 메뉴에서 "Problems"를 선택하거나 `@problems`를 직접 입력하세요. Cline은 파일 위치와 오류 메시지를 포함한 모든 오류/경고를 즉시 확인합니다.
 
-I use the problems mention constantly when I'm stuck on build errors or TypeScript issues. Instead of trying to describe the errors or copy them one by one, I just ask:
+저는 빌드 오류나 TypeScript 문제로 막혔을 때 문제 멘션을 자주 사용합니다. 오류를 하나씩 복사하거나 설명하는 대신 이렇게 요청합니다:
 
 ```
 I'm getting these TypeScript errors and I'm not sure how to fix them: @problems
@@ -15,9 +15,9 @@ I'm getting these TypeScript errors and I'm not sure how to fix them: @problems
 Can you help me understand what's wrong and how to fix it?
 ```
 
-This gives Cline the complete list of errors with their exact locations and messages. Cline can then analyze the patterns across multiple errors and suggest comprehensive solutions.
+그러면 Cline이 오류의 정확한 위치와 메시지를 포함한 전체 목록을 확인할 수 있어, 여러 오류를 함께 분석하고 종합적인 해결책을 제시할 수 있습니다.
 
-The problems mention is especially powerful when combined with file mentions. When I'm dealing with complex type errors, I'll reference both:
+문제 멘션은 파일 멘션과 함께 사용하면 특히 강력합니다. 복잡한 타입 오류를 다룰 때 다음과 같이 함께 참조할 수 있습니다:
 
 ```
 I'm getting these type errors: @problems
@@ -28,25 +28,25 @@ And the types file: @/src/types/api.ts
 How can I fix these issues?
 ```
 
-This approach gives Cline everything it needs - the exact errors, the component code, and the type definitions - all without me having to copy anything manually.
+이 방식은 오류, 컴포넌트 코드, 타입 정의까지 모두 제공하므로 Cline이 필요한 정보를 완전히 확보할 수 있습니다. 별도로 복사할 필요가 없습니다.
 
-Next time you're stuck on errors, try using `@problems` instead of copying error messages. You'll get more accurate help because Cline can see the complete error context and locations.
+다음에 오류로 막히면 `@problems`를 사용해 보세요. 전체 오류 컨텍스트와 위치를 Cline이 볼 수 있어 더 정확한 도움을 받을 수 있습니다.
 
-## How It Works Under the Hood
+## 내부 동작 방식
 
-When you use the problems mention in your message, here's what happens behind the scenes:
+문제 멘션을 사용할 때 내부적으로는 다음과 같이 동작합니다:
 
-1. When you send your message, Cline detects the `@problems` pattern in your text
-2. The extension calls VSCode's built-in `vscode.languages.getDiagnostics()` API to get all errors and warnings
-3. It formats these diagnostics into a structured text representation with file paths, line numbers, and error messages
-4. The formatted problems list is appended to your message in a structured format:
+1. 메시지를 전송하면 Cline이 텍스트에서 `@problems` 패턴을 감지
+2. 확장이 VS Code 내장 API `vscode.languages.getDiagnostics()`를 호출해 모든 오류/경고를 가져옴
+3. 파일 경로, 라인 번호, 오류 메시지를 구조화된 텍스트로 포맷
+4. 포맷된 문제 목록이 구조화된 형식으로 메시지에 첨부됨:
     ```
     <workspace_diagnostics>
     /path/to/file.js:10:5 - error TS2322: Type 'string' is not assignable to type 'number'.
     /path/to/file.js:15:3 - warning: This variable is never used.
     </workspace_diagnostics>
     ```
-5. This enhanced message with the embedded diagnostics is sent to the AI
-6. The AI can now "see" all the errors and warnings in your workspace, complete with their locations and messages
+5. 진단 정보가 포함된 메시지가 AI로 전송
+6. AI가 워크스페이스의 모든 오류/경고와 위치를 그대로 확인 가능
 
-This process happens automatically whenever you use the problems mention, giving the AI a comprehensive view of all the issues in your workspace without you having to copy them manually.
+이 과정은 문제 멘션을 사용할 때마다 자동으로 수행되어, 오류를 수동으로 복사하지 않아도 AI가 전체 문제를 종합적으로 볼 수 있게 해줍니다.

@@ -1,98 +1,96 @@
 ---
-title: "Terminal Integration"
-sidebarTitle: "Terminal Integration"
+title: "터미널 통합"
+sidebarTitle: "터미널 통합"
 ---
 
-Cline's terminal integration lets you bring your terminal output directly into your conversations with Cline. Instead of copying and pasting error messages or command results, you can send them to Cline with a simple right-click in the terminal.
+Cline의 터미널 통합은 터미널 출력을 Cline과의 대화에 바로 가져올 수 있게 해줍니다. 오류 메시지나 명령 결과를 복사/붙여넣기 할 필요 없이, 터미널에서 우클릭만으로 Cline에 보낼 수 있습니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/terminal-integration.png"
-		alt="Terminal Integration"
+		alt="터미널 통합"
 	/>
 </Frame>
 
-## Right-Click Terminal Integration
+## 우클릭 터미널 통합
 
-When you're working in the VSCode terminal and see output you want to discuss with Cline:
+VS Code 터미널에서 Cline과 논의하고 싶은 출력이 보이면:
 
-1. Right-click in the terminal
-2. Select "Add to Cline" from the context menu
-3. The terminal output is immediately sent to the Cline chat panel
+1. 터미널에서 우클릭
+2. 컨텍스트 메뉴에서 "Add to Cline" 선택
+3. 터미널 출력이 즉시 Cline 채팅 패널로 전송됨
 
-This is perfect for:
+다음과 같은 상황에 적합합니다:
 
--   Debugging build errors
--   Understanding test failures
--   Analyzing command output
--   Getting help with error messages
+-   빌드 오류 디버깅
+-   테스트 실패 이해
+-   명령 출력 분석
+-   오류 메시지 해결 도움
 
-The right-click terminal integration is especially useful when you're already working in the terminal and encounter an issue.
+터미널 작업 중 문제를 만났을 때 특히 유용합니다.
 
-Instead of switching context to the Cline chat panel and typing a description of the problem, you can send the terminal output directly to Cline with just a couple of clicks.
+Cline 채팅 패널로 전환해 문제를 설명하는 대신, 몇 번의 클릭만으로 터미널 출력을 바로 보낼 수 있습니다.
 
-Alternatively, you can use the [`@terminal`](/features/at-mentions/terminal-mentions) mention to send the full terminal output to Cline.
+또는 [`@terminal`](/features/at-mentions/terminal-mentions) 멘션을 사용해 전체 터미널 출력을 Cline에 보낼 수도 있습니다.
 
 <Tip>
-	For information about using `@terminal` mentions in your chat messages, see the [Terminal
-	Mentions](/features/at-mentions/terminal-mentions) documentation.
+	채팅 메시지에서 `@terminal` 멘션을 사용하는 방법은 [터미널 멘션](/features/at-mentions/terminal-mentions) 문서를 참고하세요.
 </Tip>
 
-## How Terminal Integration Works
+## 터미널 통합 동작 방식
 
-When you use the right-click terminal integration, Cline:
+우클릭 터미널 통합을 사용하면 Cline은:
 
-1. Captures the terminal output with all formatting preserved
-2. Includes the complete context, including command history and results
-3. Formats it appropriately for the AI to understand
-4. Enables the AI to see exactly what you're seeing
+1. 모든 서식을 유지한 채 터미널 출력을 캡처
+2. 명령 히스토리와 결과를 포함한 전체 컨텍스트를 포함
+3. AI가 이해하기 쉽게 포맷팅
+4. 사용자가 보는 그대로를 AI가 볼 수 있게 함
 
-This gives Cline the full context it needs to provide accurate help with terminal-related issues.
+덕분에 Cline이 터미널 관련 이슈를 정확히 이해하고 도움을 줄 수 있습니다.
 
-## Behind the Scenes
+## 내부 동작 방식
 
-The terminal integration uses a clever technique to capture terminal output:
+터미널 통합은 출력 캡처를 위해 다음과 같은 기법을 사용합니다:
 
-1. When you trigger the integration, Cline:
+1. 통합을 실행하면 Cline이:
 
-    - Temporarily saves your current clipboard content
-    - Selects all terminal content (or uses your existing selection)
-    - Copies it to the clipboard
-    - Reads the clipboard to get the terminal content
-    - Restores your original clipboard content
+    - 현재 클립보드 내용을 임시 저장
+    - 터미널 전체 내용을 선택(또는 사용자가 선택한 내용)
+    - 클립보드에 복사
+    - 클립보드를 읽어 터미널 내용을 가져옴
+    - 원래 클립보드 내용을 복원
 
-2. The terminal content is then:
-    - Formatted with proper syntax highlighting
-    - Added to your message or sent as a new message
-    - Enhanced with additional context when needed
+2. 그다음 터미널 내용은:
+    - 올바른 구문 하이라이팅으로 포맷
+    - 메시지에 추가되거나 새 메시지로 전송
+    - 필요 시 추가 컨텍스트가 보강됨
 
-This approach ensures that all terminal output, including colors and formatting, is accurately captured without affecting your clipboard.
+이 방식은 색상과 서식을 포함한 모든 터미널 출력을 정확히 캡처하면서도 클립보드를 건드리지 않도록 보장합니다.
 
-## Tips for Effective Use
+## 효과적으로 사용하는 팁
 
--   **Use terminal integration for error messages**: When you encounter an error in the terminal, sending it to Cline often results in faster resolution than trying to describe the error.
+-   **오류 메시지에 터미널 통합 사용**: 터미널 오류를 Cline에 보내면 직접 설명하는 것보다 더 빠르게 해결되는 경우가 많습니다.
 
--   **Select specific output when needed**: By default, the integration captures all terminal content, but you can also select specific lines before right-clicking to focus on just the relevant output.
+-   **필요 시 특정 출력만 선택**: 기본적으로 전체 내용을 캡처하지만, 우클릭 전에 특정 줄을 선택해 관련 출력만 보낼 수 있습니다.
 
--   **Combine terminal outputs with file mentions**: After sending terminal output to Cline, you can enhance your question by mentioning relevant files using the @ mentions feature.
+-   **파일 멘션과 결합**: 터미널 출력을 보낸 뒤 @ 멘션으로 관련 파일을 함께 전달하면 질문의 맥락을 강화할 수 있습니다.
 
--   **Contextualize build & test outputs with the terminal**: Terminal integration is particularly useful for understanding complex build errors or test failures that span multiple lines.
+-   **빌드/테스트 출력에 컨텍스트 추가**: 여러 줄에 걸친 복잡한 빌드 오류나 테스트 실패를 이해하는 데 특히 유용합니다.
 
-Next time you're staring at a cryptic error message in your terminal, try using Cline's terminal integration instead of copying and pasting. You'll get more accurate help because Cline can see the complete terminal context with proper formatting.
+다음에 터미널의 난해한 오류 메시지를 볼 때, 복사/붙여넣기 대신 Cline의 터미널 통합을 사용해 보세요. Cline이 서식이 포함된 전체 터미널 컨텍스트를 볼 수 있어 더 정확한 도움을 받을 수 있습니다.
 
-## Troubleshooting Terminal Issues
+## 터미널 문제 해결
 
-If you're experiencing issues with terminal integration, such as "Shell Integration Unavailable" or commands not showing output, please refer to our comprehensive [Terminal Integration Troubleshooting Guide](/troubleshooting/terminal-integration-guide).
+"Shell Integration Unavailable" 같은 문제나 출력이 보이지 않는 현상이 있다면 [터미널 통합 문제 해결 가이드](/troubleshooting/terminal-integration-guide)를 참고하세요.
 
-The troubleshooting guide covers:
+문제 해결 가이드에서는 다음 내용을 다룹니다:
 
--   Common terminal integration issues and quick fixes
--   Platform-specific solutions for Windows, macOS, and Linux
--   Shell-specific configurations for zsh, bash, PowerShell, and more
--   Advanced debugging techniques
--   Terminal settings optimization
+-   일반적인 터미널 통합 문제와 빠른 해결책
+-   Windows, macOS, Linux 플랫폼별 해결책
+-   zsh, bash, PowerShell 등 셸별 구성
+-   고급 디버깅 기법
+-   터미널 설정 최적화
 
 <Tip>
-	**Quick Fix**: Most terminal issues can be resolved by switching to bash in the Cline settings and increasing the shell
-	integration timeout to 10 seconds.
+	**빠른 해결:** 대부분의 터미널 문제는 Cline 설정에서 셸을 bash로 변경하고 셸 통합 타임아웃을 10초로 늘리면 해결됩니다.
 </Tip>

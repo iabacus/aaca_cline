@@ -1,9 +1,9 @@
 ---
-title: "Multi-Root Workspaces"
-sidebarTitle: "Multi-Root Workspaces"
+title: "멀티 루트 워크스페이스"
+sidebarTitle: "멀티 루트 워크스페이스"
 ---
 
-Cline works with VSCode's multi-root workspaces, letting you manage multiple project folders or repositories in a single window. Whether you're working with a monorepo or separate Git repositories, Cline can read files, write code, and run commands across all of them.
+Cline은 VS Code의 멀티 루트 워크스페이스를 지원해, 하나의 창에서 여러 프로젝트 폴더나 저장소를 관리할 수 있습니다. 모노레포든 별도 Git 저장소든, Cline은 모든 폴더에서 파일 읽기/쓰기와 명령 실행을 수행할 수 있습니다.
 
 <Frame>
   <video
@@ -17,53 +17,52 @@ Cline works with VSCode's multi-root workspaces, letting you manage multiple pro
 </Frame>
 
 <Warning>
-Multi-root workspaces have two limitations:
-- **Cline rules** only work in the primary workspace folder
-- **Checkpoints** are disabled (restored when you return to a single folder)
+멀티 루트 워크스페이스에는 두 가지 제한이 있습니다:
+- **Cline rules**는 기본 워크스페이스 폴더에서만 동작합니다
+- **체크포인트**는 비활성화됩니다(단일 폴더로 돌아오면 복원)
 
-See [Current Limitations](#current-limitations) for details.
+자세한 내용은 [현재 제한사항](#current-limitations)을 참고하세요.
 </Warning>
 
-## Understanding Multi-Root Workspaces
+## 멀티 루트 워크스페이스 이해하기
 
-Before diving in, it helps to understand the two common patterns for organizing related projects.
+시작하기 전에, 관련 프로젝트를 구성하는 두 가지 일반적인 패턴을 이해하면 도움이 됩니다.
 
-### Why Use Multi-Root Workspaces?
+### 왜 멀티 루트 워크스페이스를 사용할까?
 
-Cline can complete tasks that span multiple projects or repositories:
+Cline은 여러 프로젝트나 저장소에 걸친 작업을 수행할 수 있습니다:
 
-- **Refactoring**: Update an API contract and fix all consumers across repos
-- **Feature development**: Implement a feature that touches frontend, backend, and shared code
-- **Dependency updates**: Coordinate version bumps across related projects
-- **Documentation**: Generate docs that reference code from multiple repositories
+- **리팩터링**: API 계약을 업데이트하고 여러 저장소의 소비 코드를 수정
+- **기능 개발**: 프런트엔드, 백엔드, 공유 코드를 모두 건드리는 기능 구현
+- **의존성 업데이트**: 관련 프로젝트 전반의 버전 업그레이드 조율
+- **문서화**: 여러 저장소의 코드를 참조하는 문서 생성
 
-**Example prompt:**
+**예시 프롬프트:**
 ```
-Update the User type in the contracts repo, then update both the frontend 
-and backend to use the new fields. Make sure the API validates the new 
-required field.
+contracts 저장소의 User 타입을 업데이트한 다음, frontend와 backend 모두 새 필드를 사용하도록 수정해줘. API가 새 필수 필드를 검증하도록 해줘.
 ```
-## Setting Up a Multi-Root Workspace
 
-### Monorepos vs Multiple Repositories
+## 멀티 루트 워크스페이스 설정
 
-**Monorepo**: One Git repository containing multiple projects or packages. All code shares the same version history.
+### 모노레포 vs 다중 저장소
+
+**모노레포**: 하나의 Git 저장소에 여러 프로젝트/패키지가 포함됩니다. 모든 코드는 동일한 버전 히스토리를 공유합니다.
 
 ```
-my-company/                    # Single Git repo
+my-company/                    # 단일 Git 저장소
 ├── .git/
 ├── packages/
-│   ├── web/                   # React frontend
-│   ├── api/                   # Node.js backend
-│   └── shared/                # Common utilities
+│   ├── web/                   # React 프런트엔드
+│   ├── api/                   # Node.js 백엔드
+│   └── shared/                # 공통 유틸리티
 └── package.json
 ```
 
-**Multiple Repositories**: Separate Git repositories, each with their own history, opened together in one VSCode workspace.
+**다중 저장소**: 각각 독립적인 히스토리를 가진 여러 Git 저장소를 하나의 VS Code 워크스페이스로 함께 엽니다.
 
 ```
 ~/projects/
-├── fullstack.code-workspace   # Workspace config file
+├── fullstack.code-workspace   # 워크스페이스 설정 파일
 ├── frontend/                  # git@github.com:acme/frontend.git
 │   └── .git/
 ├── backend/                   # git@github.com:acme/backend.git
@@ -72,189 +71,169 @@ my-company/                    # Single Git repo
     └── .git/
 ```
 
-Cline supports both patterns, as well as hybrid setups where some folders are Git repositories and others are not. The key difference: with multiple repositories, each folder has its own `.git` directory and Cline tracks them independently.
+Cline은 두 패턴 모두를 지원하며, 일부 폴더만 Git 저장소이고 나머지는 아닌 하이브리드 구성도 지원합니다. 핵심 차이는 다중 저장소에서는 각 폴더가 고유한 `.git` 디렉터리를 가지며 Cline이 이를 독립적으로 추적한다는 점입니다.
 
-### Adding Folders to Your Workspace
+### 워크스페이스에 폴더 추가
 
-You can add folders to your workspace in several ways:
+다음 방법으로 폴더를 워크스페이스에 추가할 수 있습니다:
 
-- **File menu**: Use `File > Add Folder to Workspace` in VSCode
-- **Drag and drop**: Drag folders directly into VSCode's file explorer
-- **Workspace file**: Create a `.code-workspace` file (recommended for teams)
-- **Command palette**: Run `Workspaces: Add Folder to Workspace`
+- **File 메뉴**: VS Code에서 `File > Add Folder to Workspace`
+- **드래그 앤 드롭**: 폴더를 VS Code 파일 탐색기로 드래그
+- **워크스페이스 파일**: `.code-workspace` 파일 생성(팀에 권장)
+- **명령 팔레트**: `Workspaces: Add Folder to Workspace` 실행
 
-For detailed instructions, see [Microsoft's multi-root workspace guide](https://code.visualstudio.com/docs/editor/multi-root-workspaces).
+자세한 설명은 [Microsoft의 멀티 루트 워크스페이스 가이드](https://code.visualstudio.com/docs/editor/multi-root-workspaces)를 참고하세요.
 
-## Working with Multiple Repositories
+## 여러 저장소에서 작업하기
 
-When you open separate Git repositories in one workspace, Cline treats each as an independent project with its own version control.
+서로 다른 Git 저장소를 하나의 워크스페이스로 열면, Cline은 각 저장소를 고유한 프로젝트로 인식하고 독립적인 버전 관리를 수행합니다.
 
-### What Cline Tracks Per Repository
+### 저장소별로 Cline이 추적하는 것
 
-For each workspace folder, Cline detects:
+각 워크스페이스 폴더마다 Cline은 다음을 감지합니다:
 
-| Property | Description |
+| 속성 | 설명 |
 |----------|-------------|
-| **Path** | Absolute path to the folder |
-| **Name** | Derived from folder name or workspace file |
-| **VCS Type** | Git, Mercurial, or None |
-| **Commit Hash** | Current HEAD commit (for Git/Mercurial repos) |
+| **Path** | 폴더의 절대 경로 |
+| **Name** | 폴더 이름 또는 워크스페이스 파일에서 유도 |
+| **VCS Type** | Git, Mercurial 또는 없음 |
+| **Commit Hash** | 현재 HEAD 커밋(Git/Mercurial 저장소) |
 
-This means Cline understands that your frontend and backend might be at different commits, on different branches, or even use different version control systems.
+즉, 프런트엔드와 백엔드가 서로 다른 커밋, 다른 브랜치, 심지어 다른 VCS를 사용해도 Cline이 이를 이해합니다.
 
 <Note>
-While Cline detects VCS information for all workspace folders, certain features only use the **primary workspace** (the first folder): [Cline rules](/features/cline-rules), [workflows](/features/slash-commands/workflows/index), and [Git-related features](/features/at-mentions/git-mentions) like `@git` mentions.
+Cline은 모든 워크스페이스 폴더의 VCS 정보를 감지하지만, 다음 기능은 **기본 워크스페이스**(첫 번째 폴더)만 사용합니다: [Cline rules](/features/cline-rules), [workflows](/features/slash-commands/workflows/index), 그리고 `@git` 멘션 같은 [Git 관련 기능](/features/at-mentions/git-mentions).
 </Note>
 
-## Referencing Files Across Workspaces
+## 워크스페이스 간 파일 참조
 
-### Natural Language References
+### 자연어 참조
 
-Cline understands natural references to your workspaces:
-
-```
-"Read the package.json in the frontend folder"
-```
+Cline은 워크스페이스에 대한 자연어 참조를 이해합니다:
 
 ```
-"Compare the user model in backend with the TypeScript types in contracts"
+"frontend 폴더의 package.json을 읽어줘"
 ```
 
 ```
-"Search for TODO comments across all workspaces"
+"backend의 user 모델과 contracts의 TypeScript 타입을 비교해줘"
 ```
 
-### Workspace Hints Syntax
+```
+"모든 워크스페이스에서 TODO 주석을 검색해줘"
+```
 
-For explicit references, use the `@workspace:path` syntax:
+### 워크스페이스 힌트 문법
 
-| Syntax | Description |
+명시적으로 참조하려면 `@workspace:path` 문법을 사용하세요:
+
+| 문법 | 설명 |
 |--------|-------------|
-| `@frontend:src/App.tsx` | File in the "frontend" workspace |
-| `@backend:server.ts` | File in the "backend" workspace |
-| `@contracts:types/` | Folder in the "contracts" workspace |
+| `@frontend:src/App.tsx` | "frontend" 워크스페이스의 파일 |
+| `@backend:server.ts` | "backend" 워크스페이스의 파일 |
+| `@contracts:types/` | "contracts" 워크스페이스의 폴더 |
 
-This syntax is especially useful when:
-- Multiple workspaces have files with the same name
-- You want to be explicit about which project you mean
-- Cline needs to resolve ambiguity
+이 문법은 특히 다음 상황에서 유용합니다:
+- 여러 워크스페이스에 같은 이름의 파일이 있을 때
+- 어떤 프로젝트를 의미하는지 명확히 하고 싶을 때
+- Cline이 모호함을 해결해야 할 때
 
-### How Workspace Names Work
+### 워크스페이스 이름 규칙
 
-Workspace names are derived from:
-1. The `name` field in your `.code-workspace` file (if specified)
-2. The folder name (default)
+워크스페이스 이름은 다음 기준으로 결정됩니다:
+1. `.code-workspace` 파일의 `name` 필드(지정한 경우)
+2. 폴더 이름(기본값)
 
-If two folders have the same name, append numbers or use the workspace file to give them unique names.
+동일한 이름의 폴더가 있으면 번호를 붙이거나 워크스페이스 파일에서 고유 이름을 지정하세요.
 
-## Common Configurations
+## 일반적인 구성
 
-### Monorepo Development
+### 모노레포 개발
 
 ```
 ~/projects/my-app/
-├── my-app.code-workspace      # Workspace config file
-├── web/          (React frontend)
-├── api/          (Node.js backend)  
+├── my-app.code-workspace      # 워크스페이스 설정 파일
+├── web/          (React 프런트엔드)
+├── api/          (Node.js 백엔드)  
 ├── mobile/       (React Native)
-└── shared/       (Common utilities)
+└── shared/       (공통 유틸리티)
 ```
 
-All folders share one Git history. Changes across packages are atomic.
+모든 폴더가 하나의 Git 히스토리를 공유합니다. 패키지 간 변경이 원자적으로 처리됩니다.
 
-**Example prompt:** *"Update the API endpoint in both web and mobile apps to match the new backend route"*
+**예시 프롬프트:** *"web과 mobile 앱 모두에서 새 백엔드 라우트를 사용하도록 API 엔드포인트를 업데이트해줘"*
 
-### Microservices with Separate Repos
+### 마이크로서비스(개별 저장소)
 
 ```
 ~/projects/services/
-├── services.code-workspace    # Workspace config file
+├── services.code-workspace    # 워크스페이스 설정 파일
 ├── user-service/       (git: github.com/acme/user-service)
 ├── payment-service/    (git: github.com/acme/payment-service)
 ├── gateway/            (git: github.com/acme/api-gateway)
 └── proto/              (git: github.com/acme/service-protos)
 ```
 
-Each service has its own repository. Cline can update the proto definitions and regenerate clients across all services.
+각 서비스는 자신의 저장소를 갖습니다. Cline은 proto 정의를 업데이트하고 모든 서비스에서 클라이언트를 재생성할 수 있습니다.
 
-**Example prompt:** *"Add a new field to the UserProfile message in proto, then update user-service and gateway to handle it"*
+**예시 프롬프트:** *"proto의 UserProfile 메시지에 새 필드를 추가하고, user-service와 gateway가 이를 처리하도록 업데이트해줘"*
 
-### Full-Stack with Shared Contracts
+### 공유 계약 기반 풀스택
 
 ```
 ~/projects/fullstack/
-├── fullstack.code-workspace   # Workspace config file
+├── fullstack.code-workspace   # 워크스페이스 설정 파일
 ├── client/         (git: github.com/acme/web-client)
 ├── server/         (git: github.com/acme/api-server)
 └── types/          (git: github.com/acme/shared-types)
 ```
 
-The types repository defines interfaces used by both client and server. When you update a type, Cline can fix both consumers.
+types 저장소는 클라이언트와 서버에서 사용하는 인터페이스를 정의합니다. 타입을 업데이트하면 Cline이 두 소비자를 모두 수정할 수 있습니다.
 
-### Hybrid Setup
+### 하이브리드 구성
 
 ```
 ~/projects/project/
-├── project.code-workspace     # Workspace config file
+├── project.code-workspace     # 워크스페이스 설정 파일
 ├── main-app/       (git: github.com/acme/main-app)
-├── vendor/         (no VCS - vendored dependencies)
-└── scripts/        (no VCS - local automation)
+├── vendor/         (VCS 없음 - 벤더 의존성)
+└── scripts/        (VCS 없음 - 로컬 자동화)
 ```
 
-Mix of repositories and plain folders. Cline adapts to each folder's configuration.
+저장소와 일반 폴더를 혼합한 구성입니다. Cline은 각 폴더의 설정에 맞춰 동작합니다.
 
-## Current Limitations
+## 현재 제한사항
 
-Two features have limitations in multi-root workspace mode:
+멀티 루트 워크스페이스 모드에서는 두 기능에 제한이 있습니다:
 
 ### Cline Rules
 
-[Cline rules](/features/cline-rules) (`.clinerules/` directory) only work in the **primary workspace** (the first folder in your workspace). Rules in other workspace folders are ignored.
+[Cline rules](/features/cline-rules) (`.clinerules/` 디렉터리)는 **기본 워크스페이스**(첫 번째 폴더)에서만 동작합니다. 다른 폴더의 규칙은 무시됩니다.
 
-**Workaround:** Place shared rules in the primary workspace, or use global rules (`~/Documents/Cline/Rules/`) which apply everywhere.
+**우회 방법:** 공유 규칙은 기본 워크스페이스에 두거나, 모든 곳에 적용되는 전역 규칙(`~/Documents/Cline/Rules/`)을 사용하세요.
 
-### Checkpoints
+### 체크포인트
 
-[Checkpoints](/features/checkpoints) are disabled in multi-root workspace mode. Cline displays a warning when this happens.
+[체크포인트](/features/checkpoints)는 멀티 루트 워크스페이스 모드에서 비활성화됩니다. 이때 Cline은 경고를 표시합니다.
 
-**Why:** Checkpoints use a shadow Git repository to track changes. With multiple repositories, coordinating checkpoints across independent Git histories adds complexity that isn't yet supported.
+**이유:** 체크포인트는 변경 추적을 위해 섀도우 Git 저장소를 사용합니다. 여러 저장소에 걸쳐 체크포인트를 조정하는 것은 아직 지원되지 않는 복잡성이 있습니다.
 
-**Workaround:** Use your normal Git workflow. Commit frequently, or create branches for experimental work.
+**우회 방법:** 일반적인 Git 워크플로를 사용하세요. 자주 커밋하거나, 실험적 작업은 브랜치를 분리하세요.
 
-Both limitations are restored when you return to a single-folder workspace.
+두 제한사항은 단일 폴더 워크스페이스로 돌아오면 복원됩니다.
 
-## Best Practices
+## 모범 사례
 
-### Organizing Your Workspaces
+### 워크스페이스 구성
 
-1. **Group related projects** that often need coordinated changes
-2. **Use a workspace file** for reproducible setups across your team
-3. **Name folders clearly** so workspace hints are intuitive
-4. **Consider the primary workspace** for Cline rules placement
+1. **연관된 프로젝트를 묶기**: 함께 변경이 필요한 프로젝트를 그룹화
+2. **워크스페이스 파일 사용**: 팀 전체에서 재현 가능한 설정을 위해
+3. **폴더 이름 명확화**: 워크스페이스 힌트가 직관적이도록
+4. **기본 워크스페이스 고려**: Cline 규칙은 기본 폴더에 배치
 
-### Effective Prompting
+### 효과적인 프롬프트 작성
 
-- **Be specific** when it matters: *"Update the user model in the backend workspace"*
-- **Reference relationships**: *"The frontend uses types from the contracts workspace"*
-- **Describe cross-workspace changes**: *"This needs to update both web and mobile"*
-- **Scope searches** for large codebases: *"Search for 'TODO' only in the frontend workspace"*
-
-### Working with Large Workspaces
-
-- Break large tasks into workspace-specific operations when possible
-- Use [Plan mode](/features/plan-and-act) to let Cline understand structure first
-- Add a `.clineignore` file to reduce noise, speed up scanning, and keep Cline focused on source code:
-
-```text
-# Dependencies
-**/node_modules/
-
-# Build outputs
-**/dist/
-**/build/
-
-# VCS metadata
-**/.git/
-```
-
-For more patterns and gotchas, see the [.clineignore File Guide](/prompting/prompt-engineering-guide#clineignore-file-guide).
+- **중요할 때는 구체적으로**: *"backend 워크스페이스의 user 모델을 업데이트해줘"*
+- **관계를 명시**: *"frontend는 contracts 워크스페이스의 타입을 사용한다"*
+- **워크스페이스 간 변경 설명**: *"web과 mobile 둘 다 업데이트해야 한다"*
+- **대규모 코드베이스에서 검색 범위 지정**: *"frontend 워크스페이스에서만 'TODO'를 검색해줘"*

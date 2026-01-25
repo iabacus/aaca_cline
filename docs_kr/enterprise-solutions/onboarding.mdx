@@ -1,132 +1,132 @@
 ---
-title: "Onboarding"
+title: "온보딩"
 
-description: "This guide explains how administrators configure SSO provisioning and user management in Cline Enterprise."
+description: "관리자가 Cline Enterprise에서 SSO 프로비저닝과 사용자 관리를 구성하는 방법을 설명합니다."
 ---
 
-## Overview
-Cline Enterprise integrates with your existing identity provider (IdP) via WorkOS to deliver secure SSO and zero-touch user lifecycle management. In this guide, you'll connect your IdP (Okta, Azure AD, Google Workspace, or any SAML/OIDC provider), enable just-in-time (JIT) provisioning so new users are created automatically on first sign-in, and configure role mapping so permissions stay aligned with your directory—no manual invites or seat reconciliations required.
+## 개요
+Cline Enterprise는 WorkOS를 통해 기존 ID 제공자(IdP)와 통합하여 안전한 SSO와 무접촉 사용자 라이프사이클 관리를 제공합니다. 이 가이드에서는 IdP(Okta, Azure AD, Google Workspace 또는 기타 SAML/OIDC 제공자)를 연결하고, 첫 로그인 시 자동으로 사용자를 생성하는 JIT(Just-in-Time) 프로비저닝을 활성화하며, 디렉터리의 역할과 권한이 일치하도록 역할 매핑을 구성합니다. 별도의 초대나 좌석 관리가 필요 없습니다.
 
 
-## Prerequisites
+## 사전 준비
 
-- [Cline Enterprise License](https://cline.bot/enterprise)
-- Access to your identity provider (IdP) configuration (e.g., Okta, Azure AD, Google Workspace)
-- Knowledge of your organization's SSO requirements
+- [Cline Enterprise 라이선스](https://cline.bot/enterprise)
+- ID 제공자(IdP) 설정 접근 권한(예: Okta, Azure AD, Google Workspace)
+- 조직의 SSO 요구사항에 대한 이해
 
-## Configuration Steps
+## 구성 단계
 
-### Step 1: Onboard to Cline Enterprise license
+### 1단계: Cline Enterprise 라이선스 온보딩
 
-Your IdP administrator will receive an email with a link to register their organization with WorkOS during onboarding.
+IdP 관리자는 온보딩 과정에서 WorkOS에 조직을 등록하기 위한 링크가 포함된 이메일을 받게 됩니다.
 
-### Step 2: Configure Your Identity Provider
-
-<Info>
-For a short overview of where SSO configuration lives (Cline dashboard vs WorkOS vs your IdP), see [SSO Setup](/enterprise-solutions/sso-setup).
-</Info>
-
-Connect your identity provider (IdP) to WorkOS:
-
-1. In the WorkOS dashboard, go to **AuthKit → Connections**
-2. Click **Add Connection**
-3. Select your identity provider (e.g., Okta, Azure AD, Google Workspace, Generic SAML/OIDC)
-4. Follow the provider-specific setup instructions
-
-Each identity provider (IdP) will have its own setup process and required fields. Be sure to follow the specific instructions in the WorkOS dashboard for your chosen provider.
-For more explicit instruction on connecting your IdP, refer to the [WorkOS SSO documentation](https://workos.com/docs/authkit/sso)
-
-### Step 3: Configure User Provisioning
-
-Cline Enterprise uses **just-in-time provisioning** that works automatically:
-
-- **Organizations are created automatically**
-- **Users gain access automatically** on their first SSO sign-in, once their credentials have been configured by the IdP administrator.
-- **Roles sync automatically** from your IdP (Admin/Owner → Admin, Member → Member)
-- **No manual user invites or seat management** required
-
-No additional configuration is needed. Users are provisioned automatically when they sign in through SSO.
-
-### Step 4: Configure User Attributes Mapping
-
-User roles are mapped automatically from your IdP:
-
-- **Admin** in IdP → **Admin** role in Cline (Note: The first Owner of the org is created manually during onboarding)
-- **Member** in IdP → **Member** role in Cline
+### 2단계: ID 제공자 구성
 
 <Info>
-    For what each role can access, see the [Roles and Permissions](/enterprise-solutions/team-management/managing-members) page.
+SSO 구성이 어디에서 이루어지는지(Cline 대시보드 vs WorkOS vs IdP)를 간단히 보려면 [SSO 설정](/enterprise-solutions/sso-setup)을 참고하세요.
 </Info>
 
-If needed, you can configure additional user attributes in the Cline Admin console:
+ID 제공자(IdP)를 WorkOS에 연결합니다:
 
-1. Go to **Settings → Authentication → User Attributes**
-2. Map attributes such as email and name based on your IdP configuration
+1. WorkOS 대시보드에서 **AuthKit → Connections**로 이동
+2. **Add Connection** 클릭
+3. ID 제공자 선택(예: Okta, Azure AD, Google Workspace, Generic SAML/OIDC)
+4. 제공자별 설정 안내에 따라 구성
 
-For information about available user attributes, see the [WorkOS User Object Documentation](https://workos.com/docs/authkit/user-management).
+각 IdP마다 필요한 설정 과정과 필드가 다릅니다. 선택한 제공자에 대한 WorkOS 대시보드 안내를 따라 주세요.
+IdP 연결에 대한 구체적인 안내는 [WorkOS SSO 문서](https://workos.com/docs/authkit/sso)를 참고하세요.
 
-### Step 5: Test SSO Connection
+### 3단계: 사용자 프로비저닝 구성
 
-Before allowing users to sign in, test the SSO flow to ensure everything is configured correctly.
+Cline Enterprise는 **JIT(Just-in-Time) 프로비저닝**을 자동으로 사용합니다:
 
-**To test the connection:**
+- **조직이 자동으로 생성**됩니다.
+- **사용자는 첫 SSO 로그인 시 자동으로 접근 권한**을 얻습니다(IdP 관리자에 의해 자격 증명이 구성되어 있어야 함).
+- **역할이 IdP에서 자동 동기화**됩니다(Admin/Owner → Admin, Member → Member).
+- **수동 사용자 초대 또는 좌석 관리가 필요 없음**
 
-1. In the WorkOS dashboard (or Cline Admin console if available), locate and click **Test SSO Connection**
-2. You'll be redirected to your IdP's login page
-3. Enter valid credentials for a test user
-4. After successful authentication, you should be redirected back
-5. Confirm that the user's information (name, email, role) displays correctly
+추가 구성은 필요하지 않으며, 사용자는 SSO로 로그인하는 즉시 자동으로 프로비저닝됩니다.
 
-**Expected outcome:** The test user is authenticated, their account details are visible, and their role matches what's configured in your IdP.
+### 4단계: 사용자 속성 매핑 구성
 
-**If the test fails:** Double-check your IdP configuration (redirect URIs, SAML certificates, attribute mappings). See the [WorkOS SSO documentation](https://workos.com/docs/authkit/sso) for troubleshooting guidance.
+사용자 역할은 IdP에서 자동 매핑됩니다:
 
-### User Access
-
-Once SSO is configured, users in your IdP can access Cline automatically without manual invites or account setup.
-
-**First-time sign-in flow:**
-
-1. User navigates to Cline and clicks **Sign in with SSO**
-2. User authenticates via your organization's IdP
-3. Cline automatically creates their account in your Organization
-4. Role is assigned based on their IdP role (see [Step 4](#step-4-configure-user-attributes-mapping))
-5. User is redirected to Cline and can begin working
-
-**What happens automatically:**
-- Account creation with correct organization assignment
-- Role and permission assignment
-- Basic profile information (name, email) populated from IdP
-
-**No action required:** Users don't need to request access or wait for approval. Access is granted immediately upon successful IdP authentication.
-
-### Managing Access
-
-All access management and revocation of users is currently handled by your IdP:
-
-- Add users → access granted automatically on first login
-- Change roles → updated on next login
-- Remove users → access revoked automatically
+- IdP의 **Admin** → Cline의 **Admin** (참고: 조직의 첫 Owner는 온보딩 과정에서 수동으로 생성됨)
+- IdP의 **Member** → Cline의 **Member**
 
 <Info>
-Role changes sync automatically on the user's next sign-in.
+    각 역할이 접근할 수 있는 범위는 [역할 및 권한](/enterprise-solutions/team-management/managing-members)을 참고하세요.
 </Info>
 
-### Changing your IdP
+필요한 경우 Cline 관리자 콘솔에서 추가 사용자 속성을 구성할 수 있습니다:
 
-In order to change to a different IdP, please contact support and we will guide you through this process.
+1. **Settings → Authentication → User Attributes**로 이동
+2. IdP 구성에 맞춰 이메일, 이름 등의 속성 매핑
+
+사용 가능한 사용자 속성 정보는 [WorkOS User Object 문서](https://workos.com/docs/authkit/user-management)를 참고하세요.
+
+### 5단계: SSO 연결 테스트
+
+사용자에게 로그인 허용 전에 SSO 플로우가 올바르게 구성되었는지 테스트하세요.
+
+**연결 테스트 방법:**
+
+1. WorkOS 대시보드(또는 Cline 관리자 콘솔이 지원하는 경우)에서 **Test SSO Connection** 클릭
+2. IdP 로그인 페이지로 이동
+3. 테스트 사용자 자격 증명 입력
+4. 인증 성공 후 다시 리다이렉트됨
+5. 사용자 정보(이름, 이메일, 역할)가 올바르게 표시되는지 확인
+
+**기대 결과:** 테스트 사용자가 인증되고 계정 정보가 표시되며 IdP 역할과 일치해야 합니다.
+
+**테스트 실패 시:** IdP 구성(리다이렉트 URI, SAML 인증서, 속성 매핑)을 다시 확인하세요. 문제 해결은 [WorkOS SSO 문서](https://workos.com/docs/authkit/sso)를 참고하세요.
+
+### 사용자 접근
+
+SSO가 구성되면 IdP에 있는 사용자는 별도의 초대나 계정 설정 없이 자동으로 Cline에 접근할 수 있습니다.
+
+**첫 로그인 플로우:**
+
+1. 사용자가 Cline에 접속해 **Sign in with SSO** 클릭
+2. 조직의 IdP로 인증
+3. Cline이 조직 내 사용자 계정을 자동 생성
+4. IdP 역할에 따라 역할 부여(참고: [4단계](#4단계-사용자-속성-매핑-구성))
+5. Cline으로 리다이렉트되어 작업 시작
+
+**자동으로 이루어지는 일:**
+- 올바른 조직으로 계정 생성
+- 역할 및 권한 자동 부여
+- 기본 프로필 정보(이름, 이메일) IdP에서 자동 채움
+
+**추가 작업 없음:** 사용자는 접근 요청이나 승인 대기를 할 필요가 없습니다.
+
+### 접근 관리
+
+현재 사용자 접근 및 회수는 IdP에서 관리합니다:
+
+- 사용자를 추가하면 첫 로그인 시 자동 접근
+- 역할 변경은 다음 로그인에 반영
+- 사용자를 제거하면 다음 로그인 시 접근 차단
+
+<Info>
+역할 변경은 사용자의 다음 로그인에서 자동 동기화됩니다.
+</Info>
+
+### IdP 변경
+
+다른 IdP로 변경하려면 지원팀에 문의하세요. 절차를 안내해 드립니다.
 
 ---
 
-## Verification
+## 검증
 
-Steps to verify successful configuration:
+구성이 성공적으로 완료되었는지 확인하는 단계:
 
-1. **Test User Sign-In**: Have a test user sign in through the SSO flow (access is granted automatically on first login)
-2. **Verify User Provisioning**: Confirm that the user is automatically created and has appropriate role permissions
-3. **Check User Attributes**: Verify that user information (name, email, organization) is correctly populated
-4. **Test Role Changes**: Update a user's role in your IdP and verify it syncs on their next login
-5. **Test User Deprovisioning**: Remove a user from your IdP and verify they lose access to Cline on their next login attempt
-6. **Review Audit Logs**: Check WorkOS audit logs to ensure authentication events are being recorded
+1. **테스트 사용자 로그인**: SSO 플로우로 테스트 사용자를 로그인(첫 로그인 시 자동 접근)
+2. **사용자 프로비저닝 확인**: 사용자가 자동 생성되고 적절한 역할이 부여되는지 확인
+3. **사용자 속성 확인**: 이름, 이메일, 조직 정보가 올바르게 채워졌는지 확인
+4. **역할 변경 테스트**: IdP에서 역할을 변경하고 다음 로그인에서 동기화되는지 확인
+5. **사용자 해제 테스트**: IdP에서 사용자를 제거하고 다음 로그인 시 접근이 차단되는지 확인
+6. **감사 로그 확인**: WorkOS 감사 로그에서 인증 이벤트가 기록되는지 확인
 
 ---

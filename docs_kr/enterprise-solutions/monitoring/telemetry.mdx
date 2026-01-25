@@ -1,77 +1,77 @@
 ---
-title: "Cline Telemetry"
-sidebarTitle: "Cline Telemetry"
-description: "Configure usage analytics and event tracking"
+title: "Cline 텔레메트리"
+sidebarTitle: "Cline 텔레메트리"
+description: "사용량 분석과 이벤트 추적 구성"
 ---
 
-Cline includes telemetry to help understand usage patterns and improve the product. Users can control whether to share this data.
+Cline에는 사용 패턴을 이해하고 제품을 개선하기 위한 텔레메트리가 포함되어 있습니다. 사용자는 이 데이터 공유 여부를 직접 제어할 수 있습니다.
 
-## What is Cline Telemetry?
+## Cline 텔레메트리란?
 
-Telemetry captures anonymous usage events such as:
+텔레메트리는 다음과 같은 익명 사용 이벤트를 수집합니다:
 
-- Features used (which tools, commands, workflows)
-- Task completion rates
-- Error occurrences
-- Performance metrics
+- 사용된 기능(도구, 명령, 워크플로)
+- 작업 완료율
+- 오류 발생
+- 성능 지표
 
 <Info>
-All telemetry data is **anonymous** and does not include code content, file contents, or other sensitive information.
+모든 텔레메트리 데이터는 **익명**이며 코드 내용, 파일 내용, 기타 민감 정보를 포함하지 않습니다.
 </Info>
 
-## User Controls
+## 사용자 제어
 
-### Enabling/Disabling Cline Telemetry
+### Cline 텔레메트리 활성화/비활성화
 
-Individual users can control telemetry through Cline settings:
+개별 사용자는 Cline 설정에서 텔레메트리를 제어할 수 있습니다:
 
-1. Open Cline settings
-2. Find "Cline Telemetry" toggle
-3. Enable or disable as preferred
+1. Cline 설정 열기
+2. "Cline Telemetry" 토글 찾기
+3. 원하는 대로 켜거나 끄기
 
-Changes take effect immediately.
+변경 사항은 즉시 적용됩니다.
 
-### What Gets Collected
+### 수집되는 항목
 
-When telemetry is enabled, Cline captures:
+텔레메트리가 활성화되면 다음을 수집합니다:
 
 <AccordionGroup>
-  <Accordion title="Feature Usage" icon="cursor-click">
-    - Tools executed (e.g., read_file, execute_command)
-    - Slash commands used
-    - Workflows triggered
-    - Settings changed
+  <Accordion title="기능 사용" icon="cursor-click">
+    - 실행된 도구(예: read_file, execute_command)
+    - 사용된 슬래시 명령
+    - 트리거된 워크플로
+    - 변경된 설정
   </Accordion>
   
-  <Accordion title="Task Metrics" icon="tasks">
-    - Task started/completed events
-    - Mode switches (Plan/Act)
-    - Checkpoint usage
-    - Task duration
+  <Accordion title="작업 메트릭" icon="tasks">
+    - 작업 시작/완료 이벤트
+    - 모드 전환(Plan/Act)
+    - 체크포인트 사용
+    - 작업 소요 시간
   </Accordion>
   
-  <Accordion title="Error Events" icon="triangle-exclamation">
-    - API failures
-    - Tool execution errors
-    - System errors
-    - Error types and frequencies
+  <Accordion title="오류 이벤트" icon="triangle-exclamation">
+    - API 실패
+    - 도구 실행 오류
+    - 시스템 오류
+    - 오류 유형 및 빈도
   </Accordion>
 </AccordionGroup>
 
-### What Doesn't Get Collected
+### 수집하지 않는 항목
 
-Cline Telemetry **never** includes:
+Cline 텔레메트리는 **절대** 다음을 포함하지 않습니다:
 
-- Your code or file contents
-- File paths or names
-- Command arguments or parameters
-- Conversation content
-- Personal information
-- API keys or credentials
+- 코드 또는 파일 내용
+- 파일 경로 또는 이름
+- 명령 인자/파라미터
+- 대화 내용
+- 개인정보
+- API 키 또는 자격 증명
 
-## Enterprise Configuration
+## 엔터프라이즈 구성
 
-Administrators can set default telemetry state through remote configuration:
+관리자는 원격 구성으로 기본 텔레메트리 상태를 설정할 수 있습니다:
 
 ```json
 {
@@ -80,54 +80,54 @@ Administrators can set default telemetry state through remote configuration:
 ```
 
 <Note>
-Even with enterprise configuration, individual users can still disable Cline Telemetry in their local settings.
+엔터프라이즈 구성이 있어도 개별 사용자는 로컬 설정에서 Cline 텔레메트리를 끌 수 있습니다.
 </Note>
 
-## Advanced Monitoring
+## 고급 모니터링
 
-For organizations needing detailed monitoring, Cline supports optional OpenTelemetry integration to export telemetry data to your own observability systems.
+더 상세한 모니터링이 필요한 조직은 OpenTelemetry 통합으로 텔레메트리 데이터를 자체 관측성 시스템으로 내보낼 수 있습니다.
 
-See [Enterprise Monitoring](/enterprise-solutions/monitoring/overview) for details on available monitoring options.
+사용 가능한 모니터링 옵션은 [엔터프라이즈 모니터링](/enterprise-solutions/monitoring/overview)을 참고하세요.
 
-## Privacy
+## 개인정보
 
-Cline's telemetry is designed with privacy in mind:
+Cline 텔레메트리는 개인정보를 고려해 설계되었습니다:
 
 <CardGroup cols={2}>
-  <Card title="Anonymous" icon="user-secret">
-    No personal information is collected
+  <Card title="익명성" icon="user-secret">
+    개인정보를 수집하지 않음
   </Card>
   
-  <Card title="Optional" icon="toggle-on">
-    Users can disable at any time
+  <Card title="선택 사항" icon="toggle-on">
+    사용자가 언제든 비활성화 가능
   </Card>
   
-  <Card title="Local First" icon="laptop">
-    Code never leaves your machine
+  <Card title="로컬 우선" icon="laptop">
+    코드가 기기 밖으로 나가지 않음
   </Card>
   
-  <Card title="Transparent" icon="eye">
-    Open source - see exactly what's collected
+  <Card title="투명성" icon="eye">
+    오픈 소스 - 수집 항목을 정확히 확인 가능
   </Card>
 </CardGroup>
 
-## Why Telemetry Matters
+## 텔레메트리가 중요한 이유
 
-Anonymous usage data helps:
+익명 사용 데이터는 다음에 도움을 줍니다:
 
-- **Identify bugs**: Discover issues affecting users
-- **Prioritize features**: Focus on most-used capabilities
-- **Improve performance**: Find and fix slow operations
-- **Enhance reliability**: Track and reduce error rates
+- **버그 식별**: 사용자에게 영향을 주는 문제 발견
+- **기능 우선순위 결정**: 가장 많이 쓰는 기능에 집중
+- **성능 개선**: 느린 동작을 찾아 개선
+- **안정성 향상**: 오류율 추적 및 감소
 
-## Related
+## 관련
 
 <CardGroup cols={2}>
   <Card title="OpenTelemetry" icon="chart-line" href="/enterprise-solutions/monitoring/opentelemetry">
-    Enterprise monitoring and observability
+    엔터프라이즈 모니터링 및 관측성
   </Card>
   
-  <Card title="Privacy" icon="shield" href="/more-info/telemetry">
-    Full telemetry documentation
+  <Card title="개인정보" icon="shield" href="/more-info/telemetry">
+    텔레메트리 전체 문서
   </Card>
 </CardGroup>

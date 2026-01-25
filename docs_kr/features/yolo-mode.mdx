@@ -1,83 +1,83 @@
 ---
-title: "YOLO Mode"
-sidebarTitle: "YOLO Mode"
+title: "YOLO 모드"
+sidebarTitle: "YOLO 모드"
 ---
 
-YOLO mode is exactly what it sounds like - Cline auto-approves everything. Check the box in feature settings and he'll execute file changes, terminal commands, even transitions from Plan to Act mode without asking.
+YOLO 모드는 말 그대로입니다. Cline이 모든 것을 자동 승인합니다. 기능 설정에서 체크박스를 켜면, 파일 변경, 터미널 명령, Plan→Act 전환까지 묻지 않고 실행합니다.
 
-Think of it as [Auto Approve](/features/auto-approve) on steroids - instead of granular permissions, YOLO mode gives Cline complete autonomy.
+[자동 승인](/features/auto-approve)을 극단으로 올린 버전이라고 생각하세요. 세부 권한 대신 YOLO 모드는 Cline에게 완전한 자율성을 부여합니다.
 
 <Note>
-**Warning: This is dangerous.** YOLO mode disables all safety checks. Cline will execute whatever he decides without asking permission.
+**경고: 위험합니다.** YOLO 모드는 모든 안전 체크를 비활성화합니다. Cline은 권한을 묻지 않고 판단대로 실행합니다.
 </Note>
 
-## What Gets Auto-Approved
+## 자동 승인되는 항목
 
-When YOLO mode is enabled, Cline automatically approves:
+YOLO 모드가 활성화되면 Cline은 다음을 자동 승인합니다:
 
-- **All file operations** - reading, writing, and modifying files anywhere on your system
-- **All terminal commands** - including potentially destructive operations
-- **Browser actions** - web scraping, form submissions, navigation
-- **MCP server tools** - external integrations and API calls
-- **Mode transitions** - automatic switching from Plan to Act mode
+- **모든 파일 작업** - 시스템 어디서든 파일 읽기/쓰기/수정
+- **모든 터미널 명령** - 잠재적으로 파괴적인 작업 포함
+- **브라우저 동작** - 웹 스크래핑, 폼 제출, 네비게이션
+- **MCP 서버 도구** - 외부 통합 및 API 호출
+- **모드 전환** - Plan 모드에서 Act 모드로 자동 전환
 
-Essentially, every safety guardrail is removed. Cline operates with complete autonomy.
+즉, 모든 안전 가드레일이 제거됩니다. Cline은 완전한 자율성으로 동작합니다.
 
-## How to Enable YOLO Mode
+## YOLO 모드 활성화 방법
 
-Navigate to Cline Settings → Features and check the "YOLO Mode" box. That's it - no confirmation dialogs, no additional warnings. Once enabled, Cline will start auto-approving all actions immediately.
+Cline Settings → Features에서 "YOLO Mode" 체크박스를 켜면 됩니다. 끝입니다. 추가 확인이나 경고 없이 바로 적용됩니다. 활성화되면 Cline은 즉시 모든 작업을 자동 승인하기 시작합니다.
 
-To disable it, simply uncheck the box. Any pending actions will still require your approval once YOLO mode is turned off.
+끄려면 체크박스를 해제하면 됩니다. YOLO 모드를 끈 이후에는 미승인 작업이 다시 승인 요청을 받습니다.
 
-## When You Might Use This
+## 이런 경우에 사용할 수 있음
 
-YOLO mode was built primarily for our upcoming scriptable CLI where fully autonomous execution makes sense. In the GUI, you might consider it for:
+YOLO 모드는 완전 자동 실행이 필요한 스크립터블 CLI를 위해 설계되었습니다. GUI에서는 다음 상황에 고려할 수 있습니다:
 
-**Rapid prototyping** where you want zero friction and don't care about potential mistakes. Perfect for throwaway experiments or exploring new ideas quickly.
+**빠른 프로토타이핑**: 마찰 없이 빠르게 시도하고 잠재 실수에 개의치 않을 때. 버리기용 실험이나 아이디어 탐색에 적합합니다.
 
-**Trusted, repetitive tasks** where you've already validated Cline's approach and want to eliminate approval overhead. Think routine refactoring or well-established patterns.
+**신뢰할 수 있는 반복 작업**: Cline의 접근을 이미 검증했고, 승인 오버헤드를 없애고 싶을 때. 루틴 리팩터링이나 확립된 패턴에 적합합니다.
 
-**Demonstration purposes** where you want to show Cline's capabilities without constant interruptions.
+**데모 목적**: 계속 승인 클릭 없이 Cline의 역량을 보여주고 싶을 때.
 
-## What Could Go Wrong
+## 무엇이 잘못될 수 있나
 
-Since YOLO mode removes all safety checks, Cline could:
+YOLO 모드는 모든 안전 체크를 제거하므로 Cline이 다음을 할 수 있습니다:
 
-- Delete important files without warning
-- Execute commands that modify system settings
-- Make network requests to external services
-- Overwrite configuration files
-- Install or uninstall software packages
-- Commit and push changes to version control
+- 중요한 파일을 경고 없이 삭제
+- 시스템 설정을 변경하는 명령 실행
+- 외부 서비스로 네트워크 요청 전송
+- 설정 파일 덮어쓰기
+- 소프트웨어 패키지 설치 또는 제거
+- 버전 관리에 변경 사항 커밋 및 push
 
-The risk level depends entirely on what you ask Cline to do. Simple tasks remain relatively safe, but complex requests can have unpredictable consequences.
+위험 수준은 Cline에게 요청하는 작업에 따라 달라집니다. 단순 작업은 비교적 안전하지만, 복잡한 요청은 예측 불가능한 결과를 낳을 수 있습니다.
 
-## Best Practices
+## 모범 사례
 
-If you decide to use YOLO mode:
+YOLO 모드를 사용할 경우:
 
-**Start with isolated environments.** Use it in throwaway projects or sandboxed environments first. Never enable it on production codebases until you understand the risks.
+**격리된 환경부터 시작하세요.** 처음에는 버리기용 프로젝트나 샌드박스 환경에서 사용하세요. 위험을 이해하기 전까지는 프로덕션 코드베이스에서 사용하지 마세요.
 
-**Be specific with requests.** Vague instructions combined with unlimited permissions can lead to unexpected results. The clearer your requirements, the more predictable Cline's actions.
+**요청을 구체적으로 작성하세요.** 모호한 지시와 무제한 권한이 결합되면 예상치 못한 결과를 낳기 쉽습니다. 요구사항이 명확할수록 Cline의 행동은 예측 가능해집니다.
 
-**Monitor the output.** Even though Cline doesn't ask for permission, he still shows you what he's doing. Watch the terminal output and file changes as they happen.
+**출력을 모니터링하세요.** 승인 요청은 없지만, Cline은 무엇을 하는지 계속 보여줍니다. 터미널 출력과 파일 변경을 확인하세요.
 
-**Keep version control handy.** Make sure you can easily revert changes if something goes wrong. Git becomes your safety net when YOLO mode is your workflow.
+**버전 관리를 준비하세요.** 문제가 생겼을 때 쉽게 되돌릴 수 있어야 합니다. YOLO 모드에서는 Git이 안전망이 됩니다.
 
-## Inspiration: What Becomes Possible
+## 영감: 무엇이 가능해지는가
 
-With YOLO mode enabled, you can:
+YOLO 모드를 켜면 다음이 가능해집니다:
 
-**Build entire applications** from a single prompt. Describe what you want and let Cline handle everything - file creation, dependency installation, configuration setup, even deployment scripts.
+**단일 프롬프트로 전체 앱 구축**: 원하는 것을 설명하면 Cline이 파일 생성, 의존성 설치, 설정 구성, 배포 스크립트까지 처리합니다.
 
-**Automate complex workflows** that normally require dozens of approval clicks. Data processing pipelines, build system setup, or multi-step refactoring operations become seamless.
+**복잡한 워크플로 자동화**: 수십 번의 승인 클릭이 필요한 작업을 자동화합니다. 데이터 처리 파이프라인, 빌드 시스템 설정, 다단계 리팩터링이 매끄럽게 진행됩니다.
 
-**Rapid iteration cycles** where you can quickly test ideas without approval friction. Perfect for exploring different approaches or experimenting with new technologies.
+**빠른 반복 사이클**: 승인 마찰 없이 아이디어를 빠르게 실험할 수 있습니다. 새로운 접근법이나 기술 실험에 최적입니다.
 
-**Live demonstrations** where you can show Cline's full capabilities without stopping to approve every action. Great for presentations or teaching scenarios.
+**라이브 데모**: 모든 동작을 승인하지 않고도 Cline의 역량을 보여줄 수 있습니다. 프레젠테이션이나 교육에 좋습니다.
 
-The key is understanding that YOLO mode transforms Cline from an interactive assistant into an autonomous agent. Use that power wisely.
+핵심은 YOLO 모드가 Cline을 대화형 어시스턴트에서 자율 에이전트로 바꾼다는 점입니다. 그 힘을 현명하게 사용하세요.
 
 ---
 
-Questions or feedback? Reach us in our [Discord](https://discord.gg/cline) or [r/cline](https://reddit.com/r/cline).
+질문이나 피드백이 있나요? [Discord](https://discord.gg/cline) 또는 [r/cline](https://reddit.com/r/cline)에서 연락해 주세요.

@@ -1,33 +1,33 @@
 ---
-title: "LiteLLM & Cline (using Codestral)"
-description: "Learn how to set up and run LiteLLM with Cline using the Codestral model. This guide covers Docker setup, configuration, and integration with Cline."
+title: "LiteLLM & Cline (Codestral 사용)"
+description: "Codestral 모델로 LiteLLM을 설정해 Cline에서 사용하는 방법을 알아보세요. 이 가이드는 Docker 설정, 구성, Cline 연동을 다룹니다."
 ---
 
-### Using LiteLLM with Cline
+### Cline에서 LiteLLM 사용하기
 
-This guide demonstrates how to run a demo for LiteLLM starting with the Codestral model for use with Cline.
+이 가이드는 Codestral 모델을 사용해 Cline과 함께 사용할 LiteLLM 데모를 실행하는 방법을 보여줍니다.
 
-#### Prerequisites
+#### 사전 준비
 
--   [Docker CLI or Docker Desktop](https://www.docker.com/get-started/) installed to run the LiteLLM image locally
--   For this example config: A Codestral API Key (different from the Mistral API Keys)
+-   로컬에서 LiteLLM 이미지를 실행하기 위한 [Docker CLI 또는 Docker Desktop](https://www.docker.com/get-started/) 설치
+-   이 예시 구성에 필요한 Codestral API 키(Mistral API 키와는 다름)
 
-#### Setup
+#### 설정
 
-1. **Create a `.env` file and fill in the appropriate field**
+1. **`.env` 파일을 만들고 필요한 값을 입력합니다**
 
     ```bash
-    # Tip: Use the following command to generate a random alphanumeric key:
+    # 팁: 다음 명령으로 임의의 영숫자 키를 생성할 수 있습니다:
     # openssl rand -base64 32 | tr -dc 'A-Za-z0-9' | head -c 32
     LITELLM_MASTER_KEY=YOUR_LITELLM_MASTER_KEY
     CODESTRAL_API_KEY=YOUR_CODESTRAL_API_KEY
     ```
 
-    _Note: Although this is limited to localhost, it's a good practice set LITELLM_MASTER_KEY to something secure_
+    _참고: localhost에만 제한하더라도 LITELLM_MASTER_KEY는 안전한 값으로 설정하는 것이 좋습니다._
 
-2. **Configuration**
+2. **구성**
 
-    We'll need to create a `config.yaml` file to contain our LiteLLM configuration. In this case we'll just have one model, 'codestral-latest' and label it 'codestral'
+    LiteLLM 구성을 담을 `config.yaml` 파일을 만듭니다. 이 경우 모델은 하나만 사용하며 `codestral-latest`를 `codestral`로 라벨링합니다.
 
     ```yaml
     model_list:
@@ -37,9 +37,9 @@ This guide demonstrates how to run a demo for LiteLLM starting with the Codestra
               api_key: os.environ/CODESTRAL_API_KEY
     ```
 
-#### Running the Demo
+#### 데모 실행
 
-1. **Startup the LiteLLM docker container**
+1. **LiteLLM Docker 컨테이너 시작**
 
     ```bash
     docker run \
@@ -50,15 +50,15 @@ This guide demonstrates how to run a demo for LiteLLM starting with the Codestra
         --config /app/config.yaml --detailed_debug
     ```
 
-2. **Setup Cline**
+2. **Cline 설정**
 
-    Once the LiteLLM server is up and running you can set it up in Cline:
+    LiteLLM 서버가 실행되면 Cline에서 다음과 같이 설정합니다:
 
-    - Base URL should be `http://0.0.0.0:4000/v1`
-    - API Key should be the one you set in `.env` for LITELLM_MASTER_KEY
-    - Model ID is `codestral` or whatever you named it under `config.yaml`
+    - Base URL은 `http://0.0.0.0:4000/v1`
+    - API Key는 `.env`에서 설정한 LITELLM_MASTER_KEY
+    - Model ID는 `codestral` 또는 `config.yaml`에서 지정한 이름
 
-#### Getting Help
+#### 도움받기
 
 -   [LiteLLM Documentation](https://docs.litellm.ai/)
 -   [Mistral AI Console](https://console.mistral.ai/)

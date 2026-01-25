@@ -1,48 +1,48 @@
 ---
-title: "AI Provider Configuration"
-sidebarTitle: "Overview"
-description: "Configure AI provider settings for your Cline deployment"
+title: "AI 제공자 구성"
+sidebarTitle: "개요"
+description: "Cline 배포를 위한 AI 제공자 설정을 구성합니다"
 ---
 
 <Info>
-**Configuration Path: Self-Hosted**
+**구성 경로: 자체 호스팅**
 
-This section covers provider configuration for self-hosted deployments. For web-based configuration through app.cline.bot, see [SaaS Provider Configuration](/enterprise-solutions/configuration/remote-configuration/overview).
+이 섹션은 자체 호스팅 배포를 위한 제공자 구성을 다룹니다. app.cline.bot을 통한 웹 기반 구성은 [SaaS 제공자 구성](/enterprise-solutions/configuration/remote-configuration/overview)을 참고하세요.
 </Info>
 
-Configure which AI providers your team can use and manage provider credentials centrally. Cline supports major AI providers with enterprise-grade authentication options.
+팀이 사용할 AI 제공자를 선택하고 자격 증명을 중앙에서 관리합니다. Cline은 주요 AI 제공자를 엔터프라이즈급 인증 옵션과 함께 지원합니다.
 
-## Supported Providers
+## 지원 제공자
 
 <CardGroup cols={2}>
   <Card title="AWS Bedrock" icon="aws" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/aws-bedrock">
-    Amazon's managed service for Claude and other foundation models
+    Claude 및 기타 파운데이션 모델을 위한 Amazon 관리형 서비스
   </Card>
   
   <Card title="Google Vertex AI" icon="google" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/google-vertex">
-    Google Cloud's AI platform with Gemini and PaLM models
+    Gemini 및 PaLM 모델을 제공하는 Google Cloud AI 플랫폼
   </Card>
   
   <Card title="LiteLLM" icon="zap" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/litellm">
-    Universal proxy for accessing 100+ AI models through a unified API
+    통합 API로 100+ AI 모델에 접근하는 범용 프록시
   </Card>
   
-  <Card title="Custom Providers" icon="plug" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/custom">
-    OpenAI-compatible APIs and self-hosted models
+  <Card title="커스텀 제공자" icon="plug" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/custom">
+    OpenAI 호환 API 및 자체 호스팅 모델
   </Card>
 </CardGroup>
 
-## What is Provider Configuration?
+## 제공자 구성은 무엇인가요?
 
-Provider configuration in Cline allows administrators to:
+Cline의 제공자 구성을 통해 관리자는 다음을 할 수 있습니다:
 
-1. **Manage Credentials Centrally**: Store API keys and authentication details in one place
-2. **Control Model Access**: Specify which models teams can use
-3. **Enforce Provider Usage**: Direct all team members to approved providers
+1. **자격 증명 중앙 관리**: API 키와 인증 정보를 한 곳에서 저장
+2. **모델 접근 제어**: 팀에서 사용할 수 있는 모델을 지정
+3. **제공자 사용 강제**: 승인된 제공자만 사용하도록 제한
 
-## How It Works
+## 동작 방식
 
-Provider settings are configured through your remote configuration JSON file:
+제공자 설정은 원격 구성 JSON 파일에서 구성합니다:
 
 ```json
 {
@@ -54,43 +54,43 @@ Provider settings are configured through your remote configuration JSON file:
 }
 ```
 
-When configured, these settings:
-- Apply to all team members automatically
-- Override individual user settings
-- Ensure consistent provider usage across the team
+구성되면:
+- 모든 팀원에게 자동 적용
+- 개별 사용자 설정을 덮어씀
+- 팀 전체에서 일관된 제공자 사용 보장
 
-## Configuration Options
+## 구성 옵션
 
-### Provider Selection
+### 제공자 선택
 
-Choose from supported providers:
-- **bedrock**: Use AWS Bedrock
-- **vertex**: Use Google Vertex AI  
-- **openai**: Use OpenAI API
-- **azure**: Use Azure OpenAI
-- **litellm**: Use a LiteLLM proxy
+지원 제공자:
+- **bedrock**: AWS Bedrock 사용
+- **vertex**: Google Vertex AI 사용  
+- **openai**: OpenAI API 사용
+- **azure**: Azure OpenAI 사용
+- **litellm**: LiteLLM 프록시 사용
 
-### Authentication
+### 인증
 
-Each provider supports different authentication methods:
+제공자별 인증 방식이 다릅니다:
 
 **AWS Bedrock:**
-- IAM roles with cross-account access
-- Access keys (not recommended for production)
+- 교차 계정 접근이 가능한 IAM 역할
+- 액세스 키(프로덕션 권장 안 함)
 
 **Google Vertex AI:**
-- Service account JSON keys
-- Workload Identity (for GKE deployments)
+- 서비스 계정 JSON 키
+- Workload Identity(GKE 배포 시)
 
 **OpenAI/Azure:**
-- API keys
+- API 키
 
 **LiteLLM:**
-- Endpoint URL + API key
+- 엔드포인트 URL + API 키
 
-## Example Configurations
+## 구성 예시
 
-### AWS Bedrock with IAM Role
+### IAM 역할을 사용하는 AWS Bedrock
 ```json
 {
   "providerSettings": {
@@ -112,7 +112,7 @@ Each provider supports different authentication methods:
 }
 ```
 
-### LiteLLM Proxy
+### LiteLLM 프록시
 ```json
 {
   "providerSettings": {
@@ -123,22 +123,22 @@ Each provider supports different authentication methods:
 }
 ```
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Configure AWS Bedrock" icon="aws" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/aws-bedrock">
-    Set up AWS Bedrock integration
+  <Card title="AWS Bedrock 구성" icon="aws" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/aws-bedrock">
+    AWS Bedrock 통합 설정
   </Card>
   
-  <Card title="Configure Google Vertex" icon="google" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/google-vertex">
-    Set up Google Vertex AI integration
+  <Card title="Google Vertex 구성" icon="google" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/google-vertex">
+    Google Vertex AI 통합 설정
   </Card>
   
-  <Card title="Configure LiteLLM" icon="zap" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/litellm">
-    Set up LiteLLM proxy integration
+  <Card title="LiteLLM 구성" icon="zap" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/litellm">
+    LiteLLM 프록시 통합 설정
   </Card>
   
-  <Card title="Configure Custom Provider" icon="plug" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/custom">
-    Set up custom OpenAI-compatible provider
+  <Card title="커스텀 제공자 구성" icon="plug" href="/enterprise-solutions/configuration/infrastructure-configuration/providers/custom">
+    OpenAI 호환 커스텀 제공자 설정
   </Card>
 </CardGroup>

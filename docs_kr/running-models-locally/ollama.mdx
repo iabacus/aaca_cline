@@ -1,31 +1,31 @@
 ---
 title: "Ollama"
-description: "A quick guide to setting up Ollama for local AI model execution with Cline."
+description: "Cline에서 로컬 AI 모델 실행을 위해 Ollama를 설정하는 빠른 가이드입니다."
 ---
 
-### Prerequisites
+### 사전 준비
 
--   Windows, macOS, or Linux computer
--   Cline installed in VS Code
+-   Windows, macOS, 또는 Linux 컴퓨터
+-   VS Code에 Cline 설치
 
-### Setup Steps
+### 설정 단계
 
-#### 1. Install Ollama
+#### 1. Ollama 설치
 
--   Visit [ollama.com](https://ollama.com)
--   Download and install for your operating system
+-   [ollama.com](https://ollama.com) 방문
+-   운영체제에 맞는 버전 다운로드 및 설치
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(2)%20(1)%20(1).png"
-		alt="Ollama download page"
+		alt="Ollama 다운로드 페이지"
 	/>
 </Frame>
 
-#### 2. Choose and Download a Model
+#### 2. 모델 선택 및 다운로드
 
--   Browse models at [ollama.com/search](https://ollama.com/search)
--   Select model and copy command:
+-   [ollama.com/search](https://ollama.com/search)에서 모델 탐색
+-   모델을 선택하고 명령 복사:
 
     ```bash
     ollama run [model-name]
@@ -34,13 +34,13 @@ description: "A quick guide to setting up Ollama for local AI model execution wi
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/ollama-model-grab%20(2).gif"
-		alt="Selecting a model in Ollama"
+		alt="Ollama에서 모델 선택"
 	/>
 </Frame>
 
--   Open your Terminal and run the command:
+-   터미널을 열고 명령 실행:
 
-    -   Example:
+    -   예시:
 
         ```bash
         ollama run llama2
@@ -49,59 +49,59 @@ description: "A quick guide to setting up Ollama for local AI model execution wi
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/starting-ollama-terminal%20(2).gif"
-		alt="Running Ollama in terminal"
+		alt="터미널에서 Ollama 실행"
 	/>
 </Frame>
 
-Your model is now ready to use within Cline.
+이제 모델을 Cline에서 사용할 준비가 완료되었습니다.
 
-#### 3. Configure Cline
+#### 3. Cline 설정
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/ollama-setup.gif"
-		alt="Complete Ollama setup process"
+		alt="Ollama 전체 설정 과정"
 	/>
 </Frame>
 
-Open VS Code and configure Cline:
+VS Code를 열고 Cline을 설정합니다:
 
-1. Click the Cline settings icon
-2. Select "Ollama" as your API provider
-3. Base URL: `http://localhost:11434/` (default, usually no need to change)
-4. Select your model from the dropdown
+1. Cline 설정 아이콘 클릭
+2. API provider로 "Ollama" 선택
+3. Base URL: `http://localhost:11434/` (기본값, 보통 변경 불필요)
+4. 드롭다운에서 모델 선택
 
-### Recommended Models
+### 추천 모델
 
-For the best experience with Cline, use **Qwen 2.5 Coder 32B**. This model provides strong coding capabilities and reliable tool use for local development.
+Cline에 가장 적합한 모델은 **Qwen 2.5 Coder 32B**입니다. 로컬 개발에서 강력한 코딩 성능과 안정적인 도구 사용을 제공합니다.
 
-To download it:
+다운로드 방법:
 ```bash
 ollama pull qwen2.5-coder:32b
 ```
 
-Other capable models include:
-- `mistral-small:latest` - Good balance of performance and speed
-- `codellama:34b-code` - Optimized for coding tasks
+다른 추천 모델:
+- `mistral-small:latest` - 성능과 속도의 균형이 좋음
+- `codellama:34b-code` - 코딩 작업에 최적화
 
-### Important Notes
+### 중요 참고사항
 
--   Start Ollama before using with Cline
--   Keep Ollama running in background
--   First model download may take several minutes
+-   Cline과 함께 사용하기 전에 Ollama를 시작하세요
+-   Ollama를 백그라운드에서 실행 상태로 유지하세요
+-   첫 모델 다운로드는 크기에 따라 수 분이 걸릴 수 있습니다
 
-### Enable Compact Prompts
+### Compact Prompts 활성화
 
-For better performance with local models, enable compact prompts in Cline settings. This reduces the prompt size by 90% while maintaining core functionality.
+로컬 모델에서 더 나은 성능을 위해 Cline 설정에서 compact prompts를 활성화하세요. 핵심 기능을 유지하면서 프롬프트 크기를 90% 줄입니다.
 
-Navigate to Cline Settings → Features → Use Compact Prompt and toggle it on.
+Cline Settings → Features → Use Compact Prompt로 이동해 토글을 켭니다.
 
-### Troubleshooting
+### 문제 해결
 
-If Cline can't connect to Ollama:
+Cline이 Ollama에 연결하지 못하는 경우:
 
-1. Verify Ollama is running
-2. Check base URL is correct
-3. Ensure model is downloaded
+1. Ollama가 실행 중인지 확인
+2. Base URL이 올바른지 확인
+3. 모델이 다운로드되었는지 확인
 
-Need more info? Read the [Ollama Docs](https://github.com/ollama/ollama/blob/main/docs/api.md).
+더 자세한 정보는 [Ollama Docs](https://github.com/ollama/ollama/blob/main/docs/api.md)를 참고하세요.

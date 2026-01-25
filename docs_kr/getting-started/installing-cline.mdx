@@ -1,33 +1,33 @@
 ---
-title: "Installing Cline"
-description: "Get Cline up and running in your favorite IDE with these simple installation steps"
+title: "Cline 설치"
+description: "간단한 설치 단계로 선호하는 IDE에서 Cline을 시작하세요"
 ---
 
 <Note>
-**Ready to get started?** Installation takes less than 2 minutes! Choose your editor below and follow the simple steps.
+**시작할 준비가 되셨나요?** 설치는 2분도 걸리지 않습니다! 아래에서 에디터를 선택하고 간단한 단계를 따라가세요.
 </Note>
 
-## Before You Begin
+## 시작 전 준비
 
 <CardGroup cols={1}>
-  <Card title="Create Your Account" icon="user-plus" href="https://app.cline.bot/login">
-    Sign up for a **free Cline account** to get:
-    - Access to multiple AI models including stealth models
-    - Seamless setup without managing API keys
-    - Occasional free inferencing through partner providers
+  <Card title="계정 만들기" icon="user-plus" href="https://app.cline.bot/login">
+    **무료 Cline 계정**을 만들면 다음을 사용할 수 있습니다:
+    - stealth 모델을 포함한 다양한 AI 모델 접근
+    - API 키 관리 없이 매끄러운 설정
+    - 파트너 프로바이더를 통한 간헐적 무료 추론
   </Card>
   
-  <Card title="Have a Compatible Editor" icon="code">
-    Cline works with:
+  <Card title="호환 에디터 준비" icon="code">
+    Cline은 다음 에디터에서 동작합니다:
     - **VS Code** / **Cursor**
-    - **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm, etc.)
+    - **JetBrains IDEs** (IntelliJ, PyCharm, WebStorm 등)
     - **VSCodium** / **Windsurf**
     
-    Install one before proceeding.
+    진행 전에 하나를 설치하세요.
   </Card>
 </CardGroup>
 
-## Installation Instructions
+## 설치 안내
 <Tabs>
   <Tab title="VS Code/Cursor" icon="code">
     <Frame>
@@ -38,88 +38,88 @@ description: "Get Cline up and running in your favorite IDE with these simple in
       />
     </Frame>
     <Steps>
-      <Step title="Open Extensions">
-        Launch VS Code and open the Extensions view:
-        - Press `Ctrl/Cmd + Shift + X`, or
-        - Click the Extensions icon in the Activity Bar
+      <Step title="확장 열기">
+        VS Code를 실행하고 Extensions 뷰를 엽니다:
+        - `Ctrl/Cmd + Shift + X` 또는
+        - Activity Bar의 Extensions 아이콘 클릭
       </Step>
 
-      <Step title="Search for Cline">
-        Type **"Cline"** in the Extensions marketplace search bar
+      <Step title="Cline 검색">
+        Extensions 마켓플레이스 검색창에 **"Cline"** 입력
         	<Frame>
-            <img src="https://storage.googleapis.com/cline_public_images/extension-installation.png" alt="VS Code marketplace showing Cline extension" 
+            <img src="https://storage.googleapis.com/cline_public_images/extension-installation.png" alt="VS Code 마켓플레이스에서 Cline 확장 검색" 
             />
           </Frame>
       </Step>
 
-      <Step title="Install">
-        Click the **Install** button on the Cline extension
+      <Step title="설치">
+        Cline 확장에서 **Install** 버튼 클릭
         
-        <Frame caption="VS Code marketplace with Cline extension ready to install">
+        <Frame caption="VS Code 마켓플레이스에서 Cline 확장 설치 준비 화면">
         	<img
         		src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(20).png"
-        		alt="VS Code marketplace showing Cline extension"
+        		alt="VS Code 마켓플레이스에서 Cline 확장 표시"
         	/>
         </Frame>
       </Step>
 
-      <Step title="Access Cline">
-        After installation completes:
-        - Click the **Cline icon** in the Activity Bar, or
-        - Open Command Palette (`Ctrl/Cmd + Shift + P`) → type **"Cline: Open In New Tab"**
+      <Step title="Cline 열기">
+        설치가 완료되면:
+        - Activity Bar에서 **Cline 아이콘** 클릭 또는
+        - Command Palette 열기(`Ctrl/Cmd + Shift + P`) → **"Cline: Open In New Tab"** 입력
 
-        <Frame caption="Cline opened in VSCode">
+        <Frame caption="VS Code에서 열린 Cline">
         	<img
         		src="https://storage.googleapis.com/cline_public_images/after-installation.png"
-        		alt="Cline opened in VSCode"
+        		alt="VS Code에서 열린 Cline"
         	/>
         </Frame>
         
         <Warning>
-        If VS Code shows "Running extensions might..." dialog, click **Allow**. If you don't see the Cline icon, restart VS Code.
+        VS Code에 "Running extensions might..." 대화상자가 표시되면 **Allow**를 클릭하세요. Cline 아이콘이 보이지 않으면 VS Code를 재시작하세요.
         </Warning>
       </Step>
     </Steps>
 
     <Check>
-    **Installation Complete!** You should now see the Cline interface in your editor. Time to sign in!
+    **설치 완료!** 이제 에디터에서 Cline 인터페이스가 보여야 합니다. 로그인할 시간입니다!
     </Check>
 
-    <Accordion title="Troubleshooting">
+    <Accordion title="문제 해결">
 
-    **Plugin Installation Issues**
+    **플러그인 설치 문제**
 
-    If you can't find Cline in the marketplace:
-    - Make sure you're searching in the **Marketplace** tab (not Installed)
-    - Try searching for "Cline AI" or just "Cline"
-    - Check that your VS Code version is compatible
+    마켓플레이스에서 Cline이 보이지 않는다면:
+    - **Marketplace** 탭(Installed가 아님)에서 검색 중인지 확인
+    - "Cline AI" 또는 "Cline"으로 다시 검색
+    - VS Code 버전 호환 여부 확인
 
-    If installation fails:
-    - Restart your VS Code and try again
-    - Check your internet connection
-    - Try installing from VSIX file as an alternative
+    설치 실패 시:
+    - VS Code를 재시작하고 다시 시도
+    - 인터넷 연결 확인
+    - 대안으로 VSIX 파일 설치 시도
 
-    **Plugin Not Appearing**
+    **플러그인이 보이지 않음**
 
-    If you don't see the Cline tool window after installation:
-    - Restart VS Code completely (File → Exit and reopen)
-    - Check **View** → **Command Palette** → "Cline: Open In New Tab"
-    - Verify the plugin is enabled in **Extensions** view
-    - Look for the Cline icon in your Activity Bar (usually on the left side)
+    설치 후 Cline 툴 창이 보이지 않는다면:
+    - VS Code를 완전히 재시작(File → Exit 후 재실행)
+    - **View** → **Command Palette** → "Cline: Open In New Tab" 확인
+    - **Extensions** 뷰에서 플러그인이 활성화되어 있는지 확인
+    - Activity Bar에서 Cline 아이콘 확인(보통 왼쪽)
 
-    **Common Issues**
+    **일반적인 문제**
 
-    Plugin appears to be installed but doesn't work:
-    - Ensure you've restarted VS Code after installation
-    - Check if there are any error messages in the Developer Console
-    - Try disabling and re-enabling the extension
+    플러그인은 설치된 것 같지만 작동하지 않는다면:
+    - 설치 후 VS Code 재시작 여부 확인
+    - Developer Console에 오류 메시지가 있는지 확인
+    - 확장을 비활성화했다가 다시 활성화
 
-    Performance or compatibility issues:
-    - Make sure you're using a supported VS Code version
-    - Check for VS Code updates that might improve compatibility
-    - Consider closing other resource-intensive extensions if needed
+    성능 또는 호환성 문제:
+    - 지원되는 VS Code 버전을 사용 중인지 확인
+    - 호환성을 개선할 수 있는 VS Code 업데이트 확인
+    - 필요 시 리소스를 많이 사용하는 다른 확장 닫기
 
-    Need help? Join our [Discord community](https://discord.gg/cline).
+    도움이 필요하신가요? [Discord 커뮤니티](https://discord.gg/cline)에 참여하세요.
 
     </Accordion>
   </Tab>
@@ -132,277 +132,277 @@ description: "Get Cline up and running in your favorite IDE with these simple in
     />
 
     <Note>
-    Cline for JetBrains works almost identically to VS Code, with all core features: diff editing, tools, multiple API providers, MCP servers, Cline rules/workflows, and more.
+    JetBrains용 Cline은 VS Code와 거의 동일하게 동작하며, diff 편집, 도구, 다중 API 프로바이더, MCP 서버, Cline rules/workflows 등 핵심 기능을 모두 제공합니다.
     </Note>
 
-    ### Choose Your Installation Method
+    ### 설치 방법 선택
 
     <Tabs>
-      <Tab title="From IDE (Recommended)">
+      <Tab title="IDE에서 설치(권장)">
         <Steps>
-          <Step title="Open Settings">
-            In your JetBrains IDE, go to **Settings**:
+          <Step title="설정 열기">
+            JetBrains IDE에서 **Settings**로 이동:
             - Windows/Linux: `Ctrl+Alt+S`
             - macOS: `Cmd+,`
           </Step>
 
-          <Step title="Navigate to Plugins">
-            Go to **Plugins** → **Marketplace** tab
+          <Step title="플러그인으로 이동">
+            **Plugins** → **Marketplace** 탭으로 이동
           </Step>
 
-          <Step title="Install Cline">
-            Search for **"Cline"** and click **Install**
+          <Step title="Cline 설치">
+            **"Cline"**을 검색하고 **Install** 클릭
             
             <Frame>
             	<img
             		src="https://storage.googleapis.com/cline_public_images/jetbrains-installation.png"
-            		alt="JetBrains marketplace showing Cline plugin search results"
+            		alt="JetBrains 마켓플레이스에서 Cline 플러그인 검색 결과"
             	/>
             </Frame>
           </Step>
 
-          <Step title="Restart IDE">
-            Restart your IDE to complete the installation
+          <Step title="IDE 재시작">
+            설치 완료를 위해 IDE를 재시작합니다
             <Frame>
             	<img
             		src="https://storage.googleapis.com/cline_public_images/jetbrains-post-installation.png"
-            		alt="JetBrains marketplace showing Cline plugin search results"
+            		alt="JetBrains 마켓플레이스에서 Cline 플러그인 검색 결과"
             	/>
             </Frame>
           </Step>
         </Steps>
       </Tab>
 
-      <Tab title="Browser Install">
+      <Tab title="브라우저 설치">
         <Steps>
-          <Step title="Visit Marketplace">
-            Go to the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28247-cline)
+          <Step title="마켓플레이스 방문">
+            [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/28247-cline)로 이동
           </Step>
 
-          <Step title="Click Install to IDE">
-            Click the **Install to IDE** button
+          <Step title="Install to IDE 클릭">
+            **Install to IDE** 버튼을 클릭
           </Step>
 
-          <Step title="Confirm in IDE">
-            Your IDE will open and prompt you to confirm the installation
+          <Step title="IDE에서 확인">
+            IDE가 열리며 설치 확인을 요청합니다
           </Step>
 
-          <Step title="Restart IDE">
-            Restart to complete the installation
+          <Step title="IDE 재시작">
+            설치 완료를 위해 재시작
           </Step>
         </Steps>
       </Tab>
 
-      <Tab title="Manual Install">
+      <Tab title="수동 설치">
         <Steps>
-          <Step title="Download Plugin">
-            Download from the [marketplace page](https://plugins.jetbrains.com/plugin/28247-cline)
+          <Step title="플러그인 다운로드">
+            [마켓플레이스 페이지](https://plugins.jetbrains.com/plugin/28247-cline)에서 다운로드
           </Step>
 
-          <Step title="Open Settings">
-            Go to **Settings** → **Plugins**
+          <Step title="설정 열기">
+            **Settings** → **Plugins**로 이동
           </Step>
 
-          <Step title="Install from Disk">
-            Click the gear icon → **Install Plugin from Disk**
+          <Step title="디스크에서 설치">
+            톱니바퀴 아이콘 → **Install Plugin from Disk** 클릭
           </Step>
 
-          <Step title="Select File & Restart">
-            Select the downloaded `.zip` file and restart your IDE
+          <Step title="파일 선택 및 재시작">
+            다운로드한 `.zip` 파일을 선택하고 IDE를 재시작
           </Step>
         </Steps>
       </Tab>
     </Tabs>
 
     <Check>
-    **Installation Complete!** Find Cline in **View** → **Tool Windows** → **Cline** (usually on the right side).
+    **설치 완료!** **View** → **Tool Windows** → **Cline**에서 Cline을 찾으세요(보통 오른쪽).
     </Check>
 
-    ### What Works in JetBrains
+    ### JetBrains에서 동작하는 기능
 
     <AccordionGroup>
-      <Accordion title="✅ All Core Features" defaultOpen>
-        - Diff editing and file modifications
-        - Multiple API providers (Anthropic, OpenAI, local models)
-        - MCP servers and custom tools
-        - Cline rules and workflows
-        - @ mentions for files, folders, and problems
-        - Drag & drop support
+      <Accordion title="✅ 모든 핵심 기능" defaultOpen>
+        - Diff 편집 및 파일 수정
+        - 다중 API 프로바이더(Anthropic, OpenAI, 로컬 모델)
+        - MCP 서버 및 커스텀 도구
+        - Cline rules 및 workflows
+        - 파일/폴더/문제 @ 멘션
+        - 드래그 앤 드롭 지원
       </Accordion>
 
-      <Accordion title="📋 Terminal Integration Difference">
-        **JetBrains shows terminal output differently than VS Code:**
-        - VS Code: Output streams directly to chat
-        - JetBrains: Output appears in collapsible "Command Output" sections
+      <Accordion title="📋 터미널 통합 차이">
+        **JetBrains는 VS Code와 다르게 터미널 출력을 표시합니다:**
+        - VS Code: 출력이 채팅으로 바로 스트리밍
+        - JetBrains: 출력이 접을 수 있는 "Command Output" 섹션에 표시
         
-        Commands execute successfully in both—just expand the section to see results in JetBrains.
+        두 환경 모두 명령 실행은 성공하며, JetBrains에서는 섹션을 펼치면 결과가 보입니다.
       </Accordion>
     </AccordionGroup>
 
-    <Accordion title="Troubleshooting">
+    <Accordion title="문제 해결">
 
-    **Plugin Installation Issues**
+    **플러그인 설치 문제**
 
-    If you can't find Cline in the marketplace:
-    - Make sure you're searching in the **Marketplace** tab (not Installed)
-    - Try searching for "Cline AI" or just "Cline"
-    - Check that your IDE version is compatible (2023.1 or later recommended)
+    마켓플레이스에서 Cline이 보이지 않는다면:
+    - **Marketplace** 탭(Installed가 아님)에서 검색 중인지 확인
+    - "Cline AI" 또는 "Cline"으로 다시 검색
+    - IDE 버전이 호환되는지 확인(2023.1 이상 권장)
 
-    If installation fails:
-    - Restart your IDE and try again
-    - Check your internet connection
-    - Try installing from disk as an alternative
+    설치 실패 시:
+    - IDE를 재시작하고 다시 시도
+    - 인터넷 연결 확인
+    - 대안으로 디스크에서 설치 시도
 
-    **Plugin Not Appearing**
+    **플러그인이 보이지 않음**
 
-    If you don't see the Cline tool window after installation:
-    - Restart your IDE completely (File → Exit and reopen)
-    - Check **View** → **Tool Windows** → **Cline**
-    - Verify the plugin is enabled in **Settings** → **Plugins** → **Installed** tab
-    - Look for the Cline icon in your IDE's tool window bar (usually on the right side)
+    설치 후 Cline 툴 창이 보이지 않는다면:
+    - IDE를 완전히 재시작(File → Exit 후 재실행)
+    - **View** → **Tool Windows** → **Cline** 확인
+    - **Settings** → **Plugins** → **Installed** 탭에서 플러그인 활성화 확인
+    - IDE의 툴 윈도 바에서 Cline 아이콘 확인(보통 오른쪽)
 
-    **Common Issues**
+    **일반적인 문제**
 
-    Plugin appears to be installed but doesn't work:
-    - Ensure you've restarted your IDE after installation
-    - Check if there are any error messages in the IDE's event log
-    - Try disabling and re-enabling the plugin in Settings
+    플러그인은 설치된 것 같지만 작동하지 않는다면:
+    - 설치 후 IDE 재시작 여부 확인
+    - IDE 이벤트 로그에 오류가 있는지 확인
+    - Settings에서 플러그인을 비활성화 후 재활성화
 
-    Performance or compatibility issues:
-    - Make sure you're using a supported JetBrains IDE version
-    - Check for IDE updates that might improve compatibility
-    - Consider allocating more memory to your IDE if needed
+    성능 또는 호환성 문제:
+    - 지원되는 JetBrains IDE 버전을 사용 중인지 확인
+    - 호환성을 개선할 수 있는 IDE 업데이트 확인
+    - 필요 시 IDE 메모리 할당을 늘리기
 
-    Need help? Join our [Discord community](https://discord.gg/cline).
+    도움이 필요하신가요? [Discord 커뮤니티](https://discord.gg/cline)에 참여하세요.
 
     </Accordion>
   </Tab>
   
   <Tab title="VSCodium/Windsurf" icon="terminal">
     <Note>
-    These editors use the **Open VSX Registry** instead of the VS Code Marketplace, but the installation process is nearly identical.
+    이 에디터들은 VS Code Marketplace 대신 **Open VSX Registry**를 사용하지만, 설치 과정은 거의 동일합니다.
     </Note>
 
     <Steps>
-      <Step title="Open Extensions">
-        Launch your editor (VSCodium, Windsurf, etc.) and open Extensions view:
-        - Press `Ctrl/Cmd + Shift + X`
+      <Step title="확장 열기">
+        에디터(VSCodium, Windsurf 등)를 실행하고 Extensions 뷰를 엽니다:
+        - `Ctrl/Cmd + Shift + X`
       </Step>
 
-      <Step title="Search for Cline">
-        Type **"Cline"** in the marketplace search bar
+      <Step title="Cline 검색">
+        마켓플레이스 검색창에 **"Cline"** 입력
       </Step>
 
-      <Step title="Install by Author">
-        Select **"Cline" by saoudrizwan** and click **Install**
+      <Step title="작성자로 설치">
+        **"Cline" by saoudrizwan**을 선택하고 **Install** 클릭
       </Step>
 
-      <Step title="Reload if Needed">
-        Reload your editor if prompted to complete installation
+      <Step title="필요 시 리로드">
+        설치 완료를 위해 에디터가 요청하면 다시 로드
       </Step>
     </Steps>
 
     <Check>
-    **Installation Complete!** Look for the Cline icon in your Activity Bar or use the Command Palette.
+    **설치 완료!** Activity Bar에서 Cline 아이콘을 찾거나 Command Palette를 사용하세요.
     </Check>
 
-    <Accordion title="Troubleshooting">
+    <Accordion title="문제 해결">
 
-    **Plugin Installation Issues**
+    **플러그인 설치 문제**
 
-    If you can't find Cline in the marketplace:
-    - Make sure you're searching in the **Marketplace** tab (not Installed)
-    - Try searching for "Cline AI" or just "Cline"
-    - Check that your editor version is compatible
+    마켓플레이스에서 Cline이 보이지 않는다면:
+    - **Marketplace** 탭(Installed가 아님)에서 검색 중인지 확인
+    - "Cline AI" 또는 "Cline"으로 다시 검색
+    - 에디터 버전이 호환되는지 확인
 
-    If installation fails:
-    - Restart your editor and try again
-    - Check your internet connection
-    - Try installing from disk as an alternative
+    설치 실패 시:
+    - 에디터를 재시작하고 다시 시도
+    - 인터넷 연결 확인
+    - 대안으로 디스크에서 설치 시도
 
-    **Plugin Not Appearing**
+    **플러그인이 보이지 않음**
 
-    If you don't see the Cline tool window after installation:
-    - Restart your editor completely (File → Exit and reopen)
-    - Check **View** → **Command Palette** → "Cline: Open In New Tab"
-    - Verify the plugin is enabled in **Extensions** view
-    - Look for the Cline icon in your Activity Bar (usually on the left side)
+    설치 후 Cline 툴 창이 보이지 않는다면:
+    - 에디터를 완전히 재시작(File → Exit 후 재실행)
+    - **View** → **Command Palette** → "Cline: Open In New Tab" 확인
+    - **Extensions** 뷰에서 플러그인이 활성화되어 있는지 확인
+    - Activity Bar에서 Cline 아이콘 확인(보통 왼쪽)
 
-    **Common Issues**
+    **일반적인 문제**
 
-    Plugin appears to be installed but doesn't work:
-    - Ensure you've restarted your editor after installation
-    - Check if there are any error messages in the Developer Console
-    - Try disabling and re-enabling the extension
+    플러그인은 설치된 것 같지만 작동하지 않는다면:
+    - 설치 후 에디터 재시작 여부 확인
+    - Developer Console에 오류 메시지가 있는지 확인
+    - 확장을 비활성화했다가 다시 활성화
 
-    Performance or compatibility issues:
-    - Make sure you're using a supported editor version
-    - Check for editor updates that might improve compatibility
-    - Consider closing other resource-intensive extensions if needed
+    성능 또는 호환성 문제:
+    - 지원되는 에디터 버전을 사용 중인지 확인
+    - 호환성을 개선할 수 있는 에디터 업데이트 확인
+    - 필요 시 리소스를 많이 사용하는 다른 확장 닫기
 
-    Need help? Join our [Discord community](https://discord.gg/cline).
+    도움이 필요하신가요? [Discord 커뮤니티](https://discord.gg/cline)에 참여하세요.
 
     </Accordion>
   </Tab>
 </Tabs>
 
-## Next Steps: Sign In & Start Building
+## 다음 단계: 로그인하고 시작하기
 
 <Steps>
-  <Step title="Open Cline">
-    Find and open Cline in your editor:
-    - **VS Code/Cursor/VSCodium/Windsurf:** Click the Cline icon in the Activity Bar
-    - **JetBrains:** Go to **View** → **Tool Windows** → **Cline**
+  <Step title="Cline 열기">
+    에디터에서 Cline을 찾아 엽니다:
+    - **VS Code/Cursor/VSCodium/Windsurf:** Activity Bar에서 Cline 아이콘 클릭
+    - **JetBrains:** **View** → **Tool Windows** → **Cline**
   </Step>
 
-  <Step title="Sign In">
-    Click the **Sign Up** button in the Cline interface
+  <Step title="로그인">
+    Cline 인터페이스에서 **Sign Up** 버튼을 클릭
     
     <Info>
-    You'll be redirected to [app.cline.bot](https://app.cline.bot) to authenticate. After signing in, you'll automatically return to your editor.
+    [app.cline.bot](https://app.cline.bot)로 리디렉션되어 인증을 진행합니다. 로그인 후 자동으로 에디터로 돌아옵니다.
     </Info>
     <Info>
-    You'll be redirected to the Cline authentication page to sign in with your account.
+    Cline 인증 페이지로 이동해 계정으로 로그인합니다.
     </Info>
   </Step>
 
-  <Step title="You're All Set!">
+  <Step title="준비 완료!">
     <Check>
-    **Congratulations!** You're all set to start using Cline! 
+    **축하합니다!** 이제 Cline을 사용할 준비가 완료되었습니다!
     
-    Cline is now ready to help you build projects. 
+    Cline이 프로젝트 제작을 도와줄 준비가 되었습니다.
     </Check>
   </Step>
 </Steps>
 
-## Tips for Success
+## 성공을 위한 팁
 
 <CardGroup cols={2}>
-  <Card title="Ask Questions" icon="circle-question">
-    Don't know something? Ask in Plan Mode! Cline can explain concepts, debug errors, and guide you through tasks.
+  <Card title="질문하기" icon="circle-question">
+    모르는 것이 있나요? Plan 모드에서 질문하세요! Cline이 개념을 설명하고, 오류를 디버깅하며, 작업을 안내합니다.
   </Card>
   
-  <Card title="Use Screenshots" icon="image">
-    Some models understand screenshots of what you're working on or errors you encounter.
+  <Card title="스크린샷 사용" icon="image">
+    일부 모델은 작업 중인 화면이나 발생한 오류의 스크린샷을 이해할 수 있습니다.
   </Card>
   
-  <Card title="Share Error Messages" icon="triangle-exclamation">
-    Use @problems to share error messages for quick solutions and debugging help.
+  <Card title="오류 메시지 공유" icon="triangle-exclamation">
+    @problems를 사용해 오류 메시지를 공유하면 빠른 해결과 디버깅 도움을 받을 수 있습니다.
   </Card>
   
-  <Card title="Speak Naturally" icon="comments">
-    Use your own words—no need for technical jargon. Cline will translate your ideas into code.
+  <Card title="자연스럽게 말하기" icon="comments">
+    전문 용어에 집착할 필요 없습니다. Cline이 아이디어를 코드로 옮겨줍니다.
   </Card>
 </CardGroup>
 
-## Need Help?
+## 도움이 필요하신가요?
 
 <CardGroup cols={2}>
-  <Card title="Join Our Discord" icon="discord" href="https://discord.gg/cline">
-    Connect with our team and community for support, tips, and discussions.
+  <Card title="Discord 참여" icon="discord" href="https://discord.gg/cline">
+    지원, 팁, 토론을 위해 팀과 커뮤니티에 참여하세요.
   </Card>
   
-  <Card title="Read the Docs" icon="book-open" href="/getting-started/selecting-your-model">
-    Explore model selection guides and advanced features to get the most out of Cline.
+  <Card title="문서 읽기" icon="book-open" href="/getting-started/selecting-your-model">
+    모델 선택 가이드와 고급 기능을 살펴 Cline을 최대한 활용하세요.
   </Card>
 </CardGroup>

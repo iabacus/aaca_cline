@@ -1,32 +1,32 @@
 ---
-title: "Remote MCP Servers"
-sidebarTitle: "Remote MCP Servers"
-description: "Deploy and manage custom MCP servers across your enterprise infrastructure with centralized configuration"
+title: "원격 MCP 서버"
+sidebarTitle: "원격 MCP 서버"
+description: "중앙 구성으로 엔터프라이즈 인프라 전반에 커스텀 MCP 서버를 배포하고 관리합니다"
 ---
 
-Remote MCP servers enable you to deploy custom integrations and connect to internal systems while maintaining enterprise security, governance, and scalability requirements. Unlike marketplace servers, remote servers give you complete control over the implementation and deployment.
+원격 MCP 서버는 엔터프라이즈 보안, 거버넌스, 확장성 요구사항을 유지하면서 커스텀 통합을 배포하고 내부 시스템에 연결할 수 있게 합니다. 마켓플레이스 서버와 달리, 원격 서버는 구현과 배포를 완전히 제어할 수 있습니다.
 
-## Enterprise Remote Server Benefits
+## 엔터프라이즈 원격 서버 장점
 
 <CardGroup cols={2}>
-  <Card title="Custom Integrations" icon="code">
-    Build integrations for proprietary systems, internal APIs, and custom workflows.
+  <Card title="커스텀 통합" icon="code">
+    독자 시스템, 내부 API, 커스텀 워크플로에 대한 통합을 구축합니다.
   </Card>
   
-  <Card title="Infrastructure Control" icon="server">
-    Deploy on your own infrastructure with full control over networking and security.
+  <Card title="인프라 제어" icon="server">
+    네트워킹과 보안을 완전히 제어할 수 있는 자체 인프라에 배포합니다.
   </Card>
   
-  <Card title="Enterprise Security" icon="lock">
-    Implement custom authentication, encryption, and audit logging specific to your requirements.
+  <Card title="엔터프라이즈 보안" icon="lock">
+    요구사항에 맞춘 커스텀 인증, 암호화, 감사 로깅을 구현합니다.
   </Card>
   
-  <Card title="Scalable Architecture" icon="chart-line">
-    Auto-scaling, load balancing, and high availability across multiple regions.
+  <Card title="확장 가능한 아키텍처" icon="chart-line">
+    다중 리전에서 오토 스케일링, 로드 밸런싱, 고가용성을 제공합니다.
   </Card>
 </CardGroup>
 
-## Architecture Overview
+## 아키텍처 개요
 
 ```mermaid
 graph TB
@@ -49,11 +49,11 @@ graph TB
     O[Security] --> C
 ```
 
-## Deployment Options
+## 배포 옵션
 
-### Kubernetes Deployment
+### Kubernetes 배포
 
-Deploy remote MCP servers using Kubernetes manifests:
+Kubernetes 매니페스트로 원격 MCP 서버를 배포합니다:
 
 ```yaml
 # remote-mcp-deployment.yaml
@@ -179,9 +179,9 @@ spec:
               number: 80
 ```
 
-### Docker Compose Deployment
+### Docker Compose 배포
 
-For smaller deployments or development environments:
+소규모 배포 또는 개발 환경용:
 
 ```yaml
 # docker-compose.yml
@@ -242,9 +242,9 @@ services:
     restart: unless-stopped
 ```
 
-### Virtual Machine Deployment
+### 가상 머신 배포
 
-Deploy using infrastructure automation tools:
+인프라 자동화 도구를 사용해 배포합니다:
 
 <Tabs>
 <Tab title="Terraform">
@@ -398,11 +398,11 @@ resource "aws_lb" "mcp_server" {
 </Tab>
 </Tabs>
 
-## Server Configuration
+## 서버 구성
 
-### Basic Configuration
+### 기본 구성
 
-Configure your custom MCP server:
+커스텀 MCP 서버를 구성합니다:
 
 ```yaml
 # mcp-server-config.yaml
@@ -412,33 +412,33 @@ server:
   description: "Custom API integration server"
   port: 8080
   
-  # Authentication configuration
+  # 인증 구성
   auth:
     method: "jwt"
     jwt_secret: "${JWT_SECRET}"
     token_expiry: "24h"
     
-    # Optional: mTLS authentication
+    # 선택 사항: mTLS 인증
     mtls:
       enabled: false
       cert_path: "/certs/server.crt"
       key_path: "/certs/server.key"
       ca_path: "/certs/ca.crt"
       
-  # Rate limiting
+  # 레이트 리미팅
   rate_limiting:
     enabled: true
     requests_per_minute: 1000
     burst_size: 100
     
-  # CORS configuration
+  # CORS 구성
   cors:
     enabled: true
     allowed_origins: ["https://*.company.com"]
     allowed_methods: ["GET", "POST", "PUT", "DELETE"]
     allowed_headers: ["Authorization", "Content-Type"]
 
-# Tool configurations
+# 도구 구성
 tools:
   - name: "query_database" 
     description: "Query the company database"
@@ -448,7 +448,7 @@ tools:
         type: "string"
         required: true
         description: "SQL query to execute"
-        validation: "^SELECT.*"  # Only allow SELECT queries
+        validation: "^SELECT.*"  # SELECT 쿼리만 허용
         
   - name: "create_ticket"
     description: "Create a support ticket"
@@ -465,7 +465,7 @@ tools:
         enum: ["low", "medium", "high", "critical"]
         default: "medium"
 
-# Resource configurations
+# 리소스 구성
 resources:
   - name: "user_profiles"
     description: "User profile data"
@@ -477,7 +477,7 @@ resources:
     type: "collection"
     endpoint: "/api/projects"
 
-# External service connections
+# 외부 서비스 연결
 services:
   database:
     type: "postgresql"
@@ -497,7 +497,7 @@ services:
       type: "bearer_token"
       token: "${API_TOKEN}"
       
-# Monitoring and observability
+# 모니터링 및 관측성
 monitoring:
   metrics:
     enabled: true
@@ -522,27 +522,27 @@ monitoring:
     max_file_size: "100MB"
     max_files: 10
     
-# Security settings
+# 보안 설정
 security:
   audit_logging: true
   request_validation: true  
   response_sanitization: true
   
-  # Input validation
+  # 입력 검증
   validation:
     max_request_size: "10MB"
     allowed_content_types: ["application/json"]
     sanitize_html: true
     
-  # Network security
+  # 네트워크 보안
   network:
     bind_address: "0.0.0.0"
     trusted_proxies: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
 ```
 
-### Advanced Configuration
+### 고급 구성
 
-Enterprise-grade configuration with high availability:
+고가용성을 포함한 엔터프라이즈급 구성:
 
 ```yaml
 # enterprise-mcp-config.yaml  
@@ -579,7 +579,7 @@ server:
       redis_url: "${REDIS_URL}"
       ttl: "300s"
       
-# Enterprise authentication
+# 엔터프라이즈 인증
 authentication:
   providers:
     - name: "enterprise_sso"
@@ -597,7 +597,7 @@ authentication:
       enabled: true
       policy_file: "/app/config/rbac-policy.json"
       
-# Enterprise monitoring
+# 엔터프라이즈 모니터링
 monitoring:
   observability:
     tracing:
@@ -622,7 +622,7 @@ monitoring:
         severity: "critical"
         notification: ["pagerduty", "slack"]
         
-# Enterprise compliance
+# 엔터프라이즈 컴플라이언스
 compliance:
   data_governance:
     classification: "internal"
@@ -635,7 +635,7 @@ compliance:
   audit:
     enabled: true
     log_all_requests: true
-    log_responses: false  # Don't log sensitive response data
+    log_responses: false  # 민감한 응답 데이터는 로그하지 않음
     retention: "7y"
     destinations: ["elasticsearch", "s3"]
     
@@ -645,11 +645,11 @@ compliance:
     gdpr_compliance: true
 ```
 
-## Custom Server Development
+## 커스텀 서버 개발
 
-### Server Implementation
+### 서버 구현
 
-Create a custom MCP server using the enterprise SDK:
+엔터프라이즈 SDK를 사용해 커스텀 MCP 서버를 만듭니다:
 
 ```typescript
 // src/custom-mcp-server.ts
@@ -815,7 +815,7 @@ export function createCustomMCPServer(config: ServerConfig): CustomAPIMCPServer 
 
 ### Dockerfile
 
-Create a containerized deployment:
+컨테이너 배포를 위한 Dockerfile:
 
 ```dockerfile
 # Dockerfile
@@ -823,55 +823,55 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
+# 패키지 파일 복사
 COPY package*.json ./
 COPY tsconfig.json ./
 
-# Install dependencies
+# 의존성 설치
 RUN npm ci --only=production
 
-# Copy source code
+# 소스 코드 복사
 COPY src/ ./src/
 
-# Build TypeScript
+# TypeScript 빌드
 RUN npm run build
 
 FROM node:18-alpine AS runtime
 
-# Create non-root user
+# non-root 사용자 생성
 RUN addgroup -g 1001 mcp && \
     adduser -S -u 1001 -G mcp mcp
 
 WORKDIR /app
 
-# Copy built application
+# 빌드된 애플리케이션 복사
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 
-# Create required directories
+# 필요한 디렉터리 생성
 RUN mkdir -p /app/logs /app/data && \
     chown -R mcp:mcp /app
 
-# Switch to non-root user
+# non-root 사용자로 전환
 USER mcp
 
-# Health check
+# 헬스 체크
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 
-# Expose ports
+# 포트 노출
 EXPOSE 8080 9090
 
-# Start server
+# 서버 시작
 CMD ["node", "dist/index.js"]
 ```
 
-## Monitoring & Operations
+## 모니터링 및 운영
 
-### Health Checks
+### 헬스 체크
 
-Implement comprehensive health checks:
+포괄적인 헬스 체크 구현:
 
 ```typescript
 // src/health/health-checker.ts
@@ -935,9 +935,9 @@ export class DatabaseHealthCheck implements HealthCheck {
 }
 ```
 
-### Metrics Collection
+### 메트릭 수집
 
-Export Prometheus metrics:
+Prometheus 메트릭을 내보냅니다:
 
 ```typescript
 // src/metrics/metrics-collector.ts
@@ -977,49 +977,49 @@ export class MetricsCollector {
 }
 ```
 
-## Best Practices
+## 모범 사례
 
-### Security
-1. **Authentication**: Implement robust authentication (JWT, mTLS, OIDC)
-2. **Authorization**: Use RBAC for fine-grained access control
-3. **Input Validation**: Validate and sanitize all inputs
-4. **Output Sanitization**: Sanitize responses to prevent data leakage
-5. **Network Security**: Use TLS, firewalls, and network policies
+### 보안
+1. **인증**: 강력한 인증(JWT, mTLS, OIDC) 구현
+2. **인가**: 세밀한 접근 제어를 위한 RBAC 사용
+3. **입력 검증**: 모든 입력을 검증하고 정제
+4. **출력 정제**: 데이터 유출 방지를 위한 응답 정제
+5. **네트워크 보안**: TLS, 방화벽, 네트워크 정책 적용
 
-### Performance
-1. **Connection Pooling**: Reuse database and API connections
-2. **Caching**: Implement intelligent caching strategies
-3. **Async Operations**: Use non-blocking I/O for better concurrency
-4. **Resource Limits**: Set appropriate CPU and memory limits
-5. **Load Testing**: Test under realistic load conditions
+### 성능
+1. **연결 풀링**: DB 및 API 연결 재사용
+2. **캐싱**: 지능형 캐싱 전략 구현
+3. **비동기 처리**: 높은 동시성을 위해 논블로킹 I/O 사용
+4. **리소스 제한**: CPU/메모리 제한 적절히 설정
+5. **부하 테스트**: 현실적인 부하 조건에서 테스트
 
-### Reliability
-1. **Health Checks**: Implement comprehensive health monitoring
-2. **Circuit Breakers**: Fail fast when dependencies are unavailable
-3. **Retry Logic**: Implement exponential backoff for transient failures
-4. **Graceful Shutdown**: Handle shutdown signals properly
-5. **Data Consistency**: Ensure data integrity across operations
+### 안정성
+1. **헬스 체크**: 포괄적인 상태 모니터링 구현
+2. **서킷 브레이커**: 의존성이 불가할 때 빠른 실패
+3. **재시도 로직**: 일시적 실패에 지수 백오프 적용
+4. **우아한 종료**: 종료 시그널을 올바르게 처리
+5. **데이터 일관성**: 작업 전반의 데이터 무결성 보장
 
-### Observability
-1. **Structured Logging**: Use JSON logging for better parsing
-2. **Distributed Tracing**: Implement tracing for request flow
-3. **Metrics**: Export comprehensive metrics to monitoring systems
-4. **Alerting**: Set up proactive alerts for critical issues
-5. **Dashboards**: Create operational dashboards for monitoring
+### 관측성
+1. **구조화 로깅**: 파싱에 유리한 JSON 로깅 사용
+2. **분산 트레이싱**: 요청 흐름 추적
+3. **메트릭**: 모니터링 시스템에 포괄적 메트릭 제공
+4. **경고**: 중요 이슈에 대한 사전 경고 설정
+5. **대시보드**: 운영 모니터링 대시보드 구축
 
-## Production Checklist
+## 프로덕션 체크리스트
 
-Before deploying remote MCP servers to production:
+프로덕션에 원격 MCP 서버를 배포하기 전에:
 
-- [ ] Security review and penetration testing completed
-- [ ] Authentication and authorization properly configured
-- [ ] Input validation and output sanitization implemented
-- [ ] Comprehensive monitoring and alerting set up
-- [ ] Load testing completed under realistic conditions
-- [ ] Disaster recovery and backup procedures documented
-- [ ] Health checks and readiness probes configured
-- [ ] Resource limits and scaling policies defined
-- [ ] Audit logging and compliance requirements met
-- [ ] Documentation updated and team training completed
+- [ ] 보안 리뷰 및 침투 테스트 완료
+- [ ] 인증 및 인가 구성 완료
+- [ ] 입력 검증 및 출력 정제 구현
+- [ ] 포괄적인 모니터링 및 경고 설정
+- [ ] 현실적인 부하 조건에서 테스트 완료
+- [ ] 재해 복구 및 백업 절차 문서화
+- [ ] 헬스 체크 및 레디니스 프로브 구성
+- [ ] 리소스 제한 및 스케일링 정책 정의
+- [ ] 감사 로깅 및 컴플라이언스 요구 충족
+- [ ] 문서 업데이트 및 팀 교육 완료
 
-Remote MCP servers provide the flexibility to integrate with any system while maintaining enterprise-grade security and reliability. Start with the deployment option that best fits your infrastructure and scale as needed.
+원격 MCP 서버는 엔터프라이즈급 보안과 신뢰성을 유지하면서 어떤 시스템과도 통합할 수 있는 유연성을 제공합니다. 인프라에 가장 적합한 배포 옵션부터 시작해 필요에 따라 확장하세요.

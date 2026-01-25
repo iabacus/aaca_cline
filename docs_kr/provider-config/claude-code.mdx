@@ -1,86 +1,86 @@
 ---
 title: "Claude Code"
-description: "Use your Claude Max or Pro subscription with Cline instead of paying per token. Learn how to set up and configure the Claude Code provider."
+description: "토큰 과금 대신 Claude Max 또는 Pro 구독으로 Cline을 사용하세요. Claude Code 프로바이더 설정 방법을 안내합니다."
 ---
 
-**Website:** [https://docs.anthropic.com/en/docs/claude-code/setup](https://docs.anthropic.com/en/docs/claude-code/setup)
+**웹사이트:** [https://docs.anthropic.com/en/docs/claude-code/setup](https://docs.anthropic.com/en/docs/claude-code/setup)
 
-The Claude Code provider lets you use your existing Claude subscription with Cline. If you have Claude Max or Pro, this means you can use Claude in Cline without paying extra API costs.
+Claude Code 프로바이더를 사용하면 기존 Claude 구독을 Cline에서 활용할 수 있습니다. Claude Max 또는 Pro 구독이 있다면, 추가 API 비용 없이 Cline에서 Claude를 사용할 수 있습니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/claude-code-use-opus.gif"
-		alt="Using the Claude Code provider in Cline with Opus model"
+		alt="Cline에서 Opus 모델로 Claude Code 프로바이더를 사용하는 모습"
 	/>
 </Frame>
 
-## Setup
+## 설정
 
-First, you'll need to install and authenticate Claude Code on your system:
+먼저 시스템에 Claude Code를 설치하고 인증해야 합니다:
 
-1. **Install Claude Code**: Follow Anthropic's [official setup guide](https://docs.anthropic.com/en/docs/claude-code/setup) to install and authenticate the Claude CLI.
+1. **Claude Code 설치**: Anthropic의 [공식 설정 가이드](https://docs.anthropic.com/en/docs/claude-code/setup)를 따라 Claude CLI를 설치하고 인증합니다.
 
-2. **Configure in Cline**:
-    - Open Cline settings (⚙️ icon)
-    - Select **Claude Code** from the **API Provider** dropdown
-    - Set the path to your Claude CLI executable (usually just `claude` if it's in your PATH)
+2. **Cline에서 구성**:
+    - Cline 설정 열기(⚙️ 아이콘)
+    - **API Provider** 드롭다운에서 **Claude Code** 선택
+    - Claude CLI 실행 파일 경로 설정(PATH에 있다면 보통 `claude`로 충분)
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/claude-code-setup.gif"
-		alt="Setting up the Claude Code provider in Cline"
+		alt="Cline에서 Claude Code 프로바이더 설정"
 	/>
 </Frame>
 
 <br />
 
-### Finding your Claude Code path
+### Claude Code 경로 찾기
 
 -   **macOS / Linux / WSL / Git Bash**: `which claude`
 -   **Windows Command Prompt**: `where claude`
 
-## Supported Models
+## 지원 모델
 
-The Claude Code provider supports these models:
+Claude Code 프로바이더는 다음 모델을 지원합니다:
 
--   `claude-sonnet-4-20250514` (Recommended)
+-   `claude-sonnet-4-20250514` (추천)
 -   `claude-opus-4-1-20250805`
 -   `claude-opus-4-20250514`
 -   `claude-3-7-sonnet-20250219`
 -   `claude-3-5-sonnet-20241022`
 -   `claude-3-5-haiku-20241022`
 
-## How it works
+## 동작 방식
 
-When you use Claude Code with Cline, here's what happens behind the scenes:
+Cline에서 Claude Code를 사용하면 내부적으로 다음과 같이 동작합니다:
 
-Cline wraps the Claude Code CLI to handle your requests. Each time you send a message, Cline starts a new `claude` process, sends your conversation, and streams the response back. The AI reasoning comes from Claude Code, but all the actual file editing, terminal commands, and other tools are handled by Cline.
+Cline은 Claude Code CLI를 래핑하여 요청을 처리합니다. 메시지를 보낼 때마다 Cline이 새 `claude` 프로세스를 시작하고, 대화를 전달한 뒤 응답을 스트리밍으로 반환합니다. AI 추론은 Claude Code가 수행하지만, 파일 편집, 터미널 명령 등 실제 도구 실행은 Cline이 담당합니다.
 
-The main difference you'll notice is that responses don't stream character-by-character like other providers. Instead, Claude Code processes your full request before sending back the complete response.
+차이점으로는, 다른 프로바이더처럼 문자 단위로 실시간 스트리밍되지 않습니다. Claude Code는 전체 요청을 처리한 후 완성된 응답을 반환합니다.
 
-## Limitations
+## 제한 사항
 
-There are a few things to keep in mind with Claude Code:
+Claude Code 사용 시 다음 사항을 유의하세요:
 
--   Images in your messages get converted to text placeholders since Claude Code doesn't support image uploads through the CLI
--   Prompt caching isn't available with this provider
--   Responses don't stream in real-time like other providers
+-   메시지에 포함된 이미지는 텍스트 플레이스홀더로 변환됩니다(Claude Code CLI는 이미지 업로드를 지원하지 않음)
+-   프롬프트 캐싱을 지원하지 않음
+-   응답이 다른 프로바이더처럼 실시간 스트리밍되지 않음
 
-## Troubleshooting
+## 문제 해결
 
-If you run into issues:
+문제가 발생하면 다음을 확인하세요:
 
-**Authentication problems**: Make sure you're logged into Claude Code with your subscription account. Run `claude auth status` to check.
+**인증 문제**: 구독 계정으로 Claude Code에 로그인되어 있는지 확인하세요. `claude auth status`를 실행해 확인할 수 있습니다.
 
-**Path issues**: Double-check that the Claude CLI path in Cline's settings is correct. Try running `claude --version` in your terminal to verify it's working.
+**경로 문제**: Cline 설정에 있는 Claude CLI 경로가 올바른지 다시 확인하세요. 터미널에서 `claude --version`을 실행해 동작 여부를 확인합니다.
 
-**Still having trouble?** We're actively improving this integration. Report issues on our [GitHub](https://github.com/cline/cline/issues) or ask for help in our [Discord](https://discord.gg/cline).
+**그래도 문제가 있나요?** 이 통합 기능은 계속 개선 중입니다. [GitHub](https://github.com/cline/cline/issues)에 이슈를 등록하거나 [Discord](https://discord.gg/cline)에서 도움을 요청하세요.
 
-## Usage with subscriptions
+## 구독과 함께 사용하기
 
-If you have a Claude Max subscription, your usage in Cline shows up as $0.00 in the billing interface since you're not paying additional API costs. Your usage still counts against your subscription limits, but you won't see per-token charges.
+Claude Max 구독이 있는 경우, Cline에서의 사용량은 추가 API 비용이 없으므로 결제 인터페이스에서 $0.00으로 표시됩니다. 사용량은 구독 제한에 포함되지만 토큰 단위 과금은 발생하지 않습니다.
 
-For more details about using Claude Code with your subscription, check out Anthropic's documentation:
+구독으로 Claude Code를 사용하는 방법은 Anthropic 문서를 참고하세요:
 
 -   [Claude Code Setup Guide](https://docs.anthropic.com/en/docs/claude-code/setup)
 -   [Using Claude Code with Pro/Max Plans](https://support.anthropic.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan)

@@ -1,93 +1,93 @@
 ---
-title: "Model Comparison & Pricing"
-description: "Compare AI models by performance, features, and pricing"
+title: "모델 비교 및 가격"
+description: "성능, 기능, 가격으로 AI 모델을 비교하세요"
 ---
 
-## Model Comparison Table
+## 모델 비교 표
 
-### Premium Models
+### 프리미엄 모델
 
-| Model | Provider | Context Window | Input Price* | Output Price* | Best For |
+| 모델 | 프로바이더 | 컨텍스트 윈도우 | 입력 가격* | 출력 가격* | 적합한 용도 |
 |-------|----------|---------------|--------------|---------------|----------|
-| **Claude Sonnet 4.5** | Anthropic | 1M tokens | $3-6 | $15-22.50 | Reliable tool usage, complex codebases |
-| **GPT-5** | OpenAI | 400K tokens | $1.25 | $10 | Latest OpenAI tech, three modes |
-| **Gemini 2.5 Pro** | Google | 1M+ tokens | TBD | TBD | Large codebases, document analysis |
-| **Qwen3 Coder** | Multiple | 256K tokens | $0.20 | $0.80 | Coding tasks, open source flexibility |
+| **Claude Sonnet 4.5** | Anthropic | 1M 토큰 | $3-6 | $15-22.50 | 신뢰할 수 있는 도구 사용, 복잡한 코드베이스 |
+| **GPT-5** | OpenAI | 400K 토큰 | $1.25 | $10 | 최신 OpenAI 기술, 3가지 모드 |
+| **Gemini 2.5 Pro** | Google | 1M+ 토큰 | TBD | TBD | 대규모 코드베이스, 문서 분석 |
+| **Qwen3 Coder** | Multiple | 256K 토큰 | $0.20 | $0.80 | 코딩 작업, 오픈 소스 유연성 |
 
-*Per million tokens
+*백만 토큰당
 
-### Budget Models
+### 예산형 모델
 
-| Model | Provider | Context Window | Input Price* | Output Price* | Notes |
+| 모델 | 프로바이더 | 컨텍스트 윈도우 | 입력 가격* | 출력 가격* | 비고 |
 |-------|----------|---------------|--------------|---------------|-------|
-| **DeepSeek V3** | DeepSeek | 128K tokens | $0.14 | $0.28 | Great value for daily coding |
-| **DeepSeek R1** | DeepSeek | 128K tokens | $0.55 | $2.19 | Budget reasoning champion |
-| **Qwen3 32B** | Multiple | 128K tokens | Varies | Varies | Open source, multiple providers |
-| **Z AI GLM 4.5** | Z AI | 128K tokens | TBD | TBD | MIT licensed, hybrid reasoning |
+| **DeepSeek V3** | DeepSeek | 128K 토큰 | $0.14 | $0.28 | 일상 코딩에 가성비 우수 |
+| **DeepSeek R1** | DeepSeek | 128K 토큰 | $0.55 | $2.19 | 예산형 추론 강자 |
+| **Qwen3 32B** | Multiple | 128K 토큰 | Varies | Varies | 오픈 소스, 여러 프로바이더 |
+| **Z AI GLM 4.5** | Z AI | 128K 토큰 | TBD | TBD | MIT 라이선스, 하이브리드 추론 |
 
-*Per million tokens
+*백만 토큰당
 
-## Performance Comparison
+## 성능 비교
 
-### Speed vs Quality Trade-offs
+### 속도 vs 품질 트레이드오프
 
-| Priority | Recommended Model | Why |
+| 우선순위 | 추천 모델 | 이유 |
 |----------|------------------|-----|
-| **Speed** | Qwen3 Coder on Cerebras | Fastest inference available |
-| **Quality** | Claude Sonnet 4.5 | Most reliable for complex tasks |
-| **Balance** | DeepSeek V3 | Good quality at low cost |
+| **속도** | Cerebras의 Qwen3 Coder | 가장 빠른 추론 |
+| **품질** | Claude Sonnet 4.5 | 복잡한 작업에 가장 신뢰도 높음 |
+| **균형** | DeepSeek V3 | 저비용에서 좋은 품질 |
 
-### Tool Reliability
+### 도구 신뢰성
 
-Models ranked by tool usage reliability:
-1. **Claude Sonnet 4.5** - Most reliable tool execution
-2. **GPT-5** - Excellent but occasional formatting issues
-3. **Gemini 2.5 Pro** - Good for standard tools
-4. **DeepSeek V3** - Reliable for basic tools
-5. **Qwen3 variants** - May need retry for complex tools
+도구 사용 신뢰성 순위:
+1. **Claude Sonnet 4.5** - 가장 안정적인 도구 실행
+2. **GPT-5** - 매우 우수하지만 가끔 포맷 이슈
+3. **Gemini 2.5 Pro** - 표준 도구에 강함
+4. **DeepSeek V3** - 기본 도구에 신뢰 가능
+5. **Qwen3 변형** - 복잡한 도구는 재시도 필요할 수 있음
 
-## Cost Calculator
+## 비용 계산
 
-### Typical Task Costs
+### 일반 작업 비용
 
-| Task Type | Token Usage (avg) | Claude Sonnet | DeepSeek V3 | Difference |
+| 작업 유형 | 토큰 사용량(평균) | Claude Sonnet | DeepSeek V3 | 차이 |
 |-----------|------------------|---------------|-------------|------------|
-| **Simple Bug Fix** | 5K tokens | $0.05 | $0.001 | 50x cheaper |
-| **Feature Implementation** | 50K tokens | $0.50 | $0.01 | 50x cheaper |
-| **Large Refactoring** | 200K tokens | $2.00 | $0.04 | 50x cheaper |
+| **간단한 버그 수정** | 5K 토큰 | $0.05 | $0.001 | 50배 저렴 |
+| **기능 구현** | 50K 토큰 | $0.50 | $0.01 | 50배 저렴 |
+| **대규모 리팩터링** | 200K 토큰 | $2.00 | $0.04 | 50배 저렴 |
 
-### Monthly Budget Estimates
+### 월 예산 추정
 
-| Budget | Claude Usage | DeepSeek Usage | Mixed Strategy |
+| 예산 | Claude 사용량 | DeepSeek 사용량 | 혼합 전략 |
 |--------|-------------|----------------|----------------|
-| **$10/month** | ~20 features | ~1000 features | Plan: DeepSeek, Act: Claude |
-| **$50/month** | ~100 features | ~5000 features | Critical: Claude, Rest: DeepSeek |
-| **$100/month** | ~200 features | ~10000 features | Complex: Claude, Simple: DeepSeek |
+| **$10/월** | ~20 기능 | ~1000 기능 | Plan: DeepSeek, Act: Claude |
+| **$50/월** | ~100 기능 | ~5000 기능 | 중요 작업: Claude, 나머지: DeepSeek |
+| **$100/월** | ~200 기능 | ~10000 기능 | 복잡: Claude, 단순: DeepSeek |
 
-## Provider Comparison
+## 프로바이더 비교
 
-### Provider Features
+### 프로바이더 기능
 
-| Provider | Models Available | Billing | API Stability | Support |
+| 프로바이더 | 사용 가능한 모델 | 결제 | API 안정성 | 지원 |
 |----------|-----------------|---------|---------------|---------|
-| **Cline** | Multiple | Credit-based | High | In-app |
-| **Anthropic** | Claude only | Usage-based | High | Email |
-| **OpenRouter** | 100+ models | Usage-based | High | Discord |
-| **OpenAI** | GPT only | Usage-based | High | Forum |
-| **Local (Ollama)** | Open source | Free | N/A | Community |
+| **Cline** | Multiple | 크레딧 기반 | 높음 | 인앱 |
+| **Anthropic** | Claude 전용 | 사용량 기반 | 높음 | 이메일 |
+| **OpenRouter** | 100+ 모델 | 사용량 기반 | 높음 | Discord |
+| **OpenAI** | GPT 전용 | 사용량 기반 | 높음 | Forum |
+| **로컬(Ollama)** | 오픈 소스 | 무료 | 해당 없음 | 커뮤니티 |
 
-### Provider Selection Guide
+### 프로바이더 선택 가이드
 
-Choose your provider based on:
-- **Simplicity**: Cline (no API key management)
-- **Variety**: OpenRouter (access to all models)
-- **Direct Access**: Individual providers (Anthropic, OpenAI)
-- **Privacy**: Ollama or LM Studio (local models)
+다음 기준으로 프로바이더를 선택하세요:
+- **간편함**: Cline(API 키 관리 없음)
+- **다양성**: OpenRouter(모든 모델 접근)
+- **직접 접근**: 개별 프로바이더(Anthropic, OpenAI)
+- **프라이버시**: Ollama 또는 LM Studio(로컬 모델)
 
-## Community Usage Stats
+## 커뮤니티 사용 통계
 
-Real-time usage data from the Cline community:
-- View current trends at [OpenRouter's Cline stats](https://openrouter.ai/apps?url=https%3A%2F%2Fcline.bot%2F)
-- Most popular: Claude Sonnet 4.5 (40%)
-- Rising star: DeepSeek V3 (25%)
-- Budget favorite: Qwen3 variants (20%)
+Cline 커뮤니티의 실시간 사용 데이터:
+- [OpenRouter의 Cline 통계](https://openrouter.ai/apps?url=https%3A%2F%2Fcline.bot%2F)에서 최신 트렌드 확인
+- 가장 인기: Claude Sonnet 4.5 (40%)
+- 급상승: DeepSeek V3 (25%)
+- 예산형 인기: Qwen3 변형 (20%)

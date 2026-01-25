@@ -1,123 +1,123 @@
 ---
-title: "OpenTelemetry Integration Override"
-sidebarTitle: "OpenTelemetry Override"
-description: "Export Cline telemetry to your observability platform using OpenTelemetry Protocol (OTLP)"
+title: "OpenTelemetry 통합 오버라이드"
+sidebarTitle: "OpenTelemetry 오버라이드"
+description: "OpenTelemetry Protocol(OTLP)로 Cline 텔레메트리를 관측성 플랫폼으로 내보냅니다"
 ---
 
-Cline includes opt-in OpenTelemetry support for exporting metrics and logs to your own observability infrastructure using the OpenTelemetry Protocol (OTLP).
+Cline은 OpenTelemetry Protocol(OTLP)을 사용해 메트릭과 로그를 자체 관측성 인프라로 내보낼 수 있는 선택형(OpenTelemetry) 기능을 제공합니다.
 
 <Note>
-OpenTelemetry integration is **optional** and intended for advanced users with existing observability infrastructure. Most users won't need this feature.
+OpenTelemetry 통합은 **선택 사항**이며 기존 관측성 인프라가 있는 고급 사용자에게 적합합니다. 대부분의 사용자는 이 기능이 필요하지 않습니다.
 </Note>
 
-## What is OpenTelemetry?
+## OpenTelemetry란?
 
-[OpenTelemetry](https://opentelemetry.io/) is an industry-standard observability framework that provides a unified way to collect and export telemetry data (metrics, logs, and traces).
+[OpenTelemetry](https://opentelemetry.io/)는 메트릭, 로그, 트레이스를 수집하고 내보내는 통합 방식을 제공하는 업계 표준 관측성 프레임워크입니다.
 
-Cline's OpenTelemetry support allows you to:
-- Export telemetry to your own systems
-- Integrate with observability platforms like Datadog, New Relic, Grafana Cloud, etc.
-- Maintain full control over your monitoring data
-- Use your organization's existing monitoring infrastructure
+Cline의 OpenTelemetry 지원으로 다음을 할 수 있습니다:
+- 텔레메트리를 자체 시스템으로 내보내기
+- Datadog, New Relic, Grafana Cloud 등 관측성 플랫폼과 통합
+- 모니터링 데이터에 대한 완전한 제어 유지
+- 기존 조직 모니터링 인프라 활용
 
-## Supported Features
+## 지원 기능
 
-Cline supports OpenTelemetry's **OTLP (OpenTelemetry Protocol)** export with:
+Cline은 OpenTelemetry의 **OTLP(OpenTelemetry Protocol)** 내보내기를 지원합니다:
 
 <CardGroup cols={2}>
-  <Card title="Metrics Export" icon="chart-bar">
-    Export metrics about Cline usage, performance, and errors
+  <Card title="메트릭 내보내기" icon="chart-bar">
+    Cline 사용량, 성능, 오류에 대한 메트릭 내보내기
   </Card>
   
-  <Card title="Logs Export" icon="file-lines">
-    Export structured logs for debugging and analysis
+  <Card title="로그 내보내기" icon="file-lines">
+    디버깅과 분석을 위한 구조화 로그 내보내기
   </Card>
 </CardGroup>
 
-### Export Formats
+### 내보내기 형식
 
-Cline supports three OTLP export protocols:
+Cline은 세 가지 OTLP 전송 프로토콜을 지원합니다:
 
-- **gRPC** (default, recommended)
+- **gRPC**(기본값, 권장)
 - **HTTP/protobuf**
 - **HTTP/JSON**
 
-### Export Destinations
+### 내보내기 대상
 
-You can export to:
-- **Console** (for testing)
-- **OTLP endpoint** (your own collector or observability platform)
+다음으로 내보낼 수 있습니다:
+- **Console**(테스트용)
+- **OTLP 엔드포인트**(자체 콜렉터 또는 관측성 플랫폼)
 
-## Configuration
+## 구성
 
-OpenTelemetry is configured using environment variables before launching Cline.
+OpenTelemetry는 Cline 실행 전에 환경 변수로 구성합니다.
 
-### Basic Setup
+### 기본 설정
 
-Enable OpenTelemetry and configure an OTLP endpoint:
+OpenTelemetry를 활성화하고 OTLP 엔드포인트를 구성합니다:
 
 ```bash
-# Enable OpenTelemetry
+# OpenTelemetry 활성화
 export CLINE_OTEL_TELEMETRY_ENABLED=true
 
-# Configure metrics and logs export
+# 메트릭/로그 내보내기 구성
 export CLINE_OTEL_METRICS_EXPORTER=otlp
 export CLINE_OTEL_LOGS_EXPORTER=otlp
 
-# Set your OTLP endpoint
+# OTLP 엔드포인트 설정
 export CLINE_OTEL_EXPORTER_OTLP_ENDPOINT=https://your-collector:4317
 
-# Optional: Set protocol (default is grpc)
+# 선택: 프로토콜 설정(기본값 grpc)
 export CLINE_OTEL_EXPORTER_OTLP_PROTOCOL=grpc
 ```
 
-### Environment Variables
+### 환경 변수
 
-| Variable | Description | Default |
+| 변수 | 설명 | 기본값 |
 |----------|-------------|---------|
-| `CLINE_OTEL_TELEMETRY_ENABLED` | Enable OpenTelemetry (`true`) | Disabled |
-| `CLINE_OTEL_METRICS_EXPORTER` | Metrics exporter type (`console`, `otlp`, or both) | None |
-| `CLINE_OTEL_LOGS_EXPORTER` | Logs exporter type (`console`, `otlp`, or both) | None |
-| `CLINE_OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP endpoint URL | None |
-| `CLINE_OTEL_EXPORTER_OTLP_PROTOCOL` | Protocol (`grpc`, `http/protobuf`, `http/json`) | `grpc` |
-| `CLINE_OTEL_EXPORTER_OTLP_INSECURE` | Allow insecure connections | `false` |
-| `CLINE_OTEL_EXPORTER_OTLP_HEADERS` | Custom headers (comma-separated `key=value` pairs) | None |
+| `CLINE_OTEL_TELEMETRY_ENABLED` | OpenTelemetry 활성화(`true`) | 비활성화 |
+| `CLINE_OTEL_METRICS_EXPORTER` | 메트릭 exporter 유형(`console`, `otlp`, 또는 둘 다) | 없음 |
+| `CLINE_OTEL_LOGS_EXPORTER` | 로그 exporter 유형(`console`, `otlp`, 또는 둘 다) | 없음 |
+| `CLINE_OTEL_EXPORTER_OTLP_ENDPOINT` | OTLP 엔드포인트 URL | 없음 |
+| `CLINE_OTEL_EXPORTER_OTLP_PROTOCOL` | 프로토콜(`grpc`, `http/protobuf`, `http/json`) | `grpc` |
+| `CLINE_OTEL_EXPORTER_OTLP_INSECURE` | 보안 연결 비활성화 | `false` |
+| `CLINE_OTEL_EXPORTER_OTLP_HEADERS` | 커스텀 헤더(쉼표로 구분된 `key=value`) | 없음 |
 
-### Advanced Configuration
+### 고급 구성
 
-**Separate endpoints for metrics and logs:**
+**메트릭/로그 분리 엔드포인트:**
 ```bash
 export CLINE_OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=https://metrics-collector:4317
 export CLINE_OTEL_EXPORTER_OTLP_LOGS_ENDPOINT=https://logs-collector:4317
 ```
 
-**Custom headers for authentication:**
+**인증용 커스텀 헤더:**
 ```bash
 export CLINE_OTEL_EXPORTER_OTLP_HEADERS="api-key=your-key,x-custom-header=value"
 ```
 
-**Multiple exporters (console + OTLP):**
+**여러 exporter(콘솔 + OTLP):**
 ```bash
 export CLINE_OTEL_METRICS_EXPORTER=console,otlp
 export CLINE_OTEL_LOGS_EXPORTER=console,otlp
 ```
 
-**Export intervals:**
+**내보내기 간격:**
 ```bash
-# Metrics export interval in milliseconds (default: 60000)
+# 메트릭 내보내기 간격(ms, 기본: 60000)
 export CLINE_OTEL_METRIC_EXPORT_INTERVAL=30000
 
-# Logs batch size and timeout
+# 로그 배치 크기/타임아웃
 export CLINE_OTEL_LOG_BATCH_SIZE=512
 export CLINE_OTEL_LOG_BATCH_TIMEOUT=5000
 export CLINE_OTEL_LOG_MAX_QUEUE_SIZE=2048
 ```
 
-## Integration Examples
+## 통합 예시
 
 ### Datadog
 
-Export to Datadog using their OTLP endpoint:
+Datadog의 OTLP 엔드포인트로 내보내기:
 
 ```bash
 export CLINE_OTEL_TELEMETRY_ENABLED=true
@@ -129,7 +129,7 @@ export CLINE_OTEL_EXPORTER_OTLP_HEADERS="dd-api-key=YOUR_DD_API_KEY"
 
 ### New Relic
 
-Export to New Relic:
+New Relic으로 내보내기:
 
 ```bash
 export CLINE_OTEL_TELEMETRY_ENABLED=true
@@ -141,7 +141,7 @@ export CLINE_OTEL_EXPORTER_OTLP_HEADERS="api-key=YOUR_NEW_RELIC_LICENSE_KEY"
 
 ### Grafana Cloud
 
-Export to Grafana Cloud:
+Grafana Cloud로 내보내기:
 
 ```bash
 export CLINE_OTEL_TELEMETRY_ENABLED=true
@@ -152,115 +152,115 @@ export CLINE_OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic YOUR_BASE64_CREDENT
 ```
 
 
-## Testing Configuration
+## 구성 테스트
 
-Test your configuration with console output before sending to a real endpoint:
+실제 엔드포인트로 보내기 전에 콘솔 출력으로 테스트하세요:
 
 ```bash
-# Enable console output to see what data would be exported
+# 콘솔 출력 활성화(내보낼 데이터 확인)
 export CLINE_OTEL_TELEMETRY_ENABLED=true
 export CLINE_OTEL_METRICS_EXPORTER=console
 export CLINE_OTEL_LOGS_EXPORTER=console
 ```
 
-Then launch Cline and check the console output for metrics and logs.
+그 다음 Cline을 실행하고 콘솔 출력에서 메트릭/로그를 확인하세요.
 
-## Troubleshooting
+## 문제 해결
 
-### No Data Being Exported
+### 데이터가 내보내지지 않음
 
-1. **Verify OpenTelemetry is enabled:**
+1. **OpenTelemetry 활성화 확인:**
    ```bash
    echo $CLINE_OTEL_TELEMETRY_ENABLED
    ```
-   Should output `true`
+   `true`가 출력되어야 합니다.
 
-2. **Check exporters are configured:**
+2. **exporter 구성 확인:**
    ```bash
    echo $CLINE_OTEL_METRICS_EXPORTER
    echo $CLINE_OTEL_LOGS_EXPORTER
    ```
 
-3. **Test with console exporter first:**
+3. **콘솔 exporter로 먼저 테스트:**
    ```bash
    export CLINE_OTEL_METRICS_EXPORTER=console
    export CLINE_OTEL_LOGS_EXPORTER=console
    ```
 
-### Connection Errors
+### 연결 오류
 
-1. **Verify endpoint is accessible:**
+1. **엔드포인트 접근 확인:**
    ```bash
    curl -v https://your-otlp-endpoint:4317
    ```
 
-2. **Check if insecure mode is needed:**
+2. **보안 연결 비활성화 필요 여부 확인:**
    ```bash
    export CLINE_OTEL_EXPORTER_OTLP_INSECURE=true
    ```
 
-3. **Verify authentication headers:**
-   Double-check your API keys and authentication headers are correct
+3. **인증 헤더 확인:**
+   API 키와 인증 헤더가 올바른지 재확인하세요.
 
-### Debug Mode
+### 디버그 모드
 
-Enable debug logging to see detailed OpenTelemetry information:
+OpenTelemetry 상세 로그를 보기 위해 디버그 로깅을 활성화합니다:
 
 ```bash
 export TEL_DEBUG_DIAGNOSTICS=true
 ```
 
-This will output detailed information about:
-- Configuration being used
-- Exporters being created
-- Connection attempts
-- Export successes/failures
+다음에 대한 상세 정보가 출력됩니다:
+- 사용 중인 구성
+- 생성되는 exporter
+- 연결 시도
+- 내보내기 성공/실패
 
-## What Gets Exported
+## 내보내는 데이터
 
-When OpenTelemetry is enabled, Cline exports:
+OpenTelemetry를 활성화하면 Cline은 다음을 내보냅니다:
 
-### Metrics
-- Feature usage counts
-- Task execution metrics 
-- Error rates and types
-- Performance measurements
+### 메트릭
+- 기능 사용 횟수
+- 작업 실행 메트릭 
+- 오류율 및 유형
+- 성능 측정
 
-### Logs
-- System events
-- Error logs with context
-- Operational information
+### 로그
+- 시스템 이벤트
+- 맥락이 포함된 오류 로그
+- 운영 정보
 
 <Warning>
-Exported data is already anonymous and doesn't include code content, file paths, or sensitive information. However, you're responsible for securing the data once exported to your systems.
+내보내는 데이터는 이미 익명화되어 있으며 코드 내용, 파일 경로, 민감 정보는 포함하지 않습니다. 다만, 내보낸 이후 데이터 보안은 사용자가 책임져야 합니다.
 </Warning>
 
-## Limitations
+## 제한 사항
 
-Current OpenTelemetry support in Cline:
-- ✅ OTLP metrics export (console, gRPC, HTTP)
-- ✅ OTLP logs export (console, gRPC, HTTP)
-- ✅ Basic configuration via environment variables
-- ❌ Distributed tracing (not yet implemented)
-- ❌ Custom instrumentation API (not yet exposed)
-- ❌ Sampling configuration (uses defaults)
+현재 Cline의 OpenTelemetry 지원:
+- ✅ OTLP 메트릭 내보내기(콘솔, gRPC, HTTP)
+- ✅ OTLP 로그 내보내기(콘솔, gRPC, HTTP)
+- ✅ 환경 변수를 통한 기본 설정
+- ❌ 분산 트레이싱(아직 미구현)
+- ❌ 커스텀 계측 API(아직 노출되지 않음)
+- ❌ 샘플링 구성(기본값 사용)
 
-## Best Practices
+## 모범 사례
 
-1. **Test First**: Always test with console exporter before sending to production
-2. **Secure Credentials**: Never hardcode API keys; use secure environment variable management
-3. **Monitor Costs**: Be aware of data ingestion costs with your observability platform
-4. **Start Simple**: Begin with metrics only, add logs if needed
-5. **Use Compression**: OTLP supports compression; check if your endpoint requires it
+1. **먼저 테스트**: 프로덕션 전 콘솔 exporter로 테스트
+2. **자격 증명 보안**: API 키를 하드코딩하지 말고 안전한 환경 변수로 관리
+3. **비용 모니터링**: 관측성 플랫폼의 데이터 수집 비용 확인
+4. **단순하게 시작**: 메트릭만 먼저 시작하고 필요 시 로그 추가
+5. **압축 사용**: OTLP는 압축을 지원하므로 엔드포인트 요구사항을 확인
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Cline Telemetry" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
-    Configure simple built-in telemetry
+  <Card title="Cline 텔레메트리" icon="chart-simple" href="/enterprise-solutions/monitoring/telemetry">
+    간단한 내장 텔레메트리 구성
   </Card>
   
-  <Card title="OpenTelemetry Docs" icon="book" href="https://opentelemetry.io/docs/">
-    Learn more about OpenTelemetry
+  <Card title="OpenTelemetry 문서" icon="book" href="https://opentelemetry.io/docs/">
+    OpenTelemetry 자세히 보기
   </Card>
 </CardGroup>

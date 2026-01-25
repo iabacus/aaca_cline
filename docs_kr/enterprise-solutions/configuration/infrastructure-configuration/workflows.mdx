@@ -1,42 +1,42 @@
 ---
-title: "Workflows"
-sidebarTitle: "Workflows"
-description: "Reusable instruction sets that can be invoked on-demand via slash commands"
+title: "워크플로"
+sidebarTitle: "워크플로"
+description: "슬래시 명령으로 필요할 때 호출하는 재사용 지침 세트"
 ---
 
-Workflows are markdown files containing reusable instructions that you can invoke on-demand using slash commands. Think of them as "rules you can call when needed" rather than always-active guidelines.
+워크플로는 재사용 가능한 지침이 담긴 마크다운 파일이며, 슬래시 명령으로 필요할 때 호출할 수 있습니다. 항상 적용되는 가이드가 아니라 "필요할 때 호출하는 규칙"이라고 생각하면 됩니다.
 
-## What are Workflows?
+## 워크플로란?
 
-Workflows are similar to [Rules](/enterprise-solutions/configuration/infrastructure-configuration/rules), but with one key difference:
+워크플로는 [규칙](/enterprise-solutions/configuration/infrastructure-configuration/rules)과 비슷하지만, 한 가지 중요한 차이가 있습니다:
 
 <CardGroup cols={2}>
-  <Card title="Rules" icon="book">
-    **Always Active**
+  <Card title="규칙" icon="book">
+    **항상 활성**
     
-    Automatically applied to every task when toggled on
+    켜져 있으면 모든 작업에 자동 적용
     
-    Example: Coding standards, style guides
+    예: 코딩 표준, 스타일 가이드
   </Card>
   
-  <Card title="Workflows" icon="diagram-project">
-    **On-Demand**
+  <Card title="워크플로" icon="diagram-project">
+    **요청 시 호출**
     
-    Invoked only when you use the slash command
+    슬래시 명령을 사용할 때만 적용
     
-    Example: Deployment checklists, review processes
+    예: 배포 체크리스트, 리뷰 프로세스
   </Card>
 </CardGroup>
 
 <Tip>
-Workflows are just markdown files, no complex configuration needed!
+워크플로는 그냥 마크다운 파일입니다. 복잡한 설정이 필요 없습니다!
 </Tip>
 
-## Quick Example
+## 빠른 예시
 
-Here's a simple deployment workflow:
+간단한 배포 워크플로 예시:
 
-**File:** `.clinerules/workflows/deploy.md`
+**파일:** `.clinerules/workflows/deploy.md`
 
 ```markdown
 # Deployment Workflow
@@ -63,26 +63,26 @@ Before deploying to production, ensure:
 3. Monitor metrics for 24 hours
 ```
 
-**Usage:**
+**사용법:**
 ```
 /deploy
 
 I'm ready to deploy the new authentication feature
 ```
 
-When invoked, Cline adds the workflow instructions to its context for that specific task.
+호출하면 해당 작업에만 워크플로 지침이 Cline 컨텍스트에 추가됩니다.
 
-## Creating Workflows
+## 워크플로 만들기
 
 <Tabs>
-  <Tab title="Manual Creation">
-    Create workflow files in the `.clinerules/workflows/` directory:
+  <Tab title="수동 생성">
+    `.clinerules/workflows/` 디렉터리에 워크플로 파일을 만듭니다:
     
-    1. Create `.clinerules/workflows/` in your repository root
-    2. Add markdown files with your workflow instructions
-    3. Use descriptive names matching your slash command
+    1. 저장소 루트에 `.clinerules/workflows/` 생성
+    2. 워크플로 지침이 담긴 마크다운 파일 추가
+    3. 슬래시 명령과 일치하는 설명적인 이름 사용
     
-    **File structure:**
+    **파일 구조:**
     ```
     your-repo/
     ├── .clinerules/
@@ -94,24 +94,24 @@ When invoked, Cline adds the workflow instructions to its context for that speci
     ```
   </Tab>
   
-  <Tab title="Slash Command">
-    You can also create workflows during a conversation:
+  <Tab title="슬래시 명령">
+    대화 중에도 워크플로를 만들 수 있습니다:
     
-    1. Have a conversation about a process you want to codify
-    2. Type `/newrule` and specify it should be a workflow
-    3. Cline creates the workflow file in `.clinerules/workflows/`
+    1. 정리하고 싶은 프로세스에 대해 대화
+    2. `/newrule`을 입력하고 워크플로임을 명시
+    3. Cline이 `.clinerules/workflows/`에 워크플로 파일 생성
     
     <Note>
-    The `/newrule` command can create both rules and workflows - just specify your intent clearly.
+    `/newrule` 명령은 규칙과 워크플로 모두 생성할 수 있습니다. 의도를 명확히 설명하세요.
     </Note>
   </Tab>
 </Tabs>
 
-## Using Workflows
+## 워크플로 사용하기
 
-### Invoking Workflows
+### 워크플로 호출
 
-Simply type `/` followed by the workflow filename (without `.md`):
+`/` 뒤에 워크플로 파일명(확장자 `.md` 제외)을 입력하세요:
 
 ```
 /deploy
@@ -119,68 +119,68 @@ Simply type `/` followed by the workflow filename (without `.md`):
 /bug-triage
 ```
 
-The workflow instructions are added to Cline's context for the current task only.
+워크플로 지침은 현재 작업에만 추가됩니다.
 
-### Workflow Naming
+### 워크플로 이름 규칙
 
-- Use lowercase with hyphens: `deploy.md`, `code-review.md`
-- Keep names short and memorable
-- Name should indicate the workflow's purpose
+- 소문자 + 하이픈 사용: `deploy.md`, `code-review.md`
+- 짧고 기억하기 쉬운 이름
+- 워크플로 목적을 나타내는 이름
 
 <Warning>
-Workflow filenames become slash commands, so choose names that are easy to type and remember.
+워크플로 파일명은 슬래시 명령이 되므로, 입력과 기억이 쉬운 이름을 선택하세요.
 </Warning>
 
-## Global vs Workspace Workflows
+## 글로벌 vs 워크스페이스 워크플로
 
 <CardGroup cols={2}>
-  <Card title="Workspace Workflows" icon="folder">
-    **Location:** `.clinerules/workflows/` in your repository
+  <Card title="워크스페이스 워크플로" icon="folder">
+    **위치:** 저장소의 `.clinerules/workflows/`
     
-    **Scope:** Specific to that project
+    **범위:** 해당 프로젝트에만 적용
     
-    **Use for:** Project-specific processes and checklists
+    **용도:** 프로젝트별 프로세스와 체크리스트
   </Card>
   
-  <Card title="Global Workflows" icon="globe">
-    **Location:** `Documents/Cline/Workflows/` directory
+  <Card title="글로벌 워크플로" icon="globe">
+    **위치:** `Documents/Cline/Workflows/` 디렉터리
     
-    **Scope:** All your projects
+    **범위:** 모든 프로젝트에 적용
     
-    **Use for:** Personal workflows that apply everywhere
+    **용도:** 어디서나 사용하는 개인 워크플로
   </Card>
 </CardGroup>
 
 <Info>
-**Precedence:** Local workflows override global workflows if they have the same name.
+**우선순위:** 동일한 이름일 경우 로컬 워크플로가 글로벌 워크플로를 덮어씁니다.
 </Info>
 
-## Managing Workflows
+## 워크플로 관리
 
-### Toggling Workflows
+### 워크플로 토글
 
-You can enable or disable workflows:
+워크플로를 활성/비활성화할 수 있습니다:
 
-1. Click the rules icon in Cline's interface
-2. Switch to the "Workflows" tab
-3. Toggle workflows on/off as needed
+1. Cline 인터페이스의 규칙 아이콘 클릭
+2. "Workflows" 탭으로 이동
+3. 필요한 워크플로를 켜고 끔
 
 <Note>
-Disabling a workflow prevents it from being invoked, but keeps the file intact. The slash command won't work until you re-enable it.
+워크플로를 비활성화하면 호출되지 않지만 파일은 유지됩니다. 다시 활성화하기 전까지 슬래시 명령이 동작하지 않습니다.
 </Note>
 
-### Enterprise Remote Workflows
+### 엔터프라이즈 원격 워크플로
 
 <Info>
-Enterprise deployments can configure **remote global workflows** that are available to all team members. These are managed through your infrastructure configuration.
+엔터프라이즈 배포에서는 모든 팀원이 사용할 수 있는 **원격 글로벌 워크플로**를 구성할 수 있습니다. 이는 인프라 구성을 통해 관리됩니다.
 
-See [Self-Hosted Configuration](/enterprise-solutions/configuration/infrastructure-configuration/overview) for details on remote workflows.
+원격 워크플로에 대한 자세한 내용은 [자체 호스팅 구성](/enterprise-solutions/configuration/infrastructure-configuration/overview)을 참고하세요.
 </Info>
 
-## Example Workflows
+## 워크플로 예시
 
 <AccordionGroup>
-  <Accordion title="Code Review Workflow" icon="code-review">
+  <Accordion title="코드 리뷰 워크플로" icon="code-review">
 ```markdown
 # Code Review Workflow
 
@@ -205,7 +205,7 @@ See [Self-Hosted Configuration](/enterprise-solutions/configuration/infrastructu
 ```
   </Accordion>
   
-  <Accordion title="Bug Triage Workflow" icon="bug">
+  <Accordion title="버그 분류 워크플로" icon="bug">
 ```markdown
 # Bug Triage Workflow
 
@@ -235,7 +235,7 @@ See [Self-Hosted Configuration](/enterprise-solutions/configuration/infrastructu
 ```
   </Accordion>
   
-  <Accordion title="Feature Planning Workflow" icon="lightbulb">
+  <Accordion title="기능 계획 워크플로" icon="lightbulb">
 ```markdown
 # Feature Planning Workflow
 
@@ -266,59 +266,59 @@ See [Self-Hosted Configuration](/enterprise-solutions/configuration/infrastructu
   </Accordion>
 </AccordionGroup>
 
-## Best Practices
+## 모범 사례
 
 <AccordionGroup>
-  <Accordion title="Keep Workflows Action-Oriented" icon="list-check">
-    Workflows should contain **actionable steps**, not general advice:
+  <Accordion title="워크플로를 실행 중심으로" icon="list-check">
+    워크플로에는 **실행 가능한 단계**를 담으세요:
     - ✅ "Run `npm test` and verify all tests pass"
     - ❌ "Make sure testing is done properly"
   </Accordion>
   
-  <Accordion title="Use Checklists" icon="square-check">
-    Format workflows as checklists when possible:
-    - Easy to follow step-by-step
-    - Clear progress tracking
-    - Reduces missed steps
+  <Accordion title="체크리스트 사용" icon="square-check">
+    가능하면 체크리스트 형식을 사용하세요:
+    - 단계별로 따라가기 쉬움
+    - 진행 상황이 명확함
+    - 누락 방지
   </Accordion>
   
-  <Accordion title="Include Context" icon="circle-info">
-    Add **why** behind each step:
+  <Accordion title="맥락 포함" icon="circle-info">
+    각 단계의 **이유**를 함께 적으세요:
     ```markdown
     1. Check staging environment first
        (Catching issues in staging prevents production incidents)
     ```
   </Accordion>
   
-  <Accordion title="Version as Code" icon="code-branch">
-    Workflows live in your repository:
-    - Track changes in git
-    - Review updates in PRs
-    - Maintain history of process evolution
+  <Accordion title="코드로 버전 관리" icon="code-branch">
+    워크플로는 저장소에 존재합니다:
+    - git으로 변경 추적
+    - PR에서 업데이트 리뷰
+    - 프로세스 진화의 이력 유지
   </Accordion>
 </AccordionGroup>
 
-## Workflows vs Rules: When to Use Each
+## 워크플로 vs 규칙: 언제 무엇을 쓸까
 
-| Use Rules When | Use Workflows When |
+| 규칙을 쓸 때 | 워크플로를 쓸 때 |
 |----------------|-------------------|
-| Guidance should apply to every task | Process is invoked occasionally |
-| Standards that rarely change | Checklist for specific scenarios |
-| Always-on coding conventions | On-demand deployment processes |
-| General coding style | Specific review procedures |
+| 가이드가 모든 작업에 적용되어야 할 때 | 프로세스를 가끔 호출할 때 |
+| 거의 변하지 않는 표준 | 특정 상황 체크리스트 |
+| 항상 적용되는 코딩 관례 | 요청 시 배포 프로세스 |
+| 일반적인 코딩 스타일 | 특정 리뷰 절차 |
 
-**Example:**
-- **Rule**: "Use TypeScript strict mode and explicit return types"
-- **Workflow**: "Follow these 10 steps when deploying to production"
+**예시:**
+- **규칙**: "TypeScript strict 모드와 명시적 반환 타입을 사용"
+- **워크플로**: "프로덕션 배포 시 10단계를 따르기"
 
-## Next Steps
+## 다음 단계
 
 <CardGroup cols={2}>
-  <Card title="Rules" icon="book" href="/enterprise-solutions/configuration/infrastructure-configuration/rules">
-    Learn about always-active rules
+  <Card title="규칙" icon="book" href="/enterprise-solutions/configuration/infrastructure-configuration/rules">
+    항상 활성인 규칙 알아보기
   </Card>
   
-  <Card title="Remote Configuration" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
-    Deploy global workflows for your team
+  <Card title="원격 구성" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
+    팀 전체에 글로벌 워크플로 배포
   </Card>
 </CardGroup>

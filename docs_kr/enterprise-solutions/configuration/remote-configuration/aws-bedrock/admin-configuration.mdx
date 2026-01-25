@@ -1,32 +1,31 @@
 ---
-title: "Configure AWS Bedrock Provider (Admin)"
-sidebarTitle: "Configure AWS Bedrock (Admin)"
-description: "This guide explains how administrators configure AWS Bedrock as the organization-wide LLM provider for Cline."
+title: "AWS Bedrock 제공자 구성(관리자)"
+sidebarTitle: "AWS Bedrock 구성(관리자)"
+description: "관리자가 Cline의 조직 공용 LLM 제공자로 AWS Bedrock을 구성하는 방법을 설명합니다."
 ---
 
+관리자는 호스팅된 관리자 콘솔을 통해 모든 Cline 사용자에 대해 조직 공용 LLM 제공자로 AWS Bedrock을 추가할 수 있습니다. 이 중앙화된 방식은 아마존의 AI 모델에 대한 일관된 접근을 보장하면서, 리전 제어와 기본 구성 옵션을 통해 조직의 보안 및 컴플라이언스 요구사항을 유지합니다.
 
-As an administrator, you can add AWS Bedrock as the organization-wide LLM provider for all Cline users through the hosted admin console. This centralized approach ensures consistent access to Amazon's AI models while maintaining your organization's security and compliance requirements through region controls and basic configuration options.
+## 시작하기 전에
 
-## Before You Begin
+조직의 LLM 제공자로 AWS Bedrock을 설정하기 위해서는 다음이 필요합니다.
 
-To get started with setting up AWS Bedrock as your organization's LLM provider, you'll need a few items in place. 
-
-**Administrator access to the Cline Admin console**  
-You need admin privileges to enforce provider settings across your organization. If you can navigate to **Settings → Cline Settings** in the admin console at [app.cline.bot](https://app.cline.bot), you have the right access level.
+**Cline 관리자 콘솔의 관리자 권한**  
+조직 전체에 제공자 설정을 적용하려면 관리자 권한이 필요합니다. [app.cline.bot](https://app.cline.bot) 관리자 콘솔에서 **Settings → Cline Settings**로 이동할 수 있다면 필요한 권한이 있습니다.
 
 
-**AWS Bedrock account with the right permissions**  
-Your AWS account needs specific Bedrock permissions to work with Cline. 
+**필요한 권한이 있는 AWS Bedrock 계정**  
+Cline과 연동하려면 AWS 계정에 특정 Bedrock 권한이 필요합니다.
 
 <Note>
-If you don't have direct AWS access, coordinate with your cloud team to get these permissions set up before proceeding.
+AWS에 직접 접근할 수 없다면, 클라우드 팀과 협의하여 해당 권한을 먼저 설정하세요.
 </Note>
 
-**Your preferred AWS region**  
-Choose your primary AWS region carefully since this will be enforced for all users.
+**선호하는 AWS 리전**  
+선택한 리전이 모든 사용자에게 강제되므로 신중히 선택하세요.
 
 <Tip>
-Check which models are available in your region first. Some newer models might not be available in all regions yet.
+리전별 모델 가용성을 먼저 확인하세요. 일부 최신 모델은 모든 리전에 제공되지 않을 수 있습니다.
 </Tip>
 
 <Frame>
@@ -35,91 +34,91 @@ Check which models are available in your region first. Some newer models might n
 	/>
 </Frame>
 
-## Configuration Steps
+## 구성 단계
 
 <Steps>
-<Step title="Access Cline Settings">
-Navigate to [app.cline.bot](https://app.cline.bot) and sign in with your administrator account. Go to **Settings → Cline Settings**.
+<Step title="Cline 설정 접근">
+[app.cline.bot](https://app.cline.bot)에 관리자 계정으로 로그인한 뒤 **Settings → Cline Settings**로 이동합니다.
 
 <Info>
-You should see the provider configuration options if you have the correct admin access level.
+관리자 권한이 올바르다면 제공자 구성 옵션이 표시됩니다.
 </Info>
 </Step>
 
-<Step title="Enable Remote Provider Configuration">
-Toggle on **Enable settings** to reveal the remote provider configuration options. This allows you to enforce provider settings across your organization.
+<Step title="원격 제공자 구성 활성화">
+**Enable settings**를 켜 원격 제공자 구성 옵션을 표시합니다. 이를 통해 조직 전체에 제공자 설정을 강제할 수 있습니다.
 </Step>
 
-<Step title="Select AWS Bedrock as the API Provider">
-Open the **API Provider** dropdown menu and select **Amazon Bedrock**. This will open the Bedrock configuration panel where you'll configure all your organization-wide settings.
+<Step title="API 제공자로 AWS Bedrock 선택">
+**API Provider** 드롭다운에서 **Amazon Bedrock**을 선택합니다. 그러면 조직 공용 설정을 구성할 수 있는 Bedrock 구성 패널이 열립니다.
 </Step>
 
-<Step title="Configure Bedrock Settings">
-The configuration panel includes several settings that control how Bedrock works for your organization. Configure what you need:
+<Step title="Bedrock 설정 구성">
+구성 패널에는 조직에서 Bedrock 동작을 제어하는 여러 설정이 있습니다. 필요한 항목을 구성하세요:
 
 <AccordionGroup>
-<Accordion title="Region (required)">
-Enter your preferred AWS region like `us-west-2` or `us-east-1`. This region will be enforced for all organization members.
+<Accordion title="Region (필수)">
+`us-west-2` 또는 `us-east-1`과 같은 선호 AWS 리전을 입력합니다. 이 리전은 모든 조직 구성원에게 강제 적용됩니다.
 
-[View AWS Global Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
+[AWS 글로벌 인프라 보기](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/)
 
 <Tip>
-For most organizations, `us-east-1` or `us-west-2` are recommended as they have the best model availability.
+대부분의 조직에는 모델 가용성이 가장 좋은 `us-east-1` 또는 `us-west-2`를 권장합니다.
 </Tip>
 </Accordion>
 
-<Accordion title="Custom VPC Endpoint (optional)">
-If your organization uses a private VPC endpoint for Bedrock, specify it here to ensure all API calls go through your network infrastructure.
+<Accordion title="커스텀 VPC 엔드포인트 (선택)">
+조직에서 Bedrock을 위한 프라이빗 VPC 엔드포인트를 사용한다면 여기에 지정하여 모든 API 호출이 내부 네트워크를 통해 진행되도록 합니다.
 
-[Learn more about AWS PrivateLink](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html)
+[AWS PrivateLink 자세히 보기](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-overview.html)
 </Accordion>
 
-<Accordion title="Cross-region Inference (optional)">
-Enable this to let Bedrock automatically route requests to other regions when your primary region has capacity constraints. Useful for maintaining availability during high-demand periods.
+<Accordion title="교차 리전 추론 (선택)">
+기본 리전의 용량이 부족할 때 Bedrock이 다른 리전으로 자동 라우팅하도록 허용합니다. 수요가 높은 시기에 가용성을 유지하는 데 유용합니다.
 
-[Learn more about Inference Profiles](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
+[Inference Profiles 자세히 보기](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 </Accordion>
 
-<Accordion title="Global Inference Profile (optional)">
-Turn this on to use AWS's global inference routing, which automatically directs requests to the optimal region based on availability and latency.
+<Accordion title="글로벌 추론 프로파일 (선택)">
+AWS 글로벌 추론 라우팅을 사용해 가용성과 지연 시간을 기준으로 최적의 리전에 자동으로 요청을 전달합니다.
 </Accordion>
 
-<Accordion title="Prompt Caching (optional)">
-Enable prompt caching to reduce costs and latency. Bedrock caches portions of prompts that remain consistent across requests, making repeated interactions faster and cheaper.
+<Accordion title="프롬프트 캐싱 (선택)">
+비용과 지연을 줄이기 위해 프롬프트 캐싱을 활성화합니다. Bedrock이 요청 간 일관된 프롬프트 일부를 캐싱하여 반복 작업을 더 빠르고 저렴하게 처리합니다.
 
-[Learn more about Prompt Caching](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html)
+[프롬프트 캐싱 자세히 보기](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-caching.html)
 </Accordion>
 </AccordionGroup>
 </Step>
 
-<Step title="Save Configuration">
-After configuring your settings, close the provider configuration panel and click **Save** on the settings page to persist your changes.
+<Step title="구성 저장">
+설정을 마치면 제공자 구성 패널을 닫고 설정 페이지에서 **Save**를 클릭해 변경 사항을 저장합니다.
 
-Once saved, all organization members signed into the Cline extension will automatically use AWS Bedrock with your configured settings. They won't be able to select other providers or switch to their personal Cline accounts.
+저장 후 Cline 확장에 로그인한 조직 구성원은 모두 설정된 AWS Bedrock을 자동으로 사용합니다. 다른 제공자를 선택하거나 개인 Cline 계정으로 전환할 수 없습니다.
 
 <Warning>
-Members can't switch to personal Cline accounts or join other organizations once remote configuration is enabled. This ensures consistent provider usage across your team.
+원격 구성이 활성화되면 구성원은 개인 Cline 계정으로 전환하거나 다른 조직에 가입할 수 없습니다. 이는 팀 전체에 일관된 제공자 사용을 보장하기 위함입니다.
 </Warning>
 </Step>
 </Steps>
 
-## Verification
+## 검증
 
-To verify the configuration:
+구성이 제대로 되었는지 확인하려면:
 
-1. Check that the provider shows as "Amazon Bedrock" in the Enabled provider field
-2. Confirm the settings persist after refreshing the page
-3. Test with a member account to ensure they see only Bedrock as a provider
+1. Enabled provider 필드에 "Amazon Bedrock"이 표시되는지 확인
+2. 페이지 새로고침 후에도 설정이 유지되는지 확인
+3. 멤버 계정으로 테스트해 Bedrock만 표시되는지 확인
 
-## Troubleshooting
+## 문제 해결
 
-**Members don't see the configured provider**  
-Ensure you clicked Save after closing the configuration panel. Verify the member account belongs to the correct organization.
+**구성된 제공자가 멤버에게 보이지 않음**  
+구성 패널을 닫은 뒤 **Save**를 클릭했는지 확인하세요. 멤버 계정이 올바른 조직에 속해 있는지도 확인하세요.
 
-**Configuration changes don't persist**  
-Make sure to click the Save button on the main settings page, not just close the configuration panel.
+**구성 변경이 저장되지 않음**  
+구성 패널만 닫지 말고 메인 설정 페이지의 **Save** 버튼을 반드시 클릭하세요.
 
-**Need to change regions later**  
-You can update the region at any time. Members will need to ensure their local AWS credentials have access to the new region. For more information, refer to the [AWS Bedrock Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+**나중에 리전을 변경해야 하는 경우**  
+리전은 언제든 변경할 수 있습니다. 구성원은 로컬 AWS 자격 증명으로 새 리전에 접근할 수 있어야 합니다. 자세한 내용은 [AWS Bedrock 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)를 참고하세요.
 
-For further details, consult the [AWS Bedrock Documentation](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) and coordinate with your internal cloud team.
+추가 정보는 [AWS Bedrock 문서](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)를 확인하고, 내부 클라우드 팀과 협력하세요.

@@ -1,121 +1,121 @@
 ---
 title: "LM Studio"
-description: "A quick guide to setting up LM Studio for local AI model execution with Cline."
+description: "Cline에서 로컬 AI 모델 실행을 위해 LM Studio를 설정하는 빠른 가이드입니다."
 ---
 
-## Setting Up LM Studio with Cline
+## Cline에서 LM Studio 설정하기
 
-Run AI models locally using LM Studio with Cline.
+LM Studio로 로컬에서 AI 모델을 실행해 Cline과 함께 사용합니다.
 
-### Prerequisites
+### 사전 준비
 
--   Windows, macOS, or Linux computer with AVX2 support
--   Cline installed in VS Code
+-   AVX2를 지원하는 Windows, macOS, Linux 컴퓨터
+-   VS Code에 Cline 설치
 
-### Setup Steps
+### 설정 단계
 
-#### 1. Install LM Studio
+#### 1. LM Studio 설치
 
--   Visit [lmstudio.ai](https://lmstudio.ai)
--   Download and install for your operating system
+-   [lmstudio.ai](https://lmstudio.ai)에 접속
+-   운영체제에 맞는 버전 다운로드 및 설치
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(7).png" alt="LM Studio download page" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(7).png" alt="LM Studio 다운로드 페이지" />
 </Frame>
 
-#### 2. Launch LM Studio
+#### 2. LM Studio 실행
 
--   Open the installed application
--   You'll see four tabs on the left: **Chat**, **Developer** (where you will start the server), **My Models** (where your downloaded models are stored), **Discover** (add new models)
+-   설치된 앱을 실행합니다
+-   왼쪽에 네 개의 탭이 보입니다: **Chat**, **Developer**(서버 시작), **My Models**(다운로드한 모델 저장), **Discover**(새 모델 추가)
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/image%20(10).png"
-		alt="LM Studio interface overview"
+		alt="LM Studio 인터페이스 개요"
 	/>
 </Frame>
 
-#### 3. Download a Model
+#### 3. 모델 다운로드
 
--   Browse the "Discover" page
--   Select and download your preferred model
--   Wait for download to complete
+-   "Discover" 페이지에서 탐색
+-   원하는 모델 선택 후 다운로드
+-   다운로드 완료까지 대기
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/lm-studio-download-model.gif"
-		alt="Downloading a model in LM Studio"
+		alt="LM Studio에서 모델 다운로드"
 	/>
 </Frame>
 
-#### 4. Start the Server
+#### 4. 서버 시작
 
--   Navigate to the "Developer" tab
--   Toggle the server switch to "Running"
--   Note: The server will run at `http://localhost:1234`
+-   "Developer" 탭으로 이동
+-   서버 스위치를 "Running"으로 전환
+-   참고: 서버는 `http://localhost:1234`에서 실행됩니다
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/lm-studio-starting-server.gif"
-		alt="Starting the LM Studio server"
+		alt="LM Studio 서버 시작"
 	/>
 </Frame>
 
-#### 5. Configure Cline
+#### 5. Cline 설정
 
-1. Open VS Code
-2. Click Cline settings icon
-3. Select "LM Studio" as API provider
-4. Select your model from the available options
+1. VS Code 열기
+2. Cline 설정 아이콘 클릭
+3. API Provider로 "LM Studio" 선택
+4. 사용 가능한 옵션에서 모델 선택
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/lm-studio-select-model-cline.gif"
-		alt="Configuring Cline with LM Studio"
+		alt="Cline에서 LM Studio 설정"
 	/>
 </Frame>
 
-### Recommended Model and Settings
+### 추천 모델 및 설정
 
-For the best experience with Cline, use **Qwen3 Coder 30B A3B Instruct**. This model delivers strong coding performance and reliable tool use.
+Cline에 가장 적합한 모델은 **Qwen3 Coder 30B A3B Instruct**입니다. 강력한 코딩 성능과 안정적인 도구 사용을 제공합니다.
 
-#### Critical Settings
+#### 핵심 설정
 
-After loading your model in the Developer tab, configure these settings:
+Developer 탭에서 모델을 로드한 뒤 다음 설정을 구성합니다:
 
-1. **Context Length**: Set to 262,144 (the model's maximum)
-2. **KV Cache Quantization**: Leave unchecked (critical for consistent performance)
-3. **Flash Attention**: Enable if available (improves performance)
+1. **Context Length**: 262,144로 설정(모델 최대치)
+2. **KV Cache Quantization**: 체크 해제(일관된 성능에 중요)
+3. **Flash Attention**: 가능하면 활성화(성능 향상)
 
-#### Quantization Guide
+#### 양자화 가이드
 
-Choose quantization based on your RAM:
+RAM 용량에 따라 양자화를 선택하세요:
 
-- **32GB RAM**: Use 4-bit quantization (~17GB download)
-- **64GB RAM**: Use 8-bit quantization (~32GB download) for better quality
-- **128GB+ RAM**: Consider full precision or larger models
+- **32GB RAM**: 4-bit 양자화(~17GB 다운로드)
+- **64GB RAM**: 8-bit 양자화(~32GB 다운로드)로 더 높은 품질
+- **128GB+ RAM**: 풀 프리시전 또는 더 큰 모델 고려
 
-#### Model Format
+#### 모델 형식
 
-- **Mac (Apple Silicon)**: Use MLX format for optimized performance
-- **Windows/Linux**: Use GGUF format
+- **Mac(Apple Silicon)**: 성능 최적화를 위해 MLX 형식 사용
+- **Windows/Linux**: GGUF 형식 사용
 
-### Enable Compact Prompts
+### Compact Prompts 활성화
 
-For optimal performance with local models, enable compact prompts in Cline settings. This reduces the prompt size by 90% while maintaining core functionality.
+로컬 모델에서 최적 성능을 위해 Cline 설정에서 compact prompts를 활성화하세요. 핵심 기능을 유지하면서 프롬프트 크기를 90% 줄입니다.
 
-Navigate to Cline Settings → Features → Use Compact Prompt and toggle it on.
+Cline Settings → Features → Use Compact Prompt로 이동해 토글을 켭니다.
 
-### Important Notes
+### 중요 참고사항
 
--   Start LM Studio before using with Cline
--   Keep LM Studio running in background
--   First model download may take several minutes depending on size
--   Models are stored locally after download
+-   Cline과 함께 사용하기 전에 LM Studio를 시작하세요
+-   LM Studio를 백그라운드에서 실행 상태로 유지하세요
+-   첫 모델 다운로드는 크기에 따라 수 분이 걸릴 수 있습니다
+-   모델은 다운로드 후 로컬에 저장됩니다
 
-### Troubleshooting
+### 문제 해결
 
-1. If Cline can't connect to LM Studio:
-2. Verify LM Studio server is running (check Developer tab)
-3. Ensure a model is loaded
-4. Check your system meets hardware requirements
+1. Cline이 LM Studio에 연결하지 못하면:
+2. LM Studio 서버가 실행 중인지 확인(Developer 탭)
+3. 모델이 로드되었는지 확인
+4. 시스템이 하드웨어 요구사항을 충족하는지 확인

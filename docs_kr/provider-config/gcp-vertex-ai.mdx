@@ -1,50 +1,50 @@
 ---
 title: "GCP Vertex AI"
-description: "Configure GCP Vertex AI with Cline to access leading generative AI models like Claude 3.5 Sonnet v2. This guide covers GCP environment setup, authentication, and secure integration for enterprise teams."
+description: "Cline에서 GCP Vertex AI를 설정해 Claude 3.5 Sonnet v2 같은 주요 생성형 AI 모델에 접근하세요. 이 가이드는 GCP 환경 설정, 인증, 엔터프라이즈용 보안 통합을 다룹니다."
 ---
 
-### Overview
+### 개요
 
 **GCP Vertex AI:**\
-A fully managed service that provides access to leading generative AI models—such as Anthropic's Claude 3.5 Sonnet v2—through Google Cloud.\
-[Learn more about GCP Vertex AI](https://cloud.google.com/vertex-ai).
+Google Cloud를 통해 Anthropic의 Claude 3.5 Sonnet v2 같은 주요 생성형 AI 모델에 접근할 수 있는 완전 관리형 서비스입니다.\
+[GCP Vertex AI 자세히 보기](https://cloud.google.com/vertex-ai).
 
-This guide is tailored for organizations with established GCP environments (leveraging IAM roles, service accounts, and best practices in resource management) to ensure secure and compliant usage.
+이 가이드는 IAM 역할, 서비스 계정, 리소스 관리 모범 사례를 갖춘 GCP 환경을 보유한 조직을 대상으로 안전하고 준수되는 사용을 보장하기 위해 작성되었습니다.
 
 ---
 
-### Step 1: Prepare Your GCP Environment
+### 1단계: GCP 환경 준비
 
-#### 1.1 Create or Use a GCP Project
+#### 1.1 GCP 프로젝트 생성 또는 사용
 
--   **Sign in to the GCP Console:**\
+-   **GCP 콘솔 로그인:**\
     [Google Cloud Console](https://console.cloud.google.com/)
--   **Select or Create a Project:**\
-    Use an existing project or create a new one dedicated to Vertex AI.
+-   **프로젝트 선택 또는 생성:**\
+    기존 프로젝트를 사용하거나 Vertex AI 전용 새 프로젝트를 생성합니다.
 
-#### 1.2 Set Up IAM Permissions and Service Accounts
+#### 1.2 IAM 권한 및 서비스 계정 설정
 
--   **Assign Required Roles:**
+-   **필수 역할 할당:**
 
-    -   Grant your user (or service account) the **Vertex AI User** role (`roles/aiplatform.user`)
-    -   For service accounts, also attach the **Vertex AI Service Agent** role (`roles/aiplatform.serviceAgent`) to enable certain operations
-    -   Consider additional predefined roles as needed:
+    -   사용자(또는 서비스 계정)에 **Vertex AI User** 역할(`roles/aiplatform.user`) 부여
+    -   서비스 계정에는 특정 작업을 위해 **Vertex AI Service Agent** 역할(`roles/aiplatform.serviceAgent`)도 연결
+    -   필요에 따라 추가 사전 정의 역할 고려:
         -   Vertex AI Platform Express Admin
         -   Vertex AI Platform Express User
         -   Vertex AI Migration Service User
 
--   **Cross-Project Resource Access:**
-    -   For BigQuery tables in different projects, assign the **BigQuery Data Viewer** role
-    -   For Cloud Storage buckets in different projects, assign the **Storage Object Viewer** role
-    -   For external data sources, refer to the [GCP Vertex AI Access Control documentation](https://cloud.google.com/vertex-ai/docs/general/access-control)
+-   **프로젝트 간 리소스 접근:**
+    -   다른 프로젝트의 BigQuery 테이블에는 **BigQuery Data Viewer** 역할 부여
+    -   다른 프로젝트의 Cloud Storage 버킷에는 **Storage Object Viewer** 역할 부여
+    -   외부 데이터 소스는 [GCP Vertex AI Access Control 문서](https://cloud.google.com/vertex-ai/docs/general/access-control) 참고
 
 ---
 
-### Step 2: Verify Regional and Model Access
+### 2단계: 리전 및 모델 접근 확인
 
-#### 2.1 Choose and Confirm a Region
+#### 2.1 리전 선택 및 확인
 
-Vertex AI supports multiple regions. Select a region that meets your latency, compliance, and capacity needs. Examples include:
+Vertex AI는 여러 리전을 지원합니다. 지연 시간, 규정 준수, 수용량 요구를 충족하는 리전을 선택하세요. 예시:
 
 -   **us-east5 (Columbus, Ohio)**
 -   **us-central1 (Iowa)**
@@ -53,157 +53,157 @@ Vertex AI supports multiple regions. Select a region that meets your latency, co
 -   **asia-southeast1 (Singapore)**
 -   **global (Global)**
 
-The Global endpoint may offer higher availability and reduce resource exhausted errors. Only Gemini models are supported.
+Global 엔드포인트는 가용성이 높고 리소스 부족 오류를 줄일 수 있습니다. 다만 Gemini 모델만 지원됩니다.
 
-#### 2.2 Enable the Claude 3.5 Sonnet v2 Model
+#### 2.2 Claude 3.5 Sonnet v2 모델 활성화
 
--   **Open Vertex AI Model Garden:**\
-    In the Cloud Console, navigate to **Vertex AI → Model Garden**
--   **Enable Claude 3.5 Sonnet v2:**\
-    Locate the model card for Claude 3.5 Sonnet v2 and click **Enable**
+-   **Vertex AI Model Garden 열기:**\
+    Cloud Console에서 **Vertex AI → Model Garden**으로 이동
+-   **Claude 3.5 Sonnet v2 활성화:**\
+    Claude 3.5 Sonnet v2 모델 카드에서 **Enable** 클릭
 
 ---
 
-### Step 3: Configure the Cline VS Code Extension
+### 3단계: Cline VS Code 확장 설정
 
-#### 3.1 Install and Open Cline
+#### 3.1 Cline 설치 및 열기
 
--   **Download VS Code:**\
-    [Download Visual Studio Code](https://code.visualstudio.com/)
--   **Install the Cline Extension:**
-    -   Open VS Code
-    -   Navigate to the Extensions Marketplace (Ctrl+Shift+X or Cmd+Shift+X)
-    -   Search for **Cline** and install the extension
+-   **VS Code 다운로드:**\
+    [Visual Studio Code 다운로드](https://code.visualstudio.com/)
+-   **Cline 확장 설치:**
+    - VS Code 열기
+    - 확장 마켓플레이스(Ctrl+Shift+X 또는 Cmd+Shift+X)로 이동
+    - **Cline** 검색 후 설치
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/cline-extension-arrow.png"
-		alt="Cline extension in VS Code"
+		alt="VS Code의 Cline 확장"
 	/>
 </Frame>
 
-#### 3.2 Configure Cline Settings
+#### 3.2 Cline 설정 구성
 
--   **Open Cline Settings:**\
-    Click the settings ⚙️ icon within the Cline extension
--   **Set API Provider:**\
-    Choose **GCP Vertex AI** from the API Provider dropdown
--   **Enter Your Google Cloud Project ID:**\
-    Provide the project ID you set up earlier
--   **Select the Region:**\
-    Choose one of the supported regions (e.g., `us-east5`)
--   **Select the Model:**\
-    From the available list, choose **Claude 3.5 Sonnet v2**
--   **Save and Test:**\
-    Save your settings and test by sending a simple prompt (e.g., "Generate a Python function to check if a number is prime.")
+-   **Cline 설정 열기:**\
+    Cline 확장 내 설정 ⚙️ 아이콘 클릭
+-   **API Provider 설정:**\
+    API Provider 드롭다운에서 **GCP Vertex AI** 선택
+-   **Google Cloud 프로젝트 ID 입력:**\
+    앞서 설정한 프로젝트 ID 입력
+-   **리전 선택:**\
+    지원 리전 중 하나 선택(예: `us-east5`)
+-   **모델 선택:**\
+    목록에서 **Claude 3.5 Sonnet v2** 선택
+-   **저장 및 테스트:**\
+    설정을 저장하고 간단한 프롬프트(예: "소수가 맞는지 확인하는 Python 함수를 만들어 줘.")로 테스트
 
 ---
 
-### Step 4: Authentication and Credentials Setup
+### 4단계: 인증 및 자격 증명 설정
 
-#### Option A: Using Your Google Account (User Credentials)
+#### 옵션 A: Google 계정 사용(사용자 자격 증명)
 
-1. **Install the Google Cloud CLI:**\
-   Follow the [installation guide](https://cloud.google.com/sdk/docs/install)
-2. **Initialize and Authenticate:**
+1. **Google Cloud CLI 설치:**\
+   [설치 가이드](https://cloud.google.com/sdk/docs/install)를 참고하세요
+2. **초기화 및 인증:**
 
     ```bash
     gcloud init
     gcloud auth application-default login
     ```
 
-    - This sets up Application Default Credentials (ADC) using your Google account
+    - Google 계정으로 Application Default Credentials(ADC)를 설정합니다.
 
-3. **Restart VS Code:**\
-   Ensure VS Code is restarted so that the Cline extension picks up the new credentials
+3. **VS Code 재시작:**\
+   Cline 확장이 새 자격 증명을 인식하도록 VS Code를 재시작합니다.
 
-#### Option B: Using a Service Account (JSON Key)
+#### 옵션 B: 서비스 계정(JSON 키) 사용
 
-1. **Create a Service Account:**
+1. **서비스 계정 생성:**
 
-    - In the GCP Console, navigate to **IAM & Admin > Service Accounts**
-    - Create a new service account (e.g., "vertex-ai-client")
+    - GCP Console에서 **IAM & Admin > Service Accounts**로 이동
+    - 새 서비스 계정을 생성(예: "vertex-ai-client")
 
-2. **Assign Roles:**
+2. **역할 할당:**
 
-    - Attach **Vertex AI User** (`roles/aiplatform.user`)
-    - Attach **Vertex AI Service Agent** (`roles/aiplatform.serviceAgent`)
-    - Optionally, add other roles as required
+    - **Vertex AI User** (`roles/aiplatform.user`) 연결
+    - **Vertex AI Service Agent** (`roles/aiplatform.serviceAgent`) 연결
+    - 필요에 따라 다른 역할 추가
 
-3. **Generate a JSON Key:**
+3. **JSON 키 생성:**
 
-    - In the Service Accounts section, manage keys for your service account and download the JSON key
+    - Service Accounts 섹션에서 키를 관리하고 JSON 키를 다운로드
 
-4. **Set the Environment Variable:**
+4. **환경 변수 설정:**
 
     ```bash
     export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
     ```
 
-    - This instructs Google Cloud client libraries (and Cline) to use this key
+    - Google Cloud 클라이언트 라이브러리(Cline 포함)가 이 키를 사용하도록 지시합니다.
 
-5. **Restart VS Code:**\
-   Launch VS Code from a terminal where the `GOOGLE_APPLICATION_CREDENTIALS` variable is set
+5. **VS Code 재시작:**\
+   `GOOGLE_APPLICATION_CREDENTIALS` 변수가 설정된 터미널에서 VS Code를 실행합니다.
 
 ---
 
-### Step 5: Security, Monitoring, and Best Practices
+### 5단계: 보안, 모니터링, 모범 사례
 
-#### 5.1 Enforce Least Privilege
+#### 5.1 최소 권한 적용
 
--   **Principle of Least Privilege:**\
-    Only grant the minimum necessary permissions. Custom roles can offer finer control compared to broad predefined roles
--   **Best Practices:**\
-    Refer to [GCP IAM Best Practices](https://cloud.google.com/iam/docs/best-practices)
+-   **최소 권한 원칙:**\
+    필요한 최소 권한만 부여합니다. 광범위한 사전 정의 역할보다 커스텀 역할이 더 세밀한 제어를 제공합니다.
+-   **모범 사례:**\
+    [GCP IAM 모범 사례](https://cloud.google.com/iam/docs/best-practices) 참고
 
-#### 5.2 Manage Resource Access
+#### 5.2 리소스 접근 관리
 
--   **Project vs. Resource-Level Access:**\
-    Access can be managed at both levels. Note that resource-level permissions (e.g., for BigQuery or Cloud Storage) add to, but do not override, project-level policies
+-   **프로젝트 vs 리소스 수준 접근:**\
+    두 수준에서 접근을 관리할 수 있습니다. 리소스 수준 권한(BigQuery, Cloud Storage 등)은 프로젝트 수준 정책을 대체하지 않고 추가됩니다.
 
-#### 5.3 Monitor Usage and Quotas
+#### 5.3 사용량 및 할당량 모니터링
 
--   **Model Observability Dashboard:**
+-   **Model Observability 대시보드:**
 
-    -   In the Vertex AI Console, navigate to the **Model Observability** dashboard
-    -   Monitor metrics such as request throughput, latency, and error rates (including 429 quota errors)
+    -   Vertex AI 콘솔에서 **Model Observability** 대시보드로 이동
+    -   요청 처리량, 지연 시간, 오류율(429 할당량 오류 포함) 모니터링
 
--   **Quota Management:**
-    -   If you encounter 429 errors, check the **IAM & Admin > Quotas** page
-    -   Request a quota increase if necessary\
-        [Learn more about GCP Vertex AI Quotas](https://cloud.google.com/vertex-ai/docs/quotas)
+-   **할당량 관리:**
+    -   429 오류가 발생하면 **IAM & Admin > Quotas** 페이지 확인
+    -   필요 시 할당량 증가 요청\
+        [GCP Vertex AI Quotas 자세히 보기](https://cloud.google.com/vertex-ai/docs/quotas)
 
-#### 5.4 Service Agents and Cross-Project Considerations
+#### 5.4 서비스 에이전트 및 프로젝트 간 고려사항
 
--   **Service Agents:**\
-    Be aware of the different service agents:
+-   **서비스 에이전트:**\
+    다음 서비스 에이전트를 구분해 관리해야 합니다:
 
     -   Vertex AI Service Agent
     -   Vertex AI RAG Data Service Agent
     -   Vertex AI Custom Code Service Agent
     -   Vertex AI Extension Service Agent
 
--   **Cross-Project Access:**\
-    For resources in other projects (e.g., BigQuery, Cloud Storage), ensure that the appropriate roles (BigQuery Data Viewer, Storage Object Viewer) are assigned
+-   **프로젝트 간 접근:**\
+    다른 프로젝트의 리소스(BigQuery, Cloud Storage 등)에는 해당 역할(BigQuery Data Viewer, Storage Object Viewer)이 부여되어 있어야 합니다.
 
 ---
 
-### Conclusion
+### 결론
 
-By following these steps, your enterprise team can securely integrate GCP Vertex AI with the Cline VS Code extension to harness the power of **Claude 3.5 Sonnet v2**:
+다음 단계를 따르면 엔터프라이즈 팀은 Cline VS Code 확장에서 GCP Vertex AI를 안전하게 통합하여 **Claude 3.5 Sonnet v2**의 강력한 기능을 활용할 수 있습니다:
 
--   **Prepare Your GCP Environment:**\
-    Create or use a project, configure IAM with least privilege, and ensure necessary roles (including the Vertex AI Service Agent role) are attached
--   **Verify Regional and Model Access:**\
-    Confirm that your chosen region supports Claude 3.5 Sonnet v2 and that the model is enabled
--   **Configure Cline in VS Code:**\
-    Install Cline, enter your project ID, select the appropriate region, and choose the model
--   **Set Up Authentication:**\
-    Use either user credentials (via `gcloud auth application-default login`) or a service account with a JSON key
--   **Implement Security and Monitoring:**\
-    Adhere to best practices for IAM, manage resource access carefully, and monitor usage with the Model Observability dashboard
+-   **GCP 환경 준비:**\
+    프로젝트 생성/선택, 최소 권한 IAM 구성, 필수 역할(Vertex AI Service Agent 포함) 연결
+-   **리전 및 모델 접근 확인:**\
+    선택한 리전에서 Claude 3.5 Sonnet v2가 지원되는지 확인하고 모델을 활성화
+-   **VS Code에서 Cline 설정:**\
+    Cline 설치, 프로젝트 ID 입력, 적절한 리전 선택, 모델 선택
+-   **인증 설정:**\
+    `gcloud auth application-default login`을 통한 사용자 자격 증명 또는 JSON 키 기반 서비스 계정 사용
+-   **보안 및 모니터링 구현:**\
+    IAM 모범 사례 준수, 리소스 접근 관리, Model Observability 대시보드로 사용량 모니터링
 
-For further details, please consult the [GCP Vertex AI Documentation](https://cloud.google.com/vertex-ai/docs) and your internal security policies.\
-Happy coding!
+자세한 내용은 [GCP Vertex AI 문서](https://cloud.google.com/vertex-ai/docs)와 내부 보안 정책을 참고하세요.\
+즐거운 코딩 되세요!
 
-_This guide will be updated as GCP Vertex AI and Cline evolve. Always refer to the latest documentation for current practices._
+_이 가이드는 GCP Vertex AI와 Cline의 변화에 따라 업데이트됩니다. 최신 정보는 공식 문서를 참고하세요._

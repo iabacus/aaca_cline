@@ -1,89 +1,89 @@
 ---
 title: "Fireworks AI"
-description: "Learn how to configure and use Fireworks AI's lightning-fast inference platform with Cline. Experience up to 4x faster inference speeds with optimized models and competitive pricing."
+description: "Cline에서 Fireworks AI의 초고속 추론 플랫폼을 설정하고 사용하는 방법을 알아보세요. 최적화된 모델과 경쟁력 있는 가격으로 최대 4배 빠른 추론 속도를 경험할 수 있습니다."
 ---
 
-Fireworks AI is a leading infrastructure platform for generative AI that focuses on delivering exceptional performance through optimized inference capabilities. With up to 4x faster inference speeds than alternative platforms and support for over 40 different AI models, Fireworks eliminates the operational complexity of running AI models at scale.
+Fireworks AI는 최적화된 추론 기능을 통해 뛰어난 성능을 제공하는 생성형 AI 인프라 플랫폼입니다. 대안 플랫폼보다 최대 4배 빠른 추론 속도와 40개 이상의 AI 모델 지원으로 대규모 AI 운영의 복잡성을 줄여줍니다.
 
-**Website:** [https://fireworks.ai/](https://fireworks.ai/)
+**웹사이트:** [https://fireworks.ai/](https://fireworks.ai/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to [Fireworks AI](https://fireworks.ai/) and create an account or sign in.
-2.  **Navigate to API Keys:** Access the API keys section in your dashboard.
-3.  **Create a Key:** Generate a new API key. Give it a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** Copy the API key immediately. Store it securely.
+1.  **가입/로그인:** [Fireworks AI](https://fireworks.ai/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 대시보드의 API keys 섹션으로 이동합니다.
+3.  **키 생성:** 새 API 키를 생성하고 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다.
 
-### Supported Models
+### 지원 모델
 
-Fireworks AI supports a wide variety of models across different categories. Popular models include:
+Fireworks AI는 다양한 카테고리의 폭넓은 모델을 지원합니다. 인기 모델 예시는 다음과 같습니다:
 
-**Text Generation Models:**
--   Llama 3.1 series (8B, 70B, 405B)
--   Mixtral 8x7B and 8x22B
--   Qwen 2.5 series
--   DeepSeek models with reasoning capabilities
--   Code Llama models for programming tasks
+**텍스트 생성 모델:**
+-   Llama 3.1 시리즈(8B, 70B, 405B)
+-   Mixtral 8x7B 및 8x22B
+-   Qwen 2.5 시리즈
+-   추론 기능을 갖춘 DeepSeek 모델
+-   프로그래밍 작업용 Code Llama 모델
 
-**Vision Models:**
--   Llama 3.2 Vision models
--   Qwen 2-VL models
+**비전 모델:**
+-   Llama 3.2 Vision 모델
+-   Qwen 2-VL 모델
 
-**Embedding Models:**
--   Various text embedding models for semantic search
+**임베딩 모델:**
+-   의미 검색용 다양한 텍스트 임베딩 모델
 
-The platform curates, optimizes, and deploys models with custom kernels and inference optimizations for maximum performance.
+플랫폼은 최대 성능을 위해 사용자 지정 커널과 추론 최적화를 적용해 모델을 큐레이션, 최적화, 배포합니다.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Fireworks" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Fireworks API key into the "Fireworks API Key" field.
-4.  **Enter Model ID:** Specify the model you want to use (e.g., "accounts/fireworks/models/llama-v3p1-70b-instruct").
-5.  **Configure Tokens:** Optionally set max completion tokens and context window size.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Fireworks"를 선택합니다.
+3.  **API 키 입력:** Fireworks API 키를 "Fireworks API Key" 필드에 붙여넣습니다.
+4.  **모델 ID 입력:** 사용할 모델을 지정합니다(예: "accounts/fireworks/models/llama-v3p1-70b-instruct").
+5.  **토큰 설정:** 필요하면 최대 생성 토큰 수와 컨텍스트 창 크기를 설정합니다.
 
-### Fireworks AI's Performance Focus
+### Fireworks AI의 성능 중심 접근
 
-Fireworks AI's competitive advantages center on performance optimization and developer experience:
+Fireworks AI의 경쟁력은 성능 최적화와 개발자 경험에 있습니다:
 
-#### Lightning-Fast Inference
-- **Up to 4x faster inference** than alternative platforms
-- **250% higher throughput** compared to open source inference engines
-- **50% faster speed** with significantly reduced latency
-- **6x lower cost** than HuggingFace Endpoints with 2.5x generation speed
+#### 초고속 추론
+- **대안 플랫폼보다 최대 4배 빠른 추론**
+- **오픈소스 추론 엔진 대비 250% 높은 처리량**
+- **지연 시간을 크게 줄여 50% 더 빠른 속도**
+- HuggingFace Endpoints 대비 **6배 낮은 비용**과 **2.5배 빠른 생성 속도**
 
-#### Advanced Optimization Technology
-- **Custom kernels** and inference optimizations increase throughput per GPU
-- **Multi-LoRA architecture** enables efficient resource sharing
-- **Hundreds of fine-tuned model variants** can run on shared base model infrastructure
-- **Asset-light model** focuses on optimization software rather than expensive GPU ownership
+#### 고급 최적화 기술
+- **커스텀 커널** 및 추론 최적화로 GPU당 처리량 증가
+- **Multi-LoRA 아키텍처**로 리소스 효율적인 공유
+- **수백 개의 파인튜닝 모델 변형**을 공유 기반 모델 인프라에서 실행
+- 고가 GPU 소유보다 **최적화 소프트웨어 중심의 경량 자산 모델**
 
-#### Comprehensive Model Support
-- **40+ different AI models** curated and optimized for performance
-- **Multiple GPU types** supported: A100, H100, H200, B200, AMD MI300X
-- **Pay-per-GPU-second billing** with no extra charges for start-up times
-- **OpenAI API compatibility** for seamless integration
+#### 포괄적 모델 지원
+- **40개 이상의 AI 모델**을 성능 중심으로 큐레이션 및 최적화
+- **다양한 GPU 유형** 지원: A100, H100, H200, B200, AMD MI300X
+- 시작 시간 추가 비용 없이 **GPU 초 단위 과금**
+- **OpenAI API 호환**으로 손쉬운 통합
 
-### Pricing Structure
+### 가격 구조
 
-Fireworks AI uses a usage-based pricing model with competitive rates:
+Fireworks AI는 경쟁력 있는 사용량 기반 가격을 제공합니다:
 
-#### Text and Vision Models (2025)
+#### 텍스트 및 비전 모델(2025)
 | Parameter Count | Price per 1M Input Tokens |
 |---|---|
-| Less than 4B parameters | $0.10 |
-| 4B - 16B parameters | $0.20 |
-| More than 16B parameters | $0.90 |
-| MoE 0B - 56B parameters | $0.50 |
+| 4B 미만 파라미터 | $0.10 |
+| 4B - 16B 파라미터 | $0.20 |
+| 16B 초과 파라미터 | $0.90 |
+| MoE 0B - 56B 파라미터 | $0.50 |
 
-#### Fine-Tuning Services
+#### 파인튜닝 서비스
 | Base Model Size | Price per 1M Training Tokens |
 |---|---|
-| Up to 16B parameters | $0.50 |
-| 16.1B - 80B parameters | $3.00 |
+| 16B 이하 파라미터 | $0.50 |
+| 16.1B - 80B 파라미터 | $3.00 |
 | DeepSeek R1 / V3 | $10.00 |
 
-#### Dedicated Deployments
+#### 전용 배포
 | GPU Type | Price per Hour |
 |---|---|
 | A100 80GB | $2.90 |
@@ -92,40 +92,40 @@ Fireworks AI uses a usage-based pricing model with competitive rates:
 | B200 180GB | $11.99 |
 | AMD MI300X | $4.99 |
 
-### Special Features
+### 특별 기능
 
-#### Fine-Tuning Capabilities
-Fireworks offers sophisticated fine-tuning services accessible through CLI interface, supporting JSON-formatted data from databases like MongoDB Atlas. Fine-tuned models cost the same as base models for inference.
+#### 파인튜닝 기능
+Fireworks는 CLI 인터페이스로 접근 가능한 고급 파인튜닝 서비스를 제공하며, MongoDB Atlas 같은 데이터베이스의 JSON 형식 데이터를 지원합니다. 파인튜닝된 모델의 추론 비용은 기본 모델과 동일합니다.
 
-#### Developer Experience
-- **Browser playground** for direct model interaction
-- **REST API** with OpenAI compatibility
-- **Comprehensive cookbook** with ready-to-use recipes
-- **Multiple deployment options** from serverless to dedicated GPUs
+#### 개발자 경험
+- **브라우저 플레이그라운드**로 모델 직접 상호작용
+- **OpenAI 호환 REST API**
+- **바로 사용할 수 있는 레시피를 담은 종합 cookbook**
+- 서버리스부터 전용 GPU까지 **다양한 배포 옵션**
 
-#### Enterprise Features
-- **HIPAA and SOC 2 Type II compliance** for regulated industries
-- **Self-serve onboarding** for developers
-- **Enterprise sales** for larger deployments
-- **Post-paid billing options** and Business tier
+#### 엔터프라이즈 기능
+- 규제 산업을 위한 **HIPAA 및 SOC 2 Type II 준수**
+- 개발자를 위한 **셀프 서비스 온보딩**
+- 대규모 배포를 위한 **엔터프라이즈 세일즈**
+- **후불 결제 옵션** 및 Business 티어
 
-#### Reasoning Model Support
-Advanced support for reasoning models with `<think>` tag processing and reasoning content extraction, making complex multi-step reasoning practical for real-time applications.
+#### 추론 모델 지원
+`<think>` 태그 처리와 추론 콘텐츠 추출을 통해 복잡한 다단계 추론을 실시간 애플리케이션에서 실용적으로 사용할 수 있도록 지원합니다.
 
-### Performance Advantages
+### 성능 이점
 
-Fireworks AI's optimization delivers measurable improvements:
-- **250% higher throughput** vs open source engines
-- **50% faster speed** with reduced latency
-- **6x cost reduction** compared to alternatives
-- **2.5x generation speed** improvement per request
+Fireworks AI의 최적화로 다음과 같은 개선이 측정됩니다:
+- **오픈소스 엔진 대비 250% 높은 처리량**
+- **지연 시간 감소와 함께 50% 더 빠른 속도**
+- **대안 대비 6배 비용 절감**
+- **요청당 2.5배 생성 속도 향상**
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Model Selection:** Choose models based on your specific use case - smaller models for speed, larger models for complex reasoning.
--   **Performance Focus:** Fireworks excels at making AI inference fast and cost-effective through advanced optimizations.
--   **Fine-Tuning:** Leverage fine-tuning capabilities to improve model accuracy with your proprietary data.
--   **Compliance:** HIPAA and SOC 2 Type II compliance enables use in regulated industries.
--   **Pricing Model:** Usage-based pricing scales with your success rather than traditional seat-based models.
--   **Developer Resources:** Extensive documentation and cookbook recipes accelerate implementation.
--   **GPU Options:** Multiple GPU types available for dedicated deployments based on performance needs.
+-   **모델 선택:** 사용 사례에 따라 모델을 선택하세요. 작은 모델은 속도, 큰 모델은 복잡한 추론에 적합합니다.
+-   **성능 중심:** Fireworks는 고급 최적화를 통해 AI 추론을 빠르고 비용 효율적으로 만드는 데 강점이 있습니다.
+-   **파인튜닝:** 자체 데이터를 활용해 모델 정확도를 높이기 위해 파인튜닝 기능을 활용하세요.
+-   **준수:** HIPAA 및 SOC 2 Type II 준수로 규제 산업에서도 사용 가능합니다.
+-   **가격 모델:** 사용량 기반 가격으로 성과에 맞춰 확장되며 좌석 기반 모델보다 유연합니다.
+-   **개발자 리소스:** 풍부한 문서와 cookbook 레시피로 구현 속도를 높일 수 있습니다.
+-   **GPU 옵션:** 성능 요구에 맞춰 전용 배포용 다양한 GPU 유형을 선택할 수 있습니다.

@@ -1,51 +1,51 @@
 ---
-title: "Background Edit"
-sidebarTitle: "Background Edit"
+title: "백그라운드 편집"
+sidebarTitle: "백그라운드 편집"
 ---
 
-Background Edit lets Cline make file changes without opening the diff editor, so you can keep writing code while Cline works on other files in the background.
+백그라운드 편집은 Cline이 diff 편집기를 열지 않고 파일을 변경하도록 해주어, Cline이 다른 파일을 처리하는 동안에도 계속 코딩할 수 있습니다.
 
 <Note>
-  This feature is marked as experimental.
+  이 기능은 실험적 기능으로 표시되어 있습니다.
 </Note>
 
-## How It Works
+## 동작 방식
 
-By default, Cline opens a side-by-side diff editor tab for each file it modifies. With Background Edit enabled:
+기본적으로 Cline은 수정하는 파일마다 나란히 보는 diff 편집기 탭을 엽니다. 백그라운드 편집을 활성화하면:
 
-- Edits write directly to your files without opening new tabs
-- Changes appear as collapsible diff blocks in the chat panel
-- Your editor focus stays on whatever file you had open
+- 편집 내용이 새 탭 없이 파일에 바로 기록됩니다
+- 변경 사항이 채팅 패널에 접을 수 있는 diff 블록으로 표시됩니다
+- 에디터 포커스가 현재 열어둔 파일에 유지됩니다
 
-## Enabling Background Edit
+## 백그라운드 편집 활성화
 
-1. Click the settings icon (gear) in the top-right corner of the Cline panel
-2. Go to "**Feature Settings**"
-3. Toggle "**Enable Background Edit**" on
+1. Cline 패널 오른쪽 상단의 설정 아이콘(톱니바퀴)을 클릭
+2. "**Feature Settings**"로 이동
+3. "**Enable Background Edit**" 토글을 켭니다
 
-## Viewing Changes
+## 변경 사항 보기
 
-File changes display directly in the chat panel with:
+파일 변경은 채팅 패널에 아래와 같이 표시됩니다:
 
-- **File action icons** showing whether the file was added, updated, or deleted
-- **Stats** showing additions (+) and deletions (-) at a glance
-- **Collapsible diffs** you can expand or collapse by clicking the file header
-- **Real-time streaming** as changes appear line-by-line
+- **파일 동작 아이콘**: 파일 추가/수정/삭제 여부 표시
+- **통계**: 추가(+)와 삭제(-) 수를 한눈에 확인
+- **접을 수 있는 diff**: 파일 헤더를 클릭해 펼치거나 접기
+- **실시간 스트리밍**: 변경 사항이 줄 단위로 표시
 
-Green highlights additions, red highlights deletions.
+초록색은 추가, 빨간색은 삭제를 의미합니다.
 
-## When to Use It
+## 이런 경우에 적합
 
-This feature works well when you:
+다음과 같은 상황에서 잘 맞습니다:
 
-- Use [auto-approve mode](/features/auto-approve) and prefer reviewing changes after the fact
-- Work on tasks with many small file changes
-- Want to stay focused on your current file
+- [자동 승인 모드](/features/auto-approve)를 사용하고 변경 사항을 사후에 검토하고 싶을 때
+- 작은 파일 변경이 많은 작업을 할 때
+- 현재 작업 중인 파일에 집중하고 싶을 때
 
-Stick with the default diff editor if you prefer reviewing each change before it saves, or need to make inline edits to Cline's proposed changes.
+변경 사항을 저장하기 전에 하나씩 검토하거나, Cline의 제안을 즉시 편집해야 한다면 기본 diff 편집기를 유지하는 것이 좋습니다.
 
-## Relationship with Other Features
+## 다른 기능과의 관계
 
-- **Checkpoints**: Still created after each file operation
-- **Auto-approve**: Pairs well for uninterrupted workflows
-- **Message editing**: Restoring from a previous message works as expected
+- **체크포인트**: 파일 작업 후에도 계속 생성됩니다
+- **자동 승인**: 끊김 없는 워크플로에 잘 맞습니다
+- **메시지 편집**: 이전 메시지로 복원하는 동작이 동일하게 동작합니다

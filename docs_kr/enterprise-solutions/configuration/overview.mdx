@@ -1,97 +1,97 @@
 ---
-title: "Configuration Overview"
-sidebarTitle: "Overview"
-description: "Understanding enterprise configuration options for inference providers and system settings"
+title: "구성 개요"
+sidebarTitle: "개요"
+description: "추론 제공자 및 시스템 설정을 위한 엔터프라이즈 구성 옵션 이해"
 ---
 
-Cline offers two distinct approaches to configure inference providers and system settings for your organization. Understanding the difference between these approaches will help you choose the right configuration method for your needs.
+Cline은 조직의 추론 제공자와 시스템 설정을 구성하기 위한 두 가지 접근 방식을 제공합니다. 각 방식의 차이를 이해하면 요구사항에 맞는 구성을 선택할 수 있습니다.
 
-## Configuration Types
+## 구성 유형
 
 <Info>
-**Need help choosing?** See the [Deployment Guide](/enterprise-solutions/configuration/choosing-your-deployment) for a detailed comparison and decision tree.
+**선택이 어렵다면?** 자세한 비교와 의사결정 트리는 [배포 가이드](/enterprise-solutions/configuration/choosing-your-deployment)를 참고하세요.
 </Info>
 
 <CardGroup cols={2}>
-  <Card title="SaaS Provider Configuration" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
-    **Simple cloud-based setup**
+  <Card title="SaaS 제공자 구성" icon="cloud" href="/enterprise-solutions/configuration/remote-configuration/overview">
+    **간단한 클라우드 기반 설정**
     
-    Configure inference providers through the Cline [admin console](https://app.cline.bot/dashboard). Ideal for quick organizational deployment with minimal infrastructure requirements.
+    Cline [관리자 콘솔](https://app.cline.bot/dashboard)에서 추론 제공자를 구성합니다. 인프라 요구사항이 최소인 빠른 조직 배포에 적합합니다.
   </Card>
   
-  <Card title="Self-Hosted Configuration" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
-    **Advanced enterprise setup**
+  <Card title="자체 호스팅 구성" icon="server" href="/enterprise-solutions/configuration/infrastructure-configuration/overview">
+    **고급 엔터프라이즈 설정**
     
-    Deep infrastructure integration with VPC endpoints, multi-account support, compliance features, and custom workflows on your own infrastructure.
+    VPC 엔드포인트, 다중 계정 지원, 컴플라이언스 기능, 커스텀 워크플로를 자체 인프라에서 깊게 통합합니다.
   </Card>
 </CardGroup>
 
-## Choosing the Right Configuration
+## 올바른 구성 선택하기
 
-### Use SaaS Configuration When:
-- **Quick Setup**: You need to get your team up and running quickly
-- **Centralized Management**: You want simple, cloud-based provider management
-- **Standard Requirements**: Your organization has typical security and compliance needs
-- **Small to Medium Teams**: You're managing dozens to hundreds of users
+### SaaS 구성을 사용할 때
+- **빠른 설정**: 팀을 신속히 시작해야 할 때
+- **중앙 관리**: 간단한 클라우드 기반 제공자 관리를 원할 때
+- **표준 요구사항**: 일반적인 보안/컴플라이언스 요구 수준
+- **소~중규모 팀**: 수십~수백 명 사용자 관리
 
-### Use Self-Hosted Configuration When:
-- **Enterprise Security**: You need advanced security features and compliance controls
-- **Complex Infrastructure**: You have existing AWS/GCP infrastructure to integrate with
-- **Custom Workflows**: You need custom rules, workflows, and automation
-- **Large Organizations**: You're managing hundreds to thousands of users
-- **Air-Gapped Environments**: You need on-premises or restricted network deployment
+### 자체 호스팅 구성을 사용할 때
+- **엔터프라이즈 보안**: 고급 보안 기능과 컴플라이언스 통제가 필요할 때
+- **복잡한 인프라**: 기존 AWS/GCP 인프라와 통합해야 할 때
+- **커스텀 워크플로**: 규칙, 워크플로, 자동화가 필요할 때
+- **대규모 조직**: 수백~수천 명 사용자 관리
+- **망 분리 환경**: 온프레미스 또는 제한된 네트워크 배포가 필요할 때
 
-## Configuration Comparison
+## 구성 비교
 
-| Feature | SaaS Configuration | Self-Hosted Configuration |
+| 기능 | SaaS 구성 | 자체 호스팅 구성 |
 |---------|-------------------|---------------------------|
-| **Setup Complexity** | Simple | Advanced |
-| **Deployment Time** | Minutes | Days to Weeks |
-| **Infrastructure Required** | None | AWS/GCP/Azure |
-| **Compliance Features** | Basic | Advanced |
-| **Custom Rules** | No | Yes |
-| **Multi-Account Support** | No | Yes |
-| **VPC Integration** | No | Yes |
-| **Cost** | Lower | Higher |
+| **설정 난이도** | 쉬움 | 고급 |
+| **배포 시간** | 수 분 | 수일~수주 |
+| **필요 인프라** | 없음 | AWS/GCP/Azure |
+| **컴플라이언스 기능** | 기본 | 고급 |
+| **커스텀 규칙** | 아니오 | 예 |
+| **다중 계정 지원** | 아니오 | 예 |
+| **VPC 통합** | 아니오 | 예 |
+| **비용** | 낮음 | 높음 |
 
-## Getting Started
+## 시작하기
 
 <Steps>
-<Step title="Evaluate Your Requirements">
-Review your organization's security, compliance, and infrastructure requirements to determine which configuration approach fits your needs.
+<Step title="요구사항 평가">
+조직의 보안, 컴플라이언스, 인프라 요구사항을 검토하여 적합한 구성 방식을 결정하세요.
 </Step>
 
-<Step title="Choose Your Path">
-Select either SaaS Configuration for simple setup or Self-Hosted Configuration for advanced enterprise features. Use the [Deployment Guide](/enterprise-solutions/configuration/choosing-your-deployment) if you need help deciding.
+<Step title="경로 선택">
+간단한 설정은 SaaS 구성, 고급 엔터프라이즈 기능은 자체 호스팅 구성을 선택하세요. 필요하면 [배포 가이드](/enterprise-solutions/configuration/choosing-your-deployment)를 참고하세요.
 </Step>
 
-<Step title="Follow Configuration Guide">
-Complete the setup process using the detailed guides for your chosen configuration type.
+<Step title="구성 가이드 따라하기">
+선택한 구성 유형에 대한 상세 가이드를 따라 설정을 완료합니다.
 </Step>
 
-<Step title="Onboard Team Members">
-Once configured, team members can connect using the provider-specific member guides.
+<Step title="팀 온보딩">
+구성이 완료되면 팀원들은 제공자별 멤버 가이드를 통해 연결할 수 있습니다.
 </Step>
 </Steps>
 
 ---
 
-## Available Providers
+## 사용 가능한 제공자
 
-Both configuration approaches support the same core inference providers:
+두 구성 방식 모두 동일한 핵심 추론 제공자를 지원합니다:
 
 <CardGroup cols={3}>
   <Card title="AWS Bedrock" icon="aws">
-    Enterprise AI models with AWS infrastructure integration and security features.
+    AWS 인프라 통합과 보안 기능을 갖춘 엔터프라이즈 AI 모델.
   </Card>
   
   <Card title="LiteLLM" icon="layer-group">
-    Unified proxy for accessing 100+ AI models through a single interface.
+    단일 인터페이스로 100+ AI 모델에 접근하는 통합 프록시.
   </Card>
   
   <Card title="Google Vertex AI" icon="google">
-    Google Cloud's AI platform with advanced ML capabilities and global infrastructure.
+    고급 ML 기능과 글로벌 인프라를 갖춘 Google Cloud AI 플랫폼.
   </Card>
 </CardGroup>
 
-The main difference lies in how these providers are configured and managed within your organization's infrastructure and security requirements.
+주요 차이는 각 제공자를 조직의 인프라와 보안 요구사항 안에서 어떻게 구성하고 관리하느냐에 있습니다.

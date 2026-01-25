@@ -1,87 +1,87 @@
 ---
 title: "Doubao"
-description: "Learn how to configure and use ByteDance's Doubao AI models with Cline. Experience advanced reasoning, multimodal capabilities, and cost-effective inference with Chinese language optimization."
+description: "Cline에서 ByteDance의 Doubao AI 모델을 설정하고 사용하는 방법을 알아보세요. 고급 추론, 멀티모달 기능, 중국어 최적화, 비용 효율적 추론을 제공합니다."
 ---
 
-Doubao is ByteDance's flagship AI model series, featuring innovative sparse Mixture-of-Experts (MoE) architecture that delivers performance equivalent to much larger models while maintaining cost efficiency. With over 13 million users and advanced multimodal capabilities, Doubao offers competitive alternatives to Western AI systems with particular strength in Chinese language processing.
+Doubao는 ByteDance의 대표 AI 모델 시리즈로, 혁신적인 희소 Mixture-of-Experts(MoE) 아키텍처를 통해 훨씬 큰 모델과 동등한 성능을 제공하면서 비용 효율성을 유지합니다. 1,300만 명 이상의 사용자를 보유하며 고급 멀티모달 기능을 갖춘 Doubao는 중국어 처리에 특히 강점을 가진 서구 AI 시스템의 경쟁 대안입니다.
 
-**Website:** [https://www.volcengine.com/](https://www.volcengine.com/)
+**웹사이트:** [https://www.volcengine.com/](https://www.volcengine.com/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Visit the [Volcano Engine Console](https://console.volcengine.com/). Create an account or sign in.
-2.  **Navigate to Model Service:** Access the AI model service section in the console.
-3.  **Create API Key:** Generate a new API key for the Doubao service.
-4.  **Copy the Key:** Copy the API key immediately and store it securely. You may not be able to view it again.
+1.  **가입/로그인:** [Volcano Engine Console](https://console.volcengine.com/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **모델 서비스로 이동:** 콘솔에서 AI 모델 서비스 섹션으로 이동합니다.
+3.  **API 키 생성:** Doubao 서비스용 새 API 키를 생성합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다. 다시 확인하지 못할 수 있습니다.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Doubao models:
+Cline은 다음 Doubao 모델을 지원합니다:
 
--   `doubao-seed-1-6-250615` (Default) - General purpose model with balanced performance
--   `doubao-seed-1-6-thinking-250715` - Enhanced reasoning model with step-by-step thinking
--   `doubao-seed-1-6-flash-250715` - Speed-optimized model for fast inference
+-   `doubao-seed-1-6-250615` (기본) - 균형 잡힌 성능의 범용 모델
+-   `doubao-seed-1-6-thinking-250715` - 단계별 사고를 포함한 향상된 추론 모델
+-   `doubao-seed-1-6-flash-250715` - 빠른 추론을 위한 속도 최적화 모델
 
-All models feature:
--   **128,000 token context window** for extensive document processing
--   **32,768 max output tokens** for comprehensive responses
--   **Image input support** for multimodal applications
--   **Prompt caching** with 80% discount on cached reads
+모든 모델 특징:
+-   **128,000 토큰 컨텍스트 창**으로 긴 문서 처리 가능
+-   **최대 출력 토큰 32,768**으로 풍부한 응답 제공
+-   **이미지 입력 지원**으로 멀티모달 애플리케이션 가능
+-   **프롬프트 캐싱**으로 캐시 읽기 비용 80% 할인
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Doubao" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Doubao API key into the "Doubao API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Doubao"를 선택합니다.
+3.  **API 키 입력:** Doubao API 키를 "Doubao API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-**Note:** Doubao uses the base URL `https://ark.cn-beijing.volces.com/api/v3` and servers are located in Beijing, China.
+**참고:** Doubao의 기본 URL은 `https://ark.cn-beijing.volces.com/api/v3`이며 서버는 중국 베이징에 있습니다.
 
-### ByteDance's AI Innovation
+### ByteDance의 AI 혁신
 
-Doubao represents ByteDance's strategic entry into the AI model space with several key innovations:
+Doubao는 ByteDance의 AI 모델 분야 진출을 대표하며 다음과 같은 혁신을 담고 있습니다:
 
-#### Sparse Mixture-of-Experts Architecture
-Doubao 1.5 Pro employs an innovative sparse MoE framework where 20 billion activated parameters deliver performance equivalent to a 140-billion-parameter dense model. This architecture significantly reduces operational costs while maintaining high performance standards.
+#### 희소 Mixture-of-Experts 아키텍처
+Doubao 1.5 Pro는 200억 활성 파라미터로 1,400억 파라미터의 밀집 모델과 동등한 성능을 제공하는 희소 MoE 프레임워크를 사용합니다. 이 아키텍처는 운영 비용을 크게 줄이면서도 높은 성능을 유지합니다.
 
-#### Extended Context Processing
-With context windows ranging from 32,000 to 256,000 tokens, Doubao excels at processing long-form content including legal documents, academic research, market reports, and creative content generation.
+#### 확장된 컨텍스트 처리
+32,000~256,000 토큰 컨텍스트 창을 지원해 법률 문서, 학술 연구, 시장 보고서, 창작 콘텐츠 생성 등 긴 형식 콘텐츠 처리에 탁월합니다.
 
-#### Multimodal Excellence
-- **Advanced Visual Processing:** Enhanced visual reasoning, document recognition, and fine-grained information understanding
-- **Integrated Speech:** Seamless speech and text token integration with superior emotional continuity
-- **Document Analysis:** Comprehensive document summarization and content processing capabilities
+#### 멀티모달 탁월성
+- **고급 시각 처리:** 향상된 시각 추론, 문서 인식, 세밀한 정보 이해
+- **통합 음성:** 음성과 텍스트 토큰을 매끄럽게 통합하여 감정 연속성을 높임
+- **문서 분석:** 문서 요약 및 콘텐츠 처리 능력 강화
 
-#### Chinese Language Optimization
-Doubao was specifically trained for Chinese language fluency and cultural relevance, providing significant advantages for Chinese-speaking users and applications requiring deep cultural context understanding.
+#### 중국어 최적화
+Doubao는 중국어 유창성과 문화적 맥락을 위해 특별히 학습되었으며, 중국어 사용자나 깊은 문화적 이해가 필요한 애플리케이션에 큰 이점을 제공합니다.
 
-#### Cost Efficiency
-Doubao maintains pricing approximately **half the cost of comparable OpenAI offerings**, making advanced AI more accessible while establishing competitive market positioning.
+#### 비용 효율성
+Doubao는 **유사한 OpenAI 모델 대비 약 절반의 비용**으로 제공되어, 경쟁력 있는 가격과 함께 고급 AI 접근성을 높입니다.
 
-### Special Features
+### 특별 기능
 
-#### Reasoning Models
-The `doubao-seed-1-6-thinking-250715` model offers enhanced reasoning capabilities with step-by-step thinking processes, making it ideal for complex problem-solving tasks.
+#### 추론 모델
+`doubao-seed-1-6-thinking-250715` 모델은 단계별 사고를 포함한 향상된 추론 기능을 제공해 복잡한 문제 해결에 적합합니다.
 
-#### Multimodal Capabilities
-Unlike traditional cascaded approaches, Doubao integrates speech and text processing seamlessly, enabling more natural voice interactions and comprehensive document analysis.
+#### 멀티모달 기능
+전통적인 단계적 접근과 달리, Doubao는 음성과 텍스트를 통합 처리해 자연스러운 음성 상호작용과 폭넓은 문서 분석을 가능하게 합니다.
 
-#### Prompt Caching
-All models support prompt caching with significant cost savings (80% discount on cached reads), making repeated queries more economical.
+#### 프롬프트 캐싱
+모든 모델은 프롬프트 캐싱을 지원하며 캐시 읽기에 80% 비용 절감이 적용되어 반복 질의를 더 경제적으로 처리할 수 있습니다.
 
-#### ByteDance Ecosystem Integration
-Doubao integrates vertically with ByteDance properties including TikTok (Douyin), Toutiao, and Feishu, enabling seamless workflow integration across the ecosystem.
+#### ByteDance 생태계 통합
+Doubao는 TikTok(더우인), Toutiao, Feishu 등 ByteDance 서비스와 수직 통합되어 생태계 전반의 워크플로 통합을 지원합니다.
 
-### Performance and Benchmarks
+### 성능 및 벤치마크
 
-Doubao-1.5 Pro-AS1 Preview has demonstrated superior performance compared to OpenAI's O1-preview on specific benchmarks, including surpassing O1 models on AIME tests. The model continues to improve through reinforcement learning, with performance expected to enhance over time.
+Doubao-1.5 Pro-AS1 Preview는 일부 벤치마크에서 OpenAI의 O1-preview보다 우수한 성능을 보였으며, AIME 테스트에서는 O1 모델을 능가하기도 했습니다. 강화 학습을 통해 지속적으로 개선되고 있으며 시간이 지날수록 성능이 향상될 것으로 예상됩니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Regional Advantage:** Optimized for Chinese language and cultural contexts, making it ideal for Chinese-speaking users and markets.
--   **Cost Effectiveness:** Approximately 50% lower cost than comparable Western AI models while maintaining competitive performance.
--   **Context Windows:** Large context windows (up to 256K tokens) enable processing of extensive documents and codebases.
--   **Multimodal Applications:** Strong visual and speech processing capabilities make it suitable for diverse multimedia applications.
--   **Server Location:** Servers located in Beijing, China - consider latency implications for global users.
--   **Ecosystem Benefits:** Integration with ByteDance services provides additional workflow advantages for users of TikTok, Toutiao, and Feishu.
--   **Pricing:** Check the Volcano Engine console for current pricing information and regional availability.
+-   **지역적 장점:** 중국어와 문화적 맥락에 최적화되어 중국어 사용자 및 시장에 적합합니다.
+-   **비용 효율성:** 유사한 서구 AI 모델 대비 약 50% 낮은 비용으로 경쟁력 있는 성능을 제공합니다.
+-   **컨텍스트 창:** 최대 256K 토큰의 컨텍스트 창으로 방대한 문서와 코드베이스를 처리할 수 있습니다.
+-   **멀티모달 애플리케이션:** 강력한 시각 및 음성 처리 능력으로 다양한 멀티미디어 애플리케이션에 적합합니다.
+-   **서버 위치:** 서버는 중국 베이징에 위치합니다. 글로벌 사용자는 지연 시간을 고려하세요.
+-   **생태계 이점:** TikTok, Toutiao, Feishu 사용자에게 추가 워크플로 이점을 제공합니다.
+-   **가격:** 최신 가격 및 지역 가용성은 Volcano Engine 콘솔에서 확인하세요.

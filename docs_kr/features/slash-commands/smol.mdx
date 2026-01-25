@@ -1,47 +1,47 @@
 ---
-title: "Smol Command"
+title: "Smol 명령"
 sidebarTitle: "/smol"
 ---
 
-`/smol` (or its alias, `/compact`) is a slash command that compresses your conversation history while preserving essential context.
+`/smol`(별칭 `/compact`)은 필수 컨텍스트를 보존하면서 대화 히스토리를 압축하는 슬래시 명령입니다.
 
-Unlike `/newtask` which creates a new task, `/smol` condenses your current conversation into a comprehensive summary, freeing up context window space while allowing you to continue working in the same task.
+새 작업을 만드는 `/newtask`와 달리, `/smol`은 현재 대화를 포괄적인 요약으로 압축해 컨텍스트 윈도우 공간을 확보하면서도 같은 작업 안에서 계속 진행할 수 있게 해줍니다.
 
-Think of it like summarizing the relevant parts of a conversation while discarding the rest.
+관련 부분만 요약하고 나머지는 버리는 대화 요약이라고 생각하면 됩니다.
 
-#### Using the `/smol` Slash Command
+#### `/smol` 슬래시 명령 사용하기
 
-When your context window is getting full but you want to continue in the same task:
+컨텍스트 윈도우가 거의 찼지만 같은 작업에서 계속하고 싶을 때:
 
 <Frame>
-	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/smol.png" alt="Using the /smol slash command" />
+	<img src="https://storage.googleapis.com/cline_public_images/docs/assets/smol.png" alt="/smol 슬래시 명령 사용" />
 </Frame>
 
--   Type `/smol` (or its alias `/compact`) in the chat input field
--   Cline will analyze your conversation and create a detailed summary that preserves essential information
--   You'll have a chance to review this summary and provide feedback if needed
--   Once accepted, the detailed conversation history is replaced with this condensed version
+-   채팅 입력에 `/smol`(또는 `/compact`) 입력
+-   Cline이 대화를 분석해 중요한 정보를 담은 상세 요약을 생성
+-   필요하면 요약을 검토하고 피드백을 줄 수 있음
+-   승인하면 상세 대화 히스토리가 압축된 버전으로 대체됨
 
-#### Example
+#### 예시
 
-I use `/smol` when I'm deep into a complex debugging session and need to continue in the same task. After exploring multiple approaches and examining several files, my context window gets crowded with all the back-and-forth.
+복잡한 디버깅을 오래 진행하면서 같은 작업을 이어가야 할 때 `/smol`을 사용합니다. 여러 접근을 시도하고 파일을 여러 개 확인한 뒤에는 컨텍스트가 대화로 가득 차기 쉽습니다.
 
-By using `/smol`, I can condense all that exploration into a concise summary that captures what we've learned, which files we've examined, and what approaches we've tried. This frees up space to continue the debugging without losing the insights we've gained.
+`/smol`을 사용하면 우리가 알아낸 것, 확인한 파일, 시도한 접근을 간결한 요약으로 압축할 수 있습니다. 그 덕분에 얻은 인사이트를 잃지 않고 디버깅을 계속할 공간을 확보할 수 있습니다.
 
-The key difference from `/newtask` is that I'm staying in the same conversation flow rather than creating a separate task. This is particularly useful when I'm in the middle of something and don't want to context switch.
+`/newtask`와의 핵심 차이는 새 작업을 만들지 않고 같은 대화 흐름을 유지한다는 점입니다. 중간에 흐름을 끊고 싶지 않을 때 특히 유용합니다.
 
-#### Inspiration
+#### 영감
 
-Here are powerful ways I use `/smol` in my workflow:
+워크플로에서 `/smol`을 강력하게 활용하는 방법:
 
--   During lengthy brainstorming sessions, I use `/smol` to condense our exploration before implementing the chosen solution, all within the same task.
--   When debugging complex issues that involve multiple file checks and test runs, I use `/smol` to summarize what we've learned while continuing the debugging process.
--   For iterative development, I use `/smol` after completing each feature to compress the implementation details while keeping the key decisions and approaches accessible.
--   When gathering requirements from multiple sources, I use `/smol` to distill the essential needs into a concise summary before moving to the design phase.
+-   긴 브레인스토밍 세션 중, 같은 작업에서 선택한 솔루션을 구현하기 전에 탐색을 `/smol`로 압축
+-   여러 파일 확인과 테스트 실행이 포함된 복잡한 디버깅에서, 진행을 이어가면서 배운 내용을 요약
+-   반복 개발에서 기능 하나를 마칠 때마다 구현 세부사항을 압축해 핵심 결정과 접근은 유지
+-   여러 स्रोत에서 요구사항을 수집할 때, 설계 단계로 넘어가기 전에 핵심 요구만 요약
 
 #### Smol vs Newtask
 
-People often ask me when to use `/smol` vs `/newtask`. Frankly, it's a matter of personal preference and what you're trying to achieve. Here are some guidelines:
+`/smol`과 `/newtask` 중 언제 써야 하는지 자주 묻습니다. 결국 개인 선호와 목표에 따라 다릅니다. 간단한 가이드는 다음과 같습니다:
 
--   Use `/smol` when you're in the middle of something and want to keep going in the same task. It's perfect when you're deep in a debugging flow or brainstorming session and don't want to break your momentum. The downside? Once you compress your history, you can't get those detailed conversations back.
--   Use `/newtask` when you're at a logical transition point and want to start fresh. It's great for moving from planning to implementation, or when you want to preserve your full conversation history (since it creates a new task rather than overwriting your current one).
+-   작업 중간에서 같은 흐름을 유지하고 싶다면 `/smol`을 사용하세요. 디버깅이나 브레인스토밍 흐름을 유지하는 데 좋습니다. 단점은 히스토리를 압축하면 상세 대화는 되돌릴 수 없다는 점입니다.
+-   논리적 전환점에서 새로 시작하고 싶다면 `/newtask`를 사용하세요. 계획에서 구현으로 넘어갈 때나, 전체 대화 히스토리를 보존하고 싶을 때 유용합니다(새 작업을 만들기 때문에 현재 작업을 덮어쓰지 않습니다).

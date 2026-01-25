@@ -1,12 +1,12 @@
 ---
-title: "Explain Changes Command"
+title: "변경 사항 설명 명령"
 sidebarTitle: "/explain-changes"
 ---
 <Note>
-This command is only available in **VS Code**. The diff view with inline comments requires VS Code's native diff capabilities.
+이 명령은 **VS Code**에서만 사용할 수 있습니다. 인라인 댓글이 포함된 diff 뷰는 VS Code의 네이티브 diff 기능이 필요합니다.
 </Note>
 
-`/explain-changes` is a slash command that generates AI-powered explanations for any git diff. Unlike the [Explain Changes button](/features/explain-changes) which explains changes from a completed task, this command lets you explain changes between any two git references - commits, branches, tags, PRs, staged changes, or your working directory.
+`/explain-changes`는 어떤 git diff든 AI 설명을 생성하는 슬래시 명령입니다. 완료된 작업의 변경을 설명하는 [Explain Changes 버튼](/features/explain-changes)과 달리, 이 명령은 커밋, 브랜치, 태그, PR, 스테이징 변경, 작업 디렉터리 등 어떤 두 git 참조 사이의 변경도 설명할 수 있습니다.
 
 
 	<video
@@ -17,270 +17,270 @@ This command is only available in **VS Code**. The diff view with inline comment
 		playsInline
 	/>
 
-## Requirements
+## 요구사항
 
 <Note>
-The `/explain-changes` command requires a **git repository**. Make sure you're working in a directory that has been initialized with git.
+`/explain-changes` 명령은 **git 저장소**가 필요합니다. git으로 초기화된 디렉터리에서 작업하고 있는지 확인하세요.
 </Note>
 
-For PR explanations, you'll need the [GitHub CLI (gh)](https://cli.github.com/) installed and authenticated. For GitLab merge request explanations, you'll need the [GitLab CLI (glab)](https://gitlab.com/gitlab-org/cli) installed and authenticated.
+PR 설명을 위해서는 [GitHub CLI(gh)](https://cli.github.com/)가 설치되고 인증되어 있어야 합니다. GitLab 머지 리퀘스트 설명을 위해서는 [GitLab CLI(glab)](https://gitlab.com/gitlab-org/cli)가 설치되고 인증되어 있어야 합니다.
 
-Unlike the Explain Changes button, this command does **not** require checkpoints to be enabled since it uses git references directly.
-
-
-## Using the Command
-
-Type `/explain-changes` in the chat input. Cline will:
-
-1. Analyze your git history to understand what changes exist
-2. Gather context by reading relevant files
-3. Determine appropriate git references to compare
-4. Generate a diff view with streaming inline explanations
+이 명령은 git 참조를 직접 사용하므로, Explain Changes 버튼과 달리 체크포인트 활성화가 필요하지 않습니다.
 
 
-## How It Works
+## 명령 사용법
 
-When you use `/explain-changes`, Cline:
+채팅 입력에서 `/explain-changes`를 입력하세요. Cline은 다음을 수행합니다:
 
-1. **Gathers context**: Runs git commands to understand your repository state
-2. **Identifies changes**: Determines which files changed between references
-3. **Reads relevant files**: Builds context for better explanations
-4. **Calls generate_explanation**: Creates the diff view and streams explanations
-5. **Displays results**: Opens a multi-file diff with inline comments
+1. git 히스토리를 분석해 어떤 변경이 존재하는지 파악
+2. 관련 파일을 읽어 컨텍스트 수집
+3. 비교할 git 참조를 결정
+4. 인라인 설명이 스트리밍되는 diff 뷰 생성
 
-## Use Cases
 
-### Explain the Last Commit
+## 동작 방식
 
-The most common use case - understand what changed in the most recent commit:
+`/explain-changes`를 사용하면 Cline이:
+
+1. **컨텍스트 수집**: git 명령으로 저장소 상태 파악
+2. **변경 식별**: 참조 간 변경 파일 파악
+3. **관련 파일 읽기**: 더 나은 설명을 위한 컨텍스트 구성
+4. **generate_explanation 호출**: diff 뷰 생성 및 설명 스트리밍
+5. **결과 표시**: 인라인 댓글이 있는 다중 파일 diff 열기
+
+## 사용 사례
+
+### 마지막 커밋 설명
+
+가장 흔한 사용 사례 - 최신 커밋의 변경을 이해:
 
 ```
 /explain-changes
 ```
 
-Cline will examine HEAD and compare it to HEAD~1, explaining all the changes in that commit.
+Cline은 HEAD를 HEAD~1과 비교해 해당 커밋의 모든 변경을 설명합니다.
 
-**When to use:**
-- After pulling changes from a teammate
-- Reviewing your own work before pushing
-- Understanding what a merge commit brought in
+**언제 사용하나요:**
+- 동료의 변경을 pull한 직후
+- push 전 자신의 작업 리뷰
+- merge 커밋이 가져온 변경 파악
 
-### Explain Uncommitted Changes
+### 커밋되지 않은 변경 설명
 
-Understand your work-in-progress changes before committing:
+커밋 전에 진행 중인 변경을 이해:
 
 ```
 /explain-changes for my uncommitted work
 ```
 
-Cline compares HEAD to your working directory, explaining all modified files.
+Cline이 HEAD와 작업 디렉터리를 비교해 수정된 파일을 설명합니다.
 
-**When to use:**
-- Before staging changes to ensure they're complete
-- After a long coding session to remember what you changed
-- To verify changes before creating a commit
+**언제 사용하나요:**
+- 스테이징 전 변경이 완전한지 확인
+- 긴 코딩 세션 후 변경 내용 회상
+- 커밋 전 변경 사항 검증
 
-### Explain Staged Changes
+### 스테이징된 변경 설명
 
-Review exactly what you're about to commit:
+커밋하려는 내용을 정확히 검토:
 
 ```
 /explain-changes for my staged changes
 ```
 
-Cline examines only the changes you've staged with `git add`.
+Cline이 `git add`로 스테이징한 변경만 확인합니다.
 
-**When to use:**
-- Final review before committing
-- When you've staged a subset of changes and want to verify
-- To ensure you haven't accidentally staged unintended files
+**언제 사용하나요:**
+- 커밋 전 अंतिम 리뷰
+- 일부 변경만 스테이징했을 때 확인
+- 의도치 않은 파일이 포함됐는지 검증
 
-### Explain a Specific Commit
+### 특정 커밋 설명
 
-Understand any commit in your history:
+히스토리의 특정 커밋을 이해:
 
 ```
 /explain-changes for commit abc123
 ```
 
-Or by commit message:
+또는 커밋 메시지로:
 
 ```
 /explain-changes for the commit that added authentication
 ```
 
-Cline will find the commit and explain what it changed.
+Cline이 해당 커밋을 찾아 변경을 설명합니다.
 
-**When to use:**
-- Investigating when a bug was introduced
-- Understanding historical decisions
-- Learning how a feature was implemented
+**언제 사용하나요:**
+- 버그가 도입된 시점 조사
+- 과거 의사결정 이해
+- 기능이 구현된 방식 학습
 
-### Explain a Range of Commits
+### 커밋 범위 설명
 
-Understand multiple commits at once:
+여러 커밋을 한 번에 이해:
 
 ```
 /explain-changes for the last 3 commits
 ```
 
-Or a specific range:
+또는 특정 범위:
 
 ```
 /explain-changes from v1.0.0 to v1.1.0
 ```
 
-Cline compares the endpoints and explains all changes between them.
+Cline이 범위의 시작과 끝을 비교해 모든 변경을 설명합니다.
 
-**When to use:**
-- Understanding what changed in a release
-- Reviewing a series of related commits
-- Catching up after being away from the project
+**언제 사용하나요:**
+- 릴리스 변경 사항 파악
+- 연관된 커밋 시리즈 리뷰
+- 프로젝트 복귀 후 변경 사항 빠르게 파악
 
-### Explain a Pull Request
+### Pull Request 설명
 
-Get AI explanations for any PR:
+PR에 대한 AI 설명을 얻기:
 
 ```
 /explain-changes for PR #42
 ```
 
-Cline uses the GitHub CLI to fetch PR details and explain the changes.
+Cline이 GitHub CLI로 PR을 가져와 변경을 설명합니다.
 
-**When to use:**
-- Reviewing someone else's PR
-- Understanding a PR before approving
-- Learning from PRs in open source projects
-- Preparing to give PR feedback
+**언제 사용하나요:**
+- 다른 사람의 PR 리뷰
+- 승인 전 변경 이해
+- 오픈 소스 PR에서 학습
+- PR 피드백 준비
 
-### Explain Branch Differences
+### 브랜치 차이 설명
 
-Compare any two branches:
+두 브랜치 비교:
 
 ```
 /explain-changes between main and feature-branch
 ```
 
-Or see what's changed on a feature branch:
+또는 feature 브랜치의 변경만 보기:
 
 ```
 /explain-changes for everything on my-feature that's not in main
 ```
 
-**When to use:**
-- Before merging a feature branch
-- Understanding divergence between branches
-- Planning a merge or rebase strategy
-- Reviewing what a colleague has been working on
+**언제 사용하나요:**
+- feature 브랜치 머지 전 검토
+- 브랜치 간 분기 파악
+- merge/rebase 전략 수립
+- 동료 작업 내용 파악
 
-### Explain Changes to Specific Files
+### 특정 파일 변경 설명
 
-Focus on particular files or directories:
+특정 파일/디렉터리에 집중:
 
 ```
 /explain-changes for src/auth in the last 5 commits
 ```
 
-Cline filters the diff to show only relevant changes.
+Cline이 diff를 필터링해 관련 변경만 표시합니다.
 
-**When to use:**
-- Understanding changes to a specific module
-- Tracking modifications to critical files
-- Learning how a particular feature evolved
+**언제 사용하나요:**
+- 특정 모듈 변경 파악
+- 중요한 파일 수정 추적
+- 특정 기능의 진화 과정 학습
 
-### Explain Changes Since a Tag
+### 태그 이후 변경 설명
 
-Understand what's changed since a release:
+릴리스 이후 변경 파악:
 
 ```
 /explain-changes since v2.0.0
 ```
 
-Cline compares the tag to HEAD and explains all subsequent changes.
+Cline이 태그와 HEAD를 비교해 이후 변경을 설명합니다.
 
-**When to use:**
-- Preparing release notes
-- Understanding what's new since a deployment
-- Identifying changes for a changelog
+**언제 사용하나요:**
+- 릴리스 노트 준비
+- 배포 이후 변경 파악
+- 변경 로그 정리
 
-### Explain a Merge Commit
+### 머지 커밋 설명
 
-Understand what a merge brought in:
+머지가 가져온 변경 파악:
 
 ```
 /explain-changes for the merge from feature-x
 ```
 
-Cline explains all the changes that were merged.
+Cline이 머지된 변경을 모두 설명합니다.
 
-**When to use:**
-- After merging a large feature branch
-- Understanding what a merge conflict resolution changed
-- Reviewing what others merged into main
+**언제 사용하나요:**
+- 큰 feature 브랜치 머지 직후
+- 머지 충돌 해결 내용 파악
+- main에 합쳐진 변경 검토
 
-### Explain Stashed Changes
+### 스태시 변경 설명
 
-Review what's in your stash:
+스태시에 있는 변경을 검토:
 
 ```
 /explain-changes for my stashed changes
 ```
 
-Cline examines stash@{0} and explains its contents.
+Cline이 stash@{0}의 내용을 설명합니다.
 
-**When to use:**
-- Before applying a stash
-- Deciding whether to keep or drop a stash
-- Remembering what you stashed days ago
+**언제 사용하나요:**
+- 스태시 적용 전 확인
+- 스태시 유지/삭제 결정
+- 며칠 전 스태시한 내용 회상
 
-## Interactive Comments
+## 인터랙티브 댓글
 
-Just like the [Explain Changes](/features/explain-changes) button, the generated comments are fully interactive:
+[Explain Changes](/features/explain-changes) 버튼과 동일하게, 생성된 댓글은 완전히 인터랙티브합니다:
 
-### Reply to Comments
+### 댓글에 답하기
 
-Ask follow-up questions directly in any comment thread:
+어떤 댓글 스레드에서든 후속 질문을 할 수 있습니다:
 
-- "Why was this function refactored?"
-- "What's the purpose of this new parameter?"
-- "Could this cause any breaking changes?"
-- "Is this change backwards compatible?"
+- "왜 이 함수가 리팩터링되었나요?"
+- "이 새 파라미터의 목적은 무엇인가요?"
+- "이 변경이 breaking change를 일으킬 수 있나요?"
+- "이 변경은 하위 호환이 되나요?"
 
-The AI responds with context-aware explanations, understanding both the code and the broader changes.
+AI는 코드와 전체 변경을 모두 이해한 상태에서 맥락 있는 답변을 제공합니다.
 
-### Move to Main Chat
+### 메인 채팅으로 이동
 
-Click the title area of any comment thread to move that conversation into Cline's main chat. This is useful when:
+댓글 스레드 제목 영역을 클릭하면 해당 대화를 Cline의 메인 채팅으로 옮길 수 있습니다. 다음 상황에서 유용합니다:
 
-- You want Cline to make additional changes
-- The discussion reveals something that needs more investigation
-- You want to continue working with full Cline capabilities
-- A review comment sparks an idea for improvements
+- Cline이 추가 변경을 하길 원할 때
+- 논의 중 추가 조사가 필요하다고 드러났을 때
+- Cline의 전체 기능으로 계속 작업하고 싶을 때
+- 리뷰 댓글이 개선 아이디어를 촉발했을 때
 
-### The generate_explanation Tool
+### generate_explanation 도구
 
-Under the hood, `/explain-changes` uses the `generate_explanation` tool with these parameters:
+내부적으로 `/explain-changes`는 다음 파라미터로 `generate_explanation` 도구를 사용합니다:
 
-| Parameter | Description | Example |
+| 파라미터 | 설명 | 예시 |
 |-----------|-------------|---------|
-| `title` | Descriptive title for the diff view | "Changes in commit abc123" |
-| `from_ref` | Git reference for the "before" state | `HEAD~1`, `main`, `origin/main` |
-| `to_ref` | Git reference for the "after" state (optional) | `HEAD`, `develop` |
+| `title` | diff 뷰의 설명 제목 | "Changes in commit abc123" |
+| `from_ref` | 이전 상태의 Git 참조 | `HEAD~1`, `main`, `origin/main` |
+| `to_ref` | 이후 상태의 Git 참조(옵션) | `HEAD`, `develop` |
 
-If `to_ref` is omitted, the tool compares against the working directory.
+`to_ref`를 생략하면 작업 디렉터리와 비교합니다.
 
-## Tips for Better Explanations
+## 더 나은 설명을 위한 팁
 
-1. **Be specific**: Instead of just `/explain-changes`, tell Cline what you want explained. "Explain the authentication changes in PR #42" gives better context than just "explain PR #42".
+1. **구체적으로 말하기**: `/explain-changes`만 입력하는 것보다 "PR #42의 인증 변경을 설명해줘"처럼 요청하면 더 좋은 컨텍스트를 제공합니다.
 
-2. **Ask about intent**: The AI can explain not just what changed but why. Ask follow-up questions like "What problem was this solving?"
+2. **의도 질문하기**: AI는 무엇이 바뀌었는지뿐 아니라 왜 바뀌었는지도 설명할 수 있습니다. "이 변경이 어떤 문제를 해결했나요?"처럼 물어보세요.
 
-3. **Chain with other commands**: Use `/explain-changes` after investigating an issue to understand potential fixes, then continue with Cline to implement improvements.
+3. **다른 명령과 연계**: 이슈를 조사한 뒤 `/explain-changes`로 변경을 이해하고, 이어서 Cline과 개선을 구현하세요.
 
-4. **Use for learning**: When onboarding to a new codebase, use `/explain-changes` on significant PRs or commits to understand how features were built.
+4. **학습용으로 사용**: 새 코드베이스 온보딩 시, 중요한 PR이나 커밋에 `/explain-changes`를 사용해 기능이 어떻게 만들어졌는지 파악하세요.
 
-## Related Features
+## 관련 기능
 
-- [Explain Changes](/features/explain-changes) - The button-based version for task completions
-- [Checkpoints](/features/checkpoints) - Enables the Explain Changes button
-- [@git mentions](/features/at-mentions/git-mentions) - Reference git diffs in your prompts
+- [Explain Changes](/features/explain-changes) - 작업 완료 시 버튼 기반 버전
+- [Checkpoints](/features/checkpoints) - Explain Changes 버튼 활성화
+- [@git mentions](/features/at-mentions/git-mentions) - 프롬프트에서 git diff 참조

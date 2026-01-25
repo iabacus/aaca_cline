@@ -1,75 +1,75 @@
 ---
-title: "Automatic Context Summarization"
-sidebarTitle: "Auto Compact"
+title: "자동 컨텍스트 요약"
+sidebarTitle: "자동 압축"
 ---
 
-When your conversation approaches the model's context window limit, Cline automatically summarizes it to free up space and keep working. 
+대화가 모델의 컨텍스트 윈도우 한도에 가까워지면, Cline이 자동으로 요약해 공간을 확보하고 작업을 계속합니다.
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/condensing.png"
-		alt="Auto-compact feature condensing conversation context"
+		alt="대화 컨텍스트를 압축하는 자동 압축 기능"
 	/>
 </Frame>
 
-## How It Works
+## 동작 방식
 
-Cline monitors token usage during your conversation. When you're getting close to the limit, he:
+Cline은 대화 중 토큰 사용량을 모니터링합니다. 한도에 가까워지면 다음을 수행합니다:
 
-1. Creates a comprehensive summary of everything that's happened
-2. Preserves all the technical details, code changes, and decisions
-3. Replaces the conversation history with the summary
-4. Continues exactly where he left off
+1. 지금까지의 모든 내용을 포괄적으로 요약
+2. 기술적 세부사항, 코드 변경, 의사결정을 보존
+3. 대화 히스토리를 요약으로 교체
+4. 중단 없이 이어서 진행
 
-You'll see a summarization tool call when this happens, showing the total cost like any other api call in the chat view.
+이 과정이 발생하면 요약 도구 호출이 표시되며, 채팅 뷰에서 다른 API 호출과 동일하게 총 비용이 보여집니다.
 
-## Why This Matters
+## 왜 중요한가
 
-Previously, Cline would truncate older messages when hitting context limits. This meant losing important context from earlier in the conversation.
+이전에는 컨텍스트 한도에 도달하면 Cline이 오래된 메시지를 잘라냈습니다. 그 결과 대화 초반의 중요한 맥락이 사라질 수 있었습니다.
 
-Now with summarization:
-- All technical decisions and code patterns are preserved
-- File changes and project context remain intact
-- Cline remembers everything he's done
-- You can work on much larger projects without interruption
+이제 요약을 사용하면:
+- 모든 기술적 결정과 코드 패턴이 보존됨
+- 파일 변경 및 프로젝트 맥락이 유지됨
+- Cline이 수행한 작업을 기억함
+- 더 큰 프로젝트도 중단 없이 진행 가능
 
 <Tip>
-Context Summarization synergizes beautifully with [Focus Chain](/features/focus-chain). When Focus Chain is enabled, todo lists persist across summarizations. This means Cline can work on long-horizon tasks that span multiple context windows while staying on track with the todo list guiding him through each reset.
+컨텍스트 요약은 [Focus Chain](/features/focus-chain)과 잘 어울립니다. Focus Chain을 켜면 할 일 목록이 요약 이후에도 유지됩니다. 덕분에 여러 컨텍스트 윈도우에 걸친 장기 작업을 진행하면서도, 매 리셋마다 todo 목록이 길잡이가 되어 흐름을 유지할 수 있습니다.
 </Tip>
 
-## Technical Details
+## 기술 세부사항
 
-The summarization happens through your configured API provider using the same model you're already using. It leverages prompt caching to minimize costs.
+요약은 설정된 API 프로바이더를 통해, 현재 사용 중인 동일한 모델로 수행됩니다. 비용을 최소화하기 위해 프롬프트 캐싱을 활용합니다.
 
-1. Cline uses a [summarization prompt](https://github.com/cline/cline/blob/main/src/core/prompts/contextManagement.ts) to request a summary of the conversation.
+1. Cline은 대화 요약을 요청하기 위해 [summarization prompt](https://github.com/cline/cline/blob/main/src/core/prompts/contextManagement.ts)를 사용합니다.
 
-2. Once the summary is generated, Cline replaces the conversation history with a [continuation prompt](https://github.com/cline/cline/blob/main/src/core/prompts/contextManagement.ts#L69) that asks Cline to keep working and provides the summary as context.
+2. 요약이 생성되면, Cline은 대화 기록을 [continuation prompt](https://github.com/cline/cline/blob/main/src/core/prompts/contextManagement.ts#L69)로 교체해 계속 작업하도록 요청하고, 요약을 컨텍스트로 제공합니다.
 
-Different models have different context window thresholds for when auto-summarization kicks in. You can see how thresholds are determined in [context-window-utils.ts](https://github.com/cline/cline/blob/main/src/core/context/context-management/context-window-utils.ts). 
+모델마다 자동 요약이 시작되는 컨텍스트 윈도우 임계값이 다릅니다. 임계값 계산 방식은 [context-window-utils.ts](https://github.com/cline/cline/blob/main/src/core/context/context-management/context-window-utils.ts)에서 확인할 수 있습니다.
 
-## Cost Considerations
+## 비용 고려사항
 
-Summarization leverages your existing prompt cache from the conversation, so it costs about the same as any other tool call.
+요약은 기존 대화의 프롬프트 캐시를 활용하므로, 다른 도구 호출과 비용이 비슷합니다.
 
-Since most input tokens are already cached, you're primarily paying for the summary generation (output tokens), making it very cost-effective.
+대부분의 입력 토큰이 이미 캐시되어 있어, 주로 요약 생성(출력 토큰) 비용만 발생하므로 매우 비용 효율적입니다.
 
-## Restoring Context with Checkpoints
+## 체크포인트로 컨텍스트 복원
 
-You can use [checkpoints](/features/checkpoints) to restore your task state from before a summarization occurred. This means you never truly lose context - you can always roll back to previous versions of your conversation. 
+[체크포인트](/features/checkpoints)를 사용하면 요약이 발생하기 전의 작업 상태로 되돌릴 수 있습니다. 즉, 컨텍스트를 완전히 잃는 일은 없습니다. 언제든 이전 대화 버전으로 롤백할 수 있습니다.
 
 <Note>
-  Editing a message before a summarization tool call will work similarly to a checkpoint, allowing you to restore the conversation to that point.
+  요약 도구 호출 이전의 메시지를 편집하면 체크포인트와 유사하게 동작하여, 해당 시점으로 대화를 복원할 수 있습니다.
 </Note>
 
-## Next Generation Model Support
+## 차세대 모델 지원
 
-Auto Compact uses advanced LLM-based summarization which we've found works significantly better for next-generation models. We currently support this feature for the following models:
+자동 압축은 고급 LLM 기반 요약을 사용하며, 차세대 모델에서 훨씬 더 잘 작동합니다. 현재 다음 모델에서 이 기능을 지원합니다:
 
-- **Claude 4 series**
-- **Gemini 2.5 series**
+- **Claude 4 시리즈**
+- **Gemini 2.5 시리즈**
 - **GPT-5**
 - **Grok 4**
 
 <Note>
-When using other models, Cline automatically falls back to the standard rule-based context truncation method, even if Auto Compact is enabled in settings.
+다른 모델을 사용할 경우, 설정에서 자동 압축을 켜도 Cline은 표준 규칙 기반 컨텍스트 잘라내기 방식으로 자동 전환합니다.
 </Note>

@@ -1,80 +1,80 @@
 ---
 title: "Baseten"
-description: "Learn how to configure and use Baseten's Model APIs with Cline. Access frontier open-source models with enterprise-grade performance, reliability, and competitive pricing."
+description: "Cline에서 Baseten Model APIs를 설정하고 사용하는 방법을 알아보세요. 엔터프라이즈급 성능, 안정성, 경쟁력 있는 가격으로 프런티어 오픈소스 모델에 접근합니다."
 ---
 
-Baseten provides on-demand frontier model APIs designed for production applications, not just experimentation. Built on the Baseten Inference Stack, these APIs deliver optimized inference for leading open-source models from OpenAI, DeepSeek, Moonshot AI, and Alibaba Cloud.
+Baseten은 실험용이 아니라 프로덕션 애플리케이션을 위해 설계된 온디맨드 프런티어 모델 API를 제공합니다. Baseten Inference Stack 위에서 동작하며 OpenAI, DeepSeek, Moonshot AI, Alibaba Cloud의 주요 오픈소스 모델에 대해 최적화된 추론을 제공합니다.
 
-**Website:** [https://www.baseten.co/products/model-apis/](https://www.baseten.co/products/model-apis/)
+**웹사이트:** [https://www.baseten.co/products/model-apis/](https://www.baseten.co/products/model-apis/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to [Baseten](https://www.baseten.co/) and create an account or sign in.
-2.  **Navigate to API Keys:** Access your dashboard and go to the API Keys section.
-3.  **Create a Key:** Generate a new API key. Give it a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** Copy the API key immediately and store it securely.
+1.  **가입/로그인:** [Baseten](https://www.baseten.co/)에 접속해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** 대시보드에서 API Keys 섹션으로 이동합니다.
+3.  **키 생성:** 새 API 키를 생성하고 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** API 키를 즉시 복사해 안전하게 보관합니다.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Baseten" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Baseten API key into the "Baseten API Key" field.
-4.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Baseten"을 선택합니다.
+3.  **API 키 입력:** Baseten API 키를 "Baseten API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-**IMPORTANT: For Kimi K2 Thinking:** To use the `moonshotai/Kimi-K2-Thinking` model, you must enable **Native Tool Call (Experimental)** in Cline settings. This setting allows Cline to call tools through their native tool processor and is required for this reasoning model to function properly.
+**중요: Kimi K2 Thinking 사용 시** `moonshotai/Kimi-K2-Thinking` 모델을 사용하려면 Cline 설정에서 **Native Tool Call (Experimental)**을 활성화해야 합니다. 이 설정은 Cline이 네이티브 도구 처리기를 통해 도구를 호출할 수 있도록 하며, 이 추론 모델이 정상 동작하는 데 필요합니다.
 
-### Supported Models
+### 지원 모델
 
-Cline supports all current models under Baseten Model APIs, including:
-For the most updated pricing, please visit: https://www.baseten.co/products/model-apis/
+Cline은 Baseten Model APIs의 모든 최신 모델을 지원합니다.\
+최신 가격 정보는 https://www.baseten.co/products/model-apis/ 를 참고하세요.
 
--   `moonshotai/Kimi-K2-Thinking` (Moonshot AI) - Enhanced reasoning capabilities with step-by-step thought processes (262K context) - \$0.60/\$2.50 per 1M tokens
--   `zai-org/GLM-4.6` (Z AI) - Frontier open model with advanced agentic, reasoning and coding capabilities by Z AI (200k context) \$0.60/\$2.20 per 1M tokens
--   `moonshotai/Kimi-K2-Instruct-0905` (Moonshot AI) - September update with enhanced capabilities (262K context) - \$0.60/\$2.50 per 1M tokens
--   `openai/gpt-oss-120b` (OpenAI) - 120B MoE with strong reasoning capabilities (128K context) - \$0.10/\$0.50 per 1M tokens
--   `Qwen/Qwen3-Coder-480B-A35B-Instruct`- Advanced coding and reasoning (262K context) - \$0.38/\$1.53 per 1M tokens
--   `Qwen/Qwen3-235B-A22B-Instruct-2507` - Math and reasoning expert (262K context) - \$0.22/\$0.80 per 1M tokens
--   `deepseek-ai/DeepSeek-R1` - DeepSeek's first-generation reasoning model (163K context) - \$2.55/\$5.95 per 1M tokens
--   `deepseek-ai/DeepSeek-R1-0528` - Latest revision of DeepSeek's reasoning model (163K context) - \$2.55/\$5.95 per 1M tokens
--   `deepseek-ai/DeepSeek-V3.1` - Hybrid reasoning with advanced tool calling (163K context) - \$0.50/\$1.50 per 1M tokens
--   `deepseek-ai/DeepSeek-V3-0324` - Fast general-purpose with enhanced reasoning (163K context) - \$0.77/\$0.77 per 1M tokens
--   `deepseek-ai/DeepSeek-V3.2` - Fast general-purpose with enhanced reasoning (163K context) - \$0.77/\$0.77 per 1M tokens
+-   `moonshotai/Kimi-K2-Thinking` (Moonshot AI) - 단계별 사고 과정을 포함한 향상된 추론 능력 (262K 컨텍스트) - 100만 토큰당 \$0.60/\$2.50
+-   `zai-org/GLM-4.6` (Z AI) - 고급 에이전트, 추론, 코딩 기능을 갖춘 프런티어 오픈 모델 (200K 컨텍스트) 100만 토큰당 \$0.60/\$2.20
+-   `moonshotai/Kimi-K2-Instruct-0905` (Moonshot AI) - 9월 업데이트로 성능 향상 (262K 컨텍스트) - 100만 토큰당 \$0.60/\$2.50
+-   `openai/gpt-oss-120b` (OpenAI) - 강력한 추론 능력을 가진 120B MoE (128K 컨텍스트) - 100만 토큰당 \$0.10/\$0.50
+-   `Qwen/Qwen3-Coder-480B-A35B-Instruct`- 고급 코딩 및 추론 (262K 컨텍스트) - 100만 토큰당 \$0.38/\$1.53
+-   `Qwen/Qwen3-235B-A22B-Instruct-2507` - 수학/추론 특화 (262K 컨텍스트) - 100만 토큰당 \$0.22/\$0.80
+-   `deepseek-ai/DeepSeek-R1` - DeepSeek 1세대 추론 모델 (163K 컨텍스트) - 100만 토큰당 \$2.55/\$5.95
+-   `deepseek-ai/DeepSeek-R1-0528` - DeepSeek 추론 모델 최신 개정 (163K 컨텍스트) - 100만 토큰당 \$2.55/\$5.95
+-   `deepseek-ai/DeepSeek-V3.1` - 고급 도구 호출을 포함한 하이브리드 추론 (163K 컨텍스트) - 100만 토큰당 \$0.50/\$1.50
+-   `deepseek-ai/DeepSeek-V3-0324` - 향상된 추론을 가진 빠른 범용 모델 (163K 컨텍스트) - 100만 토큰당 \$0.77/\$0.77
+-   `deepseek-ai/DeepSeek-V3.2` - 향상된 추론을 가진 빠른 범용 모델 (163K 컨텍스트) - 100만 토큰당 \$0.77/\$0.77
 
-### Production-First Architecture
+### 프로덕션 우선 아키텍처
 
-Baseten's Model APIs are built for production environments with several key advantages:
+Baseten Model APIs는 프로덕션 환경을 위해 설계되었으며 다음과 같은 장점이 있습니다:
 
-#### Enterprise-Grade Reliability
-- **Four nines of uptime** (99.99%) through active-active redundancy
-- **Cloud-agnostic, multi-cluster autoscaling** for consistent availability
-- **SOC 2 Type II certified** and **HIPAA compliant** for security requirements
+#### 엔터프라이즈급 안정성
+- **가용성 4 nines**(99.99%) - 액티브-액티브 이중화를 통해 보장
+- **클라우드 중립, 멀티 클러스터 오토스케일링**으로 안정적인 가용성 제공
+- **SOC 2 Type II 인증** 및 **HIPAA 준수**로 보안 요구사항 충족
 
-#### Optimized Performance
-- **Pre-optimized models** shipped with the Baseten Inference Stack
-- **Latest-generation GPUs** with multi-cloud infrastructure
-- **Ultra-fast inference** optimized from the bottom up for production workloads
+#### 최적화된 성능
+- **사전 최적화 모델**을 Baseten Inference Stack과 함께 제공
+- **최신 세대 GPU**와 멀티 클라우드 인프라 활용
+- **프로덕션 워크로드에 맞춘 초고속 추론**
 
-#### Cost Efficiency
-- **5-10x less expensive** than closed alternatives
-- **Optimized multi-cloud infrastructure** for efficient resource utilization
-- **Transparent pricing** with no hidden costs or rate limit surprises
+#### 비용 효율성
+- **폐쇄형 대안 대비 5~10배 저렴**
+- **효율적인 리소스 사용을 위한 최적화된 멀티 클라우드 인프라**
+- **숨겨진 비용 없는 투명한 가격**
 
-#### Developer Experience
-- **OpenAI compatible API** - migrate by swapping a single URL
-- **Drop-in replacement** for closed models with comprehensive observability and analytics
-- **Seamless scaling** from Model APIs to dedicated deployments
+#### 개발자 경험
+- **OpenAI 호환 API** - URL 하나만 교체하면 이전 가능
+- **포괄적인 관측성 및 분석**을 갖춘 폐쇄형 모델 대체
+- **Model APIs에서 전용 배포로의 원활한 확장**
 
-### Special Features
+### 특별 기능
 
-#### Function Calling & Tool Use
-All Baseten models support structured outputs, function calling, and tool use as part of the Baseten Inference Stack, making them ideal for agentic applications and coding workflows.
+#### 함수 호출 및 도구 사용
+Baseten의 모든 모델은 Baseten Inference Stack의 일부로 구조화된 출력, 함수 호출, 도구 사용을 지원하며, 에이전트 애플리케이션과 코딩 워크플로에 적합합니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Dynamic Model Updates:** Cline automatically fetches the latest model list from Baseten, ensuring access to new models as they're released in real time.
--   **Multi-Cloud Capacity Management (MCM):** Baseten's multi-cloud infrastructure ensures high availability and low latency globally.
--   **Support:** Baseten provides dedicated support for production deployments and can work with you on dedicated resources as you scale.
+-   **동적 모델 업데이트:** Cline은 Baseten의 최신 모델 목록을 자동으로 가져와 새 모델이 출시되는 즉시 접근할 수 있습니다.
+-   **멀티 클라우드 용량 관리(MCM):** Baseten의 멀티 클라우드 인프라는 전 세계적으로 높은 가용성과 낮은 지연 시간을 보장합니다.
+-   **지원:** Baseten은 프로덕션 배포를 위한 전담 지원을 제공하며, 확장 시 전용 리소스에 대해 협력할 수 있습니다.
 
-### Pricing Information
+### 가격 정보
 
-Current pricing is highly competitive and transparent. For the most up-to-date pricing, visit the [Baseten Model APIs page](https://www.baseten.co/products/model-apis/). Prices typically range from \$0.10-\$6.00 per million tokens, making Baseten significantly more cost-effective than many closed-model alternatives while providing access to state-of-the-art open-source models.
+현재 가격은 경쟁력이 높고 투명합니다. 최신 가격은 [Baseten Model APIs 페이지](https://www.baseten.co/products/model-apis/)에서 확인하세요. 일반적으로 100만 토큰당 \$0.10~\$6.00 수준이며, 많은 폐쇄형 모델 대안보다 훨씬 비용 효율적이면서 최첨단 오픈소스 모델에 접근할 수 있습니다.

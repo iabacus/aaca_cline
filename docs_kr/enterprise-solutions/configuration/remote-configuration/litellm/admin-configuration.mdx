@@ -1,120 +1,119 @@
 ---
-title: "Configure LiteLLM Provider (Admin)"
-sidebarTitle: "Configure LiteLLM (Admin)"
-description: "This guide explains how administrators configure LiteLLM as the organization-wide LLM provider for Cline."
+title: "LiteLLM 제공자 구성(관리자)"
+sidebarTitle: "LiteLLM 구성(관리자)"
+description: "관리자가 Cline의 조직 공용 LLM 제공자로 LiteLLM을 구성하는 방법을 설명합니다."
 ---
 
+관리자는 호스팅된 관리자 콘솔을 통해 모든 Cline 사용자에 대해 조직 공용 LLM 제공자로 LiteLLM을 추가할 수 있습니다. 이 중앙화된 접근은 LiteLLM 프록시 인터페이스를 통해 여러 AI 모델에 대한 통합 접근을 제공합니다.
 
-As an administrator, you can add LiteLLM as the organization-wide LLM provider for all Cline users through the hosted admin console. This centralized approach provides unified access to multiple AI models through your LiteLLM proxy interface.
+## 시작하기 전에
 
-## Before You Begin
+조직의 LLM 제공자로 LiteLLM을 설정하기 전에 다음이 필요합니다.
 
-To get started with setting up LiteLLM as your organization's LLM provider, you'll need a few items in place.
-
-**Administrator access to the Cline Admin console**  
-You need admin privileges to enforce provider settings across your organization. If you can navigate to **Settings → Cline Settings** in the admin console at [app.cline.bot](https://app.cline.bot), you have the right access level.
+**Cline 관리자 콘솔의 관리자 권한**  
+조직 전체에 제공자 설정을 적용하려면 관리자 권한이 필요합니다. [app.cline.bot](https://app.cline.bot) 관리자 콘솔에서 **Settings → Cline Settings**로 이동할 수 있다면 필요한 권한이 있습니다.
 
 <Info>
-**Quick Check**: Try accessing the settings page now. If you can see the provider configuration options, you're good to go.
+**빠른 확인**: 설정 페이지에 접근해 보세요. 제공자 구성 옵션이 보이면 준비 완료입니다.
 </Info>
 
-**LiteLLM proxy instance running**  
-You need a deployed LiteLLM proxy that your team can access. This can be self-hosted or managed through a cloud provider.
+**LiteLLM 프록시 인스턴스 실행 중**  
+팀이 접근할 수 있는 LiteLLM 프록시가 배포되어 있어야 합니다. 자체 호스팅 또는 클라우드 제공자 관리형 모두 가능합니다.
 
 <Note>
-If you haven't deployed LiteLLM yet, work with your infrastructure team to set up a LiteLLM proxy instance.
+아직 LiteLLM을 배포하지 않았다면 인프라 팀과 협력해 LiteLLM 프록시 인스턴스를 먼저 설정하세요.
 </Note>
 
-**LiteLLM endpoint details**  
-You'll need the base URL of your LiteLLM proxy and optionally a master key if your deployment requires authentication.
+**LiteLLM 엔드포인트 정보**  
+LiteLLM 프록시의 기본 URL과, 인증이 필요한 경우 마스터 키가 필요합니다.
 
 <Tip>
-Ensure your LiteLLM proxy is accessible from your team's development environments and has the models you want to make available configured.
+LiteLLM 프록시가 팀의 개발 환경에서 접근 가능하고, 사용할 모델이 구성되어 있는지 확인하세요.
 </Tip>
 
-## Configuration Steps
+## 구성 단계
 
 <Steps>
-<Step title="Access Cline Settings">
-Navigate to [app.cline.bot](https://app.cline.bot) and sign in with your administrator account. Go to **Settings → Cline Settings**.
+<Step title="Cline 설정 접근">
+[app.cline.bot](https://app.cline.bot)에 관리자 계정으로 로그인한 뒤 **Settings → Cline Settings**로 이동합니다.
 
 <Info>
-You should see the provider configuration options if you have the correct admin access level.
+관리자 권한이 올바르다면 제공자 구성 옵션이 표시됩니다.
 </Info>
 </Step>
 
-<Step title="Enable Remote Provider Configuration">
-Toggle on **Enable settings** to reveal the remote provider configuration options. This allows you to enforce provider settings across your organization.
+<Step title="원격 제공자 구성 활성화">
+**Enable settings**를 켜 원격 제공자 구성 옵션을 표시합니다. 이를 통해 조직 전체에 제공자 설정을 강제할 수 있습니다.
 </Step>
 
-<Step title="Select LiteLLM as the API Provider">
-Open the **API Provider** dropdown menu and select **LiteLLM**. This will open the LiteLLM configuration panel where you'll configure all your organization-wide settings.
+<Step title="API 제공자로 LiteLLM 선택">
+**API Provider** 드롭다운에서 **LiteLLM**을 선택합니다. 그러면 조직 공용 설정을 구성할 수 있는 LiteLLM 구성 패널이 열립니다.
 </Step>
 
-<Step title="Configure LiteLLM Settings">
-The configuration panel includes settings that control how LiteLLM works for your organization:
+<Step title="LiteLLM 설정 구성">
+구성 패널에는 조직에서 LiteLLM을 사용하는 방법을 제어하는 설정이 있습니다:
 
 <AccordionGroup>
-<Accordion title="Base URL (required)">
-Enter your LiteLLM proxy endpoint URL. This should be the full URL where your LiteLLM proxy is accessible, such as `https://litellm.yourcompany.com` or `http://your-proxy:4000`.
+<Accordion title="Base URL (필수)">
+LiteLLM 프록시 엔드포인트 URL을 입력합니다. 예: `https://litellm.yourcompany.com` 또는 `http://your-proxy:4000`.
 
 <Tip>
-Use HTTPS endpoints in production for security. Make sure the URL is accessible from your team's development environments.
+프로덕션에서는 보안을 위해 HTTPS 엔드포인트를 사용하세요. 팀의 개발 환경에서 접근 가능한 URL인지 확인하세요.
 </Tip>
 </Accordion>
 
-<Accordion title="Master Key (optional)">
-If your LiteLLM proxy requires authentication, enter the master key here. This will be used to authenticate requests from all organization members.
+<Accordion title="Master Key (선택)">
+LiteLLM 프록시에 인증이 필요한 경우 마스터 키를 입력합니다. 이 키는 모든 조직 구성원의 요청 인증에 사용됩니다.
 
 <Note>
-**Centralized API Key Management**: By configuring the Master Key at the organization level, you enable centralized API key management. Organization members won't need to manage their own individual API keys - access is fully managed through this centralized configuration.
+**중앙화된 API 키 관리**: 조직 차원에서 Master Key를 구성하면 중앙화된 API 키 관리가 가능합니다. 구성원은 개별 키를 관리할 필요가 없습니다.
 </Note>
 
 <Warning>
-The master key provides full access to your LiteLLM proxy. Only enter this if your proxy requires authentication and you want centralized key management.
+마스터 키는 LiteLLM 프록시에 대한 완전한 접근 권한을 제공합니다. 프록시에 인증이 필요하고 중앙 키 관리를 원할 때만 입력하세요.
 </Warning>
 </Accordion>
 </AccordionGroup>
 </Step>
 
-<Step title="Save Configuration">
-After configuring your settings, close the provider configuration panel and click **Save** on the settings page to persist your changes.
+<Step title="구성 저장">
+설정을 마치면 제공자 구성 패널을 닫고 설정 페이지에서 **Save**를 클릭해 변경 사항을 저장합니다.
 
-Once saved, all organization members signed into the Cline extension will automatically use LiteLLM with your configured settings. They won't be able to select other providers or switch to their personal Cline accounts.
+저장 후 Cline 확장에 로그인한 조직 구성원은 모두 설정된 LiteLLM을 자동으로 사용합니다. 다른 제공자를 선택하거나 개인 Cline 계정으로 전환할 수 없습니다.
 
 <Warning>
-Members can't switch to personal Cline accounts or join other organizations once remote configuration is enabled. This ensures consistent provider usage across your team.
+원격 구성이 활성화되면 구성원은 개인 Cline 계정으로 전환하거나 다른 조직에 가입할 수 없습니다. 이는 팀 전체에 일관된 제공자 사용을 보장하기 위함입니다.
 </Warning>
 </Step>
 </Steps>
 
-## Verification
+## 검증
 
-To verify the configuration:
+구성이 제대로 되었는지 확인하려면:
 
-1. Check that the provider shows as "LiteLLM" in the Enabled provider field
-2. Confirm the settings persist after refreshing the page
-3. Test with a member account to ensure they see only LiteLLM as a provider
-4. Verify that the configured models are available in the model dropdown
+1. Enabled provider 필드에 "LiteLLM"이 표시되는지 확인
+2. 페이지 새로고침 후에도 설정이 유지되는지 확인
+3. 멤버 계정으로 테스트해 LiteLLM만 표시되는지 확인
+4. 모델 드롭다운에서 구성된 모델이 표시되는지 확인
 
-## Troubleshooting
+## 문제 해결
 
-**Members don't see the configured provider**  
-Ensure you clicked Save after closing the configuration panel. Verify the member account belongs to the correct organization and that your LiteLLM proxy is accessible from their network.
+**구성된 제공자가 멤버에게 보이지 않음**  
+구성 패널을 닫은 뒤 **Save**를 클릭했는지 확인하세요. 멤버 계정이 올바른 조직에 속해 있는지, LiteLLM 프록시가 해당 네트워크에서 접근 가능한지도 확인하세요.
 
-**Connection errors to LiteLLM proxy**  
-Verify the Base URL is correct and accessible. Check that any firewalls or security groups allow access from your team's IP addresses or development environments.
+**LiteLLM 프록시 연결 오류**  
+Base URL이 정확하고 접근 가능한지 확인하세요. 방화벽 또는 보안 그룹이 팀의 IP 또는 개발 환경에서의 접근을 허용하는지 확인하세요.
 
-**Authentication failures**  
-If using a master key, verify it's correctly entered and has proper permissions in your LiteLLM deployment. Check the LiteLLM proxy logs for authentication errors.
+**인증 실패**  
+마스터 키를 사용하는 경우 키가 올바르게 입력되었고 LiteLLM 배포에서 적절한 권한을 갖는지 확인하세요. LiteLLM 프록시 로그에서 인증 오류를 확인하세요.
 
-**Models not available**  
-Confirm the models are properly configured in your LiteLLM proxy deployment. The available models depend on how your LiteLLM proxy is configured.
+**모델이 보이지 않음**  
+LiteLLM 프록시 배포에 모델이 올바르게 구성되었는지 확인하세요. 사용 가능한 모델은 프록시 구성에 따라 결정됩니다.
 
-**Configuration changes don't persist**  
-Make sure to click the Save button on the main settings page, not just close the configuration panel.
+**구성 변경이 저장되지 않음**  
+구성 패널만 닫지 말고 메인 설정 페이지의 **Save** 버튼을 반드시 클릭하세요.
 
-**Need to change endpoint or key later**  
-You can update these settings at any time. Changes take effect immediately for all organization members.
+**나중에 엔드포인트나 키를 변경해야 하는 경우**  
+언제든 설정을 변경할 수 있으며, 변경 사항은 모든 구성원에게 즉시 적용됩니다.
 
-For further details about LiteLLM deployment and configuration, consult the [LiteLLM Documentation](https://docs.litellm.ai/) and coordinate with your infrastructure team.
+LiteLLM 배포 및 구성에 대한 자세한 내용은 [LiteLLM 문서](https://docs.litellm.ai/)를 참고하고 인프라 팀과 협력하세요.

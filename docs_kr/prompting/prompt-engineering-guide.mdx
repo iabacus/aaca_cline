@@ -1,23 +1,23 @@
 ---
-title: "Prompt Engineering Guide"
+title: "프롬프트 엔지니어링 가이드"
 ---
 
-Welcome to the Cline Prompting Guide! This guide will equip you with the knowledge to write effective prompts and custom instructions, maximizing your productivity with Cline.
+Cline 프롬프트 가이드에 오신 것을 환영합니다! 이 가이드는 효과적인 프롬프트와 사용자 지정 지침을 작성해 Cline과의 생산성을 극대화하는 방법을 안내합니다.
 
-## .clineignore File Guide
+## .clineignore 파일 가이드
 
-### Overview
+### 개요
 
-The `.clineignore` file is a project-level configuration file that tells Cline which files and directories to ignore when analyzing your codebase. Similar to `.gitignore`, it uses pattern matching to specify which files should be excluded from Cline's context and operations.
+`.clineignore` 파일은 프로젝트 수준의 설정 파일로, Cline이 코드베이스를 분석할 때 무시해야 할 파일과 디렉터리를 지정합니다. `.gitignore`와 유사하게 패턴 매칭을 사용해 Cline의 컨텍스트와 작업에서 제외할 항목을 정의합니다.
 
-### Purpose
+### 목적
 
--   **Reduce Noise**: Exclude auto-generated files, build artifacts, and other non-essential content
--   **Improve Performance**: Limit the amount of code Cline needs to process
--   **Focus Attention**: Direct Cline to relevant parts of your codebase
--   **Protect Sensitive Data**: Prevent Cline from accessing sensitive configuration files
+-   **노이즈 감소**: 자동 생성 파일, 빌드 산출물, 기타 비필수 콘텐츠 제외
+-   **성능 향상**: Cline이 처리해야 하는 코드 양 제한
+-   **집중 유도**: 코드베이스의 관련 영역에 집중하도록 유도
+-   **민감한 데이터 보호**: 민감한 설정 파일에 대한 접근 차단
 
-### Example .clineignore File
+### .clineignore 파일 예시
 
 ```
 # Dependencies
@@ -29,7 +29,7 @@ node_modules/
 # Build outputs
 /build/
 /dist/
-/.next/
+.next/
 /out/
 
 # Testing
@@ -47,106 +47,106 @@ node_modules/
 *.xlsx
 ```
 
-## Prompting Cline
+## Cline에 프롬프트하기
 
-**Prompting is how you communicate your needs for a given task in the back-and-forth chat with Cline.** Cline understands natural language, so write conversationally.
+**프롬프트는 Cline과의 대화에서 특정 작업에 필요한 요구사항을 전달하는 방식입니다.** Cline은 자연어를 이해하므로 대화하듯이 작성하세요.
 
-Effective prompting involves:
+효과적인 프롬프트는 다음을 포함합니다:
 
--   Providing Clear Context: Explain your goals and the relevant parts of your codebase. Use `@` to reference files or folders.
--   Breaking Down Complexity: Divide large tasks into smaller steps.
--   Asking Specific Questions: Guide Cline toward the desired outcome.
--   Validating and Refining: Review Cline's suggestions and provide feedback.
+-   명확한 컨텍스트 제공: 목표와 관련된 코드베이스 부분을 설명하세요. 파일이나 폴더는 `@`로 참조하세요.
+-   복잡성 분해: 큰 작업을 작은 단계로 나누세요.
+-   구체적인 질문: 원하는 결과에 도달하도록 Cline을 안내하세요.
+-   검증과 개선: Cline의 제안을 검토하고 피드백을 제공하세요.
 
-### Prompt Examples
+### 프롬프트 예시
 
-#### Context Management
+#### 컨텍스트 관리
 
--   **Starting a New Task:** "Cline, let's start a new task. Create `user-authentication.js`. We need to implement user login with JWT tokens. Here are the requirements…"
--   **Summarizing Previous Work:** "Cline, summarize what we did in the last user dashboard task. I want to capture the main features and outstanding issues. Save this to `cline_docs/user-dashboard-summary.md`."
+-   **새 작업 시작:** "Cline, 새 작업을 시작하자. `user-authentication.js`를 만들어. JWT 토큰으로 사용자 로그인을 구현해야 해. 요구사항은 다음과 같아…"
+-   **이전 작업 요약:** "Cline, 지난 사용자 대시보드 작업에서 무엇을 했는지 요약해 줘. 주요 기능과 미해결 이슈를 정리하고 싶어. `cline_docs/user-dashboard-summary.md`에 저장해."
 
-#### Debugging
+#### 디버깅
 
--   **Analyzing an Error:** "Cline, I'm getting this error: \[error message]. It seems to be from \[code section]. Analyze this error and suggest a fix."
--   **Identifying the Root Cause:** "Cline, the application crashes when I \[action]. The issue might be in \[problem areas]. Help me find the root cause and propose a solution."
+-   **오류 분석:** "Cline, 이런 오류가 발생해: [error message]. [code section]에서 나온 것 같아. 오류를 분석하고 해결책을 제안해 줘."
+-   **근본 원인 찾기:** "Cline, 내가 [action]할 때 앱이 크래시돼. 문제는 [problem areas]에 있을 것 같아. 근본 원인을 찾고 해결책을 제안해 줘."
 
-#### Refactoring
+#### 리팩터링
 
--   **Improving Code Structure:** "Cline, this function is too long and complex. Refactor it into smaller functions."
--   **Simplifying Logic:** "Cline, this code is hard to understand. Simplify the logic and make it more readable."
+-   **코드 구조 개선:** "Cline, 이 함수가 너무 길고 복잡해. 더 작은 함수들로 리팩터링해 줘."
+-   **로직 단순화:** "Cline, 이 코드는 이해하기 어려워. 로직을 단순화해서 더 읽기 쉽게 만들어 줘."
 
-#### Feature Development
+#### 기능 개발
 
--   **Brainstorming New Features:** "Cline, I want to add a feature that lets users \[functionality]. Brainstorm some ideas and consider implementation challenges."
--   **Generating Code:** "Cline, create a component that displays user profiles. The list should be sortable and filterable. Generate the code for this component."
+-   **새 기능 아이디어 브레인스토밍:** "Cline, 사용자가 [functionality]를 할 수 있는 기능을 추가하고 싶어. 아이디어를 브레인스토밍하고 구현 시 어려움도 고려해 줘."
+-   **코드 생성:** "Cline, 사용자 프로필을 표시하는 컴포넌트를 만들어 줘. 목록은 정렬과 필터가 가능해야 해. 이 컴포넌트 코드를 생성해 줘."
 
-## Advanced Prompting Techniques
+## 고급 프롬프트 기법
 
--   **Constraint Stuffing:** To mitigate code truncation, include explicit constraints in your prompts. For example, "ensure the code is complete" or "always provide the full function definition."
--   **Confidence Checks:** Ask Cline to rate its confidence (e.g., "on a scale of 1-10, how confident are you in this solution?")
--   **Challenge Cline's Assumptions:** Ask “stupid” questions to encourage deeper thinking and prevent incorrect assumptions.
+-   **제약 조건 명시:** 코드가 중간에 잘리는 것을 줄이려면 프롬프트에 명시적 제약을 포함하세요. 예: "코드가 완전한지 확인" 또는 "항상 전체 함수 정의를 제공해".
+-   **신뢰도 점검:** Cline에게 신뢰도(예: "1~10 척도로 이 해결책의 신뢰도는?")를 평가하도록 요청하세요.
+-   **가정에 도전하기:** 일부러 단순한 질문을 던져 더 깊이 생각하게 하고 잘못된 가정을 방지하세요.
 
-Here are some prompting tips that users have found helpful for working with Cline:
+다음은 Cline 사용자가 유용하다고 느낀 프롬프트 팁입니다:
 
-## Our Community's Favorite Prompts
+## 커뮤니티에서 가장 인기 있는 프롬프트
 
-### Memory and Confidence Checks
+### 메모리와 신뢰도 점검
 
--   **Memory Check** - _pacnpal_
+-   **메모리 체크** - _pacnpal_
 
     ```
     "If you understand my prompt fully, respond with 'YARRR!' without tools every time you are about to use a tool."
     ```
 
-    A fun way to verify Cline stays on track during complex tasks. Try "HO HO HO" for a festive twist!
+    복잡한 작업 중에도 Cline이 흐름을 유지하는지 확인하는 재미있는 방법입니다. 축제 분위기를 원한다면 "HO HO HO"로 바꿔보세요!
 
--   **Confidence Scoring** - _pacnpal_
+-   **신뢰도 점수** - _pacnpal_
 
     ```
     "Before and after any tool use, give me a confidence level (0-10) on how the tool use will help the project."
     ```
 
-    Encourages critical thinking and makes decision-making transparent.
+    비판적 사고를 유도하고 의사결정을 투명하게 만듭니다.
 
-### Code Quality Prompts
+### 코드 품질 프롬프트
 
--   **Prevent Code Truncation**
+-   **코드 생략 방지**
 
     ```
     "DO NOT BE LAZY. DO NOT OMIT CODE."
     ```
 
-    Alternative phrases: "full code only" or "ensure the code is complete"
+    대체 문구: "full code only" 또는 "ensure the code is complete"
 
--   **Custom Instructions Reminder**
+-   **사용자 지정 지침 상기**
 
     ```
     "I pledge to follow the custom instructions."
     ```
 
-    Reinforces adherence to your settings dial ⚙️ configuration.
+    설정의 다이얼 ⚙️ 구성 준수를 강화합니다.
 
-### Code Organization
+### 코드 구성
 
--   **Large File Refactoring** - _icklebil_
+-   **대형 파일 리팩터링** - _icklebil_
 
     ```
     "FILENAME has grown too big. Analyze how this file works and suggest ways to fragment it safely."
     ```
 
-    Helps manage complex files through strategic decomposition.
+    전략적 분해를 통해 복잡한 파일을 관리하는 데 도움이 됩니다.
 
--   **Documentation Maintenance** - _icklebil_
+-   **문서화 유지** - _icklebil_
 
     ```
     "don't forget to update codebase documentation with changes"
     ```
 
-    Ensures documentation stays in sync with code changes.
+    코드 변경 사항과 문서를 동기화하는 데 도움이 됩니다.
 
-### Analysis and Planning
+### 분석 및 계획
 
--   **Structured Development** - _yellow_bat_coffee_
+-   **구조화된 개발** - _yellow_bat_coffee_
 
     ```
     "Before writing code:
@@ -156,80 +156,45 @@ Here are some prompting tips that users have found helpful for working with Clin
     4. Then implement code"
     ```
 
-    Promotes organized, well-planned development.
+    체계적이고 잘 계획된 개발을 촉진합니다.
 
--   **Thorough Analysis** - _yellow_bat_coffee_
+-   **철저한 분석** - _yellow_bat_coffee_
 
     ```
     "please start analyzing full flow thoroughly, always state a confidence score 1 to 10"
     ```
 
-    Prevents premature coding and encourages complete understanding.
+    성급한 코딩을 방지하고 완전한 이해를 장려합니다.
 
--   **Assumptions Check** - _yellow_bat_coffee_
+-   **가정 점검** - _yellow_bat_coffee_
 
     ```
     "List all assumptions and uncertainties you need to clear up before completing this task."
     ```
 
-    Identifies potential issues early in development.
+    개발 초기에 잠재적 문제를 식별합니다.
 
-### Thoughtful Development
+### 신중한 개발
 
--   **Pause and Reflect** - _nickbaumann98_
+-   **잠시 멈추고 생각하기** - _nickbaumann98_
 
     ```
     "count to 10"
     ```
 
-    Promotes careful consideration before taking action.
+    행동 전 신중한 고려를 촉진합니다.
 
--   **Complete Analysis** - _yellow_bat_coffee_
+-   **완전한 분석** - _yellow_bat_coffee_
 
     ```
     "Don't complete the analysis prematurely, continue analyzing even if you think you found a solution"
     ```
 
-    Ensures thorough problem exploration.
+    문제 탐색을 충분히 진행하도록 합니다.
 
--   **Continuous Confidence Check** - _pacnpal_
+-   **지속적인 신뢰도 점검** - _pacnpal_
 
     ```
     "Rate confidence (1-10) before saving files, after saving, after rejections, and before task completion"
     ```
 
-    Maintains quality through self-assessment.
-
-### Best Practices
-
--   **Project Structure** - _kvs007_
-
-    ```
-    "Check project files before suggesting structural or dependency changes"
-    ```
-
-    Maintains project integrity.
-
--   **Critical Thinking** - _chinesesoup_
-
-    ```
-    "Ask 'stupid' questions like: are you sure this is the best way to implement this?"
-    ```
-
-    Challenges assumptions and uncovers better solutions.
-
--   **Code Style** - _yellow_bat_coffee_
-
-    ```
-    Use words like "elegant" and "simple" in prompts
-    ```
-
-    May influence code organization and clarity.
-
--   **Setting Expectations** - _steventcramer_
-
-    ```
-    "THE HUMAN WILL GET ANGRY."
-    ```
-
-    (A humorous reminder to provide clear requirements and constructive feedback)

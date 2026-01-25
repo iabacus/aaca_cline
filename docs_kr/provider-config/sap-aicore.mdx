@@ -1,74 +1,74 @@
 ---
 title: "SAP AI Core"
-description: "Learn how to configure and use LLM models from Generative AI Hub in SAP AI Core with Cline."
+description: "Cline에서 SAP AI Core의 Generative AI Hub LLM 모델을 설정하고 사용하는 방법을 알아보세요."
 ---
 
-SAP AI Core and the generative AI hub help you to integrate LLMs and AI into new business processes in a cost-efficient manner.
+SAP AI Core와 Generative AI Hub는 비용 효율적으로 새로운 비즈니스 프로세스에 LLM과 AI를 통합할 수 있도록 도와줍니다.
 
-**Website:** [SAP Help Portal](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/what-is-sap-ai-core)
+**웹사이트:** [SAP Help Portal](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/what-is-sap-ai-core)
 
 
 <Info>
-SAP AI Core, and Generative AI Hub, are offerings from SAP BTP. You need an active SAP BTP contract and a existing subaccount with a SAP AI Core instance with the `extended` service plan (For more details about SAP AI Core service plans and their capabilities, see the [Service Plans documentation](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/service-plans)) to perform these steps.
+SAP AI Core와 Generative AI Hub는 SAP BTP의 서비스입니다. 이 절차를 수행하려면 활성 SAP BTP 계약과 `extended` 서비스 플랜이 포함된 SAP AI Core 인스턴스를 가진 하위 계정이 필요합니다(SAP AI Core 서비스 플랜과 기능에 대한 자세한 내용은 [Service Plans 문서](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/service-plans)를 참고하세요).
 </Info>
 
-### Getting a Service Binding
+### 서비스 바인딩 받기
 
-1. **Access:** Go to your subaccount via [BTP Cloud Cockpit](https://cockpit.btp.cloud.sap/cockpit)
-2. **Create a Service Binding:** Go to "Instances and Subscriptions", select your SAP AI Core service instance and click on Service Bindings > Create.
-3. **Copy the Service Binding:** Copy the service binding values.
+1. **접근:** [BTP Cloud Cockpit](https://cockpit.btp.cloud.sap/cockpit)에서 하위 계정으로 이동합니다.
+2. **서비스 바인딩 생성:** "Instances and Subscriptions"로 이동하여 SAP AI Core 서비스 인스턴스를 선택하고 Service Bindings > Create를 클릭합니다.
+3. **서비스 바인딩 복사:** 서비스 바인딩 값을 복사합니다.
 
-### Supported Models
+### 지원 모델
 
-SAP AI Core supports a large and growing number of models.
-Refer to the [Generative AI Hub Supported Models page](https://me.sap.com/notes/3437766) for the complete and up-to-date list.
+SAP AI Core는 많은 모델을 지원하며 계속 확대되고 있습니다.
+전체 최신 목록은 [Generative AI Hub 지원 모델 페이지](https://me.sap.com/notes/3437766)를 참고하세요.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "SAP AI Core" from the "API Provider" dropdown.
-3.  **Enter Client Id:** Add the `.clientid` field from the service binding into the "AI Core Client Id" field.
-4.  **Enter Client Secret:** Add the `.clientsecret` field from the service binding into the "AI Core Client Secret" field.
-5.  **Enter Base URL:** Add the `.serviceurls.AI_API_URL` field from the service binding into the "AI Core Base URL" field.
-6.  **Enter Auth URL:** Add the `.url` field from the service binding into the "AI Core Auth URL" field.
-7.  **Enter Resource Group:** Add the resource group where you have your model deployments. See [Create a Deployment for a Generative AI Model](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core).
-8.  **Configure Orchestration Mode:** If you have an `extended` service plan, the "Orchestration Mode" checkbox will automatically appear.
-9.  **Select Model:** Choose your desired model from the "Model" dropdown.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "SAP AI Core"를 선택합니다.
+3.  **Client Id 입력:** 서비스 바인딩의 `.clientid` 값을 "AI Core Client Id" 필드에 입력합니다.
+4.  **Client Secret 입력:** 서비스 바인딩의 `.clientsecret` 값을 "AI Core Client Secret" 필드에 입력합니다.
+5.  **Base URL 입력:** 서비스 바인딩의 `.serviceurls.AI_API_URL` 값을 "AI Core Base URL" 필드에 입력합니다.
+6.  **Auth URL 입력:** 서비스 바인딩의 `.url` 값을 "AI Core Auth URL" 필드에 입력합니다.
+7.  **Resource Group 입력:** 모델 배포가 있는 리소스 그룹을 입력합니다. [Generative AI 모델 배포 생성](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core)을 참고하세요.
+8.  **오케스트레이션 모드 설정:** `extended` 서비스 플랜이 있으면 "Orchestration Mode" 체크박스가 자동으로 표시됩니다.
+9.  **모델 선택:** "Model" 드롭다운에서 원하는 모델을 선택합니다.
 
-### Orchestration Mode vs Native API
+### 오케스트레이션 모드 vs 네이티브 API
 
-**Orchestration Mode:**
-- **Simplified usage:** Provides access to all available models without requiring individual deployments using the [Harmonized API](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/harmonized-api)
+**오케스트레이션 모드:**
+- **간소화된 사용:** [Harmonized API](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/harmonized-api)를 사용해 개별 배포 없이 모든 사용 가능한 모델에 접근
 
-**Native API Mode:**
-- **Manual deployments:** Requires manual model deployment and management in your SAP AI Core service instance
+**네이티브 API 모드:**
+- **수동 배포:** SAP AI Core 서비스 인스턴스에서 모델 배포와 관리를 수동으로 수행해야 함
 
-### Tips and Notes
+### 팁과 참고사항
 
-- **Service Plan Requirement:** You must have the SAP AI Core `extended` service plan to use LLMs with Cline. Other service plans do not provide access to Generative AI Hub.
+- **서비스 플랜 요구:** Cline에서 LLM을 사용하려면 SAP AI Core `extended` 서비스 플랜이 필요합니다. 다른 서비스 플랜은 Generative AI Hub에 접근할 수 없습니다.
 
-- **Orchestration Mode (Recommended):** Keep Orchestration Mode enabled for the simplest setup. It provides automatic access to all available models without requiring manual deployments.
+- **오케스트레이션 모드(권장):** 가장 간단한 설정을 위해 오케스트레이션 모드를 활성화하세요. 수동 배포 없이 모든 사용 가능한 모델에 자동으로 접근할 수 있습니다.
 
-- **Native API Mode:** Only disable Orchestration Mode if you have specific requirements that necessitate direct AI Core API access or need features not supported by the orchestration mode.
+- **네이티브 API 모드:** 오케스트레이션 모드에서 지원하지 않는 기능이 필요하거나 AI Core API 직접 접근이 필요한 경우에만 비활성화하세요.
 
-- **When using Native API Mode:**
-    -   **Model Selection:** The model dropdown displays models in two separate lists:
-        -   **Deployed Models:** These models are already deployed in your specified resource group and are ready to use immediately.
-        -   **Not Deployed Models:** These models don't have active deployments in your specified resource group. You won't be able to use these models until you create deployments for them in SAP AI Core.
-    -   **Creating Deployments:** To use a model that has not been deployed yet, you'll need to create a deployment in your SAP AI Core service instance. See [Create a Deployment for a Generative AI Model](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core) for instructions.
+- **네이티브 API 모드 사용 시:**
+    -   **모델 선택:** 모델 드롭다운은 두 개의 목록으로 표시됩니다:
+        -   **배포된 모델:** 지정한 리소스 그룹에 이미 배포되어 즉시 사용 가능한 모델
+        -   **미배포 모델:** 지정한 리소스 그룹에 활성 배포가 없는 모델. SAP AI Core에서 배포를 만들기 전에는 사용할 수 없습니다.
+    -   **배포 생성:** 아직 배포되지 않은 모델을 사용하려면 SAP AI Core 서비스 인스턴스에서 배포를 생성해야 합니다. 자세한 방법은 [Generative AI 모델 배포 생성](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core)을 참고하세요.
 
-#### Configuring Reasoning Effort for OpenAI Models
+#### OpenAI 모델의 Reasoning Effort 설정
 
-When using OpenAI reasoning models (such as o1, o3, o3-mini, o4-mini) through SAP AI Core, you can control the reasoning effort to balance performance and cost:
+SAP AI Core에서 OpenAI 추론 모델(o1, o3, o3-mini, o4-mini 등)을 사용할 때 성능과 비용의 균형을 위해 Reasoning Effort를 조정할 수 있습니다:
 
-1. **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2. **Navigate to Features:** Go to the "Features" section in the settings.
-3. **Find OpenAI Reasoning Effort:** Locate the "OpenAI Reasoning Effort" setting.
-4. **Choose Effort Level:** Select between:
-   - **Low:** Faster responses with lower token usage, suitable for simpler tasks
-   - **Medium:** Balanced performance and token usage for most tasks
-   - **High:** More thorough analysis with higher token usage, better for complex reasoning tasks
+1. **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2. **Features로 이동:** 설정의 "Features" 섹션으로 이동합니다.
+3. **OpenAI Reasoning Effort 찾기:** "OpenAI Reasoning Effort" 설정을 찾습니다.
+4. **Effort 레벨 선택:** 다음 중 선택합니다:
+   - **Low:** 토큰 사용량이 낮고 응답이 빠르며, 단순 작업에 적합
+   - **Medium:** 대부분의 작업에 적합한 균형형
+   - **High:** 더 깊은 분석과 높은 토큰 사용량으로 복잡한 추론 작업에 적합
 
 <Note>
-This setting only applies when using OpenAI reasoning models (o1, o3, o3-mini, o4-mini, gpt-5, etc.) deployed through SAP AI Core. Other models will ignore this setting.
+이 설정은 SAP AI Core를 통해 배포된 OpenAI 추론 모델(o1, o3, o3-mini, o4-mini, gpt-5 등)에서만 적용됩니다. 다른 모델은 이 설정을 무시합니다.
 </Note>

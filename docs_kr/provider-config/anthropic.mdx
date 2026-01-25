@@ -1,61 +1,61 @@
 ---
 title: "Anthropic"
-description: "Learn how to configure and use Anthropic Claude models with Cline. Covers API key setup, model selection, and advanced features like prompt caching."
+description: "Cline에서 Anthropic Claude 모델을 설정하고 사용하는 방법을 알아보세요. API 키 설정, 모델 선택, 프롬프트 캐싱 같은 고급 기능을 다룹니다."
 ---
 
-**Website:** [https://www.anthropic.com/](https://www.anthropic.com/)
+**웹사이트:** [https://www.anthropic.com/](https://www.anthropic.com/)
 
-### Getting an API Key
+### API 키 받기
 
-1.  **Sign Up/Sign In:** Go to the [Anthropic Console](https://console.anthropic.com/). Create an account or sign in.
-2.  **Navigate to API Keys:** Go to the [API keys](https://console.anthropic.com/settings/keys) section.
-3.  **Create a Key:** Click "Create Key". Give your key a descriptive name (e.g., "Cline").
-4.  **Copy the Key:** **Important:** Copy the API key _immediately_. You will not be able to see it again. Store it securely.
+1.  **가입/로그인:** [Anthropic Console](https://console.anthropic.com/)로 이동해 계정을 만들거나 로그인합니다.
+2.  **API Keys로 이동:** [API keys](https://console.anthropic.com/settings/keys) 섹션으로 이동합니다.
+3.  **키 생성:** "Create Key"를 클릭하고 키에 설명적인 이름(예: "Cline")을 지정합니다.
+4.  **키 복사:** **중요:** API 키를 _즉시_ 복사하세요. 다시 확인할 수 없습니다. 안전하게 보관하세요.
 
-### Supported Models
+### 지원 모델
 
-Cline supports the following Anthropic Claude models:
+Cline은 다음 Anthropic Claude 모델을 지원합니다:
 
 -   `claude-haiku-4-5-20251001`
 -   `claude-opus-4-5-20251101`
 -   `claude-opus-4-1-20250805`
 -   `claude-opus-4-20250514`
--   `anthropic/claude-sonnet-4.5` (Recommended)
+-   `anthropic/claude-sonnet-4.5` (추천)
 -   `claude-3-7-sonnet-20250219`
 -   `claude-3-5-sonnet-20241022`
 -   `claude-3-5-haiku-20241022`
 -   `claude-3-opus-20240229`
 -   `claude-3-haiku-20240307`
 
-See [Anthropic's Model Documentation](https://docs.anthropic.com/en/docs/about-claude/models) for more details on each model's capabilities.
+각 모델의 기능에 대한 자세한 내용은 [Anthropic 모델 문서](https://docs.anthropic.com/en/docs/about-claude/models)를 참고하세요.
 
-### Configuration in Cline
+### Cline에서 설정하기
 
-1.  **Open Cline Settings:** Click the settings icon (⚙️) in the Cline panel.
-2.  **Select Provider:** Choose "Anthropic" from the "API Provider" dropdown.
-3.  **Enter API Key:** Paste your Anthropic API key into the "Anthropic API Key" field.
-4.  **Select Model:** Choose your desired Claude model from the "Model" dropdown.
-5.  **(Optional) Custom Base URL:** If you need to use a custom base URL for the Anthropic API, check "Use custom base URL" and enter the URL. Most users won't need to adjust this setting.
+1.  **Cline 설정 열기:** Cline 패널의 설정 아이콘(⚙️)을 클릭합니다.
+2.  **프로바이더 선택:** "API Provider" 드롭다운에서 "Anthropic"을 선택합니다.
+3.  **API 키 입력:** Anthropic API 키를 "Anthropic API Key" 필드에 붙여넣습니다.
+4.  **모델 선택:** "Model" 드롭다운에서 원하는 Claude 모델을 선택합니다.
+5.  **(선택) 사용자 지정 Base URL:** Anthropic API의 사용자 지정 base URL이 필요하다면 "Use custom base URL"을 체크하고 URL을 입력합니다. 대부분의 사용자는 변경할 필요가 없습니다.
 
-### Extended Thinking
+### 확장 사고(Extended Thinking)
 
-Anthropic models offer an "Extended Thinking" feature, designed to give them enhanced reasoning capabilities for complex tasks. This feature allows the model to output its step-by-step thought process before delivering a final answer, providing transparency and enabling more thorough analysis for challenging prompts.
+Anthropic 모델은 복잡한 작업을 위한 향상된 추론 기능인 "Extended Thinking"을 제공합니다. 이 기능을 사용하면 모델이 최종 답변 전에 단계별 사고 과정을 출력해 투명성을 높이고, 까다로운 프롬프트에 대해 더 깊은 분석을 가능하게 합니다.
 
-When extended thinking is in Cline, the model generates `thinking` content blocks that detail its internal reasoning. These insights are then incorporated into its final response.
-Cline users can leverage this by checking the `Enable Extended Thinking` box below the model selection menu after selecting a Claude Model from any provider.
+Cline에서 확장 사고가 활성화되면 모델이 내부 추론을 상세히 보여주는 `thinking` 콘텐츠 블록을 생성합니다. 이 인사이트는 최종 응답에 반영됩니다.
+Claude 모델을 선택한 후 모델 선택 메뉴 아래의 `Enable Extended Thinking` 체크박스를 활성화하면 이 기능을 사용할 수 있습니다.
 
-**Key Aspects of Extended Thinking:**
+**확장 사고의 핵심 포인트:**
 
--   **Supported Models:** This feature is available for select models, including Claude Opus 4, Claude Sonnet 4.5, and Claude Sonnet 3.7.
--   **Summarized Thinking (Claude 4):** For Claude 4 and 4.5 models, the API returns a summary of the full thinking process to balance insight with efficiency and prevent misuse. You are billed for the full thinking tokens, not just the summary.
--   **Streaming:** Extended thinking responses, including the `thinking` blocks, can be streamed.
--   **Tool Use & Prompt Caching:** Extended thinking interacts with tool use (requiring thinking blocks to be passed back) and prompt caching (with specific behaviors around cache invalidation and context).
+-   **지원 모델:** Claude Opus 4, Claude Sonnet 4.5, Claude Sonnet 3.7 등 일부 모델에서 지원됩니다.
+-   **요약된 사고(Claude 4):** Claude 4 및 4.5 모델은 전체 사고 과정을 요약해 반환합니다. 이는 인사이트와 효율성을 균형 있게 유지하고 오용을 방지하기 위함입니다. 요약만 반환되더라도 전체 사고 토큰에 대해 과금됩니다.
+-   **스트리밍:** `thinking` 블록을 포함한 확장 사고 응답은 스트리밍할 수 있습니다.
+-   **도구 사용 및 프롬프트 캐싱:** 확장 사고는 도구 사용(사고 블록을 다시 전달해야 함)과 프롬프트 캐싱(캐시 무효화 관련 동작)과 상호작용합니다.
 
-For comprehensive details on how extended thinking works, including API examples, interaction with tool use, prompt caching, and pricing, please refer to the [official Anthropic documentation on Extended Thinking](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking).
+확장 사고의 동작 방식, API 예시, 도구 사용 및 프롬프트 캐싱과의 상호작용, 가격 등에 대한 자세한 내용은 [Anthropic 공식 확장 사고 문서](https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking)를 참고하세요.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Prompt Caching:** Claude 3 models support [prompt caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching), which can significantly reduce costs and latency for repeated prompts.
--   **Context Window:** Claude models have large context windows (200,000 tokens), allowing you to include a significant amount of code and context in your prompts.
--   **Pricing:** Refer to the [Anthropic Pricing](https://www.anthropic.com/pricing) page for the latest pricing information.
--   **Rate Limits:** Anthropic has strict rate limits based on [usage tiers](https://docs.anthropic.com/en/api/rate-limits#requirements-to-advance-tier). If you're repeatedly hitting rate limits, consider contacting Anthropic sales or accessing Claude through a different provider like [OpenRouter](/provider-config/openrouter) or [Requesty](/provider-config/requesty).
+-   **프롬프트 캐싱:** Claude 3 모델은 [프롬프트 캐싱](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)을 지원해 반복 프롬프트의 비용과 지연 시간을 크게 줄일 수 있습니다.
+-   **컨텍스트 창:** Claude 모델은 큰 컨텍스트 창(200,000 토큰)을 제공하므로 프롬프트에 상당한 양의 코드와 컨텍스트를 포함할 수 있습니다.
+-   **가격:** 최신 가격 정보는 [Anthropic Pricing](https://www.anthropic.com/pricing) 페이지를 참고하세요.
+-   **요율 제한:** Anthropic은 [사용 등급](https://docs.anthropic.com/en/api/rate-limits#requirements-to-advance-tier)에 따른 엄격한 요청 제한이 있습니다. 제한에 자주 걸린다면 Anthropic 영업팀에 문의하거나, [OpenRouter](/provider-config/openrouter) 또는 [Requesty](/provider-config/requesty) 같은 다른 프로바이더를 통해 Claude에 접근하는 것을 고려하세요.

@@ -1,95 +1,95 @@
 ---
 title: "Vercel AI Gateway"
-description: "Use Vercel AI Gateway in Cline to reach 100+ models from one endpoint with routing, retries, and spend observability."
+description: "Cline에서 Vercel AI Gateway를 사용해 하나의 엔드포인트로 100개 이상의 모델에 접근하고 라우팅, 재시도, 비용 가시성을 확보하세요."
 ---
 
-Vercel AI Gateway gives you a single API to access models from many providers. You switch by model id without swapping SDKs or juggling multiple keys. Cline integrates directly so you can pick a Gateway model in the dropdown, use it like any other provider, and see token and cache usage in the stream.
+Vercel AI Gateway는 하나의 API로 여러 프로바이더의 모델에 접근할 수 있게 해줍니다. SDK를 바꾸거나 여러 키를 관리할 필요 없이 모델 ID만 전환하면 됩니다. Cline은 Gateway와 직접 통합되어 드롭다운에서 Gateway 모델을 선택해 다른 프로바이더처럼 사용할 수 있으며, 스트림에서 토큰 및 캐시 사용량도 확인할 수 있습니다.
 
-Useful links:
+유용한 링크:
 - Team dashboard: https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai
 - Models catalog: https://vercel.com/ai-gateway/models
 - Docs: https://vercel.com/docs/ai-gateway
 
-## What you get
+## 제공되는 것
 
-- One endpoint for 100+ models with a single key
-- Automatic retries and fallbacks that you configure on the dashboard
-- Spend monitoring with requests by model, token counts, cache usage, latency percentiles, and cost
-- OpenAI-compatible surface so existing clients work
+- 단일 키로 100+ 모델에 접근하는 하나의 엔드포인트
+- 대시보드에서 구성하는 자동 재시도 및 폴백
+- 모델별 요청, 토큰 수, 캐시 사용량, 지연 시간 백분위, 비용을 포함한 지출 모니터링
+- OpenAI 호환 인터페이스로 기존 클라이언트와의 연동
 
-## Getting an API Key
+## API 키 받기
 
-1. Sign in at https://vercel.com
+1. https://vercel.com 에 로그인
 2. Dashboard → AI Gateway → API Keys → Create key
-3. Copy the key
+3. 키 복사
 
-For more on authentication and OIDC options, see https://vercel.com/docs/ai-gateway/authentication
+인증 및 OIDC 옵션에 대한 자세한 내용은 https://vercel.com/docs/ai-gateway/authentication 를 참고하세요.
 
-## Configuration in Cline
+## Cline에서 설정하기
 
-1. Open Cline settings
-2. Select **Vercel AI Gateway** as the API Provider
-3. Paste your Gateway API Key
-4. Pick a model from the list. Cline fetches the catalog automatically. You can also paste an exact id
+1. Cline 설정 열기
+2. API Provider로 **Vercel AI Gateway** 선택
+3. Gateway API 키 붙여넣기
+4. 목록에서 모델을 선택합니다. Cline이 카탈로그를 자동으로 가져옵니다. 정확한 ID를 직접 붙여넣어도 됩니다.
 
-Notes:
-- Model ids often follow `provider/model`. Copy the exact id from the catalog  
-  Examples:
+참고:
+- 모델 ID는 보통 `provider/model` 형식입니다. 카탈로그에서 정확한 ID를 복사하세요.  
+  예시:
   - `openai/gpt-5`
   - `anthropic/claude-sonnet-4`
   - `google/gemini-2.5-pro`
   - `groq/llama-3.1-70b`
   - `deepseek/deepseek-v3`
 
-## Observability you can act on
+## 활용 가능한 가시성
 
 <Frame>
-  <img src="https://assets.vercel.com/image/upload/v1753121283/gateway-overhead-dark_zhqwwj.svg" alt="Vercel AI Gateway observability with requests by model, tokens, cache, latency, and cost." />
+  <img src="https://assets.vercel.com/image/upload/v1753121283/gateway-overhead-dark_zhqwwj.svg" alt="모델별 요청, 토큰, 캐시, 지연 시간, 비용을 보여주는 Vercel AI Gateway 관측 화면" />
 </Frame>
 
-What to watch:
-- Requests by model - confirm routing and adoption
-- Tokens - input vs output, including reasoning if exposed
-- Cache - cached input and cache creation tokens
-- Latency - p75 duration and p75 time to first token
-- Cost - per project and per model
+모니터링 항목:
+- 모델별 요청 - 라우팅과 채택 여부 확인
+- 토큰 - 입력/출력 토큰과(노출되는 경우) 추론 토큰 포함
+- 캐시 - 캐시된 입력 및 캐시 생성 토큰
+- 지연 시간 - p75 지속 시간과 p75 첫 토큰까지의 시간
+- 비용 - 프로젝트별 및 모델별 비용
 
-Use it to:
-- Compare output tokens per request before and after a model change
-- Validate cache strategy by tracking cache reads and write creation
-- Catch TTFT regressions during experiments
-- Align budgets with real usage
+활용 방법:
+- 모델 변경 전후 요청당 출력 토큰 비교
+- 캐시 읽기와 생성 추적로 캐시 전략 검증
+- 실험 중 TTFT 저하 감지
+- 실제 사용량에 맞춘 예산 정렬
 
-## Supported models
+## 지원 모델
 
-The gateway supports a large and changing set of models. Cline pulls the list from the Gateway API and caches it locally. For the current catalog, see https://vercel.com/ai-gateway/models
+Gateway는 크고 변화하는 모델 집합을 지원합니다. Cline은 Gateway API에서 목록을 가져와 로컬에 캐시합니다. 최신 카탈로그는 https://vercel.com/ai-gateway/models 를 참고하세요.
 
-## Tips
+## 팁
 
 <Tip>
-Use separate gateway keys per environment (dev, staging, prod). It keeps dashboards clean and budgets isolated.
+환경(dev, staging, prod)별로 별도의 Gateway 키를 사용하세요. 대시보드를 깔끔하게 유지하고 예산을 분리할 수 있습니다.
 </Tip>
 
 <Note>
-Pricing is pass-through at provider list price. Bring-your-own key has 0% markup. You still pay provider and processing fees.
+가격은 프로바이더의 목록 가격을 그대로 적용합니다. Bring-your-own key는 마크업 0%입니다. 프로바이더 및 처리 수수료는 별도로 부과됩니다.
 </Note>
 
 <Info>
-Vercel does not add rate limits. Upstream providers may. New accounts receive $5 credits every 30 days until the first payment.
+Vercel은 별도의 요율 제한을 추가하지 않습니다. 상위 프로바이더에서 제한이 있을 수 있습니다. 신규 계정은 첫 결제 전까지 30일마다 $5 크레딧을 제공합니다.
 </Info>
 
-## Troubleshooting
+## 문제 해결
 
-- 401 - send the Gateway key to the Gateway endpoint, not an upstream URL
-- 404 model - copy the exact id from the Vercel catalog
-- Slow first token - check p75 TTFT in the dashboard and try a model optimized for streaming
-- Cost spikes - break down by model in the dashboard and cap or route traffic
+- 401 - 상위 URL이 아닌 Gateway 엔드포인트에 Gateway 키를 전달했는지 확인하세요
+- 404 model - Vercel 카탈로그에서 정확한 ID를 복사했는지 확인하세요
+- 첫 토큰이 느림 - 대시보드에서 p75 TTFT를 확인하고 스트리밍 최적화 모델을 고려하세요
+- 비용 급증 - 대시보드에서 모델별로 분해하고 트래픽을 제한하거나 라우팅을 조정하세요
 
-## Inspiration
+## 활용 아이디어
 
-- Multi-model evals - swap only the model id in Cline and compare latency and output tokens
-- Progressive rollout - route a small percent to a new model in the dashboard and ramp with metrics
-- Budget enforcement - set per-project limits without code changes
+- 멀티 모델 평가 - Cline에서 모델 ID만 바꿔 지연 시간과 출력 토큰 비교
+- 점진적 롤아웃 - 대시보드에서 신규 모델에 소량 트래픽을 라우팅하고 메트릭으로 확장
+- 예산 집행 - 코드 변경 없이 프로젝트별 한도 설정
 
 ## Crosslinks
 

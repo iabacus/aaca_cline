@@ -2,77 +2,77 @@
 title: "Ollama"
 ---
 
-Cline supports running models locally using Ollama. This approach offers privacy, offline access, and potentially reduced costs. It requires some initial setup and a sufficiently powerful computer. Because of the present state of consumer hardware, it's not recommended to use Ollama with Cline as performance will likely be poor for average hardware configurations.
+Cline은 Ollama를 사용해 로컬에서 모델을 실행할 수 있습니다. 이 방식은 프라이버시, 오프라인 접근, 비용 절감의 이점을 제공하지만 초기 설정과 충분히 강력한 컴퓨터가 필요합니다. 현재 소비자 하드웨어 수준에서는 평균적인 사양에서 성능이 좋지 않을 수 있으므로 Cline과 함께 Ollama를 사용하는 것을 권장하지 않습니다.
 
-**Website:** [https://ollama.com/](https://ollama.com/)
+**웹사이트:** [https://ollama.com/](https://ollama.com/)
 
-### Setting up Ollama
+### Ollama 설정하기
 
-1.  **Download and Install Ollama:**
-    Obtain the Ollama installer for your operating system from the [Ollama website](https://ollama.com/) and follow their installation guide. Ensure Ollama is running. You can typically start it with:
+1.  **Ollama 다운로드 및 설치:**
+    [Ollama 웹사이트](https://ollama.com/)에서 운영체제용 설치 프로그램을 내려받고 설치 가이드를 따릅니다. Ollama가 실행 중인지 확인하세요. 보통 아래 명령으로 시작할 수 있습니다:
 
     ```bash
     ollama serve
     ```
 
-2.  **Download a Model:**
-    Ollama supports a wide variety of models. A list of available models can be found on the [Ollama model library](https://ollama.com/library). Some models recommended for coding tasks include:
+2.  **모델 다운로드:**
+    Ollama는 다양한 모델을 지원합니다. 사용 가능한 모델 목록은 [Ollama 모델 라이브러리](https://ollama.com/library)에서 확인할 수 있습니다. 코딩 작업에 추천되는 모델은 다음과 같습니다:
 
-    -   `codellama:7b-code` (a good, smaller starting point)
-    -   `codellama:13b-code` (offers better quality, larger size)
-    -   `codellama:34b-code` (provides even higher quality, very large)
+    -   `codellama:7b-code` (작고 시작하기 좋은 모델)
+    -   `codellama:13b-code` (더 큰 크기로 품질 향상)
+    -   `codellama:34b-code` (더 높은 품질, 매우 큼)
     -   `qwen2.5-coder:32b`
-    -   `mistralai/Mistral-7B-Instruct-v0.1` (a solid general-purpose model)
-    -   `deepseek-coder:6.7b-base` (effective for coding)
-    -   `llama3:8b-instruct-q5_1` (suitable for general tasks)
+    -   `mistralai/Mistral-7B-Instruct-v0.1` (범용에 적합한 모델)
+    -   `deepseek-coder:6.7b-base` (코딩에 효과적)
+    -   `llama3:8b-instruct-q5_1` (범용 작업에 적합)
 
-    To download a model, open your terminal and execute:
+    모델을 다운로드하려면 터미널에서 아래를 실행합니다:
 
     ```bash
     ollama pull <model_name>
     ```
 
-    For instance:
+    예:
 
     ```bash
     ollama pull qwen2.5-coder:32b
     ```
 
-3.  **Configure the Model's Context Window:**
-    By default, Ollama models often use a context window of 2048 tokens, which can be insufficient for many Cline requests. A minimum of 12,000 tokens is advisable for decent results, with 32,000 tokens being ideal. To adjust this, you'll modify the model's parameters and save it as a new version.
+3.  **모델 컨텍스트 창 설정:**
+    기본적으로 Ollama 모델은 2048 토큰 컨텍스트 창을 사용하는 경우가 많아 Cline 요청에 부족할 수 있습니다. 최소 12,000 토큰을 권장하며, 이상적으로는 32,000 토큰을 권장합니다. 이를 조정하려면 모델 파라미터를 수정하고 새 버전으로 저장해야 합니다.
 
-    First, load the model (using `qwen2.5-coder:32b` as an example):
+    먼저 모델을 로드합니다(예: `qwen2.5-coder:32b`):
 
     ```bash
     ollama run qwen2.5-coder:32b
     ```
 
-    Once the model is loaded within the Ollama interactive session, set the context size parameter:
+    Ollama 대화형 세션에서 컨텍스트 크기 파라미터를 설정합니다:
 
     ```
     /set parameter num_ctx 32768
     ```
 
-    Then, save this configured model with a new name:
+    그다음, 다음과 같이 새 이름으로 저장합니다:
 
     ```
     /save your_custom_model_name
     ```
 
-    (Replace `your_custom_model_name` with a name of your choice.)
+    (`your_custom_model_name`은 원하는 이름으로 바꿔주세요.)
 
-4.  **Configure Cline:**
-    -   Open the Cline sidebar (usually indicated by the Cline icon).
-    -   Click the settings gear icon (⚙️).
-    -   Select "ollama" as the API Provider.
-    -   Enter the Model name you saved in the previous step (e.g., `your_custom_model_name`).
-    -   (Optional) Adjust the base URL if Ollama is running on a different machine or port. The default is `http://localhost:11434`.
-    -   (Optional) Configure the Model context size in Cline's Advanced settings. This helps Cline manage its context window effectively with your customized Ollama model.
+4.  **Cline 설정:**
+    -   Cline 사이드바(보통 Cline 아이콘)를 엽니다.
+    -   설정 톱니바퀴(⚙️)를 클릭합니다.
+    -   API Provider로 "ollama"를 선택합니다.
+    -   이전 단계에서 저장한 모델 이름을 입력합니다(예: `your_custom_model_name`).
+    -   (선택) Ollama가 다른 머신이나 포트에서 실행 중이라면 base URL을 조정합니다. 기본값은 `http://localhost:11434`입니다.
+    -   (선택) Cline 고급 설정에서 Model 컨텍스트 크기를 설정합니다. 커스터마이즈한 Ollama 모델의 컨텍스트 창을 Cline이 효율적으로 관리하는 데 도움이 됩니다.
 
-### Tips and Notes
+### 팁과 참고사항
 
--   **Resource Demands:** Running large language models locally can be demanding on system resources. Ensure your computer meets the requirements for your chosen model.
--   **Model Choice:** Experiment with various models to discover which best fits your specific tasks and preferences.
--   **Offline Capability:** After downloading a model, you can use Cline with that model even without an internet connection.
--   **Token Usage Tracking:** Cline tracks token usage for models accessed via Ollama, allowing you to monitor consumption.
--   **Ollama's Own Documentation:** For more detailed information, consult the official [Ollama documentation](https://ollama.com/docs).
+-   **리소스 요구 사항:** 로컬에서 대형 언어 모델을 실행하려면 시스템 리소스가 충분해야 합니다. 선택한 모델 요구사항을 충족하는지 확인하세요.
+-   **모델 선택:** 여러 모델을 실험해 작업과 선호에 가장 잘 맞는 모델을 찾으세요.
+-   **오프라인 사용:** 모델을 다운로드한 후에는 인터넷 연결 없이도 Cline에서 사용할 수 있습니다.
+-   **토큰 사용량 추적:** Cline은 Ollama로 접근한 모델의 토큰 사용량을 추적할 수 있습니다.
+-   **Ollama 공식 문서:** 자세한 내용은 [Ollama 공식 문서](https://ollama.com/docs)를 참고하세요.

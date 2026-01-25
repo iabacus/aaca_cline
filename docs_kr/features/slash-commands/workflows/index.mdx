@@ -1,106 +1,106 @@
 ---
-title: "Workflows Overview"
-sidebarTitle: "Overview"
-description: "Learn what Cline workflows are, why they are useful, and how to structure them."
+title: "워크플로 개요"
+sidebarTitle: "개요"
+description: "Cline 워크플로가 무엇인지, 왜 유용한지, 어떻게 구성하는지 알아보세요."
 ---
 
-Workflows in Cline are Markdown files that define a series of steps to guide Cline through repetitive or complex tasks. They are a powerful way to automate your development processes directly within your editor.
+Cline의 워크플로는 반복적이거나 복잡한 작업을 안내하는 단계들의 마크다운 파일입니다. 에디터 안에서 개발 프로세스를 자동화하는 강력한 방법입니다.
 
-To invoke a workflow, you simply type `/` followed by the workflow's filename in the chat (e.g., `/deploy.md`).
+워크플로를 실행하려면 채팅에서 `/` 뒤에 워크플로 파일 이름을 입력하면 됩니다(예: `/deploy.md`).
 
-## Why Use Cline Workflows?
+## 왜 Cline 워크플로를 사용하나요?
 
-*   **Automation:** Automate repetitive tasks like setting up a new project, deploying a service, or running a specific test suite.
-*   **Consistency:** Ensure that tasks are performed the same way every time, reducing errors.
-*   **Reduced Cognitive Load:** Don't waste mental energy remembering complex sequences of commands or steps.
-*   **Contextual:** Workflows run within your project's context, so Cline has access to your files and can use its tools to interact with them.
+*   **자동화:** 새 프로젝트 설정, 서비스 배포, 특정 테스트 실행처럼 반복 작업을 자동화합니다.
+*   **일관성:** 작업을 항상 같은 방식으로 수행해 오류를 줄입니다.
+*   **인지 부담 감소:** 복잡한 명령이나 절차를 기억하는 데 에너지를 쓰지 않습니다.
+*   **컨텍스트 기반:** 워크플로는 프로젝트 컨텍스트 안에서 실행되므로 Cline이 파일에 접근하고 도구로 상호작용할 수 있습니다.
 
-## How They Work
+## 동작 방식
 
-A workflow file is a standard Markdown file with a `.md` extension. Cline reads this file and interprets the instructions step-by-step. The real power comes from Cline's ability to use its built-in tools and other capabilities within these instructions:
+워크플로 파일은 `.md` 확장자의 표준 마크다운 파일입니다. Cline은 이 파일을 읽어 지시 사항을 단계별로 해석합니다. 강력한 점은 Cline이 지시 안에서 내장 도구와 기능을 사용할 수 있다는 것입니다:
 
-*   **Cline Tools:** Use tools like `read_file`, `write_to_file`, `execute_command`, and `ask_followup_question`.
-*   **Command-Line Tools:** Instruct Cline to use any CLI tool installed on your machine (e.g., `git`, `gh`, `npm`, `docker`).
-*   **MCP Tools:** Reference tools from connected Model Context Protocol (MCP) servers.
+*   **Cline 도구:** `read_file`, `write_to_file`, `execute_command`, `ask_followup_question` 같은 도구 사용
+*   **명령줄 도구:** 시스템에 설치된 모든 CLI 도구 사용 지시 가능(예: `git`, `gh`, `npm`, `docker`)
+*   **MCP 도구:** 연결된 Model Context Protocol(MCP) 서버의 도구 참조
 
-## Workflows vs. Rules
+## 워크플로 vs 규칙
 
-It's important to understand the difference between Cline Workflows and Cline Rules, as they serve different purposes:
+Cline 워크플로와 Cline 규칙은 역할이 다르므로 차이를 이해하는 것이 중요합니다:
 
-| Feature | Purpose | When to Use |
+| 기능 | 목적 | 사용 시점 |
 | :--- | :--- | :--- |
-| **Cline Rules** | Define *how* Cline should behave generally. They are always active (or contextually triggered) and set the "ground rules" for your project. | Enforcing coding standards, tech stack preferences, or project-specific constraints (e.g., "Always use TypeScript", "Never edit the `db` folder"). |
-| **Cline Workflows** | Define *what* specific task Cline should perform. They are sequences of steps invoked on-demand to automate a process. | Automating repetitive tasks like creating a component, running a release process, or generating a daily report. |
+| **Cline Rules** | Cline이 일반적으로 *어떻게* 행동해야 하는지 정의. 항상(또는 컨텍스트에 따라) 활성화되어 프로젝트의 기본 규칙을 설정합니다. | 코딩 표준, 기술 스택 선호, 프로젝트별 제약을 강제할 때(예: "항상 TypeScript 사용", "`db` 폴더는 수정하지 않기"). |
+| **Cline Workflows** | Cline이 *무엇을* 수행해야 하는지 정의. 온디맨드로 호출되는 단계 시퀀스로 작업을 자동화합니다. | 컴포넌트 생성, 릴리스 프로세스 실행, 일일 리포트 생성 같은 반복 작업 자동화. |
 
-Think of **Rules** as the *environment* Cline works in, and **Workflows** as the *scripts* you give Cline to execute.
+**Rules**는 Cline이 동작하는 *환경*, **Workflows**는 Cline에게 실행시키는 *스크립트*라고 생각하면 됩니다.
 
-### Example: Automating a Release
+### 예시: 릴리스 자동화
 
-Imagine you need to prepare a new release for your library.
+라이브러리의 새 릴리스를 준비해야 한다고 가정해 보세요.
 
-**Without a workflow**, you might have to manually:
-1.  Open `package.json` and bump the version number.
-2.  Run your test suite to make sure everything is green.
-3.  Update `CHANGELOG.md` with the latest commits.
-4.  Run `git commit -am "v1.0.1"`.
-5.  Run `git tag v1.0.1`.
-6.  Run `git push origin main --tags`.
+**워크플로가 없다면** 다음을 수동으로 해야 합니다:
+1.  `package.json`을 열어 버전을 올림
+2.  테스트 스위트를 실행해 문제가 없는지 확인
+3.  최신 커밋으로 `CHANGELOG.md` 업데이트
+4.  `git commit -am "v1.0.1"` 실행
+5.  `git tag v1.0.1` 실행
+6.  `git push origin main --tags` 실행
 
-This is tedious and easy to mess up. You might forget to run the tests or format the changelog correctly.
+번거롭고 실수하기 쉽습니다. 테스트를 빼먹거나 changelog 포맷을 잘못 쓸 수도 있습니다.
 
-**With a Cline workflow**, you define these steps once in a `release.md` file. Then, you just type:
+**Cline 워크플로가 있다면**, 한 번만 `release.md`에 위 단계를 정의해 두고, 다음처럼 입력하기만 하면 됩니다:
 
 ```bash
 /release.md
 ```
 
-Cline will then meticulously follow your instructions: updating files, running tests, and executing git commands—pausing only if it encounters an error or needs your input.
+Cline은 파일 업데이트, 테스트 실행, git 명령 실행 등 지시를 꼼꼼히 수행하며, 오류가 발생하거나 사용자 입력이 필요할 때만 멈춥니다.
 
-## Where are Workflows Stored?
+## 워크플로 저장 위치
 
-You can store workflows in two locations, depending on whether they are specific to a project or meant to be global.
+워크플로는 프로젝트 전용인지 전역인지에 따라 두 위치 중 하나에 저장할 수 있습니다.
 
 <Tabs>
-  <Tab title="Project-Specific Workflows">
-    Store workflows that are specific to a single project in a `.clinerules/workflows/` directory in your project's root.
+  <Tab title="프로젝트 전용 워크플로">
+    특정 프로젝트에만 적용되는 워크플로는 프로젝트 루트의 `.clinerules/workflows/` 디렉터리에 저장하세요.
 
-    1.  Create a `.clinerules` folder in your project's root directory (if it doesn't already exist).
+    1.  프로젝트 루트에 `.clinerules` 폴더를 만듭니다(없다면).
         <Note>
-          The `.clinerules` directory may be hidden by default on some systems. You might need to enable **Show Hidden Files** to see it.
+          `.clinerules` 디렉터리는 일부 시스템에서 기본적으로 숨김일 수 있습니다. **숨김 파일 표시**를 켜야 보일 수 있습니다.
         </Note>
-    2.  Inside `.clinerules`, create a `workflows` folder.
-    3.  Create your Markdown workflow files (e.g., `deploy.md`) in this folder.
+    2.  `.clinerules` 안에 `workflows` 폴더를 만듭니다.
+    3.  이 폴더에 `deploy.md` 같은 마크다운 워크플로 파일을 만듭니다.
 
-    These workflows will only be available when you have this specific project open.
+    이 워크플로는 해당 프로젝트를 열었을 때만 사용 가능합니다.
   </Tab>
-  <Tab title="Global Workflows">
-    Store workflows that you want to use across all your projects in a global directory.
+  <Tab title="전역 워크플로">
+    모든 프로젝트에서 사용할 워크플로는 전역 디렉터리에 저장하세요.
 
     *   **macOS/Linux:** `~/Documents/Cline/Workflows/`
     *   **Windows:** `C:\Users\USERNAME\Documents\Cline\Workflows\`
 
-    Create your Markdown workflow files directly in this directory. They will be available in any project you open with Cline.
+    이 디렉터리에 워크플로 파일을 직접 만들면, Cline을 열어둔 모든 프로젝트에서 사용할 수 있습니다.
   </Tab>
 </Tabs>
 
-## Manage Workflows
+## 워크플로 관리
 
-You can easily manage your workflows directly within the extension. This feature provides a unified interface to handle all your automation needs without leaving your editor or hunting through file directories. It consolidates both project-specific rules and global workflows into one view, giving you full control over your automation environment.
+확장 프로그램 내에서 워크플로를 쉽게 관리할 수 있습니다. 이 기능은 에디터를 벗어나지 않고 자동화를 관리하는 통합 인터페이스를 제공합니다. 프로젝트 전용 규칙과 전역 워크플로를 한 화면에서 관리해 자동화 환경을 완전히 제어할 수 있습니다.
 
-1.  Click the **Manage Cline Rules and Workflows** button (<Icon icon="scale-balanced" />) at the bottom of the extension.
-2.  This opens an interface where you can:
-    *   **View all available workflows:** See a comprehensive list of both project-specific and global workflows.
-    *   **Control automation:** Toggle individual workflows on and off as needed for your current task.
-    *   **Create and Edit:** Add new workflows or modify existing ones directly within the interface.
-    *   **Clean up:** Delete workflows you no longer need.
+1.  확장 하단의 **Manage Cline Rules and Workflows** 버튼(<Icon icon="scale-balanced" />)을 클릭합니다.
+2.  열리는 인터페이스에서 다음을 수행할 수 있습니다:
+    *   **모든 워크플로 보기:** 프로젝트 전용/전역 워크플로를 모두 확인
+    *   **자동화 제어:** 필요에 따라 개별 워크플로 활성/비활성
+    *   **생성 및 편집:** 새 워크플로를 추가하거나 기존 워크플로를 수정
+    *   **정리:** 더 이상 필요 없는 워크플로 삭제
 
-<Frame caption="Manage Workflows">
-  <img src="https://storage.googleapis.com/cline_public_images/workflow-menu.gif" alt="Manage Cline Rules and Workflows Interface" />
+<Frame caption="워크플로 관리">
+  <img src="https://storage.googleapis.com/cline_public_images/workflow-menu.gif" alt="Cline Rules and Workflows 관리 인터페이스" />
 </Frame>
 
-## Workflow Structure Example
+## 워크플로 구조 예시
 
-Here is a simple example of a workflow file (`daily-changelog.md`) that helps you create a daily changelog.
+다음은 일일 변경 로그를 만드는 간단한 워크플로 파일(`daily-changelog.md`) 예시입니다.
 
 ````markdown daily-changelog.md
 # Daily Changelog Generator
@@ -120,20 +120,20 @@ This workflow helps you create a changelog for your daily work.
     I will append to the `changelog.md` file. The content will include a header with the current date, the list of commits, and your summary.
 ````
 
-### Breakdown of the Workflow
+### 워크플로 상세 설명
 
-This workflow demonstrates that you don't always need to provide specific tool calls (like XML blocks). Cline is smart enough to interpret your high-level instructions.
+이 워크플로는 항상 특정 도구 호출(XML 블록)을 강제할 필요가 없음을 보여줍니다. Cline은 높은 수준의 지시만으로도 의도를 이해합니다.
 
-1.  **Step 1: Check recent git commits**
-    *   We give Cline a specific command to run. This ensures it gets exactly the data we want (today's commits).
+1.  **1단계: 최근 git 커밋 확인**
+    *   Cline에게 실행할 명령을 지정합니다. 원하는 데이터(오늘의 커밋)를 정확히 가져올 수 있습니다.
     <Tip>
-      After Cline shows the git commit history, you may need to click the **Proceed While Running** button to allow the workflow to continue.
+      Cline이 git 커밋 히스토리를 보여준 뒤, 워크플로를 계속 진행하려면 **Proceed While Running** 버튼을 눌러야 할 수 있습니다.
     </Tip>
 
-2.  **Step 2: Summarize your work**
-    *   Instead of forcing a specific tool, we simply tell Cline what to do: "ask for a summary".
-    *   Cline knows it needs to use its capabilities to ask you a question.
+2.  **2단계: 작업 요약**
+    *   특정 도구를 강제하지 않고 "요약을 요청하라"고 지시합니다.
+    *   Cline은 질문을 하기 위해 자신의 기능을 사용해야 함을 이해합니다.
 
-3.  **Step 3: Create/Append to daily changelog**
-    *   We describe the desired outcome: "append to the `changelog.md` file" with specific content.
-    *   Cline figures out how to format the file and use its file-writing tools to accomplish the task.
+3.  **3단계: 일일 변경 로그 생성/추가**
+    *   원하는 결과를 설명합니다: `changelog.md`에 특정 내용을 추가.
+    *   Cline이 파일을 포맷하고 파일 작성 도구를 사용해 작업을 완수합니다.

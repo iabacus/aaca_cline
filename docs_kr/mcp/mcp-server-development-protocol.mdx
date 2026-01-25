@@ -1,36 +1,36 @@
 ---
-title: "MCP Server Development Protocol"
-description: "This protocol is designed to streamline the development process of building MCP servers with Cline."
+title: "MCP 서버 개발 프로토콜"
+description: "이 프로토콜은 Cline으로 MCP 서버를 구축하는 개발 과정을 간소화하도록 설계되었습니다."
 ---
 
-> **Build and share your MCP servers with the world.** Once you've created a great MCP server, submit it to the [Cline MCP Marketplace](https://github.com/cline/mcp-marketplace) to make it discoverable and one-click installable by thousands of developers.
+> **MCP 서버를 만들고 세상과 공유하세요.** 훌륭한 MCP 서버를 만들었다면 [Cline MCP Marketplace](https://github.com/cline/mcp-marketplace)에 제출해 수많은 개발자가 발견하고 원클릭으로 설치할 수 있도록 해주세요.
 
-## What Are MCP Servers?
+## MCP 서버란?
 
-Model Context Protocol (MCP) servers extend AI assistants like Cline by giving them the ability to:
+Model Context Protocol(MCP) 서버는 Cline 같은 AI 어시스턴트를 확장해 다음을 가능하게 합니다:
 
--   Access external APIs and services
--   Retrieve real-time data
--   Control applications and local systems
--   Perform actions beyond what text prompts alone can achieve
+-   외부 API 및 서비스 접근
+-   실시간 데이터 조회
+-   애플리케이션 및 로컬 시스템 제어
+-   텍스트 프롬프트만으로는 할 수 없는 작업 수행
 
-Without MCP, AI assistants are powerful but isolated. With MCP, they gain the ability to interact with virtually any digital system.
+MCP가 없으면 AI 어시스턴트는 강력하지만 고립되어 있습니다. MCP를 사용하면 거의 모든 디지털 시스템과 상호작용할 수 있습니다.
 
-## The Development Protocol
+## 개발 프로토콜
 
-The heart of effective MCP server development is following a structured protocol. This protocol is implemented through a `.clinerules` file that lives at the **root** of your MCP working directory (/Users/your-name/Documents/Cline/MCP).
+효과적인 MCP 서버 개발의 핵심은 구조화된 프로토콜을 따르는 것입니다. 이 프로토콜은 MCP 작업 디렉터리 루트(`/Users/your-name/Documents/Cline/MCP`)에 있는 `.clinerules` 파일로 구현됩니다.
 
-### Using `.clinerules` Files
+### `.clinerules` 파일 사용
 
-A `.clinerules` file is a special configuration that Cline reads automatically when working in the directory where it's placed. These files:
+`.clinerules` 파일은 Cline이 해당 디렉터리에서 자동으로 읽는 특별한 구성 파일입니다. 이 파일은:
 
--   Configure Cline's behavior and enforce best practices
--   Switch Cline into a specialized MCP development mode
--   Provide a step-by-step protocol for building servers
--   Implement safety measures like preventing premature completion
--   Guide you through planning, implementation, and testing phases
+-   Cline의 동작을 구성하고 모범 사례를 강제
+-   Cline을 MCP 개발 전용 모드로 전환
+-   서버 구축을 위한 단계별 프로토콜 제공
+-   조기 완료 방지 같은 안전장치 구현
+-   계획, 구현, 테스트 단계를 안내
 
-Here's the complete MCP Server Development Protocol that should be placed in your `.clinerules` file:
+아래는 `.clinerules` 파일에 넣어야 하는 완전한 MCP 서버 개발 프로토콜입니다:
 
 ````markdown
 # MCP Server Development Protocol
@@ -160,123 +160,122 @@ Only after ALL tools have been tested can attempt_completion be used.
 -   NEVER skip testing before completion
 ````
 
-When this `.clinerules` file is present in your working directory, Cline will:
+이 `.clinerules` 파일이 작업 디렉터리에 있으면 Cline은 다음을 수행합니다:
 
-1. Start in **PLAN MODE** to design your server before implementation
-2. Enforce proper implementation patterns in **ACT MODE**
-3. Require testing of all tools before allowing completion
-4. Guide you through the entire development lifecycle
+1. **PLAN MODE**에서 시작해 구현 전 서버를 설계
+2. **ACT MODE**에서 올바른 구현 패턴을 강제
+3. 모든 도구 테스트가 완료될 때까지 완료를 허용하지 않음
+4. 전체 개발 라이프사이클을 안내
 
-## Getting Started
+## 시작하기
 
-Creating an MCP server requires just a few simple steps to get started:
+MCP 서버를 만들기 위한 시작 단계는 간단합니다:
 
-### 1. Create a `.clinerules` file (IMPORTANT)
+### 1. `.clinerules` 파일 생성(중요)
 
-First, add a `.clinerules` file to the root of your MCP working directory using the protocol above. This file configures Cline to use the MCP development protocol when working in this folder.
+먼저 위 프로토콜을 사용해 MCP 작업 디렉터리 루트에 `.clinerules` 파일을 추가하세요. 이 파일이 Cline을 MCP 개발 프로토콜 모드로 설정합니다.
 
-### 2. Start a Chat with a Clear Description
+### 2. 명확한 설명으로 채팅 시작
 
-Begin your Cline chat by clearly describing what you want to build. Be specific about:
+Cline에게 무엇을 만들고 싶은지 명확히 설명하세요. 다음을 구체적으로 적습니다:
 
--   The purpose of your MCP server
--   Which API or service you want to integrate with
--   Any specific tools or features you need
+-   MCP 서버의 목적
+-   통합하려는 API/서비스
+-   필요한 도구나 기능
 
-For example:
-
-```plaintext
-I want to build an MCP server for the AlphaAdvantage financial API.
-It should allow me to get real-time stock data, perform technical
-analysis, and retrieve company financial information.
-```
-
-### 3. Work Through the Protocol
-
-Cline will automatically start in PLAN MODE, guiding you through the planning process:
-
--   Discussing the problem scope
--   Reviewing API documentation
--   Planning authentication methods
--   Designing tool interfaces
-
-When ready, switch to ACT MODE using the toggle at the bottom of the chat to begin implementation.
-
-### 4. Provide API Documentation Early
-
-One of the most effective ways to help Cline build your MCP server is to share official API documentation right at the start:
+예시:
 
 ```plaintext
-Here's the API documentation for the service:
-[Paste API documentation here]
+AlphaAdvantage 금융 API를 위한 MCP 서버를 만들고 싶어요.
+실시간 주식 데이터 조회, 기술적 분석, 기업 재무 정보를 제공해야 해요.
 ```
 
-Providing comprehensive API details (endpoints, authentication, data structures) significantly improves Cline's ability to implement an effective MCP server.
+### 3. 프로토콜 진행
 
-## Understanding the Two Modes
+Cline은 자동으로 PLAN MODE로 시작해 계획 과정을 안내합니다:
+
+-   문제 범위 논의
+-   API 문서 검토
+-   인증 방법 계획
+-   도구 인터페이스 설계
+
+준비가 되면 채팅 하단의 토글로 ACT MODE로 전환해 구현을 시작하세요.
+
+### 4. API 문서를 먼저 제공
+
+MCP 서버를 효율적으로 만들기 위한 가장 좋은 방법 중 하나는 공식 API 문서를 처음에 공유하는 것입니다:
+
+```plaintext
+서비스 API 문서입니다:
+[여기에 API 문서 붙여넣기]
+```
+
+엔드포인트, 인증, 데이터 구조 등 상세 정보를 제공하면 Cline의 구현 품질이 크게 향상됩니다.
+
+## 두 가지 모드 이해하기
 
 ### PLAN MODE
 
-In this collaborative phase, you work with Cline to design your MCP server:
+이 협업 단계에서 Cline과 함께 MCP 서버를 설계합니다:
 
--   Define the problem scope
--   Choose appropriate APIs
--   Plan authentication methods
--   Design the tool interfaces
--   Determine data formats
+-   문제 범위 정의
+-   적절한 API 선택
+-   인증 방식 계획
+-   도구 인터페이스 설계
+-   데이터 형식 결정
 
 ### ACT MODE
 
-Once planning is complete, Cline helps implement the server:
+계획이 끝나면 Cline이 구현을 돕습니다:
 
--   Set up the project structure
--   Write the implementation code
--   Configure settings
--   Test each component thoroughly
--   Finalize documentation
+-   프로젝트 구조 설정
+-   구현 코드 작성
+-   설정 구성
+-   각 컴포넌트 테스트
+-   문서 마무리
 
-## Case Study: AlphaAdvantage Stock Analysis Server
+## 사례 연구: AlphaAdvantage 주식 분석 서버
 
-Let's walk through the development process of our AlphaAdvantage MCP server, which provides stock data analysis and reporting capabilities.
+주식 데이터 분석과 보고를 제공하는 AlphaAdvantage MCP 서버 개발 과정을 살펴봅니다.
 
-### Planning Phase
+### 계획 단계
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/planning-phase.gif"
-		alt="Planning phase demonstration"
+		alt="계획 단계 데모"
 	/>
 </Frame>
 
-During the planning phase, we:
+계획 단계에서 우리는:
 
-1. **Defined the problem**: Users need access to financial data, stock analysis, and market insights directly through their AI assistant
-2. **Selected the API**: AlphaAdvantage API for financial market data
-    - Standard API key authentication
-    - Rate limits of 5 requests per minute (free tier)
-    - Various endpoints for different financial data types
-3. **Designed the tools needed**:
-    - Stock overview information (current price, company details)
-    - Technical analysis with indicators (RSI, MACD, etc.)
-    - Fundamental analysis (financial statements, ratios)
-    - Earnings report data
-    - News and sentiment analysis
-4. **Planned data formatting**:
-    - Clean, well-formatted markdown output
-    - Tables for structured data
-    - Visual indicators (↑/↓) for trends
-    - Proper formatting of financial numbers
+1. **문제를 정의**: 사용자들은 AI 어시스턴트를 통해 금융 데이터, 주식 분석, 시장 인사이트에 접근해야 함
+2. **API 선택**: AlphaAdvantage API (금융 시장 데이터)
+    - 표준 API 키 인증
+    - 분당 5회 호출 제한(무료 티어)
+    - 다양한 금융 데이터 타입의 엔드포인트 제공
+3. **필요한 도구 설계**:
+    - 주식 개요 정보(현재가, 회사 상세)
+    - 기술적 분석( RSI, MACD 등)
+    - 펀더멘털 분석(재무제표, 비율)
+    - 실적 보고 데이터
+    - 뉴스 및 감성 분석
+4. **데이터 포맷 계획**:
+    - 깔끔한 마크다운 출력
+    - 구조화 데이터용 테이블
+    - 추세 표시(↑/↓)
+    - 금융 수치의 올바른 포맷
 
-### Implementation
+### 구현
 
 <Frame>
 	<img
 		src="https://storage.googleapis.com/cline_public_images/docs/assets/building-mcp-plugin.gif"
-		alt="Building MCP plugin demonstration"
+		alt="MCP 플러그인 구축 데모"
 	/>
 </Frame>
 
-We began by bootstrapping the project:
+프로젝트 부트스트랩:
 
 ```bash
 npx @modelcontextprotocol/create-server alphaadvantage-mcp
@@ -284,27 +283,27 @@ cd alphaadvantage-mcp
 npm install axios node-cache
 ```
 
-Next, we structured our project with:
+프로젝트 구조:
 
 ```plaintext
 src/
   ├── api/
-  │   └── alphaAdvantageClient.ts  # API client with rate limiting & caching
+  │   └── alphaAdvantageClient.ts  # API 클라이언트(레이트 리밋 & 캐시)
   ├── formatters/
-  │   └── markdownFormatter.ts     # Output formatters for clean markdown
-  └── index.ts                     # Main MCP server implementation
+  │   └── markdownFormatter.ts     # 깔끔한 마크다운 출력 포맷터
+  └── index.ts                     # MCP 서버 메인 구현
 ```
 
-#### API Client Implementation
+#### API 클라이언트 구현
 
-The API client implementation included:
+API 클라이언트 구현에 포함된 내용:
 
--   **Rate limiting**: Enforcing the 5 requests per minute limit
--   **Caching**: Reducing API calls with strategic caching
--   **Error handling**: Robust error detection and reporting
--   **Typed interfaces**: Clear TypeScript types for all data
+-   **레이트 리밋**: 분당 5회 제한 강제
+-   **캐싱**: 전략적 캐시로 API 호출 줄이기
+-   **오류 처리**: 강력한 오류 감지 및 보고
+-   **타입 인터페이스**: 모든 데이터에 대한 명확한 TypeScript 타입
 
-Key implementation details:
+핵심 구현:
 
 ```typescript
 /**
@@ -312,7 +311,7 @@ Key implementation details:
  */
 private async enforceRateLimit() {
   if (this.requestsThisMinute >= 5) {
-    console.error("[Rate Limit] Rate limit reached. Waiting for next minute...");
+    console.error("[Rate Limit] Rate limit reached. Waiting for next minute...")
     return new Promise<void>((resolve) => {
       const remainingMs = 60 * 1000 - (Date.now() % (60 * 1000));
       setTimeout(resolve, remainingMs + 100); // Add 100ms buffer
@@ -324,9 +323,9 @@ private async enforceRateLimit() {
 }
 ```
 
-#### Markdown Formatting
+#### 마크다운 포맷팅
 
-We implemented formatters to display financial data beautifully:
+재무 데이터를 보기 좋게 출력하는 포맷터를 구현했습니다:
 
 ```typescript
 /**
@@ -351,9 +350,9 @@ export function formatStockOverview(overviewData: any, quoteData: any): string {
 }
 ```
 
-#### Tool Implementation
+#### 도구 구현
 
-We defined five tools with clear interfaces:
+명확한 인터페이스를 가진 5개의 도구를 정의했습니다:
 
 ```typescript
 server.setRequestHandler(ListToolsRequestSchema, async () => {
@@ -386,18 +385,18 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 })
 ```
 
-Each tool's handler included:
+각 도구 핸들러에는 다음이 포함됩니다:
 
--   Input validation
--   API client calls with error handling
--   Markdown formatting of responses
--   Comprehensive logging
+-   입력 검증
+-   오류 처리 포함 API 호출
+-   응답 마크다운 포맷팅
+-   포괄적인 로깅
 
-### Testing Phase
+### 테스트 단계
 
-This critical phase involved systematically testing each tool:
+이 핵심 단계에서는 각 도구를 체계적으로 테스트했습니다:
 
-1. First, we configured the MCP server in the settings:
+1. 먼저 MCP 서버를 설정에 추가했습니다:
 
 ```json
 {
@@ -415,9 +414,9 @@ This critical phase involved systematically testing each tool:
 }
 ```
 
-2. Then we tested each tool individually:
+2. 각 도구를 개별적으로 테스트했습니다:
 
--   **get_stock_overview**: Retrieved AAPL stock overview information
+-   **get_stock_overview**: AAPL 주식 개요 정보
 
     ```markdown
     # AAPL (Apple Inc) - $241.84 ↑+1.91%
@@ -429,7 +428,7 @@ This critical phase involved systematically testing each tool:
     ...
     ```
 
--   **get_technical_analysis**: Obtained price action and RSI data
+-   **get_technical_analysis**: 가격 변동 및 RSI 데이터
 
     ```markdown
     # Technical Analysis: AAPL
@@ -447,7 +446,7 @@ This critical phase involved systematically testing each tool:
     ...
     ```
 
--   **get_earnings_report**: Retrieved MSFT earnings history and formatted report
+-   **get_earnings_report**: MSFT 실적 히스토리 및 보고서
 
     ```markdown
     # Earnings Report: MSFT (Microsoft Corporation)
@@ -465,35 +464,35 @@ This critical phase involved systematically testing each tool:
     ...
     ```
 
-### Challenges and Solutions
+### 도전과 해결
 
-During development, we encountered several challenges:
+개발 중 다음과 같은 문제를 겪었습니다:
 
-1. **API Rate Limiting**:
-    - **Challenge**: Free tier limited to 5 calls per minute
-    - **Solution**: Implemented queuing, enforced rate limits, and added comprehensive caching
-2. **Data Formatting**:
-    - **Challenge**: Raw API data not user-friendly
-    - **Solution**: Created formatting utilities for consistent display of financial data
-3. **Timeout Issues**:
-    - **Challenge**: Complex tools making multiple API calls could timeout
-    - **Solution**: Suggested breaking complex tools into smaller pieces, optimizing caching
+1. **API 레이트 리밋**:
+    - **문제**: 무료 티어는 분당 5회 제한
+    - **해결**: 큐잉, 레이트 리밋 강제, 캐싱 적용
+2. **데이터 포맷**:
+    - **문제**: 원본 API 데이터가 사용하기 어려움
+    - **해결**: 일관된 출력 포맷 유틸리티 작성
+3. **타임아웃 문제**:
+    - **문제**: 복잡한 도구가 여러 API 호출을 수행하면 타임아웃 가능
+    - **해결**: 도구를 더 작은 단위로 분리하고 캐싱 최적화 권장
 
-### Lessons Learned
+### 배운 점
 
-Our AlphaAdvantage implementation taught us several key lessons:
+AlphaAdvantage 구현을 통해 다음을 배웠습니다:
 
-1. **Plan for API Limits**: Understand and design around API rate limits from the beginning
-2. **Cache Strategically**: Identify high-value caching opportunities to improve performance
-3. **Format for Readability**: Invest in good data formatting for improved user experience
-4. **Test Every Path**: Test all tools individually before completion
-5. **Handle API Complexity**: For APIs requiring multiple calls, design tools with simpler scopes
+1. **API 제한 고려**: 시작부터 레이트 리밋을 고려해 설계
+2. **전략적 캐싱**: 고가치 캐싱 포인트 식별
+3. **가독성 높은 포맷**: 사용자 경험을 위한 데이터 포맷 투자
+4. **모든 경로 테스트**: 완료 전 모든 도구 개별 테스트
+5. **API 복잡성 처리**: 다중 호출 API는 범위를 단순화한 도구로 설계
 
-## Core Implementation Best Practices
+## 핵심 구현 모범 사례
 
-### Comprehensive Logging
+### 포괄적인 로깅
 
-Effective logging is essential for debugging MCP servers:
+효과적인 로깅은 MCP 서버 디버깅에 필수입니다:
 
 ```typescript
 // Start-up logging
@@ -509,9 +508,9 @@ console.error(`[Error] Tool execution failed: ${error.message}`)
 console.error(`[Cache] Using cached data for: ${cacheKey}`)
 ```
 
-### Strong Typing
+### 강한 타입 지정
 
-Type definitions prevent errors and improve maintainability:
+타입 정의는 오류를 줄이고 유지보수성을 높입니다:
 
 ```typescript
 export interface AlphaAdvantageConfig {
@@ -536,9 +535,9 @@ function validateSymbol(symbol: unknown): asserts symbol is string {
 }
 ```
 
-### Intelligent Caching
+### 지능형 캐싱
 
-Reduce API calls and improve performance:
+API 호출을 줄이고 성능을 향상시킵니다:
 
 ```typescript
 // Default cache TTL in seconds
@@ -561,9 +560,9 @@ if (cachedData) {
 this.cache.set(cacheKey, response.data, cacheTTL)
 ```
 
-### Graceful Error Handling
+### 우아한 오류 처리
 
-Implement robust error handling that maintains a good user experience:
+좋은 사용자 경험을 유지하는 강력한 오류 처리를 구현하세요:
 
 ```typescript
 try {
@@ -596,13 +595,13 @@ try {
 }
 ```
 
-## MCP Resources
+## MCP 리소스
 
-Resources let your MCP servers expose data to Cline without executing code. They're perfect for providing context like files, API responses, or database records that Cline can reference during conversations.
+리소스는 코드를 실행하지 않고도 MCP 서버가 Cline에 데이터를 노출하도록 해줍니다. 파일, API 응답, DB 기록 같은 컨텍스트를 제공할 때 유용합니다.
 
-### Adding Resources to Your MCP Server
+### MCP 서버에 리소스 추가
 
-1. **Define the resources** your server will expose:
+1. **노출할 리소스 정의**:
 
 ```typescript
 server.setRequestHandler(ListResourcesRequestSchema, async () => {
@@ -618,7 +617,7 @@ server.setRequestHandler(ListResourcesRequestSchema, async () => {
 })
 ```
 
-2. **Implement read handlers** to deliver the content:
+2. **읽기 핸들러 구현**:
 
 ```typescript
 server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
@@ -639,19 +638,19 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 })
 ```
 
-Resources make your MCP servers more context-aware, allowing Cline to access specific information without requiring you to copy/paste. For more information, refer to the [official documentation](https://modelcontextprotocol.io/docs/concepts/resources).
+리소스는 Cline이 필요한 정보를 복사/붙여넣기 없이 참조하게 해, 서버를 더 컨텍스트 친화적으로 만듭니다. 자세한 내용은 [공식 문서](https://modelcontextprotocol.io/docs/concepts/resources)를 참고하세요.
 
-## Common Challenges and Solutions
+## 일반적인 문제와 해결
 
-### API Authentication Complexities
+### API 인증 복잡성
 
-**Challenge**: APIs often have different authentication methods.
+**문제**: API마다 인증 방식이 다름.
 
-**Solution**:
+**해결**:
 
--   For API keys, use environment variables in the MCP configuration
--   For OAuth, create a separate script to obtain refresh tokens
--   Store sensitive tokens securely
+-   API 키는 MCP 구성의 환경 변수로 설정
+-   OAuth는 별도 스크립트로 리프레시 토큰 획득
+-   민감한 토큰을 안전하게 저장
 
 ```typescript
 // Authenticate using API key from environment
@@ -667,26 +666,26 @@ const apiClient = new AlphaAdvantageClient({
 })
 ```
 
-### Missing or Limited API Features
+### 부족하거나 제한된 API 기능
 
-**Challenge**: APIs may not provide all the functionality you need.
+**문제**: API가 필요한 기능을 제공하지 않을 수 있음.
 
-**Solution**:
+**해결**:
 
--   Implement fallbacks using available endpoints
--   Create simulated functionality where necessary
--   Transform API data to match your needs
+-   가능한 엔드포인트로 대체 기능 구현
+-   필요 시 시뮬레이션 기능 생성
+-   API 데이터를 변환해 요구에 맞게 사용
 
-### API Rate Limiting
+### API 레이트 리밋
 
-**Challenge**: Most APIs have rate limits that can cause failures.
+**문제**: 대부분의 API는 레이트 리밋으로 실패가 발생할 수 있음.
 
-**Solution**:
+**해결**:
 
--   Implement proper rate limiting
--   Add intelligent caching
--   Provide graceful degradation
--   Add transparent errors about rate limits
+-   적절한 레이트 리밋 구현
+-   지능형 캐싱 추가
+-   우아한 degradation 제공
+-   레이트 리밋 오류를 투명하게 표시
 
 ```typescript
 if (this.requestsThisMinute >= 5) {
@@ -698,7 +697,7 @@ if (this.requestsThisMinute >= 5) {
 }
 ```
 
-## Additional Resources
+## 추가 리소스
 
 -   [MCP Protocol Documentation](https://github.com/modelcontextprotocol/mcp)
 -   [MCP SDK Documentation](https://github.com/modelcontextprotocol/sdk-js)

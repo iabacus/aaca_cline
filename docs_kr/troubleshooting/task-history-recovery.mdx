@@ -1,38 +1,38 @@
 ---
-title: "Task History Recovery Guide"
-sidebarTitle: "Task History Recovery"
-description: "How to recover and reconstruct your Cline task history"
+title: "작업 기록 복구 가이드"
+sidebarTitle: "작업 기록 복구"
+description: "Cline 작업 기록을 복구하고 재구성하는 방법"
 ---
 
-Sometimes when you update Cline or when certain settings change, you might lose access to your previous tasks. This guide will help you recover and reconstruct your Cline task history, so you can regain access to your important conversations and work.
+Cline을 업데이트하거나 특정 설정이 변경되면 이전 작업에 접근하지 못하는 경우가 있습니다. 이 가이드는 Cline 작업 기록을 복구하고 재구성해 중요한 대화와 작업을 다시 확인할 수 있도록 도와줍니다.
 
 <Tip>
-	Most cases are solved by running the built-in recovery command.
+	대부분의 경우 내장 복구 명령을 실행하면 해결됩니다.
 </Tip>
 
-## Quick Recovery
+## 빠른 복구
 
 <Steps>
-	<Step title="Open Command Palette">
-		Press `Cmd/Ctrl + Shift + P` to open the Command Palette.
+	<Step title="명령 팔레트 열기">
+		`Cmd/Ctrl + Shift + P`를 눌러 Command Palette를 엽니다.
 	</Step>
-	<Step title="Run the recovery command">
-		Type **"Cline: Reconstruct Task History"** and select it.
+	<Step title="복구 명령 실행">
+		**"Cline: Reconstruct Task History"**를 입력하고 선택합니다.
 	</Step>
-	<Step title="Confirm the action">
-		A confirmation prompt will appear. Click **Yes** to proceed.
+	<Step title="작업 확인">
+		확인 프롬프트가 표시됩니다. **Yes**를 클릭합니다.
 	</Step>
-	<Step title="Wait for reconstruction">
-		Cline will scan your task folders and rebuild the history index.
+	<Step title="재구성 대기">
+		Cline이 작업 폴더를 스캔해 기록 인덱스를 재구성합니다.
 	</Step>
-	<Step title="Verify recovery">
-		Check your history panel to confirm your tasks have been restored.
+	<Step title="복구 확인">
+		히스토리 패널에서 작업이 복구되었는지 확인합니다.
 	</Step>
 </Steps>
 
-## Where Cline Stores Data
+## Cline의 데이터 저장 위치
 
-### Storage Paths
+### 저장 경로
 
 <Tabs>
 	<Tab title="VS Code">
@@ -57,56 +57,56 @@ Sometimes when you update Cline or when certain settings change, you might lose 
 	</Tab>
 </Tabs>
 
-For VS Code Insiders, replace `Code` with `Code - Insiders`. For JetBrains IDEs, replace `<IDE>` with your specific IDE name (e.g., `IntelliJIdea2023.3`, `PyCharm2023.3`, `WebStorm2023.3`).
+VS Code Insiders를 사용 중이면 `Code`를 `Code - Insiders`로 바꾸세요. JetBrains IDE는 `<IDE>`를 사용 중인 IDE 이름으로 바꾸세요(예: `IntelliJIdea2023.3`, `PyCharm2023.3`, `WebStorm2023.3`).
 
-### Directory Structure
+### 디렉터리 구조
 
 ```
 saoudrizwan.claude-dev/
 ├── state/
-│   ├── taskHistory.json          # Main history index
-│   └── taskHistory.backup.*.json # Backups
+│   ├── taskHistory.json          # 메인 기록 인덱스
+│   └── taskHistory.backup.*.json # 백업
 ├── tasks/
-│   └── <task-id>/                # Individual task data
+│   └── <task-id>/                # 개별 작업 데이터
 │       ├── api_conversation_history.json
 │       ├── ui_messages.json
 │       └── task_metadata.json
 └── checkpoints/
-    └── <workspace-hash>/         # Per-workspace checkpoint storage
-        └── .git/                 # Shadow Git repository for snapshots
+    └── <workspace-hash>/         # 워크스페이스별 체크포인트 저장소
+        └── .git/                 # 스냅샷용 섀도 Git 저장소
 ```
 
-The `taskHistory.json` file is just an index. The actual conversation data lives in individual task folders under `tasks/`.
+`taskHistory.json` 파일은 인덱스일 뿐입니다. 실제 대화 데이터는 `tasks/` 아래의 개별 작업 폴더에 있습니다.
 
-## Using the Recovery Command
+## 복구 명령 사용하기
 
-The recovery command scans all task folders and rebuilds the history index from scratch.
+복구 명령은 모든 작업 폴더를 스캔해 기록 인덱스를 처음부터 다시 만듭니다.
 
-What it does:
+동작 방식:
 
-1. Backs up your current `taskHistory.json`
-2. Scans the `tasks/` directory
-3. Reads conversation data from each task folder
-4. Recalculates token usage and costs
-5. Creates a new `taskHistory.json`
+1. 현재 `taskHistory.json` 백업
+2. `tasks/` 디렉터리 스캔
+3. 각 작업 폴더의 대화 데이터 읽기
+4. 토큰 사용량과 비용 재계산
+5. 새 `taskHistory.json` 생성
 
 ```mermaid
 graph LR
-    A[Backup current] --> B[Scan tasks/]
-    B --> C[Read each task]
-    C --> D[Rebuild index]
-    D --> E[Done]
+    A[현재 인덱스 백업] --> B[tasks/ 스캔]
+    B --> C[각 작업 읽기]
+    C --> D[인덱스 재구성]
+    D --> E[완료]
 ```
 
 <Warning>
-	The recovery command rebuilds the index by reading data from existing task folders. If the `tasks/` directory or individual task folders have been permanently deleted, the associated data cannot be recovered.
+	복구 명령은 기존 작업 폴더의 데이터를 읽어 인덱스를 재구성합니다. `tasks/` 디렉터리 또는 특정 작업 폴더가 영구 삭제된 경우 해당 데이터는 복구할 수 없습니다.
 </Warning>
 
-## Manual Recovery
+## 수동 복구
 
-### Restoring from Backup
+### 백업에서 복원
 
-Cline creates backups automatically. Find them in the `state/` folder:
+Cline은 자동으로 백업을 생성합니다. `state/` 폴더에서 찾을 수 있습니다:
 
 <Tabs>
 	<Tab title="VS Code">
@@ -115,7 +115,7 @@ Cline creates backups automatically. Find them in the `state/` folder:
 		cd ~/.config/Code/User/globalStorage/saoudrizwan.claude-dev/state/
 		ls taskHistory.backup.*.json
 
-		# Pick the most recent one and restore it
+		# 가장 최신 파일을 선택해 복원
 		cp taskHistory.backup.1234567890.json taskHistory.json
 		```
 	</Tab>
@@ -125,71 +125,71 @@ Cline creates backups automatically. Find them in the `state/` folder:
 		cd ~/Library/Application\ Support/JetBrains/<IDE>/globalStorage/saoudrizwan.claude-dev/state/
 		ls taskHistory.backup.*.json
 
-		# Pick the most recent one and restore it
+		# 가장 최신 파일을 선택해 복원
 		cp taskHistory.backup.1234567890.json taskHistory.json
 		```
 	</Tab>
 </Tabs>
 
-### Migrating to a New Machine
+### 새 머신으로 이전
 
-Switching to a new computer? You can bring all your Cline conversations with you. The process is the same whether you're using VS Code or a JetBrains IDE.
+새 컴퓨터로 옮기시나요? Cline 대화를 모두 가져올 수 있습니다. VS Code나 JetBrains IDE 모두 동일한 절차입니다.
 
 <Steps>
-	<Step title="Locate and copy your Cline data">
-		On your **old machine**, find the `saoudrizwan.claude-dev` folder using the [storage paths above](#storage-paths) and copy the entire folder.
+	<Step title="Cline 데이터 찾기 및 복사">
+		**기존 머신**에서 [위 저장 경로](#storage-paths)를 참고해 `saoudrizwan.claude-dev` 폴더를 찾고 전체를 복사합니다.
 	</Step>
-	<Step title="Set up your new machine">
-		On your **new machine**, install your IDE (VS Code or JetBrains) and the Cline extension.
+	<Step title="새 머신 준비">
+		**새 머신**에 IDE(VS Code 또는 JetBrains)를 설치하고 Cline 확장을 설치합니다.
 	</Step>
-	<Step title="Close your IDE">
-		Make sure your IDE is completely closed before proceeding.
+	<Step title="IDE 종료">
+		진행하기 전에 IDE를 완전히 종료하세요.
 	</Step>
-	<Step title="Transfer your data">
-		Paste the `saoudrizwan.claude-dev` folder to the same storage path on your new machine.
+	<Step title="데이터 이동">
+		복사한 `saoudrizwan.claude-dev` 폴더를 새 머신의 동일한 저장 경로에 붙여넣습니다.
 	</Step>
-	<Step title="Launch and verify">
-		Open your IDE. Your task history should now appear in Cline.
+	<Step title="실행 및 확인">
+		IDE를 열고 Cline의 작업 기록이 나타나는지 확인합니다.
 	</Step>
 </Steps>
 
 <Info>
-	The data format is the same across operating systems—cross-platform migration (e.g., Windows → macOS) works without any additional steps.
+	데이터 형식은 운영체제 간에 동일합니다. 크로스 플랫폼 마이그레이션(예: Windows → macOS)도 추가 단계 없이 동작합니다.
 </Info>
 
-## Common Problems
+## 일반적인 문제
 
-Here are some common issues and their solutions:
+다음은 흔한 문제와 해결책입니다:
 
-### History empty after VS Code update
-Run **"Cline: Reconstruct Task History"** from the command palette. If that doesn't work, check if there's a backup file to restore.
+### VS Code 업데이트 후 기록이 비어 있음
+Command Palette에서 **"Cline: Reconstruct Task History"**를 실행하세요. 그래도 안 되면 백업 파일을 복원할 수 있는지 확인하세요.
 
-### History lost after reinstalling VS Code
-VS Code usually keeps extension data when uninstalled. Simply reinstall Cline and run the recovery command.
+### VS Code 재설치 후 기록 분실
+VS Code는 보통 확장 데이터를 유지합니다. Cline을 다시 설치한 다음 복구 명령을 실행하세요.
 
-### "No tasks found" error
-This occurs when the `tasks/` folder is empty or missing. Common causes:
+### "No tasks found" 오류
+`tasks/` 폴더가 비어 있거나 누락된 경우 발생합니다. 주요 원인:
 
-- VS Code data was completely cleared
-- You're looking at the wrong VS Code installation (standard vs Insiders)
-- The folder was manually deleted
+- VS Code 데이터가 완전히 삭제됨
+- 다른 VS Code 설치(일반 버전 vs Insiders)를 보고 있음
+- 폴더가 수동 삭제됨
 
-Check the correct storage path for your IDE and verify the folder exists.
+IDE에 맞는 저장 경로를 확인하고 폴더가 존재하는지 확인하세요.
 
-### Recovery runs but some tasks missing
-Corrupted task folders get skipped during recovery. The command will show how many tasks were recovered vs skipped. Check the error messages for details about which tasks couldn't be restored.
+### 복구는 되지만 일부 작업이 누락됨
+손상된 작업 폴더는 복구 중 건너뛰어집니다. 복구된 작업 수와 스킵된 작업 수가 표시됩니다. 어떤 작업이 복원되지 않았는지 오류 메시지를 확인하세요.
 
-## Need Additional Help?
+## 추가 도움이 필요하신가요?
 
-If you need assistance, you can:
+다음 방법으로 도움을 받을 수 있습니다:
 
-1. **Open a GitHub issue** at [cline/cline](https://github.com/cline/cline/issues)
-2. **Ask for help on our Discord server** - join our community for faster support
+1. **GitHub 이슈 열기**: [cline/cline](https://github.com/cline/cline/issues)
+2. **Discord에서 도움 요청**: 커뮤니티에 참여해 빠른 지원을 받으세요
 
-When reporting an issue, please include:
+이슈를 보고할 때 포함할 항목:
 
-- Your OS and IDE (VS Code or JetBrains IDE name/version)
-- Cline version
-- What happened before the data loss
-- Any error messages
-- **Task export data**: Include the relevant JSON files from the affected task folder (e.g., `api_conversation_history.json`, `ui_messages.json`, `task_metadata.json`) to help us understand what went wrong
+- OS와 IDE(VS Code 또는 JetBrains IDE 이름/버전)
+- Cline 버전
+- 데이터 손실 전에 어떤 일이 있었는지
+- 오류 메시지
+- **작업 내보내기 데이터**: 문제가 발생한 작업 폴더의 관련 JSON 파일(`api_conversation_history.json`, `ui_messages.json`, `task_metadata.json`)을 첨부하면 원인 파악에 도움이 됩니다
