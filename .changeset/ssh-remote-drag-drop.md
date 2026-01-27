@@ -1,5 +1,5 @@
 ---
-"claude-dev": patch
+"aaca-cline-dev": patch
 ---
 
 Fix drag & drop files from SSH remote workspaces into chat

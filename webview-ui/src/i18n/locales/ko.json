@@ -477,7 +477,7 @@
 		"remoteConfigManaged": "이 설정은 조직의 원격 구성에서 관리됩니다"
 	},
 	"aboutSection": {
-		"description": "CLI와 편집기를 사용할 수 있는 AI 어시스턴트입니다. AACA Cline은 파일 생성 및 편집, 대규모 프로젝트 탐색, 브라우저 사용, 터미널 명령 실행(권한 부여 후) 도구를 통해 복잡한 소프트웨어 개발 작업을 단계별로 처리할 수 있습니다.",
+		"description": "AACA Cline는 편집기를 사용할 수 있는 AI 어시스턴트입니다. AACA Cline은 파일 생성 및 편집, 대규모 프로젝트 탐색, 브라우저 사용, 터미널 명령 실행(권한 부여 후) 도구를 통해 복잡한 소프트웨어 개발 작업을 단계별로 처리할 수 있습니다.",
 		"communitySupport": "커뮤니티 및 지원",
 		"development": "개발",
 		"resources": "리소스"

@@ -1,5 +1,5 @@
 ---
-"claude-dev": patch
+"aaca-cline-dev": patch
 ---
 
 fix(extract-text): strip notebook outputs to reduce context size

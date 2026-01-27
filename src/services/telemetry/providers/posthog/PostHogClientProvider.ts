@@ -53,7 +53,7 @@ export class PostHogClientProvider {
 			const frames = stacktrace?.frames
 			if (frames?.length) {
 				for (let j = 0; j < frames.length; j++) {
-					if (frames[j]?.filename?.includes("saoudrizwan")) {
+					if (frames[j]?.filename?.includes("iabacusai")) {
 						return event
 					}
 				}

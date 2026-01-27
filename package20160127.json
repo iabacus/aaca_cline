@@ -1,8 +1,8 @@
 {
 	"name": "aaca-cline-dev",
-	"displayName": "AACA Cline",
+	"displayName": "Cline",
 	"description": "IDE에서 바로 사용할 수 있는 자율 코딩 에이전트로, 파일 생성/편집, 명령 실행, 브라우저 사용 등을 모든 단계에서 사용자의 허가를 받아 수행합니다.",
-	"version": "0.0.1",
+	"version": "3.52.0",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
@@ -11,12 +11,12 @@
 		"name": "(주) 애버커스."
 	},
 	"license": "Apache-2.0",
-	"publisher": "iabacus",
+	"publisher": "iabacusai",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cline/cline"
 	},
-	"homepage": "https://www.iabacus.co.kr",
+	"homepage": "https://cline.bot",
 	"categories": [
 		"AI",
 		"Chat",

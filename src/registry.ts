@@ -1,7 +1,7 @@
 import { name, publisher, version } from "../package.json"
 
-const prefix = name === "claude-dev" ? "cline" : name
-
+const prefix = name === "aaca-cline-dev" ? "cline" : name
+// Using command prefix: ${prefix}
 /**
  * List of commands with the name of the extension they are registered under.
  * These should match the command IDs defined in package.json.
