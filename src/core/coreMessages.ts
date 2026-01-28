@@ -132,8 +132,7 @@ const messages: Record<string, Record<CoreMessageKey, string>> = {
 		deleteAllOptionEverything: "Delete Everything",
 		deleteAllNoFavoritesConfirm: "No favorited tasks found. Would you like to delete all tasks anyway?",
 		deleteAllNoFavoritesOptionDeleteAll: "Delete All Tasks",
-		deleteAllError:
-			"Encountered error while deleting task history, there may be some files left behind. Error: {{error}}",
+		deleteAllError: "Encountered error while deleting task history, there may be some files left behind. Error: {{error}}",
 		explainChangesNoActiveTask: "No active task",
 		explainChangesCheckpointsNotEnabled: "Checkpoints not enabled",
 		explainChangesCheckpointsDisabled: "Checkpoints are disabled in settings. Cannot review changes.",
@@ -178,8 +177,7 @@ const messages: Record<string, Record<CoreMessageKey, string>> = {
 		reconstructing: "Reconstructing task history...",
 		reconstructWarnings:
 			"Reconstruction completed with warnings:\n- Reconstructed: {{reconstructed}} tasks\n- Skipped: {{skipped}} tasks\n- Errors: {{errors}}\n\nFirst few errors:\n{{errorList}}",
-		reconstructSuccess:
-			"Task history successfully reconstructed! Found and restored {{reconstructed}} tasks.",
+		reconstructSuccess: "Task history successfully reconstructed! Found and restored {{reconstructed}} tasks.",
 		reconstructFailed: "Failed to reconstruct task history: {{error}}",
 		reconstructNoTasksDir: "No tasks directory found. Nothing to reconstruct.",
 		reconstructNoTaskDirs: "No task directories found. Nothing to reconstruct.",
@@ -261,8 +259,7 @@ const messages: Record<string, Record<CoreMessageKey, string>> = {
 		ruleScopeGlobal: "전역",
 		ruleScopeWorkspace: "워크스페이스",
 		checkpointRestoreFailed: "체크포인트 복원에 실패했습니다",
-		stateManagerLoadTaskSettingsFailed:
-			"작업 설정을 불러오지 못했습니다. 전역으로 선택된 설정을 사용합니다.",
+		stateManagerLoadTaskSettingsFailed: "작업 설정을 불러오지 못했습니다. 전역으로 선택된 설정을 사용합니다.",
 		ocaNotAuthenticated: "OCA에 인증되어 있지 않습니다. 먼저 로그인하세요.",
 		ocaNotAuthenticatedError: "OCA에 인증되어 있지 않습니다",
 		ocaNoModelsFound: "모델을 찾을 수 없습니다. OCA 접근 권한(예: 엔타이틀먼트)이 설정되어 있는지 확인하세요.",
@@ -305,13 +302,31 @@ const interpolate = (template: string, params?: CoreMessageParams) => {
 	if (!params) {
 		return template
 	}
-	return Object.entries(params).reduce(
-		(result, [key, value]) => result.replaceAll(`{{${key}}}`, String(value)),
-		template,
-	)
+	return Object.entries(params).reduce((result, [key, value]) => result.replaceAll(`{{${key}}}`, String(value)), template)
 }
 
-export const getCoreMessage = (key: CoreMessageKey, language?: LanguageKey, params?: CoreMessageParams) => {
+// Function overloads for better type safety
+export function getCoreMessage(key: CoreMessageKey): string
+export function getCoreMessage(key: CoreMessageKey, params: CoreMessageParams): string
+export function getCoreMessage(key: CoreMessageKey, language: LanguageKey): string
+export function getCoreMessage(key: CoreMessageKey, language: LanguageKey, params: CoreMessageParams): string
+export function getCoreMessage(
+	key: CoreMessageKey,
+	languageOrParams?: LanguageKey | CoreMessageParams,
+	params?: CoreMessageParams,
+): string {
+	// Check if second parameter is a params object (has multiple keys or non-string keys)
+	// LanguageKey is always a simple string, while CoreMessageParams is an object
+	if (languageOrParams && typeof languageOrParams === "object") {
+		// Second parameter is params, use default language
+		const locale = DEFAULT_LANGUAGE_SETTINGS
+		const translations = messages[locale] || messages[DEFAULT_LANGUAGE_SETTINGS]
+		const template = translations?.[key] || messages[DEFAULT_LANGUAGE_SETTINGS][key]
+		return interpolate(template, languageOrParams)
+	}
+
+	// Second parameter is language (or undefined)
+	const language = languageOrParams as LanguageKey | undefined
 	const locale = language || DEFAULT_LANGUAGE_SETTINGS
 	const translations = messages[locale] || messages[DEFAULT_LANGUAGE_SETTINGS]
 	const template = translations?.[key] || messages[DEFAULT_LANGUAGE_SETTINGS][key]

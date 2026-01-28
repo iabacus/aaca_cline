@@ -1,4 +1,3 @@
-import { VSCodeButton, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import { useTranslation } from "react-i18next"
 import { useClineSignIn } from "@/context/ClineAuthContext"
 import { useExtensionState } from "@/context/ExtensionStateContext"
@@ -20,19 +19,19 @@ export const AccountWelcomeView = () => {
 
 			<p>{t("account.signUpDescription")}</p>
 
-			<VSCodeButton className="w-full mb-4" disabled={isLoginLoading} onClick={handleSignIn}>
+			{/* <VSCodeButton className="w-full mb-4" disabled={isLoginLoading} onClick={handleSignIn}>
 				{t("account.signUpWithCline")}
 				{isLoginLoading && (
 					<span className="ml-1 animate-spin">
 						<span className="codicon codicon-refresh"></span>
 					</span>
 				)}
-			</VSCodeButton>
+			</VSCodeButton> */}
 
-			<p className="text-(--vscode-descriptionForeground) text-xs text-center m-0">
+			{/* <p className="text-(--vscode-descriptionForeground) text-xs text-center m-0">
 				{t("account.byContinuing")} <VSCodeLink href="https://cline.bot/tos">{t("account.termsOfService")}</VSCodeLink>{" "}
 				{t("account.and")} <VSCodeLink href="https://cline.bot/privacy">{t("account.privacyPolicy")}</VSCodeLink>
-			</p>
+			</p> */}
 		</div>
 	)
 }

@@ -51,7 +51,6 @@ export async function reconstructTaskHistory(showNotifications = true): Promise<
 			if (result.errors.length > 0) {
 				const errorMessage = getCoreMessage("reconstructWarnings", {
 					reconstructed: result.reconstructedTasks,
-					skipped: result.skippedTasks,
 					errors: result.errors.length,
 					errorList: result.errors.slice(0, 3).join("\n"),
 				})

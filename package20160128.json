@@ -2,7 +2,7 @@
 	"name": "aaca-cline-dev",
 	"displayName": "AACA Cline",
 	"description": "IDE에서 바로 사용할 수 있는 자율 코딩 에이전트로, 파일 생성/편집, 명령 실행, 브라우저 사용 등을 모든 단계에서 사용자의 허가를 받아 수행합니다.",
-	"version": "0.0.2",
+	"version": "0.0.1",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
@@ -11,7 +11,7 @@
 		"name": "(주) 애버커스."
 	},
 	"license": "Apache-2.0",
-	"publisher": "iabacus-publisher",
+	"publisher": "iabacus",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cline/cline"
@@ -141,6 +141,11 @@
 				"command": "cline.historyButtonClicked",
 				"title": "히스토리",
 				"icon": "$(history)"
+			},
+			{
+				"command": "cline.accountButtonClicked",
+				"title": "계정",
+				"icon": "$(account)"
 			},
 			{
 				"command": "cline.settingsButtonClicked",
@@ -283,6 +288,11 @@
 					"when": "view == aaca-cline-dev.SidebarProvider"
 				},
 				{
+					"command": "cline.accountButtonClicked",
+					"group": "navigation@5",
+					"when": "view == aaca-cline-dev.SidebarProvider"
+				},
+				{
 					"command": "cline.settingsButtonClicked",
 					"group": "navigation@6",
 					"when": "view == aaca-cline-dev.SidebarProvider"
@@ -371,7 +381,7 @@
 		"compile": "npm run check-types && npm run lint && node esbuild.mjs",
 		"compile-standalone": "npm run check-types && npm run lint && node esbuild.mjs --standalone",
 		"compile-standalone-npm": "npm run protos && npm run protos-go && npm run check-types && npm run lint && node esbuild.mjs --standalone",
-		"compile-cli": "node -e \"process.platform === 'win32' ? require('child_process').execSync('scripts\\\\build-cli.cmd', {stdio: 'inherit'}) : require('child_process').execSync('bash scripts/build-cli.sh', {stdio: 'inherit'})\"",
+		"compile-cli": "scripts/build-cli.sh",
 		"compile-cli-all-platforms": "scripts/build-cli-all-platforms.sh",
 		"compile-cli-man-page": "pandoc cli/man/cline.1.md -s -t man -o cli/man/cline.1",
 		"test:install": "bash scripts/test-install.sh",

@@ -22,8 +22,13 @@ eslint-rules/**
 .husky/**
 .env
 
-# cli
-cli/**
+# cli source (but keep binaries)
+cli/cmd/**
+cli/pkg/**
+cli/e2e/**
+cli/*.go
+cli/go.mod
+cli/go.sum
 
 # Custom
 **/demo.gif

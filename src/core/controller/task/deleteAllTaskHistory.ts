@@ -4,8 +4,8 @@ import path from "path"
 import { HostProvider } from "@/hosts/host-provider"
 import { ShowMessageRequest, ShowMessageType } from "@/shared/proto/host/window"
 import { Logger } from "@/shared/services/Logger"
-import { getCoreMessage } from "../../coreMessages"
 import { fileExistsAtPath } from "../../../utils/fs"
+import { getCoreMessage } from "../../coreMessages"
 import { Controller } from ".."
 
 /**

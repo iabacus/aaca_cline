@@ -1,10 +1,7 @@
-import { VSCodeCheckbox, VSCodeLink } from "@vscode/webview-ui-toolkit/react"
 import { useTranslation } from "react-i18next"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 import PreferredLanguageSetting from "../PreferredLanguageSetting"
 import Section from "../Section"
-import { updateSetting } from "../utils/settingsHandlers"
 
 interface GeneralSettingsSectionProps {
 	renderSectionHeader: (tabId: string) => JSX.Element | null
@@ -21,7 +18,7 @@ const GeneralSettingsSection = ({ renderSectionHeader }: GeneralSettingsSectionP
 				<PreferredLanguageSetting />
 
 				<div className="mb-[5px]">
-					<Tooltip>
+					{/* <Tooltip>
 						<TooltipContent hidden={remoteConfigSettings?.telemetrySetting === undefined}>
 							{t("generalSettings.remoteConfigManaged")}
 						</TooltipContent>
@@ -41,9 +38,9 @@ const GeneralSettingsSection = ({ renderSectionHeader }: GeneralSettingsSectionP
 								)}
 							</div>
 						</TooltipTrigger>
-					</Tooltip>
+					</Tooltip> */}
 
-					<p className="text-sm mt-[5px] text-description">
+					{/* <p className="text-sm mt-[5px] text-description">
 						{t("generalSettings.telemetryDescription")}{" "}
 						<VSCodeLink
 							className="text-inherit"
@@ -59,7 +56,7 @@ const GeneralSettingsSection = ({ renderSectionHeader }: GeneralSettingsSectionP
 							{t("generalSettings.privacyPolicy")}
 						</VSCodeLink>{" "}
 						{t("generalSettings.forMoreDetails")}
-					</p>
+					</p> */}
 				</div>
 			</Section>
 		</div>

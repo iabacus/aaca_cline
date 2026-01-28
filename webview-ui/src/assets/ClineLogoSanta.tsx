@@ -20,7 +20,6 @@ const ClineLogoSanta = (props: SVGProps<SVGSVGElement> & { environment?: Environ
 
 	return (
 		<>
-			<img alt="icon" height="20" src="assets/icons/icon.png" width="20" />
 			<svg height="50" viewBox="0 0 66.62 63.92" width="47" xmlns="http://www.w3.org/2000/svg" {...svgProps}>
 				{/* Original Cline robot logo */}
 				<path

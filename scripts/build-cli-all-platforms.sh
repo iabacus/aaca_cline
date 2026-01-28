@@ -29,6 +29,8 @@ PLATFORMS=(
   "darwin/amd64"
   "linux/amd64"
   "linux/arm64"
+  "windows/amd64"
+  "windows/arm64"
 )
 
 # Build binaries for all platforms
