@@ -6,8 +6,8 @@ import * as vscode from "vscode"
 import { HostProvider } from "@/hosts/host-provider"
 import { ShowMessageType } from "@/shared/proto/host/window"
 import { Logger } from "@/shared/services/Logger"
-import { getNonce } from "./getNonce"
 import { getCoreMessage } from "../coreMessages"
+import { getNonce } from "./getNonce"
 
 export abstract class WebviewProvider {
 	private static instance: WebviewProvider | null = null
@@ -27,6 +27,7 @@ export abstract class WebviewProvider {
 
 	public static getInstance(): WebviewProvider {
 		if (!WebviewProvider.instance) {
+			Logger.error("WebviewProvider instance not initialized. Make sure to create a WebviewProvider instance first.")
 			throw new Error("WebviewProvider instance not initialized. Make sure to create a WebviewProvider instance first.")
 		}
 		return WebviewProvider.instance

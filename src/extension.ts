@@ -113,8 +113,10 @@ export async function activate(context: vscode.ExtensionContext) {
 			Logger.log("[DEBUG] plusButtonClicked")
 
 			const sidebarInstance = WebviewProvider.getInstance()
-			await sidebarInstance.controller.clearTask()
-			await sidebarInstance.controller.postStateToWebview()
+			if (sidebarInstance) {
+				await sidebarInstance.controller.clearTask()
+				await sidebarInstance.controller.postStateToWebview()
+			}
 			await sendChatButtonClickedEvent()
 		}),
 	)
@@ -375,23 +377,27 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand(commands.FocusChatInput, async (preserveEditorFocus: boolean = false) => {
-			const webview = WebviewProvider.getInstance() as VscodeWebviewProvider
+			try {
+				const webview = WebviewProvider.getInstance() as VscodeWebviewProvider
 
-			// Show the webview
-			const webviewView = webview.getWebview()
-			if (webviewView) {
-				if (preserveEditorFocus) {
-					// Only make webview visible without forcing focus
-					webviewView.show(false)
-				} else {
-					// Show and force focus (default behavior for explicit focus actions)
-					webviewView.show(true)
+				// Show the webview
+				const webviewView = webview.getWebview()
+				if (webviewView) {
+					if (preserveEditorFocus) {
+						// Only make webview visible without forcing focus
+						webviewView.show(false)
+					} else {
+						// Show and force focus (default behavior for explicit focus actions)
+						webviewView.show(true)
+					}
 				}
-			}
 
-			// Send show webview event with preserveEditorFocus flag
-			sendShowWebviewEvent(preserveEditorFocus)
-			telemetryService.captureButtonClick("command_focusChatInput", webview.controller?.task?.ulid)
+				// Send show webview event with preserveEditorFocus flag
+				sendShowWebviewEvent(preserveEditorFocus)
+				telemetryService.captureButtonClick("command_focusChatInput", webview.controller?.task?.ulid)
+			} catch (error) {
+				Logger.error("Error in FocusChatInput command:", error)
+			}
 		}),
 	)
 

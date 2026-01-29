@@ -2,7 +2,7 @@
 	"name": "aaca-cline-dev",
 	"displayName": "AACA Cline",
 	"description": "IDE에서 바로 사용할 수 있는 자율 코딩 에이전트로, 파일 생성/편집, 명령 실행, 브라우저 사용 등을 모든 단계에서 사용자의 허가를 받아 수행합니다.",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
@@ -418,6 +418,7 @@
 		"dev:webview": "cd webview-ui && npm run dev",
 		"build:webview": "cd webview-ui && npm run build",
 		"test:webview": "cd webview-ui && npm run test",
+		"build:vsix": "npm run build:webview && vsce package",
 		"publish:marketplace": "vsce publish --allow-package-secrets sendgrid && ovsx publish",
 		"publish:marketplace:prerelease": "vsce publish --allow-package-secrets sendgrid --pre-release && ovsx publish --pre-release",
 		"publish:marketplace:nightly": "node ./scripts/publish-nightly.mjs",
