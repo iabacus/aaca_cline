@@ -12,7 +12,6 @@ import { main as generateHostBridgeClient } from "./generate-host-bridge-client.
 import { main as generateProtoBusSetup } from "./generate-protobus-setup.mjs"
 
 const require = createRequire(import.meta.url)
-const PROTOC = path.join(require.resolve("grpc-tools"), "../bin/protoc")
 
 const PROTO_DIR = path.resolve("proto")
 const TS_OUT_DIR = path.resolve("src/shared/proto")
@@ -21,6 +20,20 @@ const NICE_JS_OUT_DIR = path.resolve("src/generated/nice-grpc")
 const DESCRIPTOR_OUT_DIR = path.resolve("dist-standalone/proto")
 
 const isWindows = process.platform === "win32"
+
+// Use system protoc if available, otherwise fall back to grpc-tools
+let PROTOC
+try {
+	const whichCmd = isWindows ? "where protoc" : "which protoc"
+	const result = execSync(whichCmd, { encoding: "utf-8", stdio: ["pipe", "pipe", "ignore"] }).trim()
+	PROTOC = isWindows ? result.split("\r\n")[0] : result.split("\n")[0]
+} catch {
+	// Fallback to grpc-tools if system protoc not found
+	PROTOC = isWindows
+		? path.join(require.resolve("grpc-tools"), "../bin/protoc.cmd")
+		: path.join(require.resolve("grpc-tools"), "../bin/protoc.js")
+}
+
 const TS_PROTO_PLUGIN = isWindows
 	? path.resolve("node_modules/.bin/protoc-gen-ts_proto.cmd") // Use the .bin directory path for Windows
 	: require.resolve("ts-proto/protoc-gen-ts_proto")
